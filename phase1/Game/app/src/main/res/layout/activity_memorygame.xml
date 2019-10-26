@@ -17,5 +17,16 @@
         android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"/>
 
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:textSize="33dp"
+        android:textColor="#000"
+        android:text="Player Points: 0" />
 
+    <!--Used https://www.youtube.com/watch?v=gkh-5pmYEa0 and
+    https://developer.android.com/guide/topics/ui/layout/relative to learn-->
 </RelativeLayout>
