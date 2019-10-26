@@ -15,15 +15,15 @@ public class MemorizePlayer {
         this.textView = tv;
     }
 
-    public void setTextView(TextView new_tv) {
+    void setTextView(TextView new_tv) {
         this.textView = new_tv;
     }
 
-    public int getPointsEarned() {
+    int getPointsEarned() {
         return pointsEarned;
     }
 
-    public void increasePointsEarned() {
+    void increasePointsEarned() {
         this.pointsEarned++;
     }
 
