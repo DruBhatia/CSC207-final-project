@@ -4,11 +4,11 @@ import android.view.SurfaceHolder;
 
 public class GameThread extends Thread{
     private SurfaceHolder surfaceHolder;
-    private GameView gameView;
+    private DonutView gameView;
     public static Canvas canvas;
     private boolean running;
 
-    public GameThread(SurfaceHolder surfaceHolder, GameView gameView){
+    public GameThread(SurfaceHolder surfaceHolder, DonutView gameView){
         super();
         this.surfaceHolder = surfaceHolder;
         this.gameView = gameView;
@@ -22,7 +22,7 @@ public class GameThread extends Thread{
             try{
                 canvas = this.surfaceHolder.lockCanvas();
                 synchronized (surfaceHolder) {
-                    this.gameView.update();
+                    this.gameView.update(canvas);
                     this.gameView.draw(canvas);
                 }
             } catch (Exception e){ e.printStackTrace();
