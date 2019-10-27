@@ -9,6 +9,7 @@ import android.widget.ImageView;
 public class PlayingCard {
   /** The Image of the PlayingCard view on the screen */
   private ImageView imageview;
+
   private int actualImage;
 
   /** The actual image stored in an integer */
@@ -19,9 +20,14 @@ public class PlayingCard {
     this.imageview = iv;
     this.actualImage = ai;
   }
-  /** get the ImageView of the card*/
+  /** get the ImageView of the card */
   ImageView getImageview() {
     return this.imageview;
+  }
+
+  /** get the number of the card */
+  int getCardNum() {
+    return this.cardNum;
   }
 
   /** Set the front view of the card to the image */
