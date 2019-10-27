@@ -1,6 +1,7 @@
 package com.example.game;
 
 
+import android.annotation.SuppressLint;
 import android.widget.TextView;
 
 /**A Player of Memorize Game */
@@ -15,8 +16,9 @@ public class MemorizePlayer {
         this.textView = tv;
     }
 
-    void setTextView(TextView new_tv) {
-        this.textView = new_tv;
+    void setTextPoints() {
+        String new_text =  "Player Points:" + this.pointsEarned;
+        this.textView.setText(new_text);
     }
 
     int getPointsEarned() {
