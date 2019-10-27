@@ -17,23 +17,19 @@ public class PlayingCard {
   PlayingCard(int card_num, ImageView iv, int ai) {
     this.cardNum = card_num;
     this.imageview = iv;
+    this.imageview.setTag(card_num);
     this.actualImage = ai;
   }
-  /** Set an on click listener on the image view of the card */
-  // https://developer.android.com/reference/android/view/View.OnClickListener used to learn.
-  void setOnClick() {
-    this.imageview.setOnClickListener(
-        new View.OnClickListener() {
-          @Override
-          public void onClick(View view) {
-            // Set the image of card to the image view
-            imageview.setImageResource(cardNum);
-          }
-        });
+
+  /** Get the image view of the card */
+  ImageView getImageview(){
+    return this.imageview;
   }
+
+
   /** Set the front view of the card to the image */
   void setImage() {
-    this.imageview.setImageResource(cardNum);
+    this.imageview.setImageResource(this.actualImage);
   }
 
   /** Set whether the card will be visible on screen or not */
