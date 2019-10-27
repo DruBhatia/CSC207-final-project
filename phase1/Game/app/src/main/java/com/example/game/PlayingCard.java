@@ -1,6 +1,6 @@
 package com.example.game;
 
-//https://developer.android.com/reference/android/widget/ImageView and
+// https://developer.android.com/reference/android/widget/ImageView and
 // https://developer.android.com/reference/android/view/View used to learn.
 import android.view.View;
 import android.widget.ImageView;
@@ -14,21 +14,38 @@ public class PlayingCard {
   private int cardNum;
 
   PlayingCard(ImageView iv, int card_num) {
-      this.cardNum = card_num;
-      this.imageview = iv;
+    this.cardNum = card_num;
+    this.imageview = iv;
   }
-  /**Set an on click listener on the image view of the card */
-  //https://developer.android.com/reference/android/view/View.OnClickListener used to learn.
+  /** Set an on click listener on the image view of the card */
+  // https://developer.android.com/reference/android/view/View.OnClickListener used to learn.
   void setOnClick() {
-      this.imageview.setOnClickListener(new View.OnClickListener() {
+    this.imageview.setOnClickListener(
+        new View.OnClickListener() {
           @Override
           public void onClick(View view) {
-              //Set the image of card to the image view
-              imageview.setImageResource(cardNum);
+            // Set the image of card to the image view
+            imageview.setImageResource(cardNum);
           }
-      });
+        });
   }
-  
+  /** Set the front view of the card to the image */
+  void setImage() {
+    this.imageview.setImageResource(cardNum);
+  }
 
+  /** Set whether the card will be visible on screen or not */
+  void setVisibility() {
+    this.imageview.setVisibility(View.INVISIBLE);
+  }
 
+  /** get the visibility of the playing card */
+  int getVisibility() {
+    return this.imageview.getVisibility();
+  }
+
+  /** Set whether the view of the card; front or back view. */
+  void set_enable(boolean bool) {
+    this.imageview.setEnabled(bool);
+  }
 }
