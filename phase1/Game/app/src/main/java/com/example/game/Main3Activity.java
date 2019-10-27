@@ -8,6 +8,8 @@ public class Main3Activity extends AppCompatActivity {
 
     private DonutView gameView;
 
+    private DonutView gameView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

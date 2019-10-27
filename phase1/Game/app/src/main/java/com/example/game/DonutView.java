@@ -34,4 +34,21 @@ public class DonutView extends View {
         canvas.drawBitmap(Ants, 800, 0, null);
 
     }
+
+    @Override
+    protected void onDraw(Canvas canvas) {
+        super.onDraw(canvas);
+
+        canvas.drawBitmap(Donut, 300, 600, null);
+
+        canvas.drawBitmap(Ant, 100, 1600, null);
+
+        canvas.drawBitmap(Donut, 800, 1600, null);
+
+        canvas.drawBitmap(Donut, 100, 0, null);
+
+        canvas.drawBitmap(Donut, 800, 0, null);
+
+
+    }
 }
