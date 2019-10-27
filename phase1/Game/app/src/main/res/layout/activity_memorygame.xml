@@ -1,20 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_memorygame"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingLeft="16dp"
-    android:paddingTop="16dp"
-    android:paddingRight="16dp"
-    android:paddingBottom="16dp"
-    android:background="@drawable/game_bg"
+
+    android:background="@drawable/game_backg"
     tools:context="com.example.game.Main2Activity">
 
     <include
         layout="@layout/memory_images"
         android:layout_width="wrap_content"
-        android:layout_height="700dp"
+        android:layout_height="750dp"
         android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"/>
 
@@ -24,8 +22,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:textSize="33dp"
-        android:textColor="#000000"
+        android:textSize="35dp"
+        android:textColor="#FB8C00"
         android:text="Player Points: 0" />
 
     <!--Used https://www.youtube.com/watch?v=gkh-5pmYEa0 and
