@@ -1,4 +1,4 @@
 package com.example.game;
 
-public class memoryView {
+public class MemoryView {
 }
