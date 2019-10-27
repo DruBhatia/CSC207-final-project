@@ -10,29 +10,14 @@ public class DonutView extends View {
 
     private Bitmap Donut;
 
-    private Bitmap Ants;
+    private Bitmap Ant;
+
 
     public DonutView(Context context) {
         super(context);
         Donut = BitmapFactory.decodeResource(getResources(), R.drawable.donut);
 
-        Ants = BitmapFactory.decodeResource(getResources(), R.drawable.ant);
-
-    }
-
-    @Override
-    protected void onDraw(Canvas canvas) {
-        super.onDraw(canvas);
-        canvas.drawBitmap(Donut, 300, 600, null);
-
-        canvas.drawBitmap(Ants, 100, 1600, null);
-
-        canvas.drawBitmap(Ants, 800, 1600, null);
-
-        canvas.drawBitmap(Ants, 100, 0, null);
-
-        canvas.drawBitmap(Ants, 800, 0, null);
-
+        Ant = BitmapFactory.decodeResource(getResources(), R.drawable.ant);
     }
 
     @Override
@@ -48,7 +33,5 @@ public class DonutView extends View {
         canvas.drawBitmap(Donut, 100, 0, null);
 
         canvas.drawBitmap(Donut, 800, 0, null);
-
-
     }
 }
