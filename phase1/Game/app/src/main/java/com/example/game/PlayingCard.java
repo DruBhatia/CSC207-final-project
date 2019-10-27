@@ -39,10 +39,10 @@ public class PlayingCard {
     this.imageview.setVisibility(View.INVISIBLE);
   }
 
-    /** get the visibility of the playing card*/
-    int getVisibility() {
-        return this.imageview.getVisibility();
-    }
+  /** get the visibility of the playing card */
+  int getVisibility() {
+    return this.imageview.getVisibility();
+  }
 
   /** Set whether the view of the card; front or back view. */
   void set_enable(boolean bool) {
