@@ -22,7 +22,7 @@ public class GameThread extends Thread{
             try{
                 canvas = this.surfaceHolder.lockCanvas();
                 synchronized (surfaceHolder) {
-                    this.gameView.update(canvas);
+                    this.gameView.update();
                     this.gameView.draw(canvas);
                 }
             } catch (Exception e){ e.printStackTrace();
@@ -40,5 +40,9 @@ public class GameThread extends Thread{
             } catch(InterruptedException e)  { e.printStackTrace(); }
             startTime = System.nanoTime();
         }
+    }
+
+    public void setRunning(boolean running) {
+        this.running = running;
     }
 }
