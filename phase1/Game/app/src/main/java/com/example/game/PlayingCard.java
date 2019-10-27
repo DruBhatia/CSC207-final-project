@@ -9,13 +9,15 @@ import android.widget.ImageView;
 public class PlayingCard {
   /** The Image of the PlayingCard view on the screen */
   private ImageView imageview;
+  private int actualImage;
 
   /** The actual image stored in an integer */
   private int cardNum;
 
-  PlayingCard(ImageView iv, int card_num) {
+  PlayingCard(int card_num, ImageView iv, int ai) {
     this.cardNum = card_num;
     this.imageview = iv;
+    this.actualImage = ai;
   }
   /** Set an on click listener on the image view of the card */
   // https://developer.android.com/reference/android/view/View.OnClickListener used to learn.
