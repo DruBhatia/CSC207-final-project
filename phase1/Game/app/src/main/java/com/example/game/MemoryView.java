@@ -1,6 +1,7 @@
 package com.example.game;
 
 import android.content.Context;
+import android.os.Handler;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -49,7 +50,6 @@ public class MemoryView extends View {
     cardArray.add(
         new PlayingCard(24, (ImageView) findViewById(R.id.iv_34), R.drawable.fv_image204));
     cardArray.add(
-        /**/
         new PlayingCard(25, (ImageView) findViewById(R.id.iv_41), R.drawable.fv_image205));
     cardArray.add(
         new PlayingCard(26, (ImageView) findViewById(R.id.iv_42), R.drawable.fv_image206));
@@ -57,10 +57,6 @@ public class MemoryView extends View {
         new PlayingCard(27, (ImageView) findViewById(R.id.iv_43), R.drawable.fv_image207));
     cardArray.add(
         new PlayingCard(28, (ImageView) findViewById(R.id.iv_44), R.drawable.fv_image208));
-    //Load the front view image resources on the cards
-    for (PlayingCard card: cardArray) {
-      card.setImage();
-    }
   }
 
   /** Set an on click listener on the image view of all the cards in cardArray */
@@ -72,8 +68,6 @@ public class MemoryView extends View {
               new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                  // Set the image of card to the image view
-                  card.setImage();
                   setSelection(card);
                 }
               });
@@ -81,7 +75,9 @@ public class MemoryView extends View {
   }
 
   private void setSelection(PlayingCard c) {
-    //check the selection of two cards and store them temporarily
+    // Set the image of card to the image view
+    c.setImage();
+    // check the selection of two cards and store them temporarily
     if (cardNum == 1) {
       firstCard = c.getCardNum();
       if (firstCard > 20) {
@@ -89,7 +85,7 @@ public class MemoryView extends View {
       }
       cardNum = 2;
       firstSelect = this.cardArray.indexOf(c);
-      //Make this card unresponsive
+      // Make this card unresponsive
       c.set_enable(false);
 
     } else {
@@ -99,29 +95,42 @@ public class MemoryView extends View {
       }
       cardNum = 1;
       secondSelect = this.cardArray.indexOf(c);
-      //Make all cards unresponsive
+      // Make all cards unresponsive
       for (PlayingCard playc : cardArray) {
         playc.set_enable(false);
       }
+      // https://developer.android.com/reference/android/os/Handler.html &
+      // https://stackoverflow.com/questions/15136199/when-to-use-handler-post-when-to-new-thread
+      //After selecting the two cards delay the game by 1000 millisecond to check whether the two
+      //cards match or not and proceed ahead.
+      Handler handler = new Handler();
+      handler.postDelayed(
+          new Runnable() {
+            @Override
+            public void run() {
+              compare();
+            }
+          },
+          1000);
     }
   }
 
   private void compare() {
-    //If card matches make them invisible
+    // If card matches make them invisible
     if (firstCard == secondCard) {
       cardArray.get(firstSelect).setVisibility();
       cardArray.get(secondSelect).setVisibility();
-      //Increase the points for correct match
+      // Increase the points for correct match
       player.increasePointsEarned();
       player.setTextPoints();
     } else {
-      //Load back the front images again if
-      for (PlayingCard card: cardArray) {
+      // Load back the front images again if
+      for (PlayingCard card : cardArray) {
         card.setImage();
       }
     }
-    //Make all cards responsive again
-    for (PlayingCard card: cardArray) {
+    // Make all cards responsive again
+    for (PlayingCard card : cardArray) {
       card.set_enable(true);
     }
   }
