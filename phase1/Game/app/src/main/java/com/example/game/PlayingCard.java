@@ -15,10 +15,9 @@ public class PlayingCard {
   /** The actual image stored in an integer */
   private int cardNum;
 
-  PlayingCard(int card_num, ImageView iv, int ai) {
+  PlayingCard(int card_num, ImageView iv) {
     this.cardNum = card_num;
     this.imageview = iv;
-    this.actualImage = ai;
   }
   /** get the ImageView of the card */
   ImageView getImageview() {
@@ -31,8 +30,8 @@ public class PlayingCard {
   }
 
   /** Set the front view of the card to the image */
-  void setImage() {
-    this.imageview.setImageResource(this.actualImage);
+  void setImage(int image) {
+    this.imageview.setImageResource(image);
   }
 
   /** Set whether the card will be visible on screen or not */
