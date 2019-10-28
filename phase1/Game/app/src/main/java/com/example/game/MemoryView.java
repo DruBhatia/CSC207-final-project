@@ -23,7 +23,7 @@ public class MemoryView extends View {
   /** Denotes which card is being selected (Whether its the first card selection or second) */
   int cardNum = 1;
 
-  public MemoryView(Context context) {
+  MemoryView(Context context) {
     super(context);
     player = new MemorizePlayer((TextView) findViewById(R.id.textView1));
     cardArray = new ArrayList<>();
@@ -60,6 +60,8 @@ public class MemoryView extends View {
     imageArray.add(R.drawable.fv_image207);
     cardArray.add(new PlayingCard(28, (ImageView) findViewById(R.id.iv_44)));
     imageArray.add(R.drawable.fv_image208);
+
+
   }
 
   /** Set an on click listener on the image view of all the cards in cardArray */
@@ -100,8 +102,8 @@ public class MemoryView extends View {
       cardNum = 1;
       secondSelect = this.cardArray.indexOf(c);
       // Make all cards unresponsive
-      for (PlayingCard playcard : cardArray) {
-        playcard.set_enable(false);
+      for (PlayingCard playCard : cardArray) {
+        playCard.set_enable(false);
       }
       // https://developer.android.com/reference/android/os/Handler.html &
       // https://stackoverflow.com/questions/15136199/when-to-use-handler-post-when-to-new-thread
@@ -136,23 +138,6 @@ public class MemoryView extends View {
     // Make all cards responsive again
     for (PlayingCard card : cardArray) {
       card.set_enable(true);
-    }
-  }
-
-  private boolean checkEnd() {
-    for (PlayingCard item : cardArray) {
-      if (item.getVisibility() != View.INVISIBLE) {
-        return false;
-      }
-    }
-    return true;
-  }
-
-  private void endGame(boolean check) {
-    int playerPoints = player.getPointsEarned();
-    if (check) {
-      // Display a message indicating the game has ended, the total points of participating players,
-      // and an option to return to the game menu or home screen.
     }
   }
 }
