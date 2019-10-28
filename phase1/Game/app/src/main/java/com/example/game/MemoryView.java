@@ -12,6 +12,8 @@ import java.util.List;
 public class MemoryView extends View {
   /** Array List of all cards displayed on the screen */
   List<PlayingCard> cardArray;
+  /** Array List of all card images displayed on the screen */
+  List<Integer> imageArray;
   /** Player of the Game */
   MemorizePlayer player;
   /** First and Second selected indexes of the cardArray */
@@ -25,38 +27,39 @@ public class MemoryView extends View {
     super(context);
     player = new MemorizePlayer((TextView) findViewById(R.id.textView1));
     cardArray = new ArrayList<>();
-    cardArray.add(
-        new PlayingCard(11, (ImageView) findViewById(R.id.iv_11), R.drawable.fv_image101));
-    cardArray.add(
-        new PlayingCard(12, (ImageView) findViewById(R.id.iv_12), R.drawable.fv_image102));
-    cardArray.add(
-        new PlayingCard(13, (ImageView) findViewById(R.id.iv_13), R.drawable.fv_image103));
-    cardArray.add(
-        new PlayingCard(14, (ImageView) findViewById(R.id.iv_14), R.drawable.fv_image104));
-    cardArray.add(
-        new PlayingCard(15, (ImageView) findViewById(R.id.iv_21), R.drawable.fv_image105));
-    cardArray.add(
-        new PlayingCard(16, (ImageView) findViewById(R.id.iv_22), R.drawable.fv_image106));
-    cardArray.add(
-        new PlayingCard(17, (ImageView) findViewById(R.id.iv_23), R.drawable.fv_image107));
-    cardArray.add(
-        new PlayingCard(18, (ImageView) findViewById(R.id.iv_24), R.drawable.fv_image108));
-    cardArray.add(
-        new PlayingCard(21, (ImageView) findViewById(R.id.iv_31), R.drawable.fv_image201));
-    cardArray.add(
-        new PlayingCard(22, (ImageView) findViewById(R.id.iv_32), R.drawable.fv_image202));
-    cardArray.add(
-        new PlayingCard(23, (ImageView) findViewById(R.id.iv_33), R.drawable.fv_image203));
-    cardArray.add(
-        new PlayingCard(24, (ImageView) findViewById(R.id.iv_34), R.drawable.fv_image204));
-    cardArray.add(
-        new PlayingCard(25, (ImageView) findViewById(R.id.iv_41), R.drawable.fv_image205));
-    cardArray.add(
-        new PlayingCard(26, (ImageView) findViewById(R.id.iv_42), R.drawable.fv_image206));
-    cardArray.add(
-        new PlayingCard(27, (ImageView) findViewById(R.id.iv_43), R.drawable.fv_image207));
-    cardArray.add(
-        new PlayingCard(28, (ImageView) findViewById(R.id.iv_44), R.drawable.fv_image208));
+    imageArray = new ArrayList<>();
+    cardArray.add(new PlayingCard(101, (ImageView) findViewById(R.id.iv_11)));
+    imageArray.add(R.drawable.fv_image101);
+    cardArray.add(new PlayingCard(102, (ImageView) findViewById(R.id.iv_12)));
+    imageArray.add(R.drawable.fv_image102);
+    cardArray.add(new PlayingCard(103, (ImageView) findViewById(R.id.iv_13)));
+    imageArray.add(R.drawable.fv_image103);
+    cardArray.add(new PlayingCard(14, (ImageView) findViewById(R.id.iv_14)));
+    imageArray.add(R.drawable.fv_image104);
+    cardArray.add(new PlayingCard(15, (ImageView) findViewById(R.id.iv_21)));
+    imageArray.add(R.drawable.fv_image105);
+    cardArray.add(new PlayingCard(16, (ImageView) findViewById(R.id.iv_22)));
+    imageArray.add(R.drawable.fv_image106);
+    cardArray.add(new PlayingCard(17, (ImageView) findViewById(R.id.iv_23)));
+    imageArray.add(R.drawable.fv_image107);
+    cardArray.add(new PlayingCard(18, (ImageView) findViewById(R.id.iv_24)));
+    imageArray.add(R.drawable.fv_image108);
+    cardArray.add(new PlayingCard(21, (ImageView) findViewById(R.id.iv_31)));
+    imageArray.add(R.drawable.fv_image201);
+    cardArray.add(new PlayingCard(22, (ImageView) findViewById(R.id.iv_32)));
+    imageArray.add(R.drawable.fv_image202);
+    cardArray.add(new PlayingCard(23, (ImageView) findViewById(R.id.iv_33)));
+    imageArray.add(R.drawable.fv_image203);
+    cardArray.add(new PlayingCard(24, (ImageView) findViewById(R.id.iv_34)));
+    imageArray.add(R.drawable.fv_image204);
+    cardArray.add(new PlayingCard(25, (ImageView) findViewById(R.id.iv_41)));
+    imageArray.add(R.drawable.fv_image205);
+    cardArray.add(new PlayingCard(26, (ImageView) findViewById(R.id.iv_42)));
+    imageArray.add(R.drawable.fv_image206);
+    cardArray.add(new PlayingCard(27, (ImageView) findViewById(R.id.iv_43)));
+    imageArray.add(R.drawable.fv_image207);
+    cardArray.add(new PlayingCard(28, (ImageView) findViewById(R.id.iv_44)));
+    imageArray.add(R.drawable.fv_image208);
   }
 
   /** Set an on click listener on the image view of all the cards in cardArray */
@@ -76,7 +79,8 @@ public class MemoryView extends View {
 
   private void setSelection(PlayingCard c) {
     // Set the image of card to the image view
-    c.setImage();
+      int image = imageArray.get(cardArray.indexOf(c));
+    c.setImage(image);
     // check the selection of two cards and store them temporarily
     if (cardNum == 1) {
       firstCard = c.getCardNum();
@@ -96,8 +100,8 @@ public class MemoryView extends View {
       cardNum = 1;
       secondSelect = this.cardArray.indexOf(c);
       // Make all cards unresponsive
-      for (PlayingCard playc : cardArray) {
-        playc.set_enable(false);
+      for (PlayingCard playcard : cardArray) {
+        playcard.set_enable(false);
       }
       // https://developer.android.com/reference/android/os/Handler.html &
       // https://stackoverflow.com/questions/15136199/when-to-use-handler-post-when-to-new-thread
@@ -126,7 +130,7 @@ public class MemoryView extends View {
     } else {
       // Load back the front images again if
       for (PlayingCard card : cardArray) {
-        card.setImage();
+        card.setImage(R.drawable.bv_00);
       }
     }
     // Make all cards responsive again
