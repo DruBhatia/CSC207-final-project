@@ -19,12 +19,12 @@ class Ant extends GameCreature{
 
     void update(){
         //for now it just moves the ant in one direction will change to random later.
-        this.setX(this.getX()+speed);
-        if (this.getX() < 0) {
-            this.setX(0);
+        this.setY(this.getY()+speed);
+        if (this.getY() < 0) {
+            this.setY(0);
             this.speed = -this.speed;
-        } else if (this.getX() > donutView.getWidth() - image.getWidth()) {
-            this.setX(donutView.getWidth() - image.getWidth());
+        } else if (this.getY() > donutView.getHeight() - image.getHeight()) {
+            this.setY(donutView.getHeight() - image.getHeight());
             this.speed = -this.speed;
         }
     }
