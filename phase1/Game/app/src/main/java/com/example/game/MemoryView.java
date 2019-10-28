@@ -21,7 +21,7 @@ public class MemoryView extends View {
   /** Denotes which card is being selected (Whether its the first card selection or second) */
   int cardNum = 1;
 
-  MemoryView(Context context) {
+  public MemoryView(Context context) {
     super(context);
     player = new MemorizePlayer((TextView) findViewById(R.id.textView1));
     cardArray = new ArrayList<>();
@@ -101,8 +101,8 @@ public class MemoryView extends View {
       }
       // https://developer.android.com/reference/android/os/Handler.html &
       // https://stackoverflow.com/questions/15136199/when-to-use-handler-post-when-to-new-thread
-      //After selecting the two cards delay the game by 1000 millisecond to check whether the two
-      //cards match or not and proceed ahead.
+      // After selecting the two cards delay the game by 1000 millisecond to check whether the two
+      // cards match or not and proceed ahead.
       Handler handler = new Handler();
       handler.postDelayed(
           new Runnable() {
@@ -132,6 +132,23 @@ public class MemoryView extends View {
     // Make all cards responsive again
     for (PlayingCard card : cardArray) {
       card.set_enable(true);
+    }
+  }
+
+  private boolean checkEnd() {
+    for (PlayingCard item : cardArray) {
+      if (item.getVisibility() != View.INVISIBLE) {
+        return false;
+      }
+    }
+    return true;
+  }
+
+  private void endGame(boolean check) {
+    int playerPoints = player.getPointsEarned();
+    if (check) {
+      // Display a message indicating the game has ended, the total points of participating players,
+      // and an option to return to the game menu or home screen.
     }
   }
 }
