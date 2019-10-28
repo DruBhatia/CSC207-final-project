@@ -20,9 +20,6 @@ public class DonutView extends SurfaceView implements SurfaceHolder.Callback {
         super(context);
         this.setFocusable(true);
         this.getHolder().addCallback(this);
-        Bitmap antImg = BitmapFactory.decodeResource(getResources(), R.drawable.ant);
-        gameThread = new GameThread(this.getHolder(),this);
-        ant = new Ant(antImg,800,800,this);
     }
 
     public void update() {
@@ -32,12 +29,15 @@ public class DonutView extends SurfaceView implements SurfaceHolder.Callback {
     @Override
     public void draw(Canvas canvas) {
         super.draw(canvas);
+        canvas.drawColor(-1);
         ant.draw(canvas);
 
     }
 
     @Override
     public void surfaceCreated(SurfaceHolder surfaceHolder) {
+        Bitmap antBitmap1 = BitmapFactory.decodeResource(this.getResources(),R.drawable.ant);
+        this.ant = new Ant(antBitmap1,400,400,this);
         gameThread = new GameThread(this.getHolder(),this);
         gameThread.setRunning(true);
         gameThread.start();
