@@ -8,16 +8,16 @@ class Ant extends GameCreature{
     private int speed = 10;
     private DonutView donutView;
 
-    private Ant(Bitmap image, int x, int y, DonutView donutView) {
+    Ant(Bitmap image, int x, int y, DonutView donutView) {
         super(image, x, y);
         this.donutView = donutView;
     }
 
-    private void draw(Canvas canvas) {
+    void draw(Canvas canvas) {
         canvas.drawBitmap(image, this.getX(), this.getY(), null);
     }
 
-    private void update(){
+    void update(){
         //for now it just moves the ant in one direction will change to random later.
         this.setX(this.getX()+speed);
         if (this.getX() < 0) {
