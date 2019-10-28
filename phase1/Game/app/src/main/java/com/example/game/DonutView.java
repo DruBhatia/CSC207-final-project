@@ -14,7 +14,7 @@ import android.view.View;
 public class DonutView extends SurfaceView implements SurfaceHolder.Callback {
 
     private GameThread gameThread;
-    private Ant ant;
+    private AntManager manager;
 
     public DonutView(Context context) {
         super(context);
@@ -23,25 +23,25 @@ public class DonutView extends SurfaceView implements SurfaceHolder.Callback {
     }
 
     public void update() {
-        ant.update();
+        manager.update();
     }
 
     @Override
     public void draw(Canvas canvas) {
         super.draw(canvas);
         canvas.drawColor(-1);
-        ant.draw(canvas);
+        manager.draw(canvas);
 
     }
 
     @Override
     public void surfaceCreated(SurfaceHolder surfaceHolder) {
         Bitmap antBitmap1 = BitmapFactory.decodeResource(this.getResources(),R.drawable.ant);
-        this.ant = new Ant(antBitmap1,400,400,this);
+        manager = new AntManager(10);
+        manager.createAnts(antBitmap1, this);
         gameThread = new GameThread(this.getHolder(),this);
         gameThread.setRunning(true);
         gameThread.start();
-
     }
 
     @Override
