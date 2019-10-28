@@ -3,14 +3,14 @@ package com.example.game;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 
-class Ant extends GameCreature{
+class Donut extends GameCreature{
 
     private int speed = 10;
-    private DonutView donutView;
+//    private DonutView donutView;
 
-    Ant(Bitmap image, int x, int y, DonutView donutView) {
+    Donut(Bitmap image, int x, int y, DonutView donutView) {
         super(image, x, y);
-        this.donutView = donutView;
+//        this.donutView = donutView;
     }
 
     void draw(Canvas canvas) {
@@ -27,17 +27,5 @@ class Ant extends GameCreature{
 //            this.setX(donutView.getWidth() - image.getWidth());
 //            this.speed = -this.speed;
 //        }
-//    }
 
-    void update(){
-        //for now it just moves the ant in one direction will change to random later.
-        this.setY(this.getY()+speed);
-        if (this.getY() < 0) {
-            this.setY(0);
-            this.speed = -this.speed;
-        } else if (this.getY() > donutView.getHeight() - image.getHeight()) {
-            this.setY(donutView.getHeight() - image.getHeight());
-            this.speed = -this.speed;
-        }
-    }
 }
