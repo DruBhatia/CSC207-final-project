@@ -5,12 +5,13 @@ import android.graphics.Canvas;
 
 class Ant extends GameCreature{
 
-    private int speed = 10;
+    private int speed;
     private DonutView donutView;
 
-    Ant(Bitmap image, int x, int y, DonutView donutView) {
+    Ant(Bitmap image, int x, int y, DonutView donutView, int speed) {
         super(image, x, y);
         this.donutView = donutView;
+        this.speed = speed;
     }
 
     void draw(Canvas canvas) {
@@ -19,29 +20,11 @@ class Ant extends GameCreature{
 
     void update(){
         //for now it just moves the ant in one direction will change to random later.
-
-        this.setY(this.getY() + speed);
-        if (this.getY() < 0) {
-            this.setY(0);
-            this.speed = -this.speed;
-        } else if (this.getY() > donutView.getHeight() - image.getHeight()) {
-            this.setY(donutView.getHeight() - image.getHeight());
-            this.speed = -this.speed;
+        int randomSpeed = (int) (Math.random() * speed * 2);
+        this.setY(this.getY() - randomSpeed);
+        if (this.getY() < -100) {
+            this.setY(3000);
+            this.speed += 1;
         }
-
-        // below code was an attempt to make the ant stop at the donut.
-
-//        if (this.getY() == donutView.donutNew.getY() + donutView.donutNew.getHeight()){
-//            this.setY(this.getY());
-//        } else {
-//            this.setY(this.getY() + speed);
-//            if (this.getY() < 0) {
-//                this.setY(0);
-//                this.speed = -this.speed;
-//            } else if (this.getY() > donutView.getHeight() - image.getHeight()) {
-//                this.setY(donutView.getHeight() - image.getHeight());
-//                this.speed = -this.speed;
-//            }
-//        }
     }
 }

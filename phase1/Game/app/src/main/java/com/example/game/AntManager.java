@@ -8,43 +8,33 @@ import java.util.ArrayList;
 class AntManager {
 
     ArrayList<Ant> ants;
-    private int numAnts;
+    private int numAnts = 5;
 
     AntManager(){
 
         ants = new ArrayList<>();
         System.out.println(ants.size());
-//        this.numAnts = numAnts;
     }
 
-    void createAnts(Bitmap image, DonutView donut){
-//        for (int i=0; i < numAnts;i++) {
-//            Ant tempAnt = new Ant(image,400,600, donut);
-//            ants.add(i, tempAnt);
-//        }
-
-        ants.add(new Ant(image,400,1200, donut));
-
-        ants.add(new Ant(image,100,1200, donut));
-
-
+    void createAnts(Bitmap image, DonutView donut, int speed){
+        for (int i=0; i < numAnts;i++) {
+            double randomX = Math.random();
+            int randomNumberX = (int) (randomX * 500);
+            double randomY= Math.random();
+            int randomNumberY = (int) (randomY * 500);
+            System.out.println("x: "+randomNumberX+" y: "+randomNumberY);
+            Ant tempAnt = new Ant(image, 200 + randomNumberX,2500 + randomNumberY, donut, speed);
+            ants.add(tempAnt);
+        }
     }
 
     void draw(Canvas canvas){
-        for (int i = 0; i < numAnts; i++) {
-            ants.get(i).draw(canvas);
-        }
 
         for (int i = 0; i < ants.size(); i++) {
             ants.get(i).draw(canvas);
         }
     }
 
-//    void update() {
-//        for (int i = 0; i < numAnts; i++) {
-//            ants.get(i).update();
-//        }
-//    }
     void update() {
 
         for (int i = 0; i < ants.size(); i++) {
