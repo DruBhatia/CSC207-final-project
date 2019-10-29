@@ -29,8 +29,7 @@
         android:layout_marginBottom="67dp"
         android:text="Player Moves: 10"
         android:textColor="#FB8C00"
-        android:textSize="35dp"
-        app:layout_constraintBottom_toTopOf="@+id/include"
+        android:textSize="25dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints" />
