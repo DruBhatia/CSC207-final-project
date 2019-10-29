@@ -13,7 +13,7 @@ https://developer.android.com/guide/topics/ui/layout/linear to learn-->
 
     <LinearLayout
         android:layout_width="385dp"
-        android:layout_height="94dp"
+        android:layout_height="95dp"
         android:layout_weight="1"
         android:orientation="horizontal"
         android:weightSum="4">
@@ -58,7 +58,7 @@ https://developer.android.com/guide/topics/ui/layout/linear to learn-->
 
     <LinearLayout
         android:layout_width="385dp"
-        android:layout_height="94dp"
+        android:layout_height="95dp"
         android:layout_weight="1"
         android:orientation="horizontal"
         android:weightSum="4">
@@ -103,7 +103,7 @@ https://developer.android.com/guide/topics/ui/layout/linear to learn-->
 
     <LinearLayout
         android:layout_width="385dp"
-        android:layout_height="94dp"
+        android:layout_height="95dp"
         android:layout_weight="1"
         android:orientation="horizontal"
         android:weightSum="4">
@@ -148,7 +148,7 @@ https://developer.android.com/guide/topics/ui/layout/linear to learn-->
 
     <LinearLayout
         android:layout_width="385dp"
-        android:layout_height="94dp"
+        android:layout_height="95dp"
         android:layout_weight="1"
         android:orientation="horizontal"
         android:weightSum="4">
