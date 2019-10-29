@@ -145,8 +145,8 @@ public class MemoryView extends View {
       cardArray.get(firstSelect).setVisibility();
       cardArray.get(secondSelect).setVisibility();
       // Increase the points for correct match
-      player.increasePointsEarned();
-      player.setTextPoints();
+      player.decreasePlayerMoves();
+      player.setTextMoves();
     } else {
       // Load back the front images again if
       for (PlayingCard card : cardArray) {
@@ -170,7 +170,7 @@ public class MemoryView extends View {
   }
 
   private void endGame(boolean check) {
-    int playerPoints = player.getPointsEarned();
+    int playerPoints = player.getMovesLeft();
     if (check) {
       // Display a message indicating the game has ended, the total points of participating players,
       // and an option to return to the game menu or home screen.

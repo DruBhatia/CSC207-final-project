@@ -1,32 +1,30 @@
 package com.example.game;
 
-
-import android.annotation.SuppressLint;
 import android.widget.TextView;
 
 /**A Player of Memorize Game */
 public class MemorizePlayer {
-    /** Total points earned by the Player*/
-    private int pointsEarned;
+    /** Total moves available to the Player*/
+    private int playerMoves;
     /** The Text on the screen which keeps track if the points earned by the player*/
     private TextView textView;
 
     public MemorizePlayer(TextView tv) {
-        pointsEarned = 0;
+        playerMoves = 10;
         this.textView = tv;
     }
 
-    void setTextPoints() {
-        String new_text =  "Player Points:" + this.pointsEarned;
+    void setTextMoves() {
+        String new_text =  "Player Points:" + this.getMovesLeft();
         this.textView.setText(new_text);
     }
 
-    int getPointsEarned() {
-        return pointsEarned;
+    int getMovesLeft() {
+        return playerMoves;
     }
 
-    void increasePointsEarned() {
-        this.pointsEarned++;
+    void decreasePlayerMoves() {
+        this.playerMoves--;
     }
 
 }
