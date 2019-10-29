@@ -157,5 +157,23 @@ public class MemoryView extends View {
     for (PlayingCard card : cardArray) {
       card.set_enable(true);
     }
+    endGame(checkEnd());
+  }
+
+  private boolean checkEnd() {
+    for (PlayingCard item : cardArray) {
+      if (item.getVisibility() != View.INVISIBLE) {
+        return false;
+      }
+    }
+    return true;
+  }
+
+  private void endGame(boolean check) {
+    int playerPoints = player.getPointsEarned();
+    if (check) {
+      // Display a message indicating the game has ended, the total points of participating players,
+      // and an option to return to the game menu or home screen.
+    }
   }
 }
