@@ -100,6 +100,10 @@ public class GameView extends View {
       }
       for (int i = 0; i < numOfTowers; i++) {
         cnX[i] -= towerVelocity;
+        if (cnX[i] < -topTower.getWidth()) {
+          cnX[i] += numOfTowers * distBetweenTowers;
+          cnY[i] = minTower + random.nextInt(maxTower - minTower + 1);
+        }
         canvas.drawBitmap(topTower, cnX[i], cnY[i] - topTower.getHeight(), null);
         canvas.drawBitmap(bottomTower, cnX[i], cnY[i] + distance, null);
       }
