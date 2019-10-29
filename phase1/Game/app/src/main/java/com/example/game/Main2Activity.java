@@ -80,7 +80,7 @@ public class Main2Activity extends AppCompatActivity {
     int[] arr12 = new int[] {204, R.drawable.fv_image204};
     imageArray.add(arr12);
     cardArray.add(new PlayingCard(25, (ImageView) findViewById(R.id.iv_41)));
-    int[] arr13 = new int[] {205, R.drawable.fv_image206};
+    int[] arr13 = new int[] {205, R.drawable.fv_image205};
     imageArray.add(arr13);
     cardArray.add(new PlayingCard(26, (ImageView) findViewById(R.id.iv_42)));
     int[] arr14 = new int[] {206, R.drawable.fv_image206};
@@ -148,7 +148,7 @@ public class Main2Activity extends AppCompatActivity {
               compare();
             }
           },
-          100);
+          400);
     }
   }
 
