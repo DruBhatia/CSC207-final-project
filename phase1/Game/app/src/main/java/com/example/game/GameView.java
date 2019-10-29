@@ -9,9 +9,9 @@ import android.graphics.Point;
 import android.graphics.Rect;
 import android.view.Display;
 import android.view.View;
-import android.os.Handler;
+import android.os.Handler; 
 
-class GameView extends View {
+public class GameView extends View {
   //This will be the custom view class for Game3
 
   Handler handler;

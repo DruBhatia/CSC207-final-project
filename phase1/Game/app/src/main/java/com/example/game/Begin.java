@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import androidx.annotation.Nullable;
 
-class Begin extends Activity{
+public class Begin extends Activity {
 
     GameView gameView;
 

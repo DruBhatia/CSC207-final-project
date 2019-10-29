@@ -3,4 +3,5 @@
     <string name="game1">GAME 1</string>
     <string name="game2">GAME 2</string>
     <string name="game3">GAME 3</string>
+    <string name="imagebutton">button</string>
 </resources>
