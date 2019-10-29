@@ -133,7 +133,7 @@ public class Main2Activity extends AppCompatActivity {
             }
           }
         },
-        3000);
+        2000);
   }
 
   private void setSelection(PlayingCard c) {
@@ -184,37 +184,45 @@ public class Main2Activity extends AppCompatActivity {
       cardArray.get(firstSelect).setVisibility();
       cardArray.get(secondSelect).setVisibility();
       // Increase the points for correct match
-      player.increasePointsEarned();
-      player.setTextPoints();
     } else {
       // Load back the front images again if
       for (PlayingCard card : cardArray) {
         card.setImage(R.drawable.bv_00);
       }
     }
+    player.decreasePlayerMoves();
+    player.setTextMoves();
     // Make all cards responsive again
     for (PlayingCard card : cardArray) {
       card.set_enable(true);
     }
     endGame(checkEnd());
   }
+  private boolean checkVisibility() {
+    int sum = 0;
+    for (PlayingCard item : cardArray) {
+      if (item.getVisibility() == View.INVISIBLE) {
+        sum++;
+      }
+      }
+    return sum == cardArray.size();
+  }
 
   private boolean checkEnd() {
-    for (PlayingCard item : cardArray) {
-      if (item.getVisibility() != View.INVISIBLE) {
-        return false;
-      }
-    }
-    return true;
+    return player.getMovesLeft() == 0 || checkVisibility();
   }
 
   private void endGame(boolean check) {
-    int playerPoints = player.getPointsEarned();
     if (check) {
       // Display a message indicating the game has ended, the total points of participating players,
       // and an option to return to the game menu or home screen.
       AlertDialog.Builder alertDialogBuild = new AlertDialog.Builder(Main2Activity.this);
-      alertDialogBuild.setMessage("Game Over: " + playerPoints);
+      if (checkVisibility() && player.getMovesLeft() >= 0) {
+        alertDialogBuild.setMessage("Game Over: YOU WON!!");
+      }
+      else if (!checkVisibility() && player.getMovesLeft() == 0) {
+        alertDialogBuild.setMessage("Game Over: YOU LOSE!!");
+      }
       alertDialogBuild.setCancelable(false);
       alertDialogBuild
           .setPositiveButton(
