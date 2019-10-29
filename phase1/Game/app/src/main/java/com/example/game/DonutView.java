@@ -19,6 +19,7 @@ public class DonutView extends SurfaceView implements SurfaceHolder.Callback {
     Donut donutNew;
     private boolean touch = false;
     private Ant removedAnt;
+    private int antSpeed = 10;
 
 
     public DonutView(Context context) {
@@ -28,16 +29,17 @@ public class DonutView extends SurfaceView implements SurfaceHolder.Callback {
     }
 
     public void update() {
-
+        Bitmap antBitmap1 = BitmapFactory.decodeResource(this.getResources(),R.drawable.ant);
         if (touch){
             manager.ants.remove(removedAnt);
+            if (manager.ants.size() < 2) {
+                antSpeed += 2;
+                manager.createAnts(antBitmap1,this, antSpeed);
+            }
             System.out.println(manager.ants.size());
         } else {
           manager.update();
-              }
-//        manager.update();
-//
-
+        }
     }
 
     @Override
@@ -58,7 +60,7 @@ public class DonutView extends SurfaceView implements SurfaceHolder.Callback {
         donutNew = new Donut(donutBitmap1, this.getWidth()/2 - donutBitmap1.getWidth()/2, 10, this );
 
         manager = new AntManager();
-        manager.createAnts(antBitmap1, this);
+        manager.createAnts(antBitmap1, this, antSpeed);
         gameThread = new GameThread(this.getHolder(),this);
         gameThread.setRunning(true);
         gameThread.start();
