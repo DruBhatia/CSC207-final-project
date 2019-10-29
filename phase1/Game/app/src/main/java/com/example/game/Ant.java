@@ -19,7 +19,8 @@ class Ant extends GameCreature{
 
     void update(){
         //for now it just moves the ant in one direction will change to random later.
-        this.setY(this.getY()+speed);
+
+        this.setY(this.getY() + speed);
         if (this.getY() < 0) {
             this.setY(0);
             this.speed = -this.speed;
@@ -27,5 +28,20 @@ class Ant extends GameCreature{
             this.setY(donutView.getHeight() - image.getHeight());
             this.speed = -this.speed;
         }
+
+        // below code was an attempt to make the ant stop at the donut.
+
+//        if (this.getY() == donutView.donutNew.getY() + donutView.donutNew.getHeight()){
+//            this.setY(this.getY());
+//        } else {
+//            this.setY(this.getY() + speed);
+//            if (this.getY() < 0) {
+//                this.setY(0);
+//                this.speed = -this.speed;
+//            } else if (this.getY() > donutView.getHeight() - image.getHeight()) {
+//                this.setY(donutView.getHeight() - image.getHeight());
+//                this.speed = -this.speed;
+//            }
+//        }
     }
 }
