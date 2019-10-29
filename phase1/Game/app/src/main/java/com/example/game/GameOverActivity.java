@@ -16,12 +16,16 @@ public class GameOverActivity extends AppCompatActivity {
 
     private String showScore;
 
+    private Button mainMenu;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         System.out.println("Reached here");
         setContentView(R.layout.activity_game_over);
+
+        mainMenu = findViewById(R.id.all_games);
 
         showScore = getIntent().getExtras().get("Score").toString();
 
@@ -34,6 +38,14 @@ public class GameOverActivity extends AppCompatActivity {
         public void onClick(View v) {
             Intent intent2 = new Intent(GameOverActivity.this, Main3Activity.class);
             startActivity(intent2);
+        }
+    });
+
+    mainMenu.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Intent intent3 = new Intent(GameOverActivity.this, MainActivity.class);
+            startActivity(intent3);
         }
     });
 
