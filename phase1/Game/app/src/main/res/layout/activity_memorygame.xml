@@ -12,9 +12,10 @@
     <include
         android:id="@+id/include"
         layout="@layout/memory_images"
-        android:layout_width="386dp"
-        android:layout_height="633dp"
+        android:layout_width="385dp"
+        android:layout_height="630dp"
         android:layout_marginStart="4dp"
+        android:layout_marginBottom="38dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView1"
@@ -24,11 +25,15 @@
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginBottom="67dp"
         android:text="Player Moves: 10"
         android:textColor="#FB8C00"
         android:textSize="35dp"
-        tools:layout_editor_absoluteX="4dp"
-        tools:layout_editor_absoluteY="0dp" />
+        app:layout_constraintBottom_toTopOf="@+id/include"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
 
     <!--Used https://www.youtube.com/watch?v=gkh-5pmYEa0 and
     https://developer.android.com/guide/topics/ui/layout/constraint to learn-->
