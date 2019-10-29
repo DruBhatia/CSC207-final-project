@@ -8,6 +8,7 @@ import android.graphics.Canvas;
 import android.graphics.Point;
 import android.graphics.Rect;
 import android.view.Display;
+import android.view.MotionEvent;
 import android.view.View;
 import android.os.Handler; 
 
@@ -24,7 +25,9 @@ public class GameView extends View {
   Rect rect;
   Bitmap[] tb;  //all the frames of trueblue
   int tbFrame = 0; // the current frame for true blue
-
+  int velocity = 0;
+  int gravity = 3;
+  int tbX, tbY; // the x and y position of true blue
   public GameView(Context context) {
     super(context);
     handler = new Handler();
@@ -45,6 +48,8 @@ public class GameView extends View {
     tb[0] = BitmapFactory.decodeResource(getResources(), R.drawable.trueblue_frame_0);
     tb[1] = BitmapFactory.decodeResource(getResources(), R.drawable.trueblue_frame_1);
     tb[2] = BitmapFactory.decodeResource(getResources(), R.drawable.trueblue_frame_2);
+    tbX = screenWidth/2 - tb[0].getWidth()/2;
+    tbY = screenHeight/2 - tb[0].getHeight()/2;
   }
 
   @Override
@@ -52,6 +57,8 @@ public class GameView extends View {
     super.onDraw(canvas);
     //This is where we will draw our view for Game3.
     canvas.drawBitmap(background, null, rect, null);
+
+    // animate true blue
     if(tbFrame == 0){
       tbFrame = 1;
     }
@@ -61,8 +68,24 @@ public class GameView extends View {
     else{
       tbFrame = 0;
     }
+    // true blue falls
+
+    if(tbY < screenHeight - tb[0].getHeight()){
+      velocity += gravity;
+      tbY += velocity;
+    }
+
     //displays true blue in the center
-    canvas.drawBitmap(tb[tbFrame], screenWidth/2 - tb[0].getWidth()/2,screenHeight/2 - tb[0].getHeight()/2,null);
+    canvas.drawBitmap(tb[tbFrame], tbX,tbY,null);
     handler.postDelayed(runnable, delayNum);
+  }
+  // When you tap the screen
+  @Override
+  public boolean onTouchEvent(MotionEvent event) {
+    int action = event.getAction();
+    if (action == MotionEvent.ACTION_DOWN){  // if the Tap is detected on the screen
+      velocity = -30; // increase true blue's upward velocity
+    }
+    return true;
   }
 }
