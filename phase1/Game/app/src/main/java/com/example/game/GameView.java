@@ -22,7 +22,8 @@ public class GameView extends View {
   Point point;
   int screenWidth, screenHeight; //Height and Width of device.
   Rect rect;
-
+  Bitmap[] tb;  //all the frames of trueblue
+  int tbFrame = 0; // the current frame for true blue
 
   public GameView(Context context) {
     super(context);
@@ -40,6 +41,10 @@ public class GameView extends View {
     screenWidth = point.x;
     screenHeight = point.y;
     rect = new Rect(0, 0, screenWidth, screenHeight);
+    tb = new Bitmap[3];
+    tb[0] = BitmapFactory.decodeResource(getResources(), R.drawable.trueblue_frame_0);
+    tb[1] = BitmapFactory.decodeResource(getResources(), R.drawable.trueblue_frame_1);
+    tb[2] = BitmapFactory.decodeResource(getResources(), R.drawable.trueblue_frame_2);
   }
 
   @Override
@@ -47,6 +52,17 @@ public class GameView extends View {
     super.onDraw(canvas);
     //This is where we will draw our view for Game3.
     canvas.drawBitmap(background, null, rect, null);
+    if(tbFrame == 0){
+      tbFrame = 1;
+    }
+    else if(tbFrame == 1){
+      tbFrame = 2;
+    }
+    else{
+      tbFrame = 0;
+    }
+    //displays true blue in the center
+    canvas.drawBitmap(tb[tbFrame], screenWidth/2 - tb[0].getWidth()/2,screenHeight/2 - tb[0].getHeight()/2,null);
     handler.postDelayed(runnable, delayNum);
   }
 }
