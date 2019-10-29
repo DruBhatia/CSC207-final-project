@@ -10,7 +10,9 @@ import android.graphics.Rect;
 import android.view.Display;
 import android.view.MotionEvent;
 import android.view.View;
-import android.os.Handler; 
+import android.os.Handler;
+import java.util.Random;
+
 
 public class GameView extends View {
   //This will be the custom view class for Game3
@@ -19,6 +21,7 @@ public class GameView extends View {
   Runnable runnable;
   final int delayNum = 30;
   Bitmap background;
+  Bitmap topTower, bottomTower;
   Display display;
   Point point;
   int screenWidth, screenHeight; //Height and Width of device.
@@ -28,6 +31,16 @@ public class GameView extends View {
   int velocity = 0;
   int gravity = 3;
   int tbX, tbY; // the x and y position of true blue
+  int distance = 500; // distance between top and bottom CN Tower.
+  int minTower, maxTower;
+  int numOfTowers = 4;
+  int distBetweenTowers;
+  int cnX;
+  int cnY;
+  boolean state = false;
+  Random random;
+
+
   public GameView(Context context) {
     super(context);
     handler = new Handler();
@@ -38,6 +51,8 @@ public class GameView extends View {
       }
     };
     background = BitmapFactory.decodeResource(getResources(), R.drawable.game3_background);
+    topTower = BitmapFactory.decodeResource(getResources(), R.drawable.cn_tower_down);
+    bottomTower = BitmapFactory.decodeResource(getResources(), R.drawable.cn_tower_up);
     display = ((Activity)getContext()).getWindowManager().getDefaultDisplay();
     point = new Point();
     display.getSize(point);
@@ -50,6 +65,12 @@ public class GameView extends View {
     tb[2] = BitmapFactory.decodeResource(getResources(), R.drawable.trueblue_frame_2);
     tbX = screenWidth/2 - tb[0].getWidth()/2;
     tbY = screenHeight/2 - tb[0].getHeight()/2;
+    distBetweenTowers = screenWidth * 3 / 4;
+    minTower = distance / 2;
+    maxTower = screenHeight - minTower - distance;
+    random = new Random();
+    cnX = screenWidth / 2 - topTower.getWidth() / 2;
+    cnY = minTower + random.nextInt(maxTower - minTower + 1);
   }
 
   @Override
@@ -69,12 +90,14 @@ public class GameView extends View {
       tbFrame = 0;
     }
     // true blue falls
-
-    if(tbY < screenHeight - tb[0].getHeight()){
-      velocity += gravity;
-      tbY += velocity;
+    if (state) {
+      if (tbY < screenHeight - tb[0].getHeight()) {
+        velocity += gravity;
+        tbY += velocity;
+      }
+      canvas.drawBitmap(topTower, cnX, cnY - topTower.getHeight(), null);
+      canvas.drawBitmap(bottomTower, cnX, cnY + distance, null);
     }
-
     //displays true blue in the center
     canvas.drawBitmap(tb[tbFrame], tbX,tbY,null);
     handler.postDelayed(runnable, delayNum);
@@ -85,6 +108,9 @@ public class GameView extends View {
     int action = event.getAction();
     if (action == MotionEvent.ACTION_DOWN){  // if the Tap is detected on the screen
       velocity = -30; // increase true blue's upward velocity
+      state = true;
+      cnY = minTower + random.nextInt(maxTower - minTower + 1);
+
     }
     return true;
   }
