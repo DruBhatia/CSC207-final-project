@@ -13,5 +13,6 @@
         android:layout_height="150dp"
         android:src="@drawable/play_button"
         android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"/>
+        android:layout_centerVertical="true"
+        android:onClick="begin"/>
 </RelativeLayout>
