@@ -1,10 +1,8 @@
 package com.example.game;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -95,8 +93,10 @@ public class Main2Activity extends AppCompatActivity {
     imageArray.add(arr16);
 
     Collections.shuffle(imageArray);
+    show();
     this.setOnClick();
   }
+
   /** Set an on click listener on the image view of all the cards in cardArray */
   // https://developer.android.com/reference/android/view/View.OnClickListener used to learn.
   void setOnClick() {
@@ -110,6 +110,30 @@ public class Main2Activity extends AppCompatActivity {
                 }
               });
     }
+  }
+
+  void show() {
+    for (PlayingCard playCard : cardArray) {
+      playCard.set_enable(false);
+    }
+    for (PlayingCard playCard : cardArray) {
+      int image = imageArray.get(cardArray.indexOf(playCard))[1];
+      playCard.setImage(image);
+    }
+    Handler handler = new Handler();
+    handler.postDelayed(
+        new Runnable() {
+          @Override
+          public void run() {
+            for (PlayingCard playCard : cardArray) {
+              playCard.setImage(R.drawable.bv_00);
+            }
+            for (PlayingCard playCard : cardArray) {
+              playCard.set_enable(true);
+            }
+          }
+        },
+        3000);
   }
 
   private void setSelection(PlayingCard c) {
@@ -189,27 +213,32 @@ public class Main2Activity extends AppCompatActivity {
     if (check) {
       // Display a message indicating the game has ended, the total points of participating players,
       // and an option to return to the game menu or home screen.
-        AlertDialog.Builder alertDialogBuild = new AlertDialog.Builder(Main2Activity.this);
-        alertDialogBuild.setMessage("Game Over: " + playerPoints);
-        alertDialogBuild.setCancelable(false);
-        alertDialogBuild.setPositiveButton("Restart", new DialogInterface.OnClickListener() {
-          @Override
-          public void onClick(DialogInterface dialogInterface, int i) {
-            Intent intent = new Intent(getApplicationContext(), Main2Activity.class);
-            startActivity(intent);
-            finish();
-          }
-        }).setNegativeButton("MAIN MENU", new DialogInterface.OnClickListener() {
-          @Override
-          public void onClick(DialogInterface dialogInterface, int i) {
-            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-            startActivity(intent);
-            finish();
-          }
-        });
-        AlertDialog alertDialog = alertDialogBuild.create();
-        alertDialog.show();
+      AlertDialog.Builder alertDialogBuild = new AlertDialog.Builder(Main2Activity.this);
+      alertDialogBuild.setMessage("Game Over: " + playerPoints);
+      alertDialogBuild.setCancelable(false);
+      alertDialogBuild
+          .setPositiveButton(
+              "Restart",
+              new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                  Intent intent = new Intent(getApplicationContext(), Main2Activity.class);
+                  startActivity(intent);
+                  finish();
+                }
+              })
+          .setNegativeButton(
+              "MAIN MENU",
+              new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                  Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                  startActivity(intent);
+                  finish();
+                }
+              });
+      AlertDialog alertDialog = alertDialogBuild.create();
+      alertDialog.show();
     }
   }
-
 }
