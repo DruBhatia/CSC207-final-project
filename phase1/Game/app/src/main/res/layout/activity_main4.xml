@@ -4,6 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Main4Activity"
-    android:background="@drawable/BG1">
+    android:background="@drawable/game3_background">
 
 </RelativeLayout>
