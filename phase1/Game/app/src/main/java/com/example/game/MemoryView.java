@@ -7,6 +7,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class MemoryView extends View {
@@ -77,6 +78,8 @@ public class MemoryView extends View {
     int[] arr16 = new int[]{208, R.drawable.fv_image208};
     imageArray.add(arr16);
 
+    Collections.shuffle(imageArray);
+    this.setOnClick();
   }
 
   /** Set an on click listener on the image view of all the cards in cardArray */
