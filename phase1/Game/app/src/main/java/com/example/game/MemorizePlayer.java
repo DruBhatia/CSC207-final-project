@@ -15,7 +15,7 @@ public class MemorizePlayer {
     }
 
     void setTextMoves() {
-        String new_text =  "Player Points:" + this.getMovesLeft();
+        String new_text =  "Player Moves:" + this.getMovesLeft();
         this.textView.setText(new_text);
     }
 
