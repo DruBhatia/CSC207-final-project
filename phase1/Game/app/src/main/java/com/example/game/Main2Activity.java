@@ -5,6 +5,8 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
@@ -190,6 +192,21 @@ public class Main2Activity extends AppCompatActivity {
         AlertDialog.Builder alertDialogBuild = new AlertDialog.Builder(Main2Activity.this);
         alertDialogBuild.setMessage("Game Over: " + playerPoints);
         alertDialogBuild.setCancelable(false);
+        alertDialogBuild.setPositiveButton("Restart", new DialogInterface.OnClickListener() {
+          @Override
+          public void onClick(DialogInterface dialogInterface, int i) {
+            Intent intent = new Intent(getApplicationContext(), Main2Activity.class);
+            startActivity(intent);
+            finish();
+          }
+        }).setNegativeButton("MAIN MENU", new DialogInterface.OnClickListener() {
+          @Override
+          public void onClick(DialogInterface dialogInterface, int i) {
+            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+            startActivity(intent);
+            finish();
+          }
+        });
         AlertDialog alertDialog = alertDialogBuild.create();
         alertDialog.show();
     }
