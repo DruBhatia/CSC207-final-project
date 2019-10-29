@@ -46,6 +46,7 @@ public class DonutView extends SurfaceView implements SurfaceHolder.Callback {
 
         if (lives == 0) {
             //For now it empty but we will make a GameOver Activity later.
+
         }
     }
 
@@ -56,7 +57,10 @@ public class DonutView extends SurfaceView implements SurfaceHolder.Callback {
     @Override
     public void draw(Canvas canvas) {
         super.draw(canvas);
-        canvas.drawColor(-3355444);
+        Bitmap backgoround = BitmapFactory.decodeResource(getResources(),R.drawable.background);
+        canvas.drawBitmap(backgoround,0,0,null);
+        canvas.drawBitmap(backgoround, 0,800,null);
+        canvas.drawBitmap(backgoround, 0,1400,null);
         scorePaint.setColor(-16776961);
         scorePaint.setTextSize(80);
         scorePaint.setUnderlineText(true);
@@ -66,7 +70,6 @@ public class DonutView extends SurfaceView implements SurfaceHolder.Callback {
         canvas.drawText("Lives Left : " + lives , 500, 60, livesPaint);
         donutNew.draw(canvas);
         manager.draw(canvas);
-
     }
 
     @Override
