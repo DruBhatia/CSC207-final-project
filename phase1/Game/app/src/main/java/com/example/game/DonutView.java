@@ -20,6 +20,8 @@ public class DonutView extends SurfaceView implements SurfaceHolder.Callback {
     private int antSpeed = 10;
     private Paint scorePaint = new Paint();
     private int score;
+    private Paint livesPaint = new Paint();
+    private int lives = 10;
 
 
     public DonutView(Context context) {
@@ -41,6 +43,14 @@ public class DonutView extends SurfaceView implements SurfaceHolder.Callback {
         } else {
           manager.update();
         }
+
+        if (lives == 0) {
+            //For now it empty but we will make a GameOver Activity later.
+        }
+    }
+
+    public void decreaseLife() {
+        lives--;
     }
 
     @Override
@@ -51,6 +61,9 @@ public class DonutView extends SurfaceView implements SurfaceHolder.Callback {
         scorePaint.setTextSize(80);
         scorePaint.setUnderlineText(true);
         canvas.drawText("Score : " + score , 20, 60, scorePaint);
+        livesPaint.setColor(-65536);
+        livesPaint.setTextSize(70);
+        canvas.drawText("Lives Left : " + lives , 500, 60, livesPaint);
         donutNew.draw(canvas);
         manager.draw(canvas);
 
