@@ -48,8 +48,16 @@ public class DonutView extends SurfaceView implements SurfaceHolder.Callback {
         }
 
         if (lives == 0) {
-            //For now it empty but we will make a GameOver Activity later.
 
+            gameThread.setRunning(false);
+
+            Intent newGameintent = new Intent(getContext(), GameOverActivity.class);
+
+            newGameintent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+
+            newGameintent.putExtra("Score", score);
+
+            getContext().startActivity(newGameintent);
 
         }
     }
