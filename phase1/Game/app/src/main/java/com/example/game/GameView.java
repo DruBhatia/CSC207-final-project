@@ -35,10 +35,11 @@ public class GameView extends View {
   int minTower, maxTower;
   int numOfTowers = 4;
   int distBetweenTowers;
-  int cnX;
-  int cnY;
+  int[] cnX = new int[numOfTowers];
+  int[] cnY = new int[numOfTowers];
   boolean state = false;
   Random random;
+  int towerVelocity = 7;
 
 
   public GameView(Context context) {
@@ -69,8 +70,10 @@ public class GameView extends View {
     minTower = distance / 2;
     maxTower = screenHeight - minTower - distance;
     random = new Random();
-    cnX = screenWidth / 2 - topTower.getWidth() / 2;
-    cnY = minTower + random.nextInt(maxTower - minTower + 1);
+    for (int i = 0; i < numOfTowers; i++) {
+      cnX[i] = screenWidth + i * distBetweenTowers;
+      cnY[i] = minTower + random.nextInt(maxTower - minTower + 1);
+    }
   }
 
   @Override
@@ -95,8 +98,11 @@ public class GameView extends View {
         velocity += gravity;
         tbY += velocity;
       }
-      canvas.drawBitmap(topTower, cnX, cnY - topTower.getHeight(), null);
-      canvas.drawBitmap(bottomTower, cnX, cnY + distance, null);
+      for (int i = 0; i < numOfTowers; i++) {
+        cnX[i] -= towerVelocity;
+        canvas.drawBitmap(topTower, cnX[i], cnY[i] - topTower.getHeight(), null);
+        canvas.drawBitmap(bottomTower, cnX[i], cnY[i] + distance, null);
+      }
     }
     //displays true blue in the center
     canvas.drawBitmap(tb[tbFrame], tbX,tbY,null);
@@ -109,8 +115,6 @@ public class GameView extends View {
     if (action == MotionEvent.ACTION_DOWN){  // if the Tap is detected on the screen
       velocity = -30; // increase true blue's upward velocity
       state = true;
-      cnY = minTower + random.nextInt(maxTower - minTower + 1);
-
     }
     return true;
   }
