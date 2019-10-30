@@ -1,9 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Game2OverActivity">
+    tools:context=".GameOverActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:id="@+id/gameOver"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="85dp"
+        android:text="GAME OVER"
+        android:textAlignment="center"
+        android:textColor="#000"
+
+        android:textSize="70dp"
+        android:textStyle="bold"
+        />
+
+    <TextView
+        android:id="@+id/status"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="150dp"
+        android:text="YOU WIN!!"
+        android:textAlignment="center"
+        android:textSize="65dp"
+        android:textColor="#000"
+        android:textStyle="bold"
+        />
+
+    <Button
+        android:id="@+id/play_again"
+        android:layout_width="211dp"
+        android:layout_height="62dp"
+        android:layout_below="@+id/gameOver"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="73dp"
+        android:textStyle="bold"
+        android:text="Play Again" />
+
+    <TextView
+        android:id="@+id/moves_left"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="450dp"
+        android:text="Moves Left:"
+        android:textAlignment="center"
+        android:textSize="30sp"
+        android:textColor="#000"
+        android:textStyle="bold"
+
+        />
+
+    <Button
+        android:id="@+id/main"
+        android:layout_width="216dp"
+        android:layout_height="64dp"
+        android:layout_below="@+id/play_again"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="41dp"
+        android:textStyle="bold"
+        android:text="Main menu" />
+
+
+</RelativeLayout>
