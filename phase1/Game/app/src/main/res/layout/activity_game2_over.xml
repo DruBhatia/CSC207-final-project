@@ -33,7 +33,7 @@
         android:text="YOU WON!!"
         android:textAlignment="center"
         android:textSize="45dp"
-        android:textColor="#8BC34A"
+        android:textColor="#3949AB"
         android:textStyle="italic"
         />
 
