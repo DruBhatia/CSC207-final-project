@@ -5,10 +5,10 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.view.MotionEvent;
 
-public class TrueBlue {
-  public int tbFrame, velocity, gravity, tbX, tbY;
+class TrueBlue {
+  private int tbFrame, velocity, gravity, tbX, tbY;
   private GameView gv;
-  public Bitmap[] tb;
+  private Bitmap[] tb;
   private boolean state;
 
   TrueBlue(GameView gv) {
@@ -25,7 +25,7 @@ public class TrueBlue {
     tbY = gv.getScreenHeight() / 2 - tb[0].getHeight() / 2;
   }
 
-  protected void animateTB() {
+  void animateTB() {
     if (tbFrame == 0) {
       tbFrame = 1;
     } else if (tbFrame == 1) {
@@ -35,18 +35,18 @@ public class TrueBlue {
     }
   }
 
-  protected void drawTB(Canvas canvas) {
+  void drawTB(Canvas canvas) {
     canvas.drawBitmap(tb[tbFrame], tbX, tbY, null);
   }
 
-  protected void tbOnTouch(int action) {
+  void tbOnTouch(int action) {
     if (action == MotionEvent.ACTION_DOWN) { // if the Tap is detected on the screen
       velocity = -30; // increase true blue's upward velocity
       state = true;
     }
   }
 
-  protected boolean getState() {
+  boolean getState() {
     return state;
   }
 
@@ -55,5 +55,13 @@ public class TrueBlue {
       velocity += gravity;
       tbY += velocity;
     }
+  }
+
+  int getTbX(){
+    return tbX;
+  }
+
+  int getTbY(){
+    return tbY;
   }
 }

@@ -13,10 +13,9 @@ import android.view.View;
 import android.os.Handler;
 import java.util.Random;
 
-
 public class GameView extends View {
-  //This will be the custom view class for Game3
-  TrueBlue tb;
+  // This will be the custom view class for Game3
+  TrueBlue tb; // trueblue class
   Handler handler;
   Runnable runnable;
   final int delayNum = 30;
@@ -24,7 +23,7 @@ public class GameView extends View {
   Bitmap topTower, bottomTower;
   Display display;
   Point point;
-  int screenWidth, screenHeight; //Height and Width of device.
+  int screenWidth, screenHeight; // Height and Width of device.
   Rect rect;
   int distance = 500; // distance between top and bottom CN Tower.
   int minTower, maxTower;
@@ -35,20 +34,20 @@ public class GameView extends View {
   Random random;
   int towerVelocity = 7;
 
-
   public GameView(Context context) {
     super(context);
     handler = new Handler();
-    runnable = new Runnable() {
-      @Override
-      public void run() {
-        invalidate(); //This should call onDraw.
-      }
-    };
+    runnable =
+        new Runnable() {
+          @Override
+          public void run() {
+            invalidate(); // This should call onDraw.
+          }
+        };
     background = BitmapFactory.decodeResource(getResources(), R.drawable.game3_background);
     topTower = BitmapFactory.decodeResource(getResources(), R.drawable.cn_tower_down);
     bottomTower = BitmapFactory.decodeResource(getResources(), R.drawable.cn_tower_up);
-    display = ((Activity)getContext()).getWindowManager().getDefaultDisplay();
+    display = ((Activity) getContext()).getWindowManager().getDefaultDisplay();
     point = new Point();
     display.getSize(point);
     screenWidth = point.x;
@@ -58,6 +57,7 @@ public class GameView extends View {
     minTower = distance / 2;
     maxTower = screenHeight - minTower - distance;
     random = new Random();
+    // creates TrueBlue
     tb = new TrueBlue(this);
     for (int i = 0; i < numOfTowers; i++) {
       cnX[i] = screenWidth + i * distBetweenTowers;
@@ -68,12 +68,11 @@ public class GameView extends View {
   @Override
   protected void onDraw(Canvas canvas) {
     super.onDraw(canvas);
-    //This is where we will draw our view for Game3.
+    // This is where we will draw our view for Game3.
     canvas.drawBitmap(background, null, rect, null);
 
     // animate true blue
     tb.animateTB();
-
 
     // true blue falls
     if (tb.getState()) {
@@ -88,10 +87,12 @@ public class GameView extends View {
         canvas.drawBitmap(bottomTower, cnX[i], cnY[i] + distance, null);
       }
     }
-    //displays true blue in the center
+    // displays true blue in the center
     tb.drawTB(canvas);
+
     handler.postDelayed(runnable, delayNum);
   }
+
   // When you tap the screen
   @Override
   public boolean onTouchEvent(MotionEvent event) {
@@ -100,10 +101,11 @@ public class GameView extends View {
     return true;
   }
 
-  public int getScreenWidth(){
+  public int getScreenWidth() {
     return screenWidth;
   }
-  public int getScreenHeight(){
+
+  public int getScreenHeight() {
     return screenHeight;
   }
 }
