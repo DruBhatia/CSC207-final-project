@@ -24,6 +24,7 @@ public class DonutView extends SurfaceView implements SurfaceHolder.Callback {
     private int score;
     private Paint livesPaint = new Paint();
     private int lives = 10;
+    private Bitmap backgroundPicute;
 
 
 
@@ -73,6 +74,7 @@ public class DonutView extends SurfaceView implements SurfaceHolder.Callback {
     public void draw(Canvas canvas) {
         super.draw(canvas);
         canvas.drawColor(-3355444);
+        canvas.drawBitmap(backgroundPicute, 0, 0, null);
         scorePaint.setColor(-16776961);
         scorePaint.setTextSize(80);
         scorePaint.setUnderlineText(true);
@@ -92,6 +94,8 @@ public class DonutView extends SurfaceView implements SurfaceHolder.Callback {
 
         Bitmap donutBitmap1 = BitmapFactory.decodeResource(this.getResources(),R.drawable.donut);
         donutNew = new Donut(donutBitmap1, this.getWidth()/2 - donutBitmap1.getWidth()/2, 10, this );
+
+        backgroundPicute = BitmapFactory.decodeResource(getResources(), R.drawable.donut_background);
 
         manager = new AntManager();
         manager.createAnts(antBitmap1, this, antSpeed);
