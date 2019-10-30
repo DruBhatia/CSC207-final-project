@@ -9,8 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Game2OverActivity"></activity>
-        <activity android:name=".MemoryWinActivity" />
+        <activity android:name=".MemoryBegin"></activity>
+        <activity android:name=".Game2OverActivity" />
         <activity android:name=".GameOverActivity" />
         <activity android:name=".Main4Activity" />
         <activity android:name=".Main3Activity" />
