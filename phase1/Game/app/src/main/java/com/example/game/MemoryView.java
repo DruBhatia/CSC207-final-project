@@ -40,7 +40,7 @@ public class MemoryView extends View {
     cardArray.add(new PlayingCard((ImageView) context.findViewById(R.id.iv_12)));
     int[] arr2 = new int[] {102, R.drawable.fv_image102};
     imageArray.add(arr2);
-    cardArray.add(new PlayingCard( (ImageView) context.findViewById(R.id.iv_13)));
+    cardArray.add(new PlayingCard((ImageView) context.findViewById(R.id.iv_13)));
     int[] arr3 = new int[] {103, R.drawable.fv_image103};
     imageArray.add(arr3);
     cardArray.add(new PlayingCard((ImageView) context.findViewById(R.id.iv_14)));
@@ -208,9 +208,12 @@ public class MemoryView extends View {
     boolean bool = checkVisibility();
     if (check) {
       Intent intent = new Intent(getContext(), Game2OverActivity.class);
-      intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
       intent.putExtra("Moves Left", playerMoves);
-      intent.putExtra("Cards Left To Match?", bool);
+      if (bool) {
+        intent.putExtra("Cards Left To Match?", "NO");
+      } else {
+        intent.putExtra("Cards Left To Match?", "YES");
+      }
       getContext().startActivity(intent);
     }
   }
