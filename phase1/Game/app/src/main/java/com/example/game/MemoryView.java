@@ -71,7 +71,7 @@ public class MemoryView extends View {
     int[] arr12 = new int[] {204, R.drawable.fv_image204};
     imageArray.add(arr12);
     cardArray.add(new PlayingCard(25, (ImageView) context.findViewById(R.id.iv_41)));
-    int[] arr13 = new int[] {205, R.drawable.fv_image206};
+    int[] arr13 = new int[] {205, R.drawable.fv_image205};
     imageArray.add(arr13);
     cardArray.add(new PlayingCard(26, (ImageView) context.findViewById(R.id.iv_42)));
     int[] arr14 = new int[] {206, R.drawable.fv_image206};
@@ -124,7 +124,7 @@ public class MemoryView extends View {
             }
           }
         },
-        2000);
+        2500);
   }
 
   private void setSelection(PlayingCard c) {
@@ -204,14 +204,14 @@ public class MemoryView extends View {
   }
 
   private void endGame(boolean check) {
-    int playermoves = player.getMovesLeft();
+    int playerMoves = player.getMovesLeft();
     boolean bool = checkVisibility();
     if (check) {
-      Intent newGameintent = new Intent(getContext(), GameOverActivity.class);
-      newGameintent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-      newGameintent.putExtra("Moves Left", playermoves);
-      newGameintent.putExtra("Cards Left To Match?", bool);
-      getContext().startActivity(newGameintent);
+      Intent intent = new Intent(getContext(), Game2OverActivity.class);
+      intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+      intent.putExtra("Moves Left", playerMoves);
+      intent.putExtra("Cards Left To Match?", bool);
+      getContext().startActivity(intent);
     }
   }
 }
