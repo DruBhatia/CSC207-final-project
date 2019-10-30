@@ -190,13 +190,12 @@ public class MemoryView extends View {
   }
 
   boolean checkVisibility() {
-    int sum = 0;
     for (PlayingCard item : cardArray) {
-      if (item.getVisibility() == View.INVISIBLE) {
-        sum++;
+      if (item.getVisibility() != View.INVISIBLE) {
+        return false;
       }
     }
-    return sum == cardArray.size();
+    return true;
   }
 
   private boolean checkEnd() {
@@ -204,7 +203,7 @@ public class MemoryView extends View {
   }
 
   private void endGame(boolean check) {
-    int playerPoints = player.getMovesLeft();
+    int playermoves = player.getMovesLeft();
     if (check) {
       // Display a message indicating the game has ended, the total points of participating players,
       // and an option to return to the game menu or home screen.
