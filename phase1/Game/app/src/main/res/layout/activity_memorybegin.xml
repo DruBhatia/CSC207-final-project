@@ -5,14 +5,28 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MemoryBegin"
-    android:background="@drawable/game_backg4">
+    android:background="@drawable/game_backg10">
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:fontFamily="@font/invasion2000"
+        android:text="MEMORIZE!"
+        android:textColor="#FB8C00"
+        android:textSize="60sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
 
     <ImageButton
         android:id="@+id/imageButton"
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:layout_centerInParent="true"
-        android:background="#801D6505"
+        android:background="#00000000"
         android:contentDescription="@string/imagebutton"
         android:scaleType="centerInside"
         android:src="@drawable/play_button2" />
