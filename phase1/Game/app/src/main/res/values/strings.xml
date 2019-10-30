@@ -5,4 +5,7 @@
     <string name="game3">GAME 3</string>
     <string name="imagebutton">button</string>
     <string name="title_activity_main22">Main22Activity</string>
+    <string name="antimage"></string>
+    <string name="ANTTEXT">ANT CRUSHER</string>
+    <string name="ANTHIGHSCORE">HIGH SCORE</string>
 </resources>
