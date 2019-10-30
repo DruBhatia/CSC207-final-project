@@ -8,19 +8,15 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
-import java.util.Objects;
-
 public class Game2OverActivity extends AppCompatActivity {
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_game2_over);
-    int showMoves = (int) Objects.requireNonNull(getIntent().getExtras()).get("Moves Left");
+    int showMoves = (int) getIntent().getExtras().get("Moves Left");
     boolean cardsLeft =
-        (boolean) Objects.requireNonNull(getIntent().getExtras()).get("Cards Left to Match");
+        (boolean) getIntent().getExtras().get("Cards Left to Match");
 
     Button mainMenu = findViewById(R.id.main);
     Button restart = findViewById(R.id.playAgain);

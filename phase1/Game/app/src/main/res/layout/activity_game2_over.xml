@@ -66,5 +66,5 @@
         android:textSize="30sp"
         android:textColor="#000"
         android:textStyle="bold"/>
-    
+
 </RelativeLayout>
