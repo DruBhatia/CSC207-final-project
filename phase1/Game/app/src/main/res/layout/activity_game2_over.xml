@@ -7,7 +7,7 @@
     tools:context=".GameOverActivity">
 
     <TextView
-        android:id="@+id/gameOver"
+        android:id="@+id/game_over"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
@@ -16,7 +16,6 @@
         android:text="GAME OVER"
         android:textAlignment="center"
         android:textColor="#000"
-
         android:textSize="70dp"
         android:textStyle="bold"
         />
@@ -36,14 +35,24 @@
         />
 
     <Button
-        android:id="@+id/play_again"
+        android:id="@+id/playAgain"
         android:layout_width="211dp"
         android:layout_height="62dp"
-        android:layout_below="@+id/gameOver"
+        android:layout_below="@+id/status"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="73dp"
+        android:layout_marginTop="10dp"
         android:textStyle="bold"
         android:text="Play Again" />
+
+    <Button
+        android:id="@+id/main"
+        android:layout_width="216dp"
+        android:layout_height="64dp"
+        android:layout_below="@+id/playAgain"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
+        android:textStyle="bold"
+        android:text="Main menu" />
 
     <TextView
         android:id="@+id/moves_left"
@@ -56,19 +65,6 @@
         android:textAlignment="center"
         android:textSize="30sp"
         android:textColor="#000"
-        android:textStyle="bold"
-
-        />
-
-    <Button
-        android:id="@+id/main"
-        android:layout_width="216dp"
-        android:layout_height="64dp"
-        android:layout_below="@+id/play_again"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="41dp"
-        android:textStyle="bold"
-        android:text="Main menu" />
-
-
+        android:textStyle="bold"/>
+    
 </RelativeLayout>
