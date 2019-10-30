@@ -2,6 +2,7 @@ package com.example.game;
 
 import android.annotation.SuppressLint;
 
+import android.content.Intent;
 import android.os.Handler;
 import android.view.View;
 import android.widget.ImageView;
@@ -204,9 +205,13 @@ public class MemoryView extends View {
 
   private void endGame(boolean check) {
     int playermoves = player.getMovesLeft();
+    boolean bool = checkVisibility();
     if (check) {
-      // Display a message indicating the game has ended, the total points of participating players,
-      // and an option to return to the game menu or home screen.
+      Intent newGameintent = new Intent(getContext(), GameOverActivity.class);
+      newGameintent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+      newGameintent.putExtra("Moves Left", playermoves);
+      newGameintent.putExtra("Cards Left To Match?", bool);
+      getContext().startActivity(newGameintent);
     }
   }
 }
