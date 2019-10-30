@@ -86,9 +86,9 @@ public class MemoryView extends View {
     cardArray.add(new PlayingCard((ImageView) context.findViewById(R.id.iv_44)));
     int[] arr16 = new int[] {208, R.drawable.fv_image208};
     imageArray.add(arr16);
-    player.getChronometer().start();
     Collections.shuffle(imageArray);
     show();
+    player.getChronometer().start();
     setOnClick();
   }
 
