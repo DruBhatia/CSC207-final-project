@@ -1,10 +1,12 @@
 package com.example.game;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import android.os.CountDownTimer;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
@@ -22,6 +24,8 @@ public class DonutView extends SurfaceView implements SurfaceHolder.Callback {
     private int score;
     private Paint livesPaint = new Paint();
     private int lives = 10;
+    private Bitmap backgroundPicute;
+
 
 
     public DonutView(Context context) {
@@ -45,22 +49,32 @@ public class DonutView extends SurfaceView implements SurfaceHolder.Callback {
         }
 
         if (lives == 0) {
-            //For now it empty but we will make a GameOver Activity later.
+
+            gameThread.setRunning(false);
+
+            Intent newGameintent = new Intent(getContext(), GameOverActivity.class);
+
+            newGameintent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+
+            newGameintent.putExtra("Score", score);
+
+            getContext().startActivity(newGameintent);
 
         }
     }
 
     public void decreaseLife() {
-        lives--;
+        if (lives - 1 >= 0){
+            lives--;
+        }
+
     }
 
     @Override
     public void draw(Canvas canvas) {
         super.draw(canvas);
-        Bitmap backgoround = BitmapFactory.decodeResource(getResources(),R.drawable.background);
-        canvas.drawBitmap(backgoround,0,0,null);
-        canvas.drawBitmap(backgoround, 0,800,null);
-        canvas.drawBitmap(backgoround, 0,1400,null);
+        canvas.drawColor(-3355444);
+        canvas.drawBitmap(backgroundPicute, 0, 0, null);
         scorePaint.setColor(-16776961);
         scorePaint.setTextSize(80);
         scorePaint.setUnderlineText(true);
@@ -70,6 +84,7 @@ public class DonutView extends SurfaceView implements SurfaceHolder.Callback {
         canvas.drawText("Lives Left : " + lives , 500, 60, livesPaint);
         donutNew.draw(canvas);
         manager.draw(canvas);
+
     }
 
     @Override
@@ -79,6 +94,8 @@ public class DonutView extends SurfaceView implements SurfaceHolder.Callback {
 
         Bitmap donutBitmap1 = BitmapFactory.decodeResource(this.getResources(),R.drawable.donut);
         donutNew = new Donut(donutBitmap1, this.getWidth()/2 - donutBitmap1.getWidth()/2, 10, this );
+
+        backgroundPicute = BitmapFactory.decodeResource(getResources(), R.drawable.donut_background);
 
         manager = new AntManager();
         manager.createAnts(antBitmap1, this, antSpeed);
@@ -126,5 +143,13 @@ public class DonutView extends SurfaceView implements SurfaceHolder.Callback {
             touch = false;
             return false;
         }
+    }
+
+    public int getScore(){
+        return score;
+    }
+
+    public int getLives(){
+        return lives;
     }
 }
