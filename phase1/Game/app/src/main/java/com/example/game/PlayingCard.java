@@ -10,23 +10,12 @@ public class PlayingCard {
   /** The Image of the PlayingCard view on the screen */
   private ImageView imageview;
 
-  private int actualImage;
-
-  /** The actual image stored in an integer */
-  private int cardNum;
-
-  PlayingCard(int card_num, ImageView iv) {
-    this.cardNum = card_num;
+  PlayingCard(ImageView iv) {
     this.imageview = iv;
   }
   /** get the ImageView of the card */
   ImageView getImageview() {
     return this.imageview;
-  }
-
-  /** get the number of the card */
-  int getCardNum() {
-    return this.cardNum;
   }
 
   /** Set the front view of the card to the image */

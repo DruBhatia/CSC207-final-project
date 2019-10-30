@@ -10,7 +10,7 @@ public class MemorizePlayer {
     private TextView textView;
 
     public MemorizePlayer(TextView tv) {
-        playerMoves = 20;
+        playerMoves = 15;
         this.textView = tv;
     }
 
