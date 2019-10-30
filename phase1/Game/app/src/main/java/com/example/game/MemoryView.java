@@ -5,6 +5,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Handler;
 import android.view.View;
+import android.widget.Chronometer;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -31,7 +32,10 @@ public class MemoryView extends View {
 
   MemoryView(AppCompatActivity context) {
     super(context);
-    player = new MemorizePlayer((TextView) context.findViewById(R.id.textView1));
+    player =
+        new MemorizePlayer(
+            (TextView) context.findViewById(R.id.textView1),
+            (Chronometer) context.findViewById(R.id.stopWatch));
     cardArray = new ArrayList<>();
     imageArray = new ArrayList<>();
     cardArray.add(new PlayingCard((ImageView) context.findViewById(R.id.iv_11)));
@@ -82,7 +86,7 @@ public class MemoryView extends View {
     cardArray.add(new PlayingCard((ImageView) context.findViewById(R.id.iv_44)));
     int[] arr16 = new int[] {208, R.drawable.fv_image208};
     imageArray.add(arr16);
-
+    player.getChronometer().start();
     Collections.shuffle(imageArray);
     show();
     setOnClick();
