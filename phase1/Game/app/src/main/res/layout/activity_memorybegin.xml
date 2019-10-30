@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MemoryBegin"
-    android:background="@drawable/game_backg3">
+    android:background="@drawable/game_backg4">
 
     <ImageButton
         android:id="@+id/imageButton"
