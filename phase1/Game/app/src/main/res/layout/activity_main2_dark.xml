@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/game_backg8"
-    tools:context="com.example.game.Main2ActivityDark">
+    tools:context="com.example.game.Main2Activity">
 
     <include
         android:id="@+id/include2"
