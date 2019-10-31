@@ -1,8 +1,5 @@
 package com.example.game;
 
-import android.annotation.SuppressLint;
-
-import android.content.Intent;
 import android.os.Handler;
 import android.os.SystemClock;
 import android.view.View;
@@ -14,27 +11,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
 
-@SuppressLint("ViewConstructor")
-public class MemoryView extends View {
-  /** Array List of all cards displayed on the screen */
-  List<PlayingCard> cardArray;
-  /** Array List of all card images displayed on the screen */
-  List<int[]> imageArray;
-  /** Player of the Game */
-  MemorizePlayer player;
-  /** First and Second selected indexes of the cardArray */
-  int firstSelect, secondSelect;
-  /** Denotes which number of the card selected */
-  int firstCard, secondCard;
-  /** Denotes which card is being selected (Whether its the first card selection or second) */
-  int cardNum = 1;
+public class MemoryView2 extends MemoryView {
 
   /** Constructor initializes a new player, a layout of playable, shuffled cards, sets off a timer,
-   *  and adds clickable functionality to the cards in the layout.*/
-  MemoryView(AppCompatActivity context) {
+   * and adds clickable functionality to the cards in the layout. */
+  MemoryView2(AppCompatActivity context) {
     super(context);
+    this.initializeCards(context);
     player =
         new MemorizePlayer(
             (TextView) context.findViewById(R.id.text_moves),
@@ -47,57 +31,58 @@ public class MemoryView extends View {
     setOnClick();
   }
 
-  /** Initialize + shuffle an array of card placeholders corresponding to respective card images. */
-  void initializeCards(AppCompatActivity context){
+  /** Different set of cards is used in this theme. */
+  @Override
+  void initializeCards(AppCompatActivity context) {
     cardArray = new ArrayList<>();
     imageArray = new ArrayList<>();
     cardArray.add(new PlayingCard((ImageView) context.findViewById(R.id.iv_11)));
-    int[] arr1 = new int[] {101, R.drawable.fv_image101};
+    int[] arr1 = new int[] {101, R.drawable.fv_image1d1};
     imageArray.add(arr1);
     cardArray.add(new PlayingCard((ImageView) context.findViewById(R.id.iv_12)));
-    int[] arr2 = new int[] {102, R.drawable.fv_image102};
+    int[] arr2 = new int[] {102, R.drawable.fv_image1d2};
     imageArray.add(arr2);
     cardArray.add(new PlayingCard((ImageView) context.findViewById(R.id.iv_13)));
-    int[] arr3 = new int[] {103, R.drawable.fv_image103};
+    int[] arr3 = new int[] {103, R.drawable.fv_image1d3};
     imageArray.add(arr3);
     cardArray.add(new PlayingCard((ImageView) context.findViewById(R.id.iv_14)));
-    int[] arr4 = new int[] {104, R.drawable.fv_image104};
+    int[] arr4 = new int[] {104, R.drawable.fv_image1d4};
     imageArray.add(arr4);
     cardArray.add(new PlayingCard((ImageView) context.findViewById(R.id.iv_21)));
-    int[] arr5 = new int[] {105, R.drawable.fv_image105};
+    int[] arr5 = new int[] {105, R.drawable.fv_image1d5};
     imageArray.add(arr5);
     cardArray.add(new PlayingCard((ImageView) context.findViewById(R.id.iv_22)));
-    int[] arr6 = new int[] {106, R.drawable.fv_image106};
+    int[] arr6 = new int[] {106, R.drawable.fv_image1d6};
     imageArray.add(arr6);
     cardArray.add(new PlayingCard((ImageView) context.findViewById(R.id.iv_23)));
-    int[] arr7 = new int[] {107, R.drawable.fv_image107};
+    int[] arr7 = new int[] {107, R.drawable.fv_image1d7};
     imageArray.add(arr7);
     cardArray.add(new PlayingCard((ImageView) context.findViewById(R.id.iv_24)));
-    int[] arr8 = new int[] {108, R.drawable.fv_image108};
+    int[] arr8 = new int[] {108, R.drawable.fv_image1d8};
     imageArray.add(arr8);
     cardArray.add(new PlayingCard((ImageView) context.findViewById(R.id.iv_31)));
-    int[] arr9 = new int[] {201, R.drawable.fv_image201};
+    int[] arr9 = new int[] {201, R.drawable.fv_image2d1};
     imageArray.add(arr9);
     cardArray.add(new PlayingCard((ImageView) context.findViewById(R.id.iv_32)));
-    int[] arr10 = new int[] {202, R.drawable.fv_image202};
+    int[] arr10 = new int[] {202, R.drawable.fv_image2d2};
     imageArray.add(arr10);
     cardArray.add(new PlayingCard((ImageView) context.findViewById(R.id.iv_33)));
-    int[] arr11 = new int[] {203, R.drawable.fv_image203};
+    int[] arr11 = new int[] {203, R.drawable.fv_image2d3};
     imageArray.add(arr11);
     cardArray.add(new PlayingCard((ImageView) context.findViewById(R.id.iv_34)));
-    int[] arr12 = new int[] {204, R.drawable.fv_image204};
+    int[] arr12 = new int[] {204, R.drawable.fv_image2d4};
     imageArray.add(arr12);
     cardArray.add(new PlayingCard((ImageView) context.findViewById(R.id.iv_41)));
-    int[] arr13 = new int[] {205, R.drawable.fv_image205};
+    int[] arr13 = new int[] {205, R.drawable.fv_image2d5};
     imageArray.add(arr13);
     cardArray.add(new PlayingCard((ImageView) context.findViewById(R.id.iv_42)));
-    int[] arr14 = new int[] {206, R.drawable.fv_image206};
+    int[] arr14 = new int[] {206, R.drawable.fv_image2d6};
     imageArray.add(arr14);
     cardArray.add(new PlayingCard((ImageView) context.findViewById(R.id.iv_43)));
-    int[] arr15 = new int[] {207, R.drawable.fv_image207};
+    int[] arr15 = new int[] {207, R.drawable.fv_image2d7};
     imageArray.add(arr15);
     cardArray.add(new PlayingCard((ImageView) context.findViewById(R.id.iv_44)));
-    int[] arr16 = new int[] {208, R.drawable.fv_image208};
+    int[] arr16 = new int[] {208, R.drawable.fv_image2d8};
     imageArray.add(arr16);
     Collections.shuffle(imageArray);
   }
@@ -107,17 +92,19 @@ public class MemoryView extends View {
   void setOnClick() {
     for (final PlayingCard card : cardArray) {
       card.getImageview()
-          .setOnClickListener(
-              new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                  setSelection(card);
-                }
-              });
+              .setOnClickListener(
+                      new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                          setSelection(card);
+                        }
+                      });
     }
   }
 
-  /** Show the cards to the player for a few seconds, then flip them over and make them playable. */
+    /** Show the cards to the player for a few seconds, then flip them over and make them playable.
+     * The back side of the cards must match the back image decided upon for this class.*/
+  @Override
   void show() {
     for (PlayingCard playCard : cardArray) {
       playCard.set_enable(false);
@@ -132,17 +119,16 @@ public class MemoryView extends View {
           @Override
           public void run() {
             for (PlayingCard playCard : cardArray) {
-              playCard.setImage(R.drawable.bv_00);
+              playCard.setImage(R.drawable.bv_01);
             }
             for (PlayingCard playCard : cardArray) {
               playCard.set_enable(true);
             }
           }
-        },2500);
+        },
+        2500);
   }
 
-  /** Temporarily stores selected cards and makes them unresponsive until all selections have been
-   * made so a comparison can be performed. */
   private void setSelection(PlayingCard c) {
     // Set the image of card to the image view
     int image = imageArray.get(cardArray.indexOf(c))[1];
@@ -175,18 +161,18 @@ public class MemoryView extends View {
       // cards match or not and proceed ahead.
       Handler handler = new Handler();
       handler.postDelayed(
-          new Runnable() {
-            @Override
-            public void run() {
-              compare();
-            }
-          },
-          400);
+              new Runnable() {
+                @Override
+                public void run() {
+                  compare();
+                }
+              },
+              400);
     }
   }
 
   /** Compare selected cards to see if they match and adjust player's points and the selected cards'
-   * visibility in the layout accordingly. */
+  * visibility in the layout accordingly. */
   private void compare() {
     // If card matches make them invisible
     if (firstCard == secondCard) {
@@ -201,7 +187,7 @@ public class MemoryView extends View {
       player.setTextPoints();
       // Load back the front images again if
       for (PlayingCard card : cardArray) {
-        card.setImage(R.drawable.bv_00);
+        card.setImage(R.drawable.bv_01);
       }
     }
     player.decreasePlayerMoves();
@@ -211,43 +197,5 @@ public class MemoryView extends View {
       card.set_enable(true);
     }
     endGame(checkEnd());
-  }
-
-
-  /** Return whether or not all cards on screen are invisible. */
-  boolean checkVisibility() {
-    for (PlayingCard item : cardArray) {
-      if (item.getVisibility() != View.INVISIBLE) {
-        return false;
-      }
-    }
-    return true;
-  }
-
-  /** Check if end-game conditions have been met. */
-  protected boolean checkEnd() {
-    return player.getMovesLeft() == 0 || checkVisibility();
-  }
-
-  /** End game if all end-game conditions have been met, track player stats, and navigate to
-   * game-over screen. */
-  protected void endGame(boolean check) {
-    int playerMoves = player.getMovesLeft();
-    int playerPoints = player.getPlayerPoints();
-    boolean bool = checkVisibility();
-    if (check) {
-      CharSequence elapsedMillis = player.getChronometer().getText();
-      player.getChronometer().stop();
-      Intent intent = new Intent(getContext(), Game2OverActivity.class);
-      intent.putExtra("Moves Left", playerMoves);
-      intent.putExtra("time", elapsedMillis);
-      intent.putExtra("points", playerPoints);
-      if (bool) {
-        intent.putExtra("Cards Left To Match?", "NO");
-      } else {
-        intent.putExtra("Cards Left To Match?", "YES");
-      }
-      getContext().startActivity(intent);
-    }
   }
 }
