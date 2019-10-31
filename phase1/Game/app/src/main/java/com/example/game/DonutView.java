@@ -10,9 +10,11 @@ import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
+import java.io.Serializable;
+
 /** DonutView class is the whole surface that is visible to the user while playing the game.*/
 
-public class DonutView extends SurfaceView implements SurfaceHolder.Callback {
+public class DonutView extends SurfaceView implements SurfaceHolder.Callback, Serializable {
 
     /**GameThread manages and time component and starts the game.*/
     private GameThread gameThread;
@@ -34,6 +36,7 @@ public class DonutView extends SurfaceView implements SurfaceHolder.Callback {
     private int lives = 10;
     /**The background picture for our gameView.*/
     private Bitmap backgroundPicture;
+    public static final long serialVersionUID = 1L;
 
     /**
      * Construct the thread.
