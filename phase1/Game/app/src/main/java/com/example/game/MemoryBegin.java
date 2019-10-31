@@ -31,5 +31,13 @@ public class MemoryBegin extends AppCompatActivity {
                 startActivity(intent3);
             }
         });
+
+        playMemoryDark.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v){
+                Intent intent3 = new Intent(MemoryBegin.this, Main2ActivityDark.class);
+                startActivity(intent3);
+            }
+        });
     }
 }
