@@ -30,6 +30,8 @@ public class MemoryView extends View {
   int firstCard, secondCard;
   /** Denotes which card is being selected (Whether its the first card selection or second) */
   int cardNum = 1;
+  /** Denotes which card back image is being used in the layout */
+  private int cardBack = R.drawable.bv_00;
 
   MemoryView(AppCompatActivity context) {
     super(context);
@@ -128,14 +130,13 @@ public class MemoryView extends View {
           @Override
           public void run() {
             for (PlayingCard playCard : cardArray) {
-              playCard.setImage(R.drawable.bv_00);
+              playCard.setImage(cardBack);
             }
             for (PlayingCard playCard : cardArray) {
               playCard.set_enable(true);
             }
           }
-        },
-        2500);
+        },2500);
   }
 
   private void setSelection(PlayingCard c) {
@@ -194,7 +195,7 @@ public class MemoryView extends View {
       player.setTextPoints();
       // Load back the front images again if
       for (PlayingCard card : cardArray) {
-        card.setImage(R.drawable.bv_00);
+        card.setImage(R.drawable.bv_01);
       }
     }
     player.decreasePlayerMoves();
@@ -215,11 +216,11 @@ public class MemoryView extends View {
     return true;
   }
 
-  private boolean checkEnd() {
+  protected boolean checkEnd() {
     return player.getMovesLeft() == 0 || checkVisibility();
   }
 
-  private void endGame(boolean check) {
+  protected void endGame(boolean check) {
     int playerMoves = player.getMovesLeft();
     int playerPoints = player.getPlayerPoints();
     boolean bool = checkVisibility();
