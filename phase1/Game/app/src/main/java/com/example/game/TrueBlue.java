@@ -51,7 +51,7 @@ class TrueBlue {
   }
 
   void tbFall() {
-    if (tbY < gv.getScreenHeight()- tb[0].getHeight()) {
+    if (tbY < gv.getScreenHeight()- tb[0].getHeight() || velocity < 0) {
       velocity += gravity;
       tbY += velocity;
     }
