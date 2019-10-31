@@ -30,9 +30,11 @@ public class MemoryView extends View {
   int firstCard, secondCard;
   /** Denotes which card is being selected (Whether its the first card selection or second) */
   int cardNum = 1;
-  /** Denotes which card back image is being used in the layout */
+  /** Denotes which card back image is being used in the layout. By default, red image is used. */
   private int cardBack = R.drawable.bv_00;
 
+  /** Constructor initializes a new player, a layout of playable, shuffled cards, sets off a timer,
+   *  and adds clickable functionality to the cards in the layout.*/
   MemoryView(AppCompatActivity context) {
     super(context);
     player =
@@ -47,6 +49,7 @@ public class MemoryView extends View {
     setOnClick();
   }
 
+  /** Initialize + shuffle an array of card placeholders corresponding to respective card images. */
   void initializeCards(AppCompatActivity context){
     cardArray = new ArrayList<>();
     imageArray = new ArrayList<>();
@@ -116,6 +119,7 @@ public class MemoryView extends View {
     }
   }
 
+  /** Show the cards to the player for a few seconds, then flip them over and make them playable. */
   void show() {
     for (PlayingCard playCard : cardArray) {
       playCard.set_enable(false);
@@ -139,6 +143,8 @@ public class MemoryView extends View {
         },2500);
   }
 
+  /** Temporarily stores selected cards and makes them unresponsive until all selections have been
+   * made so a comparison can be performed. */
   private void setSelection(PlayingCard c) {
     // Set the image of card to the image view
     int image = imageArray.get(cardArray.indexOf(c))[1];
@@ -181,6 +187,8 @@ public class MemoryView extends View {
     }
   }
 
+  /** Compare selected cards to see if they match and adjust player's points and the selected cards'
+   * visibility in the layout accordingly. */
   private void compare() {
     // If card matches make them invisible
     if (firstCard == secondCard) {
@@ -207,6 +215,8 @@ public class MemoryView extends View {
     endGame(checkEnd());
   }
 
+
+  /** Return whether or not all cards on screen are invisible. */
   boolean checkVisibility() {
     for (PlayingCard item : cardArray) {
       if (item.getVisibility() != View.INVISIBLE) {
@@ -216,10 +226,13 @@ public class MemoryView extends View {
     return true;
   }
 
+  /** Check if end-game conditions have been met. */
   protected boolean checkEnd() {
     return player.getMovesLeft() == 0 || checkVisibility();
   }
 
+  /** End game if all end-game conditions have been met, track player stats, and navigate to
+   * game-over screen. */
   protected void endGame(boolean check) {
     int playerMoves = player.getMovesLeft();
     int playerPoints = player.getPlayerPoints();
