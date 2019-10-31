@@ -31,7 +31,7 @@ public class MemorizePlayer {
 
   void setTextPoints() {
     String new_text = "Score: " + this.getPlayerPoints();
-    this.textMoves.setText(new_text);
+    this.textPoints.setText(new_text);
   }
 
   Chronometer getChronometer() {

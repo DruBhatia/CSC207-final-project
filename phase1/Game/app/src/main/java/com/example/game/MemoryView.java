@@ -181,8 +181,13 @@ public class MemoryView extends View {
     if (firstCard == secondCard) {
       cardArray.get(firstSelect).setVisibility();
       cardArray.get(secondSelect).setVisibility();
-      // Increase the points for correct match
+      // Increase the points by 2 for correct match
+      player.increasePlayerPoints();
+      player.setTextPoints();
     } else {
+      // Decrease the points by 1 for incorrect match
+      player.decreasePlayerPoints();
+      player.setTextPoints();
       // Load back the front images again if
       for (PlayingCard card : cardArray) {
         card.setImage(R.drawable.bv_00);
@@ -212,6 +217,7 @@ public class MemoryView extends View {
 
   private void endGame(boolean check) {
     int playerMoves = player.getMovesLeft();
+    int playerPoints = player.getPlayerPoints();
     boolean bool = checkVisibility();
     if (check) {
       CharSequence elapsedMillis = player.getChronometer().getText();
@@ -219,7 +225,7 @@ public class MemoryView extends View {
       Intent intent = new Intent(getContext(), Game2OverActivity.class);
       intent.putExtra("Moves Left", playerMoves);
       intent.putExtra("time", elapsedMillis);
-
+      intent.putExtra("points", playerPoints);
       if (bool) {
         intent.putExtra("Cards Left To Match?", "NO");
       } else {
