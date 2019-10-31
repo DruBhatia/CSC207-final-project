@@ -1,34 +1,23 @@
 package com.example.game;
 
-import android.os.Handler;
-import android.os.SystemClock;
-import android.view.View;
-import android.widget.Chronometer;
+import android.annotation.SuppressLint;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
 import java.util.Collections;
 
+@SuppressLint("ViewConstructor")
 public class MemoryView2 extends MemoryView {
 
-  /** Constructor initializes a new player, a layout of playable, shuffled cards, sets off a timer,
-   * and adds clickable functionality to the cards in the layout. */
+  /**
+   * Constructor initializes a new player, a layout of playable, shuffled cards, sets off a timer,
+   * and adds clickable functionality to the cards in the layout.
+   */
   MemoryView2(AppCompatActivity context) {
     super(context);
-    this.initializeCards(context);
-    player =
-        new MemorizePlayer(
-            (TextView) context.findViewById(R.id.text_moves),
-            (TextView) context.findViewById(R.id.text_points),
-            (Chronometer) context.findViewById(R.id.stopWatch));
-    this.initializeCards(context);
-    show();
-    player.getChronometer().setBase(SystemClock.elapsedRealtime());
-    player.getChronometer().start();
-    setOnClick();
+    this.cardBackView = R.drawable.bv_01;
   }
 
   /** Different set of cards is used in this theme. */
@@ -85,117 +74,5 @@ public class MemoryView2 extends MemoryView {
     int[] arr16 = new int[] {208, R.drawable.fv_image2d8};
     imageArray.add(arr16);
     Collections.shuffle(imageArray);
-  }
-
-  /** Set an on click listener on the image view of all the cards in cardArray */
-  // https://developer.android.com/reference/android/view/View.OnClickListener used to learn.
-  void setOnClick() {
-    for (final PlayingCard card : cardArray) {
-      card.getImageview()
-              .setOnClickListener(
-                      new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                          setSelection(card);
-                        }
-                      });
-    }
-  }
-
-    /** Show the cards to the player for a few seconds, then flip them over and make them playable.
-     * The back side of the cards must match the back image decided upon for this class.*/
-  @Override
-  void show() {
-    for (PlayingCard playCard : cardArray) {
-      playCard.set_enable(false);
-    }
-    for (PlayingCard playCard : cardArray) {
-      int image = imageArray.get(cardArray.indexOf(playCard))[1];
-      playCard.setImage(image);
-    }
-    Handler handler = new Handler();
-    handler.postDelayed(
-        new Runnable() {
-          @Override
-          public void run() {
-            for (PlayingCard playCard : cardArray) {
-              playCard.setImage(R.drawable.bv_01);
-            }
-            for (PlayingCard playCard : cardArray) {
-              playCard.set_enable(true);
-            }
-          }
-        },
-        2500);
-  }
-
-  private void setSelection(PlayingCard c) {
-    // Set the image of card to the image view
-    int image = imageArray.get(cardArray.indexOf(c))[1];
-    c.setImage(image);
-    // check the selection of two cards and store them temporarily
-    if (cardNum == 1) {
-      firstCard = imageArray.get(cardArray.indexOf(c))[0];
-      if (firstCard > 200) {
-        firstCard = firstCard - 100;
-      }
-      cardNum = 2;
-      firstSelect = this.cardArray.indexOf(c);
-      // Make this card unresponsive
-      c.set_enable(false);
-
-    } else {
-      secondCard = imageArray.get(cardArray.indexOf(c))[0];
-      if (secondCard > 200) {
-        secondCard = secondCard - 100;
-      }
-      cardNum = 1;
-      secondSelect = this.cardArray.indexOf(c);
-      // Make all cards unresponsive
-      for (PlayingCard playCard : cardArray) {
-        playCard.set_enable(false);
-      }
-      // https://developer.android.com/reference/android/os/Handler.html &
-      // https://stackoverflow.com/questions/15136199/when-to-use-handler-post-when-to-new-thread
-      // After selecting the two cards delay the game by 100 milliseconds to check whether the two
-      // cards match or not and proceed ahead.
-      Handler handler = new Handler();
-      handler.postDelayed(
-              new Runnable() {
-                @Override
-                public void run() {
-                  compare();
-                }
-              },
-              400);
-    }
-  }
-
-  /** Compare selected cards to see if they match and adjust player's points and the selected cards'
-  * visibility in the layout accordingly. */
-  private void compare() {
-    // If card matches make them invisible
-    if (firstCard == secondCard) {
-      cardArray.get(firstSelect).setVisibility();
-      cardArray.get(secondSelect).setVisibility();
-      // Increase the points by 2 for correct match
-      player.increasePlayerPoints();
-      player.setTextPoints();
-    } else {
-      // Decrease the points by 1 for incorrect match
-      player.decreasePlayerPoints();
-      player.setTextPoints();
-      // Load back the front images again if
-      for (PlayingCard card : cardArray) {
-        card.setImage(R.drawable.bv_01);
-      }
-    }
-    player.decreasePlayerMoves();
-    player.setTextMoves();
-    // Make all cards responsive again
-    for (PlayingCard card : cardArray) {
-      card.set_enable(true);
-    }
-    endGame(checkEnd());
   }
 }

@@ -30,6 +30,8 @@ public class MemoryView extends View {
   int firstCard, secondCard;
   /** Denotes which card is being selected (Whether its the first card selection or second) */
   int cardNum = 1;
+  /** The back image of all the cards*/
+  int cardBackView ;
 
   /** Constructor initializes a new player, a layout of playable, shuffled cards, sets off a timer,
    *  and adds clickable functionality to the cards in the layout.*/
@@ -41,6 +43,7 @@ public class MemoryView extends View {
             (TextView) context.findViewById(R.id.text_points),
             (Chronometer) context.findViewById(R.id.stopWatch));
     this.initializeCards(context);
+    cardBackView = R.drawable.bv_00;
     show();
     player.getChronometer().setBase(SystemClock.elapsedRealtime());
     player.getChronometer().start();
@@ -132,7 +135,7 @@ public class MemoryView extends View {
           @Override
           public void run() {
             for (PlayingCard playCard : cardArray) {
-              playCard.setImage(R.drawable.bv_00);
+              playCard.setImage(cardBackView);
             }
             for (PlayingCard playCard : cardArray) {
               playCard.set_enable(true);
@@ -201,7 +204,7 @@ public class MemoryView extends View {
       player.setTextPoints();
       // Load back the front images again if
       for (PlayingCard card : cardArray) {
-        card.setImage(R.drawable.bv_00);
+        card.setImage(cardBackView);
       }
     }
     player.decreasePlayerMoves();
