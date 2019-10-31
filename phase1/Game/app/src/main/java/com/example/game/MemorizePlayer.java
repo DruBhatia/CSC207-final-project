@@ -4,7 +4,7 @@ import android.widget.Chronometer;
 import android.widget.TextView;
 
 /** A Player of Memorize Game */
-public class MemorizePlayer {
+class MemorizePlayer {
   /** Total moves available to the Player */
   private int playerMoves;
   /** Points earned by the Player */
@@ -18,7 +18,7 @@ public class MemorizePlayer {
 
   /** Construct a new player of the Memorize! game, allots the number of moves they are allowed to
    * make, sets their timer, and initializes how many points they start off with. */
-  public MemorizePlayer(TextView tv1, TextView tv2,  Chronometer meter) {
+  MemorizePlayer(TextView tv1, TextView tv2,  Chronometer meter) {
     playerMoves = 15;
     this.textMoves = tv1;
     this.chronometer = meter;
