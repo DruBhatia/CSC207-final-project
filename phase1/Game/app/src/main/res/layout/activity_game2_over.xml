@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/game_backg12"
+    android:background="@drawable/game_backg10"
     tools:context=".GameOverActivity">
 
     <TextView
@@ -33,8 +33,8 @@
         android:text="YOU WON!!"
         android:textAlignment="center"
         android:textSize="45dp"
-        android:textColor="#3949AB"
-        android:textStyle="italic"
+        android:textColor="#FF9100"
+        android:textStyle="bold"
         />
 
     <TextView
@@ -44,11 +44,12 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginTop="280dp"
-        android:fontFamily="@font/invasion2000"
+        android:fontFamily="@font/atari_extended"
         android:text="Moves Left:"
         android:textAlignment="center"
         android:textSize="35sp"
-        android:textColor="#E91E63" />
+        android:textStyle="bold"
+        android:textColor="#041113" />
 
     <TextView
         android:id="@+id/time"
@@ -57,11 +58,12 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginTop="350dp"
-        android:fontFamily="@font/invasion2000"
-        android:text="Time:"
+        android:fontFamily="@font/atari_extended"
+        android:text="TIME:"
+        android:textStyle="bold"
         android:textAlignment="center"
         android:textSize="35sp"
-        android:textColor="#651FFF" />
+        android:textColor="#000000" />
 
     <Button
         android:id="@+id/playAgain"

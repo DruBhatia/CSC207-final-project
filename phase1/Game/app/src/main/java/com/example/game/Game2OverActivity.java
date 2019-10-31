@@ -47,7 +47,7 @@ public class Game2OverActivity extends AppCompatActivity {
       gameStatus.setText("YOU LOST :(");
     }
 
-    movesLeft.setText("Moves Left: " + showMoves);
-    gameTime.setText("Time: " + game_time);
+    movesLeft.setText("MOVES LEFT: " + showMoves);
+    gameTime.setText("TIME: " + game_time);
   }
 }
