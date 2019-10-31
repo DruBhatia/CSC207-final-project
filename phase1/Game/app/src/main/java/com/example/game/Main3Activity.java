@@ -1,7 +1,12 @@
 package com.example.game;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.Window;
@@ -9,10 +14,8 @@ import android.view.WindowManager;
 
 public class Main3Activity extends AppCompatActivity {
 
-
-
-
-
+    DonutView gameView;
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,9 +23,7 @@ public class Main3Activity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-        DonutView gameView = new DonutView(this);
+        gameView = new DonutView(this);
         setContentView(gameView);
-
-
     }
 }
