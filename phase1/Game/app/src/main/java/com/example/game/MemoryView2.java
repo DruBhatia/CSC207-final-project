@@ -2,7 +2,6 @@ package com.example.game;
 
 import android.os.Handler;
 import android.os.SystemClock;
-import android.view.View;
 import android.widget.Chronometer;
 import android.widget.ImageView;
 import android.widget.TextView;

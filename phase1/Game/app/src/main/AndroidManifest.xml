@@ -18,6 +18,7 @@
         <activity android:name=".Main4Activity" />
         <activity android:name=".Main3Activity" />
         <activity android:name=".Main2Activity" />
+        <activity android:name=".Main2ActivityDark" />
         <activity android:name=".Begin" />
         <activity android:name=".MainActivity">
             <intent-filter>

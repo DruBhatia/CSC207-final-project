@@ -30,8 +30,6 @@ public class MemoryView extends View {
   int firstCard, secondCard;
   /** Denotes which card is being selected (Whether its the first card selection or second) */
   int cardNum = 1;
-  /** Denotes which card back image is being used in the layout. By default, red image is used. */
-  private int cardBack = R.drawable.bv_00;
 
   /** Constructor initializes a new player, a layout of playable, shuffled cards, sets off a timer,
    *  and adds clickable functionality to the cards in the layout.*/
@@ -134,7 +132,7 @@ public class MemoryView extends View {
           @Override
           public void run() {
             for (PlayingCard playCard : cardArray) {
-              playCard.setImage(cardBack);
+              playCard.setImage(R.drawable.bv_00);
             }
             for (PlayingCard playCard : cardArray) {
               playCard.set_enable(true);
@@ -203,7 +201,7 @@ public class MemoryView extends View {
       player.setTextPoints();
       // Load back the front images again if
       for (PlayingCard card : cardArray) {
-        card.setImage(R.drawable.bv_01);
+        card.setImage(R.drawable.bv_00);
       }
     }
     player.decreasePlayerMoves();
