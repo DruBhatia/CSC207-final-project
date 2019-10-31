@@ -42,12 +42,13 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/button8"
+        android:id="@+id/button7"
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:onClick="game_Activities"
+        android:fontFamily="@font/atari_extended"
         android:text="Information"
-        android:textSize="36sp"
+        android:textSize="26sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
