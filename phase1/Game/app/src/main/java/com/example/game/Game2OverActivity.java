@@ -48,6 +48,6 @@ public class Game2OverActivity extends AppCompatActivity {
     }
 
     movesLeft.setText("MOVES LEFT: " + showMoves);
-    gameTime.setText("TIME: " + game_time);
+    gameTime.setText("TIME: " + game_time + "s");
   }
 }

@@ -33,7 +33,7 @@
         android:text="YOU WON!!"
         android:textAlignment="center"
         android:textSize="45dp"
-        android:textColor="#FF9100"
+        android:textColor="#00BCD4"
         android:textStyle="bold"
         />
 
@@ -49,7 +49,7 @@
         android:textAlignment="center"
         android:textSize="35sp"
         android:textStyle="bold"
-        android:textColor="#041113" />
+        android:textColor="#E91E2F" />
 
     <TextView
         android:id="@+id/time"
@@ -57,21 +57,35 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="350dp"
+        android:layout_marginTop="310dp"
         android:fontFamily="@font/atari_extended"
-        android:text="TIME:"
+        android:text="Time:"
         android:textStyle="bold"
         android:textAlignment="center"
         android:textSize="35sp"
-        android:textColor="#000000" />
+        android:textColor="#9C27B0" />
+
+    <TextView
+        android:id="@+id/total_score"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="340dp"
+        android:fontFamily="@font/atari_extended"
+        android:text="Score:"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:textSize="35sp"
+        android:textColor="#F44336" />
 
     <Button
         android:id="@+id/playAgain"
         android:layout_width="211dp"
         android:layout_height="62dp"
-        android:layout_below="@+id/time"
+        android:layout_below="@+id/total_score"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="20dp"
         android:textStyle="bold"
         android:text="Play Again" />
 
