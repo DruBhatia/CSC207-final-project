@@ -38,6 +38,14 @@ public class MemoryView extends View {
             (TextView) context.findViewById(R.id.text_moves),
             (TextView) context.findViewById(R.id.text_points),
             (Chronometer) context.findViewById(R.id.stopWatch));
+    this.initializeCards(context);
+    show();
+    player.getChronometer().setBase(SystemClock.elapsedRealtime());
+    player.getChronometer().start();
+    setOnClick();
+  }
+
+  void initializeCards(AppCompatActivity context){
     cardArray = new ArrayList<>();
     imageArray = new ArrayList<>();
     cardArray.add(new PlayingCard((ImageView) context.findViewById(R.id.iv_11)));
@@ -89,10 +97,6 @@ public class MemoryView extends View {
     int[] arr16 = new int[] {208, R.drawable.fv_image208};
     imageArray.add(arr16);
     Collections.shuffle(imageArray);
-    show();
-    player.getChronometer().setBase(SystemClock.elapsedRealtime());
-    player.getChronometer().start();
-    setOnClick();
   }
 
   /** Set an on click listener on the image view of all the cards in cardArray */
