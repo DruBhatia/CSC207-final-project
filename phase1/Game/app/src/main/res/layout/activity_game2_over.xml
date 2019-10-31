@@ -18,7 +18,7 @@
         android:text="GAME OVER"
         android:textAlignment="center"
         android:textColor="#FF9800"
-        android:textSize="55dp"
+        android:textSize="59dp"
         android:textStyle="bold"
         />
 
@@ -28,12 +28,12 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="190dp"
+        android:layout_marginTop="180dp"
         android:fontFamily="@font/invasion2000"
         android:text="YOU WON!!"
         android:textAlignment="center"
-        android:textSize="55dp"
-        android:textColor="#FB8C00"
+        android:textSize="45dp"
+        android:textColor="#00BCD4"
         android:textStyle="bold"
         />
 
@@ -71,9 +71,9 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="400dp"
+        android:layout_marginTop="380dp"
         android:fontFamily="@font/atari_extended"
-        android:text="FINAL SCORE:"
+        android:text="Final Score:"
         android:textStyle="bold"
         android:textAlignment="center"
         android:textSize="35sp"
@@ -86,6 +86,7 @@
         android:layout_below="@+id/total_score"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
+        android:fontFamily="@font/atari_extended"
         android:textStyle="bold"
         android:text="Play Again" />
 
@@ -96,6 +97,7 @@
         android:layout_below="@+id/playAgain"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="40dp"
+        android:fontFamily="@font/atari_extended"
         android:textStyle="bold"
         android:text="Main menu" />
 
