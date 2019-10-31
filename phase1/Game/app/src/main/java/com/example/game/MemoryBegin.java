@@ -20,6 +20,7 @@ public class MemoryBegin extends AppCompatActivity {
             @Override
             public void onClick(View v){
                 Intent intent2 = new Intent(MemoryBegin.this, Main2Activity.class);
+                intent2.putExtra("Theme?", "Light");
                 startActivity(intent2);
             }
         });
@@ -27,7 +28,8 @@ public class MemoryBegin extends AppCompatActivity {
         playMemoryDark.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
-                Intent intent3 = new Intent(MemoryBegin.this, Main2ActivityDark.class);
+                Intent intent3 = new Intent(MemoryBegin.this, Main2Activity.class);
+                intent3.putExtra("Theme?", "Dark");
                 startActivity(intent3);
             }
         });
