@@ -2,10 +2,9 @@ package com.example.game;
 
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
-
+/** Creates the Donut.*/
 class Donut extends GameCreature{
 
-    private int speed = 10;
 
     Donut(Bitmap image, int x, int y, DonutView donutView) {
         super(image, x, y);

@@ -37,10 +37,10 @@ public class DonutView extends SurfaceView implements SurfaceHolder.Callback {
     private int lives = 10;
     /**The background picture for our gameView.*/
     private Bitmap backgroundPicture;
-
+    /** The time taken to complete the game.*/
     private float  currTime;
 
-    long start;
+    private long start;
 
     /**
      * Construct the thread.
