@@ -10,6 +10,9 @@ import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
+import java.time.LocalTime;
+import java.util.Date;
+
 /** DonutView class is the whole surface that is visible to the user while playing the game.*/
 
 public class DonutView extends SurfaceView implements SurfaceHolder.Callback {
@@ -34,6 +37,10 @@ public class DonutView extends SurfaceView implements SurfaceHolder.Callback {
     private int lives = 10;
     /**The background picture for our gameView.*/
     private Bitmap backgroundPicture;
+
+    private float  currTime;
+
+    long start;
 
     /**
      * Construct the thread.
@@ -63,12 +70,17 @@ public class DonutView extends SurfaceView implements SurfaceHolder.Callback {
         if (lives == 0) {
 
             gameThread.setRunning(false);
+            Date finalDate = new Date();
+            currTime = (finalDate.getTime() - start) / 1000F;
 
             Intent newGameintent = new Intent(getContext(), GameOverActivity.class);
 
             newGameintent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
 
             newGameintent.putExtra("Score", score);
+
+            newGameintent.putExtra("Time", currTime);
+
 
             getContext().startActivity(newGameintent);
 
@@ -114,6 +126,9 @@ public class DonutView extends SurfaceView implements SurfaceHolder.Callback {
         gameThread = new GameThread(this.getHolder(),this);
         gameThread.setRunning(true);
         gameThread.start();
+        Date startDate = new Date();
+        start = startDate.getTime();
+
     }
 
     @Override

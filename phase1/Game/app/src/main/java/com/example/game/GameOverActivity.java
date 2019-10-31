@@ -20,6 +20,10 @@ public class GameOverActivity extends AppCompatActivity {
 
     private Button mainMenu;
 
+    private TextView time;
+
+    private String showTime;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,10 +34,12 @@ public class GameOverActivity extends AppCompatActivity {
         mainMenu = findViewById(R.id.all_games);
 
         showScore = getIntent().getExtras().get("Score").toString();
+        showTime = getIntent().getExtras().get("Time").toString();
 
         rePlayGame = findViewById(R.id.play_again);
 
         score = findViewById(R.id.score_id);
+        time = findViewById(R.id.time_id);
 
     rePlayGame.setOnClickListener(new View.OnClickListener() {
         @Override
@@ -52,5 +58,6 @@ public class GameOverActivity extends AppCompatActivity {
     });
 
     score.setText("Score: " + showScore);
+    time.setText("Time taken: "+ showTime + " s");
     }
 }
