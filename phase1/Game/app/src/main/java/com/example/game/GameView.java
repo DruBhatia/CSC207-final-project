@@ -11,7 +11,6 @@ import android.view.Display;
 import android.view.MotionEvent;
 import android.view.View;
 import android.os.Handler;
-import java.util.Random;
 
 public class GameView extends View {
   // This will be the custom view class for Game3
@@ -43,10 +42,9 @@ public class GameView extends View {
     screenWidth = point.x;
     screenHeight = point.y;
     rect = new Rect(0, 0, screenWidth, screenHeight);
-    cn = new Tower(this);
-    cn.moveTower();
-    // creates TrueBlue
-    tb = new TrueBlue(this);
+    cn = new Tower(this); // created CN Tower
+    cn.moveTower(); // moves CN Tower
+    tb = new TrueBlue(this); // creates TrueBlue
   }
 
   @Override
@@ -61,7 +59,7 @@ public class GameView extends View {
     // true blue falls
     if (tb.getState()) {
       tb.tbFall();
-      cn.drawTower(canvas);
+      cn.drawTower(canvas); // Endless number of CN Tower is created.
     }
     // displays true blue in the center
     tb.drawTB(canvas);

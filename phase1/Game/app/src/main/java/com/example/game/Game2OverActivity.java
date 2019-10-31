@@ -17,12 +17,14 @@ public class Game2OverActivity extends AppCompatActivity {
     String showMoves = getIntent().getExtras().get("Moves Left").toString();
     String cardsLeft = getIntent().getExtras().get("Cards Left To Match?").toString();
     String game_time = getIntent().getExtras().get("time").toString();
+      String score = getIntent().getExtras().get("points").toString();
 
     Button mainMenu = findViewById(R.id.main);
     Button restart = findViewById(R.id.playAgain);
     TextView gameStatus = findViewById(R.id.status);
     TextView movesLeft = findViewById(R.id.moves_left);
     TextView gameTime = findViewById(R.id.time);
+    TextView finalScore = findViewById(R.id.total_score);
 
     restart.setOnClickListener(
         new View.OnClickListener() {
@@ -49,5 +51,6 @@ public class Game2OverActivity extends AppCompatActivity {
 
     movesLeft.setText("MOVES LEFT: " + showMoves);
     gameTime.setText("TIME: " + game_time + "s");
+    finalScore.setText("FINAL SCORE: " + score);
   }
 }

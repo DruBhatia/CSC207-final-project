@@ -6,6 +6,8 @@ import android.graphics.Canvas;
 
 import java.util.Random;
 
+// A class to create CN Tower in game3.
+
 class Tower {
     private Bitmap topTower, bottomTower;
     private int distance = 500; // distance between top and bottom CN Tower.
@@ -24,6 +26,7 @@ class Tower {
     }
 
     void moveTower () {
+    // Makes numOfTowers and makes them move across the display
 
         distBetweenTowers = gv.getScreenWidth() * 3 / 4;
         minTower = distance / 2;
@@ -37,6 +40,8 @@ class Tower {
     }
 
     void drawTower (Canvas canvas) {
+    // used the numOfTowers and creates endless number of CN towers occurring at random.
+
         int towerVelocity = 7;
         for (int i = 0; i < numOfTowers; i++) {
             cnX[i] -= towerVelocity;
