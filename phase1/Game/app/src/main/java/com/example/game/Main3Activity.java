@@ -15,7 +15,7 @@ import android.view.WindowManager;
 public class Main3Activity extends AppCompatActivity {
 
     DonutView gameView;
-    
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
