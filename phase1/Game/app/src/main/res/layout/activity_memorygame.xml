@@ -37,6 +37,21 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints" />
 
+    <TextView
+        android:id="@+id/text_points"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginBottom="67dp"
+        android:fontFamily="@font/atari_extended"
+        android:text="Score: 0"
+        android:textColor="#FB8C00"
+        android:textSize="30sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
+
     <Chronometer
         android:id="@+id/stopWatch"
         android:layout_width="wrap_content"

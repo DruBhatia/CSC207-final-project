@@ -9,7 +9,6 @@ import android.view.View;
 import android.widget.Chronometer;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -37,6 +36,7 @@ public class MemoryView extends View {
     player =
         new MemorizePlayer(
             (TextView) context.findViewById(R.id.text_moves),
+            (TextView) context.findViewById(R.id.text_points),
             (Chronometer) context.findViewById(R.id.stopWatch));
     cardArray = new ArrayList<>();
     imageArray = new ArrayList<>();

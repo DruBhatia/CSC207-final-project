@@ -16,11 +16,12 @@ public class MemorizePlayer {
   /** The stop watch which keeps track of the time spent by the player to complete the game */
   private Chronometer chronometer;
 
-  public MemorizePlayer(TextView tv1, Chronometer meter) {
+  public MemorizePlayer(TextView tv1, TextView tv2,  Chronometer meter) {
     playerMoves = 15;
     this.textMoves = tv1;
     this.chronometer = meter;
     this.playerPoints = 0;
+    this.textPoints = tv2;
   }
 
   void setTextMoves() {
