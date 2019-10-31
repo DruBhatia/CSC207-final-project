@@ -36,7 +36,7 @@ public class MemoryView extends View {
     super(context);
     player =
         new MemorizePlayer(
-            (TextView) context.findViewById(R.id.textView1),
+            (TextView) context.findViewById(R.id.text_moves),
             (Chronometer) context.findViewById(R.id.stopWatch));
     cardArray = new ArrayList<>();
     imageArray = new ArrayList<>();
