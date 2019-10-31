@@ -4,10 +4,12 @@ import android.annotation.SuppressLint;
 
 import android.content.Intent;
 import android.os.Handler;
+import android.os.SystemClock;
 import android.view.View;
 import android.widget.Chronometer;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -88,6 +90,7 @@ public class MemoryView extends View {
     imageArray.add(arr16);
     Collections.shuffle(imageArray);
     show();
+    player.getChronometer().setBase(SystemClock.elapsedRealtime());
     player.getChronometer().start();
     setOnClick();
   }
@@ -211,8 +214,12 @@ public class MemoryView extends View {
     int playerMoves = player.getMovesLeft();
     boolean bool = checkVisibility();
     if (check) {
+      CharSequence elapsedMillis = player.getChronometer().getText();
+      player.getChronometer().stop();
       Intent intent = new Intent(getContext(), Game2OverActivity.class);
       intent.putExtra("Moves Left", playerMoves);
+      intent.putExtra("time", elapsedMillis);
+
       if (bool) {
         intent.putExtra("Cards Left To Match?", "NO");
       } else {
