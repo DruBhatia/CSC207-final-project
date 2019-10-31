@@ -53,4 +53,25 @@ class Tower {
             canvas.drawBitmap(bottomTower, cnX[i], cnY[i] + distance, null);
         }
     }
+
+    int getNumOfTowers() {
+        return numOfTowers;
+    }
+
+    int getcnX(int i){
+        return cnX[i];
+    }
+
+    int getcnY(int i){
+        return cnY[i];
+    }
+
+    int getWidth() {
+        return topTower.getWidth();
+    }
+
+    int getHeight() {
+        return topTower.getHeight();
+    }
+
 }
