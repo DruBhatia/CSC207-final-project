@@ -15,7 +15,7 @@ public class InformationActivity extends AppCompatActivity {
   }
 
   public void level_Select(View view) {
-    Intent intent1 = new Intent(this, MainActivity.class);
+    Intent intent1 = new Intent(this, Main1Activity.class);
     if (R.id.level_select == view.getId()) startActivity(intent1);
   }
 }

@@ -52,7 +52,7 @@ public class GameOverActivity extends AppCompatActivity {
         new View.OnClickListener() {
           @Override
           public void onClick(View v) {
-            Intent intent3 = new Intent(GameOverActivity.this, MainActivity.class);
+            Intent intent3 = new Intent(GameOverActivity.this, Main1Activity.class);
             startActivity(intent3);
           }
         });
