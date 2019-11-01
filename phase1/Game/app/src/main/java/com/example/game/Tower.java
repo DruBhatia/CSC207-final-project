@@ -10,10 +10,10 @@ import java.util.Random;
 
 class Tower {
   private Bitmap topTower, bottomTower;
-  private int distance = 500; // distance between top and bottom CN Tower.
+  private int distance = 700; // distance between top and bottom CN Tower.
   private int minTower, maxTower;
-  private int numOfTowers = 4;
-  private int distBetweenTowers;
+  int numOfTowers = 4;
+  int distBetweenTowers;
   private int[] cnX = new int[numOfTowers];
   private int[] cnY = new int[numOfTowers];
   private Random random;

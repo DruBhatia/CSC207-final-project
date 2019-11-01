@@ -2,6 +2,7 @@ package com.example.game;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -63,8 +64,14 @@ public class GameView extends View {
     }
     // displays true blue in the center
     tb.drawTB(canvas);
+    for (int i = 0; i < cn.numOfTowers; i++) {
+      if (checkCollision(i)) {
+        Intent intent = new Intent(getContext(), Game3OverActivity.class);
+        getContext().startActivity(intent);
+      }
+    }
     handler.postDelayed(runnable, delayNum);
-    //    checkCollision();
+
   }
 
   // When you tap the screen
@@ -83,12 +90,13 @@ public class GameView extends View {
     return screenHeight;
   }
 
-  //  public void checkCollision () {
-  //    for (int i = 0; i < cn.getNumOfTowers(); i++) {
-  //      if ((tb.getTbX() >= cn.getcnX(i) && tb.getTbX() <= cn.getcnX(i) + cn.getWidth()) &&
-  //              (tb.getTbY() >= cn.getcnY(i) && tb.getTbY() <= cn.getcnY(i) + cn.getHeight()))  {
-  //        tb.setState();
-  //      }
-  //    }
-  //  }
+  public boolean checkCollision(int i) {
+    if (tb.getTbX() + tb.tb[0].getWidth() >= cn.getcnX(i)
+        && tb.getTbX() <= cn.getcnX(i) + cn.getWidth()) {
+      return ((tb.getTbY() > (cn.getcnY(i) + cn.getHeight()))
+          && (tb.getTbY() + tb.tb[0].getHeight()
+              < cn.getcnY(i) + cn.distBetweenTowers + cn.getHeight()));
+    }
+    return false;
+  }
 }

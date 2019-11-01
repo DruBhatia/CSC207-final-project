@@ -9,7 +9,7 @@ import android.view.MotionEvent;
 class TrueBlue {
   private int tbFrame, velocity, gravity, tbX, tbY;
   private GameView gv;
-  private Bitmap[] tb;
+  Bitmap[] tb;
   private boolean state;
   Rect tbRect;
 
