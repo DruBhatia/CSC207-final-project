@@ -8,19 +8,18 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import java.util.Objects;
-
+/** Views the Game over Page, once game is completed.*/
 public class GameOverActivity extends AppCompatActivity {
 
-  private Button rePlayGame;
+  private Button rePlayGame; //restart game
 
-  private TextView score;
+  private TextView score; // score achieved
 
   private String showScore;
 
-  private Button mainMenu;
+  private Button mainMenu; // return to main menu
 
-  private TextView time;
+  private TextView time; // time taken
 
   private String showTime;
 
@@ -28,7 +27,6 @@ public class GameOverActivity extends AppCompatActivity {
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
 
-    System.out.println("Reached here");
     setContentView(R.layout.activity_game_over);
 
     mainMenu = findViewById(R.id.all_games);
