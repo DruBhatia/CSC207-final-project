@@ -4,7 +4,7 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 
 import java.util.ArrayList;
-
+/** Creates the ants .*/
 class AntManager {
 
     ArrayList<Ant> ants;
@@ -13,7 +13,6 @@ class AntManager {
     AntManager(){
 
         ants = new ArrayList<>();
-        System.out.println(ants.size());
     }
 
     void createAnts(Bitmap image, DonutView donut, int speed){
@@ -35,6 +34,7 @@ class AntManager {
         }
     }
 
+    /** Updates the position of every ant in the arraylist.*/
     void update() {
 
         for (int i = 0; i < ants.size(); i++) {

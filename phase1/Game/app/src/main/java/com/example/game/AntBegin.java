@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 
+/** Displays a play button for the user to begin the game.*/
 public class AntBegin extends AppCompatActivity {
 
     @Override

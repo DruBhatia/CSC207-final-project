@@ -2,6 +2,7 @@ package com.example.game;
 import android.graphics.Canvas;
 import android.view.SurfaceHolder;
 
+
 /** GameThread class which manages threading, updating and calling draw. */
 
 public class GameThread extends Thread{
