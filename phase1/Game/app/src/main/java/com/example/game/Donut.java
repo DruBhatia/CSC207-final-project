@@ -2,17 +2,14 @@ package com.example.game;
 
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
-/** Creates the Donut.*/
-class Donut extends GameCreature{
+/** Creates the Donut. */
+class Donut extends GameCreature {
 
+  Donut(Bitmap image, int x, int y, DonutView donutView) {
+    super(image, x, y);
+  }
 
-    Donut(Bitmap image, int x, int y, DonutView donutView) {
-        super(image, x, y);
-    }
-
-    void draw(Canvas canvas) {
-        canvas.drawBitmap(image, this.getX(), this.getY(), null);
-    }
-
-
+  void draw(Canvas canvas) {
+    canvas.drawBitmap(image, this.getX(), this.getY(), null);
+  }
 }

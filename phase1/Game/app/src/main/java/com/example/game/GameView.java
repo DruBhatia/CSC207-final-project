@@ -64,7 +64,7 @@ public class GameView extends View {
     // displays true blue in the center
     tb.drawTB(canvas);
     handler.postDelayed(runnable, delayNum);
-//    checkCollision();
+    //    checkCollision();
   }
 
   // When you tap the screen
@@ -83,12 +83,12 @@ public class GameView extends View {
     return screenHeight;
   }
 
-//  public void checkCollision () {
-//    for (int i = 0; i < cn.getNumOfTowers(); i++) {
-//      if ((tb.getTbX() >= cn.getcnX(i) && tb.getTbX() <= cn.getcnX(i) + cn.getWidth()) &&
-//              (tb.getTbY() >= cn.getcnY(i) && tb.getTbY() <= cn.getcnY(i) + cn.getHeight()))  {
-//        tb.setState();
-//      }
-//    }
-//  }
+  //  public void checkCollision () {
+  //    for (int i = 0; i < cn.getNumOfTowers(); i++) {
+  //      if ((tb.getTbX() >= cn.getcnX(i) && tb.getTbX() <= cn.getcnX(i) + cn.getWidth()) &&
+  //              (tb.getTbY() >= cn.getcnY(i) && tb.getTbY() <= cn.getcnY(i) + cn.getHeight()))  {
+  //        tb.setState();
+  //      }
+  //    }
+  //  }
 }

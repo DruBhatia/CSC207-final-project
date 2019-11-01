@@ -8,14 +8,14 @@ import android.view.View;
 
 public class InformationActivity extends AppCompatActivity {
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_information);
-    }
+  @Override
+  protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_information);
+  }
 
   public void level_Select(View view) {
     Intent intent1 = new Intent(this, MainActivity.class);
-    if(R.id.level_select == view.getId()) startActivity(intent1);
-    }
+    if (R.id.level_select == view.getId()) startActivity(intent1);
+  }
 }

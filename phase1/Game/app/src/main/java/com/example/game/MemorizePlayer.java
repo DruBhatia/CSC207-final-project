@@ -16,9 +16,11 @@ class MemorizePlayer {
   /** The stop watch which keeps track of the time spent by the player to complete the game */
   private Chronometer chronometer;
 
-  /** Construct a new player of the Memorize! game, allots the number of moves they are allowed to
-   * make, sets their timer, and initializes how many points they start off with. */
-  MemorizePlayer(TextView tv1, TextView tv2,  Chronometer meter) {
+  /**
+   * Construct a new player of the Memorize! game, allots the number of moves they are allowed to
+   * make, sets their timer, and initializes how many points they start off with.
+   */
+  MemorizePlayer(TextView tv1, TextView tv2, Chronometer meter) {
     playerMoves = 15;
     this.textMoves = tv1;
     this.chronometer = meter;
@@ -26,15 +28,19 @@ class MemorizePlayer {
     this.textPoints = tv2;
   }
 
-  /** Update the corresponding text box in the layout after a match is attempted to reflect
-   * how many moves the player has left. */
+  /**
+   * Update the corresponding text box in the layout after a match is attempted to reflect how many
+   * moves the player has left.
+   */
   void setTextMoves() {
     String new_text = "Moves Left:" + this.getMovesLeft();
     this.textMoves.setText(new_text);
   }
 
-  /** Update the corresponding text box in the layout after a match is attempted to reflect
-   *  how many points the player has. */
+  /**
+   * Update the corresponding text box in the layout after a match is attempted to reflect how many
+   * points the player has.
+   */
   void setTextPoints() {
     String new_text = "Score: " + this.getPlayerPoints();
     this.textPoints.setText(new_text);

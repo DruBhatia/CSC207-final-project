@@ -30,11 +30,13 @@ public class MemoryView extends View {
   int firstCard, secondCard;
   /** Denotes which card is being selected (Whether its the first card selection or second) */
   int cardNum = 1;
-  /** The back image of all the cards*/
-  int cardBackView ;
+  /** The back image of all the cards */
+  int cardBackView;
 
-  /** Constructor initializes a new player, a layout of playable, shuffled cards, sets off a timer,
-   *  and adds clickable functionality to the cards in the layout.*/
+  /**
+   * Constructor initializes a new player, a layout of playable, shuffled cards, sets off a timer,
+   * and adds clickable functionality to the cards in the layout.
+   */
   MemoryView(AppCompatActivity context) {
     super(context);
     player =
@@ -51,7 +53,7 @@ public class MemoryView extends View {
   }
 
   /** Initialize + shuffle an array of card placeholders corresponding to respective card images. */
-  void initializeCards(AppCompatActivity context){
+  void initializeCards(AppCompatActivity context) {
     cardArray = new ArrayList<>();
     imageArray = new ArrayList<>();
     cardArray.add(new PlayingCard((ImageView) context.findViewById(R.id.iv_11)));
@@ -79,28 +81,28 @@ public class MemoryView extends View {
     int[] arr8 = new int[] {108, R.drawable.fv_image108};
     imageArray.add(arr8);
     cardArray.add(new PlayingCard((ImageView) context.findViewById(R.id.iv_31)));
-    int[] arr9 = new int[] {201, R.drawable.fv_image201};
+    int[] arr9 = new int[] {201, R.drawable.fv_image101};
     imageArray.add(arr9);
     cardArray.add(new PlayingCard((ImageView) context.findViewById(R.id.iv_32)));
-    int[] arr10 = new int[] {202, R.drawable.fv_image202};
+    int[] arr10 = new int[] {202, R.drawable.fv_image102};
     imageArray.add(arr10);
     cardArray.add(new PlayingCard((ImageView) context.findViewById(R.id.iv_33)));
-    int[] arr11 = new int[] {203, R.drawable.fv_image203};
+    int[] arr11 = new int[] {203, R.drawable.fv_image103};
     imageArray.add(arr11);
     cardArray.add(new PlayingCard((ImageView) context.findViewById(R.id.iv_34)));
-    int[] arr12 = new int[] {204, R.drawable.fv_image204};
+    int[] arr12 = new int[] {204, R.drawable.fv_image104};
     imageArray.add(arr12);
     cardArray.add(new PlayingCard((ImageView) context.findViewById(R.id.iv_41)));
-    int[] arr13 = new int[] {205, R.drawable.fv_image205};
+    int[] arr13 = new int[] {205, R.drawable.fv_image105};
     imageArray.add(arr13);
     cardArray.add(new PlayingCard((ImageView) context.findViewById(R.id.iv_42)));
-    int[] arr14 = new int[] {206, R.drawable.fv_image206};
+    int[] arr14 = new int[] {206, R.drawable.fv_image106};
     imageArray.add(arr14);
     cardArray.add(new PlayingCard((ImageView) context.findViewById(R.id.iv_43)));
-    int[] arr15 = new int[] {207, R.drawable.fv_image207};
+    int[] arr15 = new int[] {207, R.drawable.fv_image107};
     imageArray.add(arr15);
     cardArray.add(new PlayingCard((ImageView) context.findViewById(R.id.iv_44)));
-    int[] arr16 = new int[] {208, R.drawable.fv_image208};
+    int[] arr16 = new int[] {208, R.drawable.fv_image108};
     imageArray.add(arr16);
     Collections.shuffle(imageArray);
   }
@@ -141,11 +143,14 @@ public class MemoryView extends View {
               playCard.set_enable(true);
             }
           }
-        },2500);
+        },
+        2500);
   }
 
-  /** Temporarily stores selected cards and makes them unresponsive until all selections have been
-   * made so a comparison can be performed. */
+  /**
+   * Temporarily stores selected cards and makes them unresponsive until all selections have been
+   * made so a comparison can be performed.
+   */
   private void setSelection(PlayingCard c) {
     // Set the image of card to the image view
     int image = imageArray.get(cardArray.indexOf(c))[1];
@@ -188,8 +193,10 @@ public class MemoryView extends View {
     }
   }
 
-  /** Compare selected cards to see if they match and adjust player's points and the selected cards'
-   * visibility in the layout accordingly. */
+  /**
+   * Compare selected cards to see if they match and adjust player's points and the selected cards'
+   * visibility in the layout accordingly.
+   */
   private void compare() {
     // If card matches make them invisible
     if (firstCard == secondCard) {
@@ -216,7 +223,6 @@ public class MemoryView extends View {
     endGame(checkEnd());
   }
 
-
   /** Return whether or not all cards on screen are invisible. */
   boolean checkVisibility() {
     for (PlayingCard item : cardArray) {
@@ -232,8 +238,10 @@ public class MemoryView extends View {
     return player.getMovesLeft() == 0 || checkVisibility();
   }
 
-  /** End game if all end-game conditions have been met, track player stats, and navigate to
-   * game-over screen. */
+  /**
+   * End game if all end-game conditions have been met, track player stats, and navigate to
+   * game-over screen.
+   */
   protected void endGame(boolean check) {
     int playerMoves = player.getMovesLeft();
     int playerPoints = player.getPlayerPoints();

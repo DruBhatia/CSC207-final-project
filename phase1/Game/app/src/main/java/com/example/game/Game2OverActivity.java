@@ -17,7 +17,7 @@ public class Game2OverActivity extends AppCompatActivity {
     String showMoves = getIntent().getExtras().get("Moves Left").toString();
     String cardsLeft = getIntent().getExtras().get("Cards Left To Match?").toString();
     String game_time = getIntent().getExtras().get("time").toString();
-      String score = getIntent().getExtras().get("points").toString();
+    String score = getIntent().getExtras().get("points").toString();
 
     Button mainMenu = findViewById(R.id.main);
     Button restart = findViewById(R.id.playAgain);
