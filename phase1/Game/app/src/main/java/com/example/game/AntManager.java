@@ -7,14 +7,16 @@ import java.util.ArrayList;
 /** Creates the ants . */
 class AntManager {
 
+  /** Arraylist of ants to be generated.*/
   ArrayList<Ant> ants;
+
   private int numAnts = 5;
 
   AntManager() {
 
     ants = new ArrayList<>();
   }
-
+  /** Creating the arraylist ants.*/
   void createAnts(Bitmap image, DonutView donut, int speed) {
     for (int i = 0; i < numAnts; i++) {
       double randomX = Math.random();
@@ -26,7 +28,7 @@ class AntManager {
       ants.add(tempAnt);
     }
   }
-
+  /** Drawing the ants on the canvas.*/
   void draw(Canvas canvas) {
 
     for (int i = 0; i < ants.size(); i++) {
@@ -34,7 +36,7 @@ class AntManager {
     }
   }
 
-  /** Updates the position of every ant in the arraylist. */
+  /** Updates the position of every ant in the arraylist ants. */
   void update() {
 
     for (int i = 0; i < ants.size(); i++) {

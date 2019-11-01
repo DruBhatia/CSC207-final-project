@@ -3,10 +3,14 @@ package com.example.game;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 
+
 class Ant extends GameCreature {
 
+  /** speed of the ant.*/
   private int speed;
+
   private DonutView donutView;
+
   static int numAntsOffReached = 0;
 
   /** Creates an Ant. */
@@ -16,6 +20,7 @@ class Ant extends GameCreature {
     this.speed = speed;
   }
 
+  /** Draws the ant on the canvas.*/
   void draw(Canvas canvas) {
     canvas.drawBitmap(image, this.getX(), this.getY(), null);
   }
