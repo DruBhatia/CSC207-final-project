@@ -54,25 +54,23 @@ class TrueBlue {
   }
 
   void setState() {
-    if (state)
-      state = false;
-    else
-      state = true;
+    if (state) state = false;
+    else state = true;
   }
 
   void tbFall() {
-    if (tbY < gv.getScreenHeight()- tb[0].getHeight() || velocity < 0) {
+    if (tbY < gv.getScreenHeight() - tb[0].getHeight() || velocity < 0) {
       velocity += gravity;
       tbY += velocity;
       tbRect = new Rect(tbX, tbY, tbX + tb[0].getWidth(), tbY + tb[0].getHeight());
     }
   }
 
-  int getTbX(){
+  int getTbX() {
     return tbX;
   }
 
-  int getTbY(){
+  int getTbY() {
     return tbY;
   }
 }

@@ -6,13 +6,12 @@ import androidx.annotation.Nullable;
 
 public class Begin extends Activity {
 
-    GameView gameView;
+  GameView gameView;
 
-    @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        gameView = new GameView(this);
-        setContentView(gameView);
-    }
-
+  @Override
+  protected void onCreate(@Nullable Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    gameView = new GameView(this);
+    setContentView(gameView);
+  }
 }

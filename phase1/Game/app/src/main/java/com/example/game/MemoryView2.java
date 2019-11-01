@@ -20,7 +20,7 @@ public class MemoryView2 extends MemoryView {
     this.cardBackView = R.drawable.bv_01;
   }
 
-  /** Different set of cards is used in this theme.*/
+  /** Different set of cards is used in this theme. */
   @Override
   void initializeCards(AppCompatActivity context) {
     cardArray = new ArrayList<>();

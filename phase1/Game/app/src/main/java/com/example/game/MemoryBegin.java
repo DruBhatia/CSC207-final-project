@@ -9,29 +9,31 @@ import android.widget.ImageButton;
 
 public class MemoryBegin extends AppCompatActivity {
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_memorybegin);
-        ImageButton playMemory = findViewById(R.id.imageButton);
-        ImageButton playMemoryDark = findViewById(R.id.imageButton2);
+  @Override
+  protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_memorybegin);
+    ImageButton playMemory = findViewById(R.id.imageButton);
+    ImageButton playMemoryDark = findViewById(R.id.imageButton2);
 
-        playMemory.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v){
-                Intent intent2 = new Intent(MemoryBegin.this, Main2Activity.class);
-                intent2.putExtra("Theme?", "Light");
-                startActivity(intent2);
-            }
+    playMemory.setOnClickListener(
+        new View.OnClickListener() {
+          @Override
+          public void onClick(View v) {
+            Intent intent2 = new Intent(MemoryBegin.this, Main2Activity.class);
+            intent2.putExtra("Theme?", "Light");
+            startActivity(intent2);
+          }
         });
 
-        playMemoryDark.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v){
-                Intent intent3 = new Intent(MemoryBegin.this, Main2Activity.class);
-                intent3.putExtra("Theme?", "Dark");
-                startActivity(intent3);
-            }
+    playMemoryDark.setOnClickListener(
+        new View.OnClickListener() {
+          @Override
+          public void onClick(View v) {
+            Intent intent3 = new Intent(MemoryBegin.this, Main2Activity.class);
+            intent3.putExtra("Theme?", "Dark");
+            startActivity(intent3);
+          }
         });
-    }
+  }
 }
