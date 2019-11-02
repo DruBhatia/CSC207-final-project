@@ -46,8 +46,9 @@ class TrueBlue {
   }
   void drawTBRect(Canvas canvas){
     Paint p = new Paint();
-    p.setColor(Color.BLUE);
+    p.setColor(Color.TRANSPARENT);
     canvas.drawRect(tbRect, p );
+
   }
 
   void tbOnTouch(int action) {
