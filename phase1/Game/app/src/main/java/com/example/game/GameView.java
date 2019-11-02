@@ -64,12 +64,12 @@ public class GameView extends View {
     }
     // displays true blue in the center
     tb.drawTB(canvas);
-    for (int i = 0; i < cn.numOfTowers; i++) {
-      if (checkCollision(i)) {
-        Intent intent = new Intent(getContext(), Game3OverActivity.class);
-        getContext().startActivity(intent);
-      }
-    }
+//    for (int i = 0; i < cn.getNumOfTowers(); i++) {
+//      if (checkCollision(cn.getTopTowerRect(), cn.getBottomTowerRect())) {
+//        Intent intent = new Intent(getContext(), Game3OverActivity.class);
+//        getContext().startActivity(intent);
+//      }
+//    }
     handler.postDelayed(runnable, delayNum);
 
   }
@@ -90,18 +90,12 @@ public class GameView extends View {
     return screenHeight;
   }
 
-  public boolean checkCollision(Rect[] towerRects) {
-//    if (tb.getTbX() + tb.tb[0].getWidth() >= cn.getcnX(i)
-//        && tb.getTbX() <= cn.getcnX(i) + cn.getWidth()) {
-//      return ((tb.getTbY() > (cn.getcnY(i) + cn.getHeight()))
-//          && (tb.getTbY() + tb.tb[0].getHeight()
-//              < cn.getcnY(i) + cn.distBetweenTowers + cn.getHeight()));
-//    }
-    for (int i=0; i < towerRects.length; i ++)
-      if (tb.getIntersectTb(towerRects[i])){
-        return true;
-      }
-    return false;
-  }
+//  public boolean checkCollision(Rect topTower, Rect bottomTower) {
+//    for (int i=0; i < cn.getNumOfTowers(); i ++)
+//      if (tb.getIntersectTb(topTower) || tb.getIntersectTb(bottomTower)){
+//        return true;
+//      }
+//    return false;
+//  }
 
 }

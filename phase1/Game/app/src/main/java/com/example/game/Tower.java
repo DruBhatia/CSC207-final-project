@@ -19,12 +19,18 @@ class Tower {
   private int[] cnY = new int[numOfTowers];
   private Random random;
   private GameView gv;
-  private Rect[] towerRect;
+  private Rect topTowerRect;
+  private Rect bottomTowerRect;
+
 
   Tower(GameView gv) {
     this.gv = gv;
     topTower = BitmapFactory.decodeResource(gv.getResources(), R.drawable.cn_tower_down);
     bottomTower = BitmapFactory.decodeResource(gv.getResources(), R.drawable.cn_tower_up);
+    topTowerRect = new Rect(cnX[0], cnY[0] - topTower.getHeight(),
+            cnX[0] + topTower.getWidth(),cnY[0] - topTower.getHeight() + topTower.getHeight());
+    bottomTowerRect = new Rect(cnX[0], cnY[0] + distance,
+            cnX[0] + bottomTower.getWidth(), cnY[0] + distance + bottomTower.getHeight());
   }
 
   void moveTower() {
@@ -51,8 +57,12 @@ class Tower {
         cnX[i] += numOfTowers * distBetweenTowers;
         cnY[i] = minTower + random.nextInt(maxTower - minTower + 1);
       }
-      canvas.drawBitmap(topTower, cnX[i], cnY[i] - topTower.getHeight(), null);
-      canvas.drawBitmap(bottomTower, cnX[i], cnY[i] + distance, null);
+      topTowerRect = new Rect(cnX[i], cnY[i] - topTower.getHeight(),
+              cnX[i] + topTower.getWidth(),cnY[i] - topTower.getHeight() + topTower.getHeight());
+      bottomTowerRect = new Rect(cnX[i], cnY[i] + distance,
+              cnX[i] + bottomTower.getWidth(), cnY[i] + distance + bottomTower.getHeight());
+      canvas.drawBitmap(topTower, null, topTowerRect, null);
+      canvas.drawBitmap(bottomTower, null, bottomTowerRect, null);
     }
   }
 
@@ -76,7 +86,11 @@ class Tower {
     return topTower.getHeight();
   }
 
-  public Rect[] getTowerRect() {
-    return towerRect;
+  public Rect getTopTowerRect() {
+    return topTowerRect;
+  }
+
+  public Rect getBottomTowerRect() {
+    return bottomTowerRect;
   }
 }
