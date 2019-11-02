@@ -66,6 +66,11 @@ public class GameView extends View {
     // This is where we will draw our view for Game3.
     canvas.drawBitmap(background, null, rect, null);
 
+    scorePaint.setColor(-16776961);
+    scorePaint.setTextSize(80);
+    scorePaint.setUnderlineText(true);
+    canvas.drawText("Score : " + score, 20, 60, scorePaint);
+
     // true blue falls
     if (tb.getState()) {
       tb.drawTBRect(canvas);
