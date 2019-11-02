@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class Game3OverActivity extends AppCompatActivity {
 
@@ -15,6 +16,10 @@ public class Game3OverActivity extends AppCompatActivity {
     setContentView(R.layout.activity_game3_over);
     Button mainMenu = findViewById(R.id.menu3);
     Button rePlayGame = findViewById(R.id.play3_again);
+    //String showScore = getIntent().getExtras().get("Score").toString();
+    String showTime = getIntent().getExtras().get("Time").toString();
+    TextView score = findViewById(R.id.score3);
+    TextView time = findViewById(R.id.time3);
     rePlayGame.setOnClickListener(
         new View.OnClickListener() {
           @Override
@@ -32,5 +37,7 @@ public class Game3OverActivity extends AppCompatActivity {
             startActivity(intent3);
           }
         });
+      //score.setText("Score: " + showScore);
+      time.setText("Time taken: " + showTime + " s");
   }
 }
