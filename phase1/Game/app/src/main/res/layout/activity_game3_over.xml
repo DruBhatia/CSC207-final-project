@@ -25,7 +25,9 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/game3Over"
         android:layout_marginTop="56dp"
-        android:text="Play Again" />
+        android:text="Play Again"
+        android:layout_marginLeft="95dp"
+        />
 
     <TextView
         android:id="@+id/score3"
