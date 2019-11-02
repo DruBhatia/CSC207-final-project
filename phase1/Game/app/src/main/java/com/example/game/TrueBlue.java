@@ -3,6 +3,8 @@ package com.example.game;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
 import android.graphics.Rect;
 import android.view.MotionEvent;
 
@@ -39,7 +41,13 @@ class TrueBlue {
   }
 
   void drawTB(Canvas canvas) {
+
     canvas.drawBitmap(tb[tbFrame], null, tbRect, null);
+  }
+  void drawTBRect(Canvas canvas){
+    Paint p = new Paint();
+    p.setColor(Color.BLUE);
+    canvas.drawRect(tbRect, p );
   }
 
   void tbOnTouch(int action) {
