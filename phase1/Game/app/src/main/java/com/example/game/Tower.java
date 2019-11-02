@@ -91,6 +91,9 @@ class Tower {
       if (getIntersectTb(bottomTowerRect, tb) || getIntersectTb(topTowerRect, tb)) {
         gv.gameOver();
       }
+      if (getIntersectTb(score, tb)){
+        gv.increaseScore();
+      }
     }
   }
 
@@ -125,4 +128,6 @@ class Tower {
   boolean getIntersectTb(Rect TowerRect, Rect tbRect) {
     return tbRect.intersect(TowerRect);
   }
+
+
 }
