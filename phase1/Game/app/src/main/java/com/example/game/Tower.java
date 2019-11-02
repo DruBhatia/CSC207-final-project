@@ -103,8 +103,10 @@ class Tower {
       if (getIntersectTb(bottomTowerRect, tb) || getIntersectTb(topTowerRect, tb)) {
         gv.gameOver();
       }
-      if (topTowerRect.right - gv.tb.getTbX() >= 0 && topTowerRect.right - gv.tb.getTbX() < 7){
-        gv.increaseScore();
+      if (topTowerRect.right - gv.tb.getTbX() >= 0 && topTowerRect.right - gv.tb.getTbX() < 7) {
+        if (topTowerRect.bottom < gv.tb.getTbY() && bottomTowerRect.top > gv.tb.getTbY()) {
+          gv.increaseScore();
+        }
       }
     }
   }
