@@ -11,7 +11,7 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
 import java.io.Serializable;
-import java.time.LocalTime;
+
 import java.util.Date;
 
 /** DonutView class is the whole surface that is visible to the user while playing the game. */
@@ -43,16 +43,19 @@ public class DonutView extends SurfaceView implements SurfaceHolder.Callback, Se
   private float currTime;
   long start;
 
+  int background;
+
   /**
    * Construct the thread.
    *
    * @param context is the environment of this game.
    */
-  public DonutView(Context context) {
+  public DonutView(Context context, int background) {
     super(context);
     this.setFocusable(true);
     this.getHolder().addCallback(this);
     score = 0;
+    this.background = background;
   }
 
   /** Updates the canvas that is viewed on screen.*/
@@ -117,8 +120,8 @@ public class DonutView extends SurfaceView implements SurfaceHolder.Callback, Se
     Bitmap donutBitmap1 = BitmapFactory.decodeResource(this.getResources(), R.drawable.donut);
     donutNew = new Donut(donutBitmap1, this.getWidth() / 2 - donutBitmap1.getWidth() / 2, 10, this);
 
-    backgroundPicture = BitmapFactory.decodeResource(getResources(), R.drawable.background);
-
+//    backgroundPicture = BitmapFactory.decodeResource(getResources(), R.drawable.background);
+    backgroundPicture = BitmapFactory.decodeResource(getResources(), this.background);
     manager = new AntManager();
     manager.createAnts(antBitmap1, this, antGenerationSpeed);
     gameThread = new GameThread(this.getHolder(), this);
