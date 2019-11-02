@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
+import android.graphics.Paint;
 import android.graphics.Point;
 import android.graphics.Rect;
 import android.view.Display;
@@ -25,17 +26,22 @@ public class GameView extends View {
   Point point;
   int screenWidth, screenHeight; // Height and Width of device.
   Rect rect;
+  /** The score paint to display the score. */
+  private Paint scorePaint = new Paint();
+  /** The score variable that keeps track of current score */
+  private int score = 0;
+
 
   public GameView(Context context) {
     super(context);
     handler = new Handler();
     runnable =
-        new Runnable() {
-          @Override
-          public void run() {
-            invalidate(); // This should call onDraw.
-          }
-        };
+            new Runnable() {
+              @Override
+              public void run() {
+                invalidate(); // This should call onDraw.
+              }
+            };
     background = BitmapFactory.decodeResource(getResources(), R.drawable.game3_background);
     display = ((Activity) getContext()).getWindowManager().getDefaultDisplay();
     point = new Point();
@@ -53,15 +59,17 @@ public class GameView extends View {
     super.onDraw(canvas);
     // This is where we will draw our view for Game3.
     canvas.drawBitmap(background, null, rect, null);
+    scorePaint.setColor(-16776961);
+    scorePaint.setTextSize(80);
+    scorePaint.setUnderlineText(true);
+    canvas.drawText("Score : " + score, 20, 60, scorePaint);
+    tb.drawTBRect(canvas);
+    // animate true blue
+    tb.animateTB();
 
     // true blue falls
     if (tb.getState()) {
-      tb.drawTBRect(canvas);
-      //animate tb
-      tb.animateTB();
-      //cause tb to fall
       tb.tbFall();
-      //draw the towers
       cn.drawTower(canvas); // Endless number of CN Tower is created.
     }
     // displays true blue in the center

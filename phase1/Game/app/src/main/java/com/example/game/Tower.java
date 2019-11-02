@@ -15,8 +15,8 @@ class Tower {
   private Bitmap topTower, bottomTower;
   private int distance = 700; // distance between top and bottom CN Tower.
   private int minTower, maxTower;
-  private int numOfTowers = 4;
-  private int distBetweenTowers;
+  int numOfTowers = 4;
+  int distBetweenTowers;
   private int[] cnX = new int[numOfTowers];
   private int[] cnY = new int[numOfTowers];
   private Random random;
@@ -24,22 +24,15 @@ class Tower {
   private Rect topTowerRect;
   private Rect bottomTowerRect;
 
+
   Tower(GameView gv) {
     this.gv = gv;
     topTower = BitmapFactory.decodeResource(gv.getResources(), R.drawable.cn_tower_down);
     bottomTower = BitmapFactory.decodeResource(gv.getResources(), R.drawable.cn_tower_up);
-    topTowerRect =
-        new Rect(
-            cnX[0],
-            cnY[0] - topTower.getHeight(),
-            cnX[0] + topTower.getWidth(),
-            cnY[0] - topTower.getHeight() + topTower.getHeight());
-    bottomTowerRect =
-        new Rect(
-            cnX[0],
-            cnY[0] + distance,
-            cnX[0] + bottomTower.getWidth(),
-            cnY[0] + distance + bottomTower.getHeight());
+    topTowerRect = new Rect(cnX[0], cnY[0] - topTower.getHeight(),
+            cnX[0] + topTower.getWidth(),cnY[0] - topTower.getHeight() + topTower.getHeight());
+    bottomTowerRect = new Rect(cnX[0], cnY[0] + distance,
+            cnX[0] + bottomTower.getWidth(), cnY[0] + distance + bottomTower.getHeight());
   }
 
   void moveTower() {
@@ -68,24 +61,16 @@ class Tower {
       }
       Paint p = new Paint();
       p.setARGB(128, 255, 255, 255);
-      topTowerRect =
-          new Rect(
-              cnX[i],
-              cnY[i] - topTower.getHeight(),
-              cnX[i] + topTower.getWidth(),
-              cnY[i] - topTower.getHeight() + topTower.getHeight());
-      bottomTowerRect =
-          new Rect(
-              cnX[i],
-              cnY[i] + distance,
-              cnX[i] + bottomTower.getWidth(),
-              cnY[i] + distance + bottomTower.getHeight());
+      topTowerRect = new Rect(cnX[i], cnY[i] - topTower.getHeight(),
+              cnX[i] + topTower.getWidth(),cnY[i] - topTower.getHeight() + topTower.getHeight());
+      bottomTowerRect = new Rect(cnX[i], cnY[i] + distance,
+              cnX[i] + bottomTower.getWidth(), cnY[i] + distance + bottomTower.getHeight());
       canvas.drawBitmap(topTower, null, topTowerRect, null);
-      canvas.drawBitmap(bottomTower, null, bottomTowerRect, null);
+      canvas.drawBitmap(bottomTower, null, bottomTowerRect, null  );
       canvas.drawRect(topTowerRect, p);
-      canvas.drawRect(bottomTowerRect, p);
+      canvas.drawRect(bottomTowerRect,p);
       Rect tb = gv.tb.getTbRect();
-      if (getIntersectTb(bottomTowerRect, tb) || getIntersectTb(topTowerRect, tb)) {
+      if (getIntersectTb(bottomTowerRect, tb) || getIntersectTb(topTowerRect, tb)){
         gv.gameOver();
       }
     }
@@ -117,9 +102,9 @@ class Tower {
 
   public Rect getBottomTowerRect() {
     return bottomTowerRect;
-  }
+    }
 
-  boolean getIntersectTb(Rect TowerRect, Rect tbRect) {
+  boolean getIntersectTb(Rect TowerRect, Rect tbRect){
     return tbRect.intersect(TowerRect);
   }
 }
