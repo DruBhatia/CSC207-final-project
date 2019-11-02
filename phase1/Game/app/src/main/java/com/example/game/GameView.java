@@ -13,6 +13,8 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.os.Handler;
 
+import java.util.Date;
+
 public class GameView extends View {
   // This will be the custom view class for Game3
   TrueBlue tb; // TrueBlue class
@@ -25,6 +27,8 @@ public class GameView extends View {
   Point point;
   int screenWidth, screenHeight; // Height and Width of device.
   Rect rect;
+  private float currTime;
+  long start;
 
   public GameView(Context context) {
     super(context);
@@ -46,6 +50,8 @@ public class GameView extends View {
     cn = new Tower(this); // created CN Tower
     cn.moveTower(); // moves CN Tower
     tb = new TrueBlue(this); // creates TrueBlue
+    Date startDate = new Date();
+    start = startDate.getTime();
   }
 
   @Override
@@ -89,7 +95,14 @@ public class GameView extends View {
 
   public void gameOver(){
     tb.setState();
+    Date finalDate = new Date();
+    currTime = (finalDate.getTime() - start) / 1000F;
     Intent intent = new Intent(getContext(), Game3OverActivity.class);
+    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+
+    //intent.putExtra("Score", score);
+
+    intent.putExtra("Time", currTime);
     getContext().startActivity(intent);
   }
 
