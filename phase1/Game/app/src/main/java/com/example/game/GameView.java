@@ -68,7 +68,6 @@ public class GameView extends View {
     tb.drawTB(canvas);
 
     handler.postDelayed(runnable, delayNum);
-
   }
 
   // When you tap the screen
@@ -87,10 +86,9 @@ public class GameView extends View {
     return screenHeight;
   }
 
-  public void gameOver(){
+  public void gameOver() {
     tb.setState();
     Intent intent = new Intent(getContext(), Game3OverActivity.class);
     getContext().startActivity(intent);
   }
-
 }

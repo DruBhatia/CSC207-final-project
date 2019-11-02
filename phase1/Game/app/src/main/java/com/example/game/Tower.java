@@ -119,7 +119,7 @@ class Tower {
     return bottomTowerRect;
   }
 
-  boolean getIntersectTb(Rect TowerRect, Rect tbRect) {
+  private boolean getIntersectTb(Rect TowerRect, Rect tbRect) {
     return tbRect.intersect(TowerRect);
   }
 }

@@ -1,5 +1,6 @@
 package com.example.game;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -15,6 +16,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 /** DonutView class is the whole surface that is visible to the user while playing the game. */
+@SuppressLint("ViewConstructor")
 public class DonutView extends SurfaceView implements SurfaceHolder.Callback, Serializable {
 
   /** GameThread manages and time component and starts the game. */
@@ -40,7 +42,6 @@ public class DonutView extends SurfaceView implements SurfaceHolder.Callback, Se
   private Bitmap backgroundPicture;
 
   public static final long serialVersionUID = 1L;
-  private float currTime;
   long start;
 
   int background;
@@ -58,7 +59,7 @@ public class DonutView extends SurfaceView implements SurfaceHolder.Callback, Se
     this.background = background;
   }
 
-  /** Updates the canvas that is viewed on screen.*/
+  /** Updates the canvas that is viewed on screen. */
   public void update() {
     Bitmap antBitmap1 = BitmapFactory.decodeResource(this.getResources(), R.drawable.ant);
     if (touch) {
@@ -76,7 +77,7 @@ public class DonutView extends SurfaceView implements SurfaceHolder.Callback, Se
 
       gameThread.setRunning(false);
       Date finalDate = new Date();
-      currTime = (finalDate.getTime() - start) / 1000F;
+      float currTime = (finalDate.getTime() - start) / 1000F;
       Intent newGameintent = new Intent(getContext(), GameOverActivity.class);
 
       newGameintent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
@@ -100,8 +101,8 @@ public class DonutView extends SurfaceView implements SurfaceHolder.Callback, Se
     super.draw(canvas);
     Bitmap scaledBackground = Bitmap.createScaledBitmap(backgroundPicture, 2000, 3000, false);
     canvas.drawBitmap(scaledBackground, 0, 0, null);
-//    canvas.drawColor(-3355444);
-//    canvas.drawBitmap(backgroundPicture, 0, 0, null);
+    //    canvas.drawColor(-3355444);
+    //    canvas.drawBitmap(backgroundPicture, 0, 0, null);
     scorePaint.setColor(-16776961);
     scorePaint.setTextSize(80);
     scorePaint.setUnderlineText(true);
@@ -120,7 +121,7 @@ public class DonutView extends SurfaceView implements SurfaceHolder.Callback, Se
     Bitmap donutBitmap1 = BitmapFactory.decodeResource(this.getResources(), R.drawable.donut);
     donutNew = new Donut(donutBitmap1, this.getWidth() / 2 - donutBitmap1.getWidth() / 2, 10, this);
 
-//    backgroundPicture = BitmapFactory.decodeResource(getResources(), R.drawable.background);
+    //    backgroundPicture = BitmapFactory.decodeResource(getResources(), R.drawable.background);
     backgroundPicture = BitmapFactory.decodeResource(getResources(), this.background);
     manager = new AntManager();
     manager.createAnts(antBitmap1, this, antGenerationSpeed);
@@ -148,7 +149,7 @@ public class DonutView extends SurfaceView implements SurfaceHolder.Callback, Se
   @Override
   public void surfaceChanged(SurfaceHolder surfaceHolder, int i, int i1, int i2) {}
 
-  /** Removes the ant when clicked on it from the arraylist and increases score by 10.*/
+  /** Removes the ant when clicked on it from the arraylist and increases score by 10. */
   @Override
   public boolean onTouchEvent(MotionEvent event) {
     if (event.getAction() == MotionEvent.ACTION_DOWN) {
