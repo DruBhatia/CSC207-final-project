@@ -91,7 +91,7 @@ class Tower {
       if (getIntersectTb(bottomTowerRect, tb) || getIntersectTb(topTowerRect, tb)) {
         gv.gameOver();
       }
-      if ((cnX[i]) > gv.getScreenWidth()/2){
+      if (getIntersectTb(score, tb)){
         gv.increaseScore();
       }
     }
