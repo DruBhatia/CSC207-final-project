@@ -24,11 +24,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.game.Main1Activity;
-import com.example.game.Main3Activity;
-import com.example.game.Main1Activity;
 import com.example.game.R;
-import com.example.game.ui.login.LoginViewModel;
-import com.example.game.ui.login.LoginViewModelFactory;
 
 public class MainActivity extends AppCompatActivity {
 
