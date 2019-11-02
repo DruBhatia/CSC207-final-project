@@ -69,6 +69,10 @@ class Tower {
       canvas.drawBitmap(bottomTower, null, bottomTowerRect, null  );
       canvas.drawRect(topTowerRect, p);
       canvas.drawRect(bottomTowerRect,p);
+      Rect tb = gv.tb.getTbRect();
+      if (getIntersectTb(bottomTowerRect, tb) || getIntersectTb(topTowerRect, tb)){
+        gv.gameOver();
+      }
     }
   }
 
@@ -98,5 +102,9 @@ class Tower {
 
   public Rect getBottomTowerRect() {
     return bottomTowerRect;
+    }
+
+  boolean getIntersectTb(Rect TowerRect, Rect tbRect){
+    return tbRect.intersect(TowerRect);
   }
 }
