@@ -23,6 +23,7 @@ class Tower {
   private GameView gv;
   private Rect topTowerRect;
   private Rect bottomTowerRect;
+  private Rect score;
 
 
   Tower(GameView gv) {
@@ -69,22 +70,23 @@ class Tower {
       }
       Paint p = new Paint();
       p.setARGB(128, 255, 255, 255);
-      topTowerRect =
-          new Rect(
-              cnX[i],
+      Paint s = new Paint();
+      topTowerRect = new Rect(cnX[i],
               cnY[i] - topTower.getHeight(),
               cnX[i] + topTower.getWidth(),
-              cnY[i] - topTower.getHeight() + topTower.getHeight());
-      bottomTowerRect =
-          new Rect(
-              cnX[i],
+              cnY[i]);
+      bottomTowerRect = new Rect(cnX[i],
               cnY[i] + distance,
               cnX[i] + bottomTower.getWidth(),
               cnY[i] + distance + bottomTower.getHeight());
+      score = new Rect(cnX[i] + topTower.getWidth(),
+              cnY[i],
+              cnX[i] + topTower.getWidth() + 1, cnY[i] + distance);
       canvas.drawBitmap(topTower, null, topTowerRect, null);
       canvas.drawBitmap(bottomTower, null, bottomTowerRect, null);
       canvas.drawRect(topTowerRect, p);
       canvas.drawRect(bottomTowerRect, p);
+      canvas.drawRect(score, s);
       Rect tb = gv.tb.getTbRect();
       if (getIntersectTb(bottomTowerRect, tb) || getIntersectTb(topTowerRect, tb)) {
         gv.gameOver();
