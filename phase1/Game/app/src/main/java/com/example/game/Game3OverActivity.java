@@ -19,7 +19,7 @@ public class Game3OverActivity extends AppCompatActivity {
         new View.OnClickListener() {
           @Override
           public void onClick(View v) {
-            Intent intent2 = new Intent(Game3OverActivity.this, Main3Activity.class);
+            Intent intent2 = new Intent(Game3OverActivity.this, Main4Activity.class);
             startActivity(intent2);
           }
         });
