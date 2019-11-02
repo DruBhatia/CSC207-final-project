@@ -80,7 +80,6 @@ public class GameView extends View {
     tb.drawTB(canvas);
 
     handler.postDelayed(runnable, delayNum);
-
   }
 
   // When you tap the screen
@@ -99,7 +98,7 @@ public class GameView extends View {
     return screenHeight;
   }
 
-  public void gameOver(){
+  public void gameOver() {
     tb.setState();
     Date finalDate = new Date();
     currTime = (finalDate.getTime() - start) / 1000F;
@@ -111,5 +110,4 @@ public class GameView extends View {
     intent.putExtra("Time", currTime);
     getContext().startActivity(intent);
   }
-
 }

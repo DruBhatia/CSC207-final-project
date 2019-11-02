@@ -11,9 +11,9 @@ import android.view.MotionEvent;
 class TrueBlue {
   private int tbFrame, velocity, gravity, tbX, tbY;
   private GameView gv;
-  Bitmap[] tb;
+  private Bitmap[] tb;
   private boolean state;
-  Rect tbRect;
+  private Rect tbRect;
 
   TrueBlue(GameView gv) {
     tbFrame = 0; // the current frame for true blue
@@ -44,11 +44,11 @@ class TrueBlue {
 
     canvas.drawBitmap(tb[tbFrame], null, tbRect, null);
   }
-  void drawTBRect(Canvas canvas){
+
+  void drawTBRect(Canvas canvas) {
     Paint p = new Paint();
     p.setColor(Color.TRANSPARENT);
-    canvas.drawRect(tbRect, p );
-
+    canvas.drawRect(tbRect, p);
   }
 
   void tbOnTouch(int action) {
@@ -83,7 +83,7 @@ class TrueBlue {
     return tbY;
   }
 
-  Rect getTbRect(){
+  Rect getTbRect() {
     return tbRect;
   }
 }
