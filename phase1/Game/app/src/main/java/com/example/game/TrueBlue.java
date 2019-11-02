@@ -82,7 +82,7 @@ class TrueBlue {
     return tbY;
   }
 
-  boolean getIntersectTb(Rect TowerRect){
-    return tbRect.intersect(TowerRect);
+  Rect getTbRect(){
+    return tbRect;
   }
 }
