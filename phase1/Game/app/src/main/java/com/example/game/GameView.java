@@ -115,7 +115,7 @@ public class GameView extends View {
       Intent intent = new Intent(getContext(), Game3OverActivity.class);
       intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
 
-      // intent.putExtra("Score", score);
+      intent.putExtra("Score", score);
 
       intent.putExtra("Time", currTime);
       getContext().startActivity(intent);
