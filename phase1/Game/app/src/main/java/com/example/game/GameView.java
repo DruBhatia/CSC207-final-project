@@ -19,14 +19,18 @@ import java.util.Date;
 
 public class GameView extends View {
   // This will be the custom view class for Game3
-  TrueBlue tb; // TrueBlue class
+  /** TB class **/
+  TrueBlue tb;
+  /** Tower class **/
   Tower cn; // Tower class
   Handler handler;
   Runnable runnable;
   final int delayNum = 30;
+  /** Background img **/
   Bitmap background;
   Display display;
   Point point;
+  /** height and width of the screen**/
   int screenWidth, screenHeight; // Height and Width of device.
   Rect rect;
   boolean scored;
@@ -38,6 +42,7 @@ public class GameView extends View {
   private float currTime;
   long start;
 
+  /**Initializer for gameview**/
   public GameView(Context context) {
     super(context);
     handler = new Handler();
@@ -63,17 +68,19 @@ public class GameView extends View {
     scored = false;
   }
 
+  /** When something is drawn in the gameview**/
   @Override
   protected void onDraw(Canvas canvas) {
     super.onDraw(canvas);
     // This is where we will draw our view for Game3.
     canvas.drawBitmap(background, null, rect, null);
-
+    /** Creates the score**/
     scorePaint.setColor(-16776961);
     scorePaint.setTextSize(80);
     scorePaint.setUnderlineText(true);
     canvas.drawText("Score : " + score, 20, 60, scorePaint);
 
+    /** animates the game and causes it to run if tb is playing **/
     // true blue falls
     if (tb.getState()) {
       tb.drawTBRect(canvas);
@@ -90,7 +97,7 @@ public class GameView extends View {
     handler.postDelayed(runnable, delayNum);
   }
 
-  // When you tap the screen
+  /** when you tap the screen **/
   @Override
   public boolean onTouchEvent(MotionEvent event) {
     int action = event.getAction();
@@ -98,16 +105,18 @@ public class GameView extends View {
     return true;
   }
 
+  /**returns the screenwidth **/
   public int getScreenWidth() {
     return screenWidth;
   }
 
+  /**returns screen height **/
   public int getScreenHeight() {
     return screenHeight;
   }
 
 
-
+  /** what to do when the game ends **/
   public void gameOver() {
       tb.setState();
       Date finalDate = new Date();
@@ -121,6 +130,7 @@ public class GameView extends View {
       getContext().startActivity(intent);
   }
 
+  /** increases the score  **/
   public void increaseScore(){
       score++;
   }
