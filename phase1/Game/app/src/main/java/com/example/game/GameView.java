@@ -6,8 +6,10 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
+import android.graphics.Paint;
 import android.graphics.Point;
 import android.graphics.Rect;
+import android.os.SystemClock;
 import android.view.Display;
 import android.view.MotionEvent;
 import android.view.View;
@@ -27,6 +29,12 @@ public class GameView extends View {
   Point point;
   int screenWidth, screenHeight; // Height and Width of device.
   Rect rect;
+  boolean scored;
+  /** The score paint to display the score. */
+  private Paint scorePaint = new Paint();
+  /** The score variable that keeps track of current score */
+  private int score = 0;
+
   private float currTime;
   long start;
 
@@ -52,6 +60,7 @@ public class GameView extends View {
     tb = new TrueBlue(this); // creates TrueBlue
     Date startDate = new Date();
     start = startDate.getTime();
+    scored = false;
   }
 
   @Override
@@ -59,6 +68,11 @@ public class GameView extends View {
     super.onDraw(canvas);
     // This is where we will draw our view for Game3.
     canvas.drawBitmap(background, null, rect, null);
+
+    scorePaint.setColor(-16776961);
+    scorePaint.setTextSize(80);
+    scorePaint.setUnderlineText(true);
+    canvas.drawText("Score : " + score, 20, 60, scorePaint);
 
     // true blue falls
     if (tb.getState()) {
@@ -92,16 +106,22 @@ public class GameView extends View {
     return screenHeight;
   }
 
+
+
   public void gameOver() {
-    tb.setState();
-    Date finalDate = new Date();
-    currTime = (finalDate.getTime() - start) / 1000F;
-    Intent intent = new Intent(getContext(), Game3OverActivity.class);
-    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+      tb.setState();
+      Date finalDate = new Date();
+      currTime = (finalDate.getTime() - start) / 1000F;
+      Intent intent = new Intent(getContext(), Game3OverActivity.class);
+      intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
 
-    //intent.putExtra("Score", score);
+      // intent.putExtra("Score", score);
 
-    intent.putExtra("Time", currTime);
-    getContext().startActivity(intent);
+      intent.putExtra("Time", currTime);
+      getContext().startActivity(intent);
+  }
+
+  public void increaseScore(){
+      score++;
   }
 }
