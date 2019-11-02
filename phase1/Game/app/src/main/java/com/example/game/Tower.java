@@ -60,7 +60,7 @@ class Tower {
         cnY[i] = minTower + random.nextInt(maxTower - minTower + 1);
       }
       Paint p = new Paint();
-      p.setColor(Color.BLUE);
+      p.setARGB(128, 255, 255, 255);
       topTowerRect = new Rect(cnX[i], cnY[i] - topTower.getHeight(),
               cnX[i] + topTower.getWidth(),cnY[i] - topTower.getHeight() + topTower.getHeight());
       bottomTowerRect = new Rect(cnX[i], cnY[i] + distance,

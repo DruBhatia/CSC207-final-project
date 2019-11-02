@@ -53,13 +53,15 @@ public class GameView extends View {
     super.onDraw(canvas);
     // This is where we will draw our view for Game3.
     canvas.drawBitmap(background, null, rect, null);
-    tb.drawTBRect(canvas);
-    // animate true blue
-    tb.animateTB();
 
     // true blue falls
     if (tb.getState()) {
+      tb.drawTBRect(canvas);
+      //animate tb
+      tb.animateTB();
+      //cause tb to fall
       tb.tbFall();
+      //draw the towers
       cn.drawTower(canvas); // Endless number of CN Tower is created.
     }
     // displays true blue in the center
@@ -89,7 +91,6 @@ public class GameView extends View {
     tb.setState();
     Intent intent = new Intent(getContext(), Game3OverActivity.class);
     getContext().startActivity(intent);
-    System.out.println("WE FUCKING DID IT");
   }
 
 }
