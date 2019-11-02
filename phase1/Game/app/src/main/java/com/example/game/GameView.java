@@ -90,13 +90,18 @@ public class GameView extends View {
     return screenHeight;
   }
 
-  public boolean checkCollision(int i) {
-    if (tb.getTbX() + tb.tb[0].getWidth() >= cn.getcnX(i)
-        && tb.getTbX() <= cn.getcnX(i) + cn.getWidth()) {
-      return ((tb.getTbY() > (cn.getcnY(i) + cn.getHeight()))
-          && (tb.getTbY() + tb.tb[0].getHeight()
-              < cn.getcnY(i) + cn.distBetweenTowers + cn.getHeight()));
-    }
+  public boolean checkCollision(Rect[] towerRects) {
+//    if (tb.getTbX() + tb.tb[0].getWidth() >= cn.getcnX(i)
+//        && tb.getTbX() <= cn.getcnX(i) + cn.getWidth()) {
+//      return ((tb.getTbY() > (cn.getcnY(i) + cn.getHeight()))
+//          && (tb.getTbY() + tb.tb[0].getHeight()
+//              < cn.getcnY(i) + cn.distBetweenTowers + cn.getHeight()));
+//    }
+    for (int i=0; i < towerRects.length; i ++)
+      if (tb.getIntersectTb(towerRects[i])){
+        return true;
+      }
     return false;
   }
+
 }

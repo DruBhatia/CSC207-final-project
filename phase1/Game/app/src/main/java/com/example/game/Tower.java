@@ -3,6 +3,7 @@ package com.example.game;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
+import android.graphics.Rect;
 
 import java.util.Random;
 
@@ -18,6 +19,7 @@ class Tower {
   private int[] cnY = new int[numOfTowers];
   private Random random;
   private GameView gv;
+  private Rect[] towerRect;
 
   Tower(GameView gv) {
     this.gv = gv;
@@ -72,5 +74,9 @@ class Tower {
 
   int getHeight() {
     return topTower.getHeight();
+  }
+
+  public Rect[] getTowerRect() {
+    return towerRect;
   }
 }
