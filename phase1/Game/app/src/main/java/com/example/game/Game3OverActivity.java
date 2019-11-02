@@ -37,7 +37,7 @@ public class Game3OverActivity extends AppCompatActivity {
             startActivity(intent3);
           }
         });
-    score.setText("Score: " + showScore);
-    time.setText("Time taken: " + showTime + " s");
+      score.setText("Score: " + showScore);
+      time.setText("Time taken: " + showTime + " s");
   }
 }
