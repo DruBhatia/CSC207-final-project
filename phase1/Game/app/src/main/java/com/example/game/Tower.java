@@ -12,20 +12,31 @@ import java.util.Random;
 // A class to create CN Tower in game3.
 
 class Tower {
+  /** Images of the top and bottom tower **/
   private Bitmap topTower, bottomTower;
-  private int distance = 700; // distance between top and bottom CN Tower.
+  /** Distance between top and bottom tower **/
+  private int distance = 700;
+  /** the maximum and minimum heights of the towers **/
   private int minTower, maxTower;
+  /** the number of towers**/
   private int numOfTowers = 4;
+  /** distance between towers **/
   private int distBetweenTowers;
+  /** all the x coordinates for the towers **/
   private int[] cnX = new int[numOfTowers];
+  /** all the y coordinates for the towers **/
   private int[] cnY = new int[numOfTowers];
   private Random random;
+  /** the game view tower is created in **/
   private GameView gv;
+  /** The rectangle for the top tower **/
   private Rect topTowerRect;
+  /** The rectangle for the bottom tower **/
   private Rect bottomTowerRect;
+  /** The game score **/
   private Rect score;
 
-
+  /** Initializes the tower **/
   Tower(GameView gv) {
     this.gv = gv;
     topTower = BitmapFactory.decodeResource(gv.getResources(), R.drawable.cn_tower_down);
@@ -43,9 +54,8 @@ class Tower {
             cnX[0] + bottomTower.getWidth(),
             cnY[0] + distance + bottomTower.getHeight());
   }
-
+  /** Moves numOfTowers and makes them move across the display**/
   void moveTower() {
-    // Makes numOfTowers and makes them move across the display
 
     distBetweenTowers = gv.getScreenWidth() * 3 / 4;
     minTower = distance / 2;
@@ -57,7 +67,7 @@ class Tower {
       cnY[i] = minTower + random.nextInt(maxTower - minTower + 1);
     }
   }
-
+  /** Draws the tower in the gameview **/
   void drawTower(Canvas canvas) {
     // used the numOfTowers and creates endless number of CN towers occurring at random.
 
@@ -71,6 +81,7 @@ class Tower {
       Paint p = new Paint();
       p.setARGB(128, 255, 255, 255);
       Paint s = new Paint();
+      s.setColor(Color.TRANSPARENT);
       topTowerRect = new Rect(cnX[i],
               cnY[i] - topTower.getHeight(),
               cnX[i] + topTower.getWidth(),
@@ -124,7 +135,7 @@ class Tower {
   public Rect getBottomTowerRect() {
     return bottomTowerRect;
   }
-
+  /** Finds out if a towerrect and tbrect intersect**/
   boolean getIntersectTb(Rect TowerRect, Rect tbRect) {
     return tbRect.intersect(TowerRect);
   }
