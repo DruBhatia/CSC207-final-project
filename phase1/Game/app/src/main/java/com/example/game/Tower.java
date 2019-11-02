@@ -3,6 +3,8 @@ package com.example.game;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
 import android.graphics.Rect;
 
 import java.util.Random;
@@ -57,12 +59,16 @@ class Tower {
         cnX[i] += numOfTowers * distBetweenTowers;
         cnY[i] = minTower + random.nextInt(maxTower - minTower + 1);
       }
+      Paint p = new Paint();
+      p.setColor(Color.BLUE);
       topTowerRect = new Rect(cnX[i], cnY[i] - topTower.getHeight(),
               cnX[i] + topTower.getWidth(),cnY[i] - topTower.getHeight() + topTower.getHeight());
       bottomTowerRect = new Rect(cnX[i], cnY[i] + distance,
               cnX[i] + bottomTower.getWidth(), cnY[i] + distance + bottomTower.getHeight());
       canvas.drawBitmap(topTower, null, topTowerRect, null);
-      canvas.drawBitmap(bottomTower, null, bottomTowerRect, null);
+      canvas.drawBitmap(bottomTower, null, bottomTowerRect, null  );
+      canvas.drawRect(topTowerRect, p);
+      canvas.drawRect(bottomTowerRect,p);
     }
   }
 

@@ -90,12 +90,12 @@ public class GameView extends View {
     return screenHeight;
   }
 
-//  public boolean checkCollision(Rect topTower, Rect bottomTower) {
-//    for (int i=0; i < cn.getNumOfTowers(); i ++)
-//      if (tb.getIntersectTb(topTower) || tb.getIntersectTb(bottomTower)){
-//        return true;
-//      }
-//    return false;
-//  }
+  public boolean checkCollision(Rect topTower, Rect bottomTower) {
+    for (int i=0; i < cn.getNumOfTowers(); i ++)
+      if (tb.getIntersectTb(topTower) || tb.getIntersectTb(bottomTower)){
+        return true;
+      }
+    return false;
+  }
 
 }
