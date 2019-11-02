@@ -16,7 +16,7 @@ public class Game3OverActivity extends AppCompatActivity {
     setContentView(R.layout.activity_game3_over);
     Button mainMenu = findViewById(R.id.menu3);
     Button rePlayGame = findViewById(R.id.play3_again);
-    //String showScore = getIntent().getExtras().get("Score").toString();
+    String showScore = getIntent().getExtras().get("Score").toString();
     String showTime = getIntent().getExtras().get("Time").toString();
     TextView score = findViewById(R.id.score3);
     TextView time = findViewById(R.id.time3);
@@ -37,7 +37,7 @@ public class Game3OverActivity extends AppCompatActivity {
             startActivity(intent3);
           }
         });
-      //score.setText("Score: " + showScore);
+      score.setText("Score: " + showScore);
       time.setText("Time taken: " + showTime + " s");
   }
 }

@@ -12,31 +12,32 @@ import java.util.Random;
 // A class to create CN Tower in game3.
 
 class Tower {
-  /** Images of the top and bottom tower **/
+  /** Images of the top and bottom tower * */
   private Bitmap topTower, bottomTower;
-  /** Distance between top and bottom tower **/
+  /** Distance between top and bottom tower * */
   private int distance = 700;
-  /** the maximum and minimum heights of the towers **/
+  /** the maximum and minimum heights of the towers * */
   private int minTower, maxTower;
-  /** the number of towers**/
+  /** the number of towers* */
   private int numOfTowers = 4;
-  /** distance between towers **/
+  /** distance between towers * */
   private int distBetweenTowers;
-  /** all the x coordinates for the towers **/
+  /** all the x coordinates for the towers * */
   private int[] cnX = new int[numOfTowers];
-  /** all the y coordinates for the towers **/
+  /** all the y coordinates for the towers * */
   private int[] cnY = new int[numOfTowers];
+
   private Random random;
-  /** the game view tower is created in **/
+  /** the game view tower is created in * */
   private GameView gv;
-  /** The rectangle for the top tower **/
+  /** The rectangle for the top tower * */
   private Rect topTowerRect;
-  /** The rectangle for the bottom tower **/
+  /** The rectangle for the bottom tower * */
   private Rect bottomTowerRect;
-  /** The game score **/
+  /** The game score * */
   private Rect score;
 
-  /** Initializes the tower **/
+  /** Initializes the tower * */
   Tower(GameView gv) {
     this.gv = gv;
     topTower = BitmapFactory.decodeResource(gv.getResources(), R.drawable.cn_tower_down);
@@ -54,7 +55,7 @@ class Tower {
             cnX[0] + bottomTower.getWidth(),
             cnY[0] + distance + bottomTower.getHeight());
   }
-  /** Moves numOfTowers and makes them move across the display**/
+  /** Moves numOfTowers and makes them move across the display* */
   void moveTower() {
 
     distBetweenTowers = gv.getScreenWidth() * 3 / 4;
@@ -67,7 +68,7 @@ class Tower {
       cnY[i] = minTower + random.nextInt(maxTower - minTower + 1);
     }
   }
-  /** Draws the tower in the gameview **/
+  /** Draws the tower in the gameview * */
   void drawTower(Canvas canvas) {
     // used the numOfTowers and creates endless number of CN towers occurring at random.
 
@@ -99,11 +100,10 @@ class Tower {
       canvas.drawRect(bottomTowerRect, p);
       canvas.drawRect(score, s);
       Rect tb = gv.tb.getTbRect();
-      Rect tbS = gv.tb.getTbScoreRect();
       if (getIntersectTb(bottomTowerRect, tb) || getIntersectTb(topTowerRect, tb)) {
         gv.gameOver();
       }
-      if (getIntersectTb(score, tb)){
+      if ((cnX[i]) > gv.getScreenWidth()/2){
         gv.increaseScore();
       }
     }
@@ -136,7 +136,7 @@ class Tower {
   public Rect getBottomTowerRect() {
     return bottomTowerRect;
   }
-  /** Finds out if a towerrect and tbrect intersect**/
+  /** Finds out if a towerrect and tbrect intersect* */
   boolean getIntersectTb(Rect TowerRect, Rect tbRect) {
     return tbRect.intersect(TowerRect);
   }

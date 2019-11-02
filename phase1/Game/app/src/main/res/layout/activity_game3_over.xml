@@ -21,12 +21,13 @@
 
     <Button
         android:id="@+id/play3_again"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
+        android:layout_width="190dp"
+        android:layout_height="36dp"
         android:layout_below="@+id/game3Over"
+        android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="59dp"
-        android:layout_marginEnd="105dp"
+        android:layout_marginEnd="107dp"
         android:text="Play Again" />
 
     <TextView

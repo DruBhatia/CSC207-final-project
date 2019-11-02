@@ -9,11 +9,19 @@ import android.graphics.Rect;
 import android.view.MotionEvent;
 
 class TrueBlue {
+  /**
+   * tbframe: the current frame of tb velocity: the speed at which true blue accelerates downward
+   * gravity: how much true blue falls tbX: tb's x coordinate tbY: tb's y coordinate
+   */
   private int tbFrame, velocity, gravity, tbX, tbY;
+  /** The gameview tb is displayed in * */
   private GameView gv;
+  /** an array of the frames of tb * */
   private Bitmap[] tb;
+  /** Whether tb is playing the game* */
   private boolean state;
-  private Rect tbRect, tbScoreRect;
+  /** the rec representation for tb * */
+  private Rect tbRect;
 
   TrueBlue(GameView gv) {
     tbFrame = 0; // the current frame for true blue
@@ -28,10 +36,9 @@ class TrueBlue {
     tbX = gv.getScreenWidth() / 2 - tb[0].getWidth() / 2;
     tbY = gv.getScreenHeight() / 2 - tb[0].getHeight() / 2;
     tbRect = new Rect(tbX, tbY, tbX + tb[0].getWidth(), tbY + tb[0].getHeight());
-    tbScoreRect = new Rect(tbX + tb[0].getWidth(), tbY, tbX + tb[0].getWidth() + 1,
-            tbY + tb[0].getHeight());
   }
 
+  /** animates tb * */
   void animateTB() {
     if (tbFrame == 0) {
       tbFrame = 1;
@@ -42,18 +49,20 @@ class TrueBlue {
     }
   }
 
+  /** draw's tb * */
   void drawTB(Canvas canvas) {
 
     canvas.drawBitmap(tb[tbFrame], null, tbRect, null);
   }
 
+  /** draws tb's invisible rectangle* */
   void drawTBRect(Canvas canvas) {
     Paint p = new Paint();
     p.setColor(Color.TRANSPARENT);
     canvas.drawRect(tbRect, p);
-    canvas.drawRect(tbScoreRect, p);
   }
 
+  /** When the player touches the screen make tb go higher * */
   void tbOnTouch(int action) {
     if (action == MotionEvent.ACTION_DOWN) { // if the Tap is detected on the screen
       velocity = -30; // increase true blue's upward velocity
@@ -61,22 +70,23 @@ class TrueBlue {
     }
   }
 
+  /** Gets the state of tb * */
   boolean getState() {
     return state;
   }
 
+  /** toggles the state of tb * */
   void setState() {
     if (state) state = false;
     else state = true;
   }
 
+  /** causes tb to fall towards the ground * */
   void tbFall() {
     if (tbY < gv.getScreenHeight() - tb[0].getHeight() || velocity < 0) {
       velocity += gravity;
       tbY += velocity;
       tbRect = new Rect(tbX, tbY, tbX + tb[0].getWidth(), tbY + tb[0].getHeight());
-      tbScoreRect = new Rect(tbX + tb[0].getWidth(), tbY, tbX + tb[0].getWidth() + 1,
-              tbY + tb[0].getHeight());
     }
   }
 
@@ -87,12 +97,8 @@ class TrueBlue {
   int getTbY() {
     return tbY;
   }
-
+  /** get tb's rectangle * */
   Rect getTbRect() {
     return tbRect;
-  }
-
-  Rect getTbScoreRect() {
-    return tbScoreRect;
   }
 }
