@@ -13,7 +13,7 @@ class TrueBlue {
   private GameView gv;
   private Bitmap[] tb;
   private boolean state;
-  private Rect tbRect;
+  private Rect tbRect, tbScoreRect;
 
   TrueBlue(GameView gv) {
     tbFrame = 0; // the current frame for true blue
@@ -28,6 +28,8 @@ class TrueBlue {
     tbX = gv.getScreenWidth() / 2 - tb[0].getWidth() / 2;
     tbY = gv.getScreenHeight() / 2 - tb[0].getHeight() / 2;
     tbRect = new Rect(tbX, tbY, tbX + tb[0].getWidth(), tbY + tb[0].getHeight());
+    tbScoreRect = new Rect(tbX + tb[0].getWidth(), tbY, tbX + tb[0].getWidth() + 1,
+            tbY + tb[0].getHeight());
   }
 
   void animateTB() {
@@ -49,6 +51,7 @@ class TrueBlue {
     Paint p = new Paint();
     p.setColor(Color.TRANSPARENT);
     canvas.drawRect(tbRect, p);
+    canvas.drawRect(tbScoreRect, p);
   }
 
   void tbOnTouch(int action) {
@@ -72,6 +75,8 @@ class TrueBlue {
       velocity += gravity;
       tbY += velocity;
       tbRect = new Rect(tbX, tbY, tbX + tb[0].getWidth(), tbY + tb[0].getHeight());
+      tbScoreRect = new Rect(tbX + tb[0].getWidth(), tbY, tbX + tb[0].getWidth() + 1,
+              tbY + tb[0].getHeight());
     }
   }
 
@@ -85,5 +90,9 @@ class TrueBlue {
 
   Rect getTbRect() {
     return tbRect;
+  }
+
+  Rect getTbScoreRect() {
+    return tbScoreRect;
   }
 }

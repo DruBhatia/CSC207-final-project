@@ -99,6 +99,7 @@ class Tower {
       canvas.drawRect(bottomTowerRect, p);
       canvas.drawRect(score, s);
       Rect tb = gv.tb.getTbRect();
+      Rect tbS = gv.tb.getTbScoreRect();
       if (getIntersectTb(bottomTowerRect, tb) || getIntersectTb(topTowerRect, tb)) {
         gv.gameOver();
       }
