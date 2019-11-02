@@ -86,6 +86,7 @@ public class GameView extends View {
   }
 
   public void gameOver(){
+    tb.setState();
     Intent intent = new Intent(getContext(), Game3OverActivity.class);
     getContext().startActivity(intent);
     System.out.println("WE FUCKING DID IT");
