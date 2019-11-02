@@ -25,8 +25,4 @@ public class AntBegin extends AppCompatActivity {
           }
         });
   }
-
-  protected void highScore() {
-    // Create a high score pop up screen on later here.
-  }
 }

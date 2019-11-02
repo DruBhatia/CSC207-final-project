@@ -1,6 +1,8 @@
 package com.example.game;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Window;
 import android.view.WindowManager;
@@ -16,6 +18,7 @@ public class Main3Activity extends AppCompatActivity {
 
     DonutView gameView;
     public static final String filename = "gameview.sav";
+    int recieve_intent;
 
 
     @Override
@@ -25,8 +28,10 @@ public class Main3Activity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
+        recieve_intent = (int) getIntent().getExtras().get("background");
+
         if (load() == null) {
-            gameView = new DonutView(this);
+            gameView = new DonutView(this, recieve_intent);
             setContentView(gameView);
         } else {
             setContentView(load());
