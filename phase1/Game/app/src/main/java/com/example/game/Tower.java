@@ -34,8 +34,6 @@ class Tower {
   private Rect topTowerRect;
   /** The rectangle for the bottom tower * */
   private Rect bottomTowerRect;
-  /** The game score * */
-  private Rect score;
 
   /** Initializes the tower * */
   Tower(GameView gv) {
@@ -91,7 +89,7 @@ class Tower {
               cnY[i] + distance,
               cnX[i] + bottomTower.getWidth(),
               cnY[i] + distance + bottomTower.getHeight());
-      score = new Rect(cnX[i] + topTower.getWidth(),
+      Rect score = new Rect(cnX[i] + topTower.getWidth(),
               cnY[i],
               cnX[i] + topTower.getWidth() + 1, cnY[i] + distance);
       canvas.drawBitmap(topTower, null, topTowerRect, null);
@@ -111,35 +109,35 @@ class Tower {
     }
   }
 
-  int getNumOfTowers() {
-    return numOfTowers;
-  }
-
-  int getcnX(int i) {
-    return cnX[i];
-  }
-
-  int getcnY(int i) {
-    return cnY[i];
-  }
-
-  int getWidth() {
-    return topTower.getWidth();
-  }
-
-  int getHeight() {
-    return topTower.getHeight();
-  }
-
-  public Rect getTopTowerRect() {
-    return topTowerRect;
-  }
-
-  public Rect getBottomTowerRect() {
-    return bottomTowerRect;
-  }
+//  int getNumOfTowers() {
+//    return numOfTowers;
+//  }
+//
+//  int getcnX(int i) {
+//    return cnX[i];
+//  }
+//
+//  int getcnY(int i) {
+//    return cnY[i];
+//  }
+//
+//  int getWidth() {
+//    return topTower.getWidth();
+//  }
+//
+//  int getHeight() {
+//    return topTower.getHeight();
+//  }
+//
+//  public Rect getTopTowerRect() {
+//    return topTowerRect;
+//  }
+//
+//  public Rect getBottomTowerRect() {
+//    return bottomTowerRect;
+//  }
   /** Finds out if a towerrect and tbrect intersect* */
-  boolean getIntersectTb(Rect TowerRect, Rect tbRect) {
+  private boolean getIntersectTb(Rect TowerRect, Rect tbRect) {
     return tbRect.intersect(TowerRect);
   }
 

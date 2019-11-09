@@ -9,7 +9,6 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Point;
 import android.graphics.Rect;
-import android.os.SystemClock;
 import android.view.Display;
 import android.view.MotionEvent;
 import android.view.View;
@@ -39,7 +38,6 @@ public class GameView extends View {
   /** The score variable that keeps track of current score */
   private int score = 0;
 
-  private float currTime;
   long start;
 
   /**Initializer for gameview**/
@@ -74,13 +72,12 @@ public class GameView extends View {
     super.onDraw(canvas);
     // This is where we will draw our view for Game3.
     canvas.drawBitmap(background, null, rect, null);
-    /** Creates the score**/
+    // Creates the score
     scorePaint.setColor(-16776961);
     scorePaint.setTextSize(80);
     scorePaint.setUnderlineText(true);
     canvas.drawText("Score : " + score, 20, 60, scorePaint);
 
-    /** animates the game and causes it to run if tb is playing **/
     // true blue falls
     if (tb.getState()) {
       tb.drawTBRect(canvas);
@@ -120,7 +117,7 @@ public class GameView extends View {
   public void gameOver() {
       tb.setState();
       Date finalDate = new Date();
-      currTime = (finalDate.getTime() - start) / 1000F;
+    float currTime = (finalDate.getTime() - start) / 1000F;
       Intent intent = new Intent(getContext(), Game3OverActivity.class);
       intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
 

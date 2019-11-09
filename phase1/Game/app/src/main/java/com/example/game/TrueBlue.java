@@ -77,8 +77,7 @@ class TrueBlue {
 
   /** toggles the state of tb * */
   void setState() {
-    if (state) state = false;
-    else state = true;
+    state = !state;
   }
 
   /** causes tb to fall towards the ground * */
