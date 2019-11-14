@@ -12,6 +12,7 @@ public class Main2Activity extends AppCompatActivity {
   int score;
   int moves_left;
   int timer;
+
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -28,10 +29,10 @@ public class Main2Activity extends AppCompatActivity {
       game_view = new MemoryView(this, "D");
     }
   }
+
   @Override
   protected void onResume() {
     super.onResume();
-
   }
 
   @Override

@@ -18,21 +18,23 @@ import java.util.Date;
 
 public class GameView extends View {
   // This will be the custom view class for Game3
-  /** TB class **/
+  /** TB class * */
   TrueBlue tb;
-  /** Tower class **/
+  /** Tower class * */
   Tower cn; // Tower class
+
   Handler handler;
   Runnable runnable;
   final int delayNum = 30;
-  /** Background img **/
+  /** Background img * */
   Bitmap background;
+
   Display display;
   Point point;
-  /** height and width of the screen**/
+  /** height and width of the screen* */
   int screenWidth, screenHeight; // Height and Width of device.
+
   Rect rect;
-  boolean scored;
   /** The score paint to display the score. */
   private Paint scorePaint = new Paint();
   /** The score variable that keeps track of current score */
@@ -40,7 +42,7 @@ public class GameView extends View {
 
   long start;
 
-  /**Initializer for gameview**/
+  /** Initializer for gameview* */
   public GameView(Context context) {
     super(context);
     handler = new Handler();
@@ -63,10 +65,9 @@ public class GameView extends View {
     tb = new TrueBlue(this); // creates TrueBlue
     Date startDate = new Date();
     start = startDate.getTime();
-    scored = false;
   }
 
-  /** When something is drawn in the gameview**/
+  /** When something is drawn in the gameview* */
   @Override
   protected void onDraw(Canvas canvas) {
     super.onDraw(canvas);
@@ -81,11 +82,11 @@ public class GameView extends View {
     // true blue falls
     if (tb.getState()) {
       tb.drawTBRect(canvas);
-      //animate tb
+      // animate tb
       tb.animateTB();
-      //cause tb to fall
+      // cause tb to fall
       tb.tbFall();
-      //draw the towers
+      // draw the towers
       cn.drawTower(canvas); // Endless number of CN Tower is created.
     }
     // displays true blue in the center
@@ -94,7 +95,7 @@ public class GameView extends View {
     handler.postDelayed(runnable, delayNum);
   }
 
-  /** when you tap the screen **/
+  /** when you tap the screen * */
   @Override
   public boolean onTouchEvent(MotionEvent event) {
     int action = event.getAction();
@@ -102,33 +103,32 @@ public class GameView extends View {
     return true;
   }
 
-  /**returns the screenwidth **/
+  /** returns the screenwidth * */
   public int getScreenWidth() {
     return screenWidth;
   }
 
-  /**returns screen height **/
+  /** returns screen height * */
   public int getScreenHeight() {
     return screenHeight;
   }
 
-
-  /** what to do when the game ends **/
+  /** what to do when the game ends * */
   public void gameOver() {
-      tb.setState();
-      Date finalDate = new Date();
+    tb.setState();
+    Date finalDate = new Date();
     float currTime = (finalDate.getTime() - start) / 1000F;
-      Intent intent = new Intent(getContext(), Game3OverActivity.class);
-      intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+    Intent intent = new Intent(getContext(), Game3OverActivity.class);
+    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
 
-      intent.putExtra("Score", score);
+    intent.putExtra("Score", score);
 
-      intent.putExtra("Time", currTime);
-      getContext().startActivity(intent);
+    intent.putExtra("Time", currTime);
+    getContext().startActivity(intent);
   }
 
-  /** increases the score  **/
-  public void increaseScore(){
-      score++;
+  /** increases the score * */
+  public void increaseScore() {
+    score++;
   }
 }

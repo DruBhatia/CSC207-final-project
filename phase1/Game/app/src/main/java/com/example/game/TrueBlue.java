@@ -85,7 +85,13 @@ class TrueBlue {
     if (tbY < gv.getScreenHeight() - tb[0].getHeight() || velocity < 0) {
       velocity += gravity;
       tbY += velocity;
+      if (tbY < 0) {
+        tbY = 0;
+      }
       tbRect = new Rect(tbX, tbY, tbX + tb[0].getWidth(), tbY + tb[0].getHeight());
+    }
+    if (tbRect.bottom >= gv.getScreenHeight()) {
+      gv.gameOver();
     }
   }
 
