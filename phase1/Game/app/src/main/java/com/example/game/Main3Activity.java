@@ -18,7 +18,7 @@ public class Main3Activity extends AppCompatActivity {
 
     DonutView gameView;
     public static final String filename = "gameview.sav";
-    int recieve_intent;
+    int receive_intent;
 
 
     @Override
@@ -28,10 +28,10 @@ public class Main3Activity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-        recieve_intent = (int) getIntent().getExtras().get("background");
+        receive_intent = (int) getIntent().getExtras().get("background");
 
         if (load() == null) {
-            gameView = new DonutView(this, recieve_intent);
+            gameView = new DonutView(this, receive_intent);
             setContentView(gameView);
         } else {
             setContentView(load());

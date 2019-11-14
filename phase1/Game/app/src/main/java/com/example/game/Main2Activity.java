@@ -1,5 +1,6 @@
 package com.example.game;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
@@ -9,7 +10,9 @@ import android.view.WindowManager;
 public class Main2Activity extends AppCompatActivity {
   MemoryView game_view;
   MemoryView2 game_view_dark;
-
+  int score;
+  int moves_left;
+  int timer;
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -25,5 +28,25 @@ public class Main2Activity extends AppCompatActivity {
       setContentView(R.layout.activity_main2_dark);
       game_view_dark = new MemoryView2(this);
     }
+  }
+  @Override
+  protected void onResume() {
+    super.onResume();
+
+  }
+
+  @Override
+  protected void onPause() {
+    super.onPause();
+  }
+
+  @Override
+  protected void onSaveInstanceState(@NonNull Bundle outState) {
+    super.onSaveInstanceState(outState);
+  }
+
+  @Override
+  protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
+    super.onRestoreInstanceState(savedInstanceState);
   }
 }
