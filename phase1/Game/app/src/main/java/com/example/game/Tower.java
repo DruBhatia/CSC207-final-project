@@ -70,7 +70,7 @@ class Tower {
   void drawTower(Canvas canvas) {
     // used the numOfTowers and creates endless number of CN towers occurring at random.
 
-    int towerVelocity = 7;
+    int towerVelocity = 10;
     for (int i = 0; i < numOfTowers; i++) {
       cnX[i] -= towerVelocity;
       if (cnX[i] < -topTower.getWidth()) {
@@ -81,17 +81,20 @@ class Tower {
       p.setARGB(128, 255, 255, 255);
       Paint s = new Paint();
       s.setColor(Color.TRANSPARENT);
-      topTowerRect = new Rect(cnX[i],
-              cnY[i] - topTower.getHeight(),
-              cnX[i] + topTower.getWidth(),
-              cnY[i]);
-      bottomTowerRect = new Rect(cnX[i],
+      topTowerRect =
+          new Rect(cnX[i], cnY[i] - topTower.getHeight(), cnX[i] + topTower.getWidth(), cnY[i]);
+      bottomTowerRect =
+          new Rect(
+              cnX[i],
               cnY[i] + distance,
               cnX[i] + bottomTower.getWidth(),
               cnY[i] + distance + bottomTower.getHeight());
-      Rect score = new Rect(cnX[i] + topTower.getWidth(),
+      Rect score =
+          new Rect(
+              cnX[i] + topTower.getWidth(),
               cnY[i],
-              cnX[i] + topTower.getWidth() + 1, cnY[i] + distance);
+              cnX[i] + topTower.getWidth() + 1,
+              cnY[i] + distance);
       canvas.drawBitmap(topTower, null, topTowerRect, null);
       canvas.drawBitmap(bottomTower, null, bottomTowerRect, null);
       canvas.drawRect(topTowerRect, p);
@@ -101,45 +104,49 @@ class Tower {
       if (getIntersectTb(bottomTowerRect, tb) || getIntersectTb(topTowerRect, tb)) {
         gv.gameOver();
       }
-      if (topTowerRect.right - gv.tb.getTbX() >= 0 && topTowerRect.right - gv.tb.getTbX() < 7) {
-        if (topTowerRect.bottom < gv.tb.getTbY() && bottomTowerRect.top > gv.tb.getTbY()) {
-          gv.increaseScore();
-        }
+      if (inBetweenTowers()) {
+        gv.increaseScore();
       }
     }
   }
 
-//  int getNumOfTowers() {
-//    return numOfTowers;
-//  }
-//
-//  int getcnX(int i) {
-//    return cnX[i];
-//  }
-//
-//  int getcnY(int i) {
-//    return cnY[i];
-//  }
-//
-//  int getWidth() {
-//    return topTower.getWidth();
-//  }
-//
-//  int getHeight() {
-//    return topTower.getHeight();
-//  }
-//
-//  public Rect getTopTowerRect() {
-//    return topTowerRect;
-//  }
-//
-//  public Rect getBottomTowerRect() {
-//    return bottomTowerRect;
-//  }
+  //  int getNumOfTowers() {
+  //    return numOfTowers;
+  //  }
+  //
+  //  int getcnX(int i) {
+  //    return cnX[i];
+  //  }
+  //
+  //  int getcnY(int i) {
+  //    return cnY[i];
+  //  }
+  //
+  //  int getWidth() {
+  //    return topTower.getWidth();
+  //  }
+  //
+  //  int getHeight() {
+  //    return topTower.getHeight();
+  //  }
+  //
+  //  public Rect getTopTowerRect() {
+  //    return topTowerRect;
+  //  }
+  //
+  //  public Rect getBottomTowerRect() {
+  //    return bottomTowerRect;
+  //  }
+
+  /** Check whether TrueBlue passes between the two towers */
+  private boolean inBetweenTowers() {
+    if (topTowerRect.right - gv.tb.getTbX() >= 0 && topTowerRect.right - gv.tb.getTbX() < 10) {
+      return topTowerRect.bottom < gv.tb.getTbY() && bottomTowerRect.top > gv.tb.getTbY();
+    }
+    return false;
+  }
   /** Finds out if a towerrect and tbrect intersect* */
   private boolean getIntersectTb(Rect TowerRect, Rect tbRect) {
     return tbRect.intersect(TowerRect);
   }
-
-
 }
