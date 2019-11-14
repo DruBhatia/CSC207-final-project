@@ -37,73 +37,117 @@ public class MemoryView extends View {
    * Constructor initializes a new player, a layout of playable, shuffled cards, sets off a timer,
    * and adds clickable functionality to the cards in the layout.
    */
-  MemoryView(AppCompatActivity context) {
+  MemoryView(AppCompatActivity context, String theme) {
     super(context);
     player =
         new MemorizePlayer(
             (TextView) context.findViewById(R.id.text_moves),
             (TextView) context.findViewById(R.id.text_points),
             (Chronometer) context.findViewById(R.id.stopWatch));
-    this.initializeCards(context);
-    cardBackView = R.drawable.bv_00;
+    this.initializeCardArray(context);
+    if (theme.equals("L")) {
+      initializeImages("L");
+      cardBackView = R.drawable.bv_00;
+    } else if (theme.equals("D")) {
+      initializeImages("D");
+      cardBackView = R.drawable.bv_01;
+    }
     show();
     player.getChronometer().setBase(SystemClock.elapsedRealtime());
     player.getChronometer().start();
     setOnClick();
   }
 
-  /** Initialize + shuffle an array of card placeholders corresponding to respective card images. */
-  void initializeCards(AppCompatActivity context) {
+  void initializeCardArray(AppCompatActivity context) {
     cardArray = new ArrayList<>();
-    imageArray = new ArrayList<>();
     cardArray.add(new PlayingCard((ImageView) context.findViewById(R.id.iv_11)));
-    int[] arr1 = new int[] {101, R.drawable.fv_image101};
-    imageArray.add(arr1);
     cardArray.add(new PlayingCard((ImageView) context.findViewById(R.id.iv_12)));
-    int[] arr2 = new int[] {102, R.drawable.fv_image102};
-    imageArray.add(arr2);
     cardArray.add(new PlayingCard((ImageView) context.findViewById(R.id.iv_13)));
-    int[] arr3 = new int[] {103, R.drawable.fv_image103};
-    imageArray.add(arr3);
     cardArray.add(new PlayingCard((ImageView) context.findViewById(R.id.iv_14)));
-    int[] arr4 = new int[] {104, R.drawable.fv_image104};
-    imageArray.add(arr4);
     cardArray.add(new PlayingCard((ImageView) context.findViewById(R.id.iv_21)));
-    int[] arr5 = new int[] {105, R.drawable.fv_image105};
-    imageArray.add(arr5);
     cardArray.add(new PlayingCard((ImageView) context.findViewById(R.id.iv_22)));
-    int[] arr6 = new int[] {106, R.drawable.fv_image106};
-    imageArray.add(arr6);
     cardArray.add(new PlayingCard((ImageView) context.findViewById(R.id.iv_23)));
-    int[] arr7 = new int[] {107, R.drawable.fv_image107};
-    imageArray.add(arr7);
     cardArray.add(new PlayingCard((ImageView) context.findViewById(R.id.iv_24)));
-    int[] arr8 = new int[] {108, R.drawable.fv_image108};
-    imageArray.add(arr8);
     cardArray.add(new PlayingCard((ImageView) context.findViewById(R.id.iv_31)));
-    int[] arr9 = new int[] {201, R.drawable.fv_image101};
-    imageArray.add(arr9);
     cardArray.add(new PlayingCard((ImageView) context.findViewById(R.id.iv_32)));
-    int[] arr10 = new int[] {202, R.drawable.fv_image102};
-    imageArray.add(arr10);
     cardArray.add(new PlayingCard((ImageView) context.findViewById(R.id.iv_33)));
-    int[] arr11 = new int[] {203, R.drawable.fv_image103};
-    imageArray.add(arr11);
     cardArray.add(new PlayingCard((ImageView) context.findViewById(R.id.iv_34)));
-    int[] arr12 = new int[] {204, R.drawable.fv_image104};
-    imageArray.add(arr12);
     cardArray.add(new PlayingCard((ImageView) context.findViewById(R.id.iv_41)));
-    int[] arr13 = new int[] {205, R.drawable.fv_image105};
-    imageArray.add(arr13);
     cardArray.add(new PlayingCard((ImageView) context.findViewById(R.id.iv_42)));
-    int[] arr14 = new int[] {206, R.drawable.fv_image106};
-    imageArray.add(arr14);
     cardArray.add(new PlayingCard((ImageView) context.findViewById(R.id.iv_43)));
-    int[] arr15 = new int[] {207, R.drawable.fv_image107};
-    imageArray.add(arr15);
     cardArray.add(new PlayingCard((ImageView) context.findViewById(R.id.iv_44)));
-    int[] arr16 = new int[] {208, R.drawable.fv_image108};
-    imageArray.add(arr16);
+  }
+
+  /** Initialize + shuffle an array of card placeholders corresponding to respective card images. */
+  void initializeImages(String theme) {
+    imageArray = new ArrayList<>();
+    if (theme.equals("L")) {
+      int[] arr1 = new int[] {101, R.drawable.fv_image101};
+      imageArray.add(arr1);
+      int[] arr2 = new int[] {102, R.drawable.fv_image102};
+      imageArray.add(arr2);
+      int[] arr3 = new int[] {103, R.drawable.fv_image103};
+      imageArray.add(arr3);
+      int[] arr4 = new int[] {104, R.drawable.fv_image104};
+      imageArray.add(arr4);
+      int[] arr5 = new int[] {105, R.drawable.fv_image105};
+      imageArray.add(arr5);
+      int[] arr6 = new int[] {106, R.drawable.fv_image106};
+      imageArray.add(arr6);
+      int[] arr7 = new int[] {107, R.drawable.fv_image107};
+      imageArray.add(arr7);
+      int[] arr8 = new int[] {108, R.drawable.fv_image108};
+      imageArray.add(arr8);
+      int[] arr9 = new int[] {201, R.drawable.fv_image101};
+      imageArray.add(arr9);
+      int[] arr10 = new int[] {202, R.drawable.fv_image102};
+      imageArray.add(arr10);
+      int[] arr11 = new int[] {203, R.drawable.fv_image103};
+      imageArray.add(arr11);
+      int[] arr12 = new int[] {204, R.drawable.fv_image104};
+      imageArray.add(arr12);
+      int[] arr13 = new int[] {205, R.drawable.fv_image105};
+      imageArray.add(arr13);
+      int[] arr14 = new int[] {206, R.drawable.fv_image106};
+      imageArray.add(arr14);
+      int[] arr15 = new int[] {207, R.drawable.fv_image107};
+      imageArray.add(arr15);
+      int[] arr16 = new int[] {208, R.drawable.fv_image108};
+      imageArray.add(arr16);
+    } else {
+      int[] arr1 = new int[] {101, R.drawable.fv_image1d1};
+      imageArray.add(arr1);
+      int[] arr2 = new int[] {102, R.drawable.fv_image1d2};
+      imageArray.add(arr2);
+      int[] arr3 = new int[] {103, R.drawable.fv_image1d3};
+      imageArray.add(arr3);
+      int[] arr4 = new int[] {104, R.drawable.fv_image1d4};
+      imageArray.add(arr4);
+      int[] arr5 = new int[] {105, R.drawable.fv_image1d5};
+      imageArray.add(arr5);
+      int[] arr6 = new int[] {106, R.drawable.fv_image1d6};
+      imageArray.add(arr6);
+      int[] arr7 = new int[] {107, R.drawable.fv_image1d7};
+      imageArray.add(arr7);
+      int[] arr8 = new int[] {108, R.drawable.fv_image1d8};
+      imageArray.add(arr8);
+      int[] arr9 = new int[] {201, R.drawable.fv_image1d1};
+      imageArray.add(arr9);
+      int[] arr10 = new int[] {202, R.drawable.fv_image1d2};
+      imageArray.add(arr10);
+      int[] arr11 = new int[] {203, R.drawable.fv_image1d3};
+      imageArray.add(arr11);
+      int[] arr12 = new int[] {204, R.drawable.fv_image1d4};
+      imageArray.add(arr12);
+      int[] arr13 = new int[] {205, R.drawable.fv_image1d5};
+      imageArray.add(arr13);
+      int[] arr14 = new int[] {206, R.drawable.fv_image1d6};
+      imageArray.add(arr14);
+      int[] arr15 = new int[] {207, R.drawable.fv_image1d7};
+      imageArray.add(arr15);
+      int[] arr16 = new int[] {208, R.drawable.fv_image1d8};
+      imageArray.add(arr16);
+    }
     Collections.shuffle(imageArray);
   }
 

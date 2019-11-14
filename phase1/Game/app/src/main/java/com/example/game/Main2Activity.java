@@ -9,7 +9,6 @@ import android.view.WindowManager;
 
 public class Main2Activity extends AppCompatActivity {
   MemoryView game_view;
-  MemoryView2 game_view_dark;
   int score;
   int moves_left;
   int timer;
@@ -23,10 +22,10 @@ public class Main2Activity extends AppCompatActivity {
     String theme = getIntent().getExtras().get("Theme?").toString();
     if (theme.equals("Light")) {
       setContentView(R.layout.activity_memorygame);
-      game_view = new MemoryView(this);
+      game_view = new MemoryView(this, "L");
     } else if (theme.equals("Dark")) {
       setContentView(R.layout.activity_main2_dark);
-      game_view_dark = new MemoryView2(this);
+      game_view = new MemoryView(this, "D");
     }
   }
   @Override
