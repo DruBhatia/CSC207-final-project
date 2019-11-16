@@ -1,14 +1,11 @@
 package com.example.final_game;
 
 import android.annotation.SuppressLint;
-
 import android.content.Intent;
 import android.os.Handler;
 import android.os.SystemClock;
 import android.view.View;
-import android.widget.Chronometer;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -37,13 +34,9 @@ public class MemoryView extends View {
    * Constructor initializes a new player, a layout of playable, shuffled cards, sets off a timer,
    * and adds clickable functionality to the cards in the layout.
    */
-  MemoryView(AppCompatActivity context, String theme) {
+  MemoryView(AppCompatActivity context, String theme, MemorizePlayer plyr) {
     super(context);
-    player =
-        new MemorizePlayer(
-            (TextView) context.findViewById(R.id.text_moves),
-            (TextView) context.findViewById(R.id.text_points),
-            (Chronometer) context.findViewById(R.id.stopWatch));
+    player = plyr;
     this.initializeCardArray(context);
     if (theme.equals("L")) {
       initializeImages("L");

@@ -1,5 +1,6 @@
 package com.example.final_game;
 
+import android.view.View;
 import android.widget.Chronometer;
 import android.widget.TextView;
 
@@ -77,4 +78,14 @@ class MemorizePlayer {
   void decreasePlayerMoves() {
     this.playerMoves--;
   }
+
+  /** Set whether the card will be visible on screen or not */
+  void setVisibility(int num) {
+    if (num == 2) {
+    this.chronometer.setVisibility(View.INVISIBLE);
+    this.textPoints.setVisibility(View.INVISIBLE);
+    } else if (num == 1) {
+      this.textMoves.setVisibility(View.INVISIBLE);
+    }
+    }
 }
