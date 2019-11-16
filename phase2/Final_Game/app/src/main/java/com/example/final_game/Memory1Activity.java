@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class Memory1Activity extends AppCompatActivity {
   MemoryView game_view;
   MemorizePlayer memorizePlayer;
+  String theme;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +28,7 @@ public class Memory1Activity extends AppCompatActivity {
             (TextView) findViewById(R.id.text_points),
             (Chronometer) findViewById(R.id.stopWatch));
     memorizePlayer.setVisibility(2);
-    String theme = getIntent().getExtras().get("Theme?").toString();
+    theme = getIntent().getExtras().get("Theme?").toString();
     if (theme.equals("Light")) {
       setContentView(R.layout.activity_memorygame);
       game_view = new MemoryView(this, "L", memorizePlayer);
@@ -37,24 +38,32 @@ public class Memory1Activity extends AppCompatActivity {
     }
   }
 
+  /** Check if end-game conditions have been met. */
+  boolean checkEnd() {
+    return game_view.checkVisibility();
+  }
+
   /**
    * End game if all end-game conditions have been met, track player stats, and navigate to
    * game-over screen.
    */
-  protected void endGame(boolean check) {
-    int playerMoves = memorizePlayer.getMovesLeft();
+  void endGame(boolean check) {
     int playerPoints = memorizePlayer.getPlayerPoints();
     boolean bool = game_view.checkVisibility();
     if (check) {
-      CharSequence elapsedMillis = memorizePlayer.getChronometer().getText();
       memorizePlayer.getChronometer().stop();
       Intent intent1 = new Intent(Memory1Activity.this, Game2OverActivity.class);
       Intent intent2 = new Intent(Memory1Activity.this, Memory2Activity.class);
-      intent1.putExtra("points", playerPoints);
+      intent1.putExtra("points1", playerPoints);
       if (bool) {
-        intent1.putExtra("Cards Left To Match?", "NO");
+        intent1.putExtra("Cards Left1", "NO");
       } else {
-        intent1.putExtra("Cards Left To Match?", "YES");
+        intent1.putExtra("Cards Left1", "YES");
+      }
+      if (theme.equals("Light")) {
+        intent2.putExtra("Theme??", "Light");
+      } else if (theme.equals("Dark")) {
+        intent2.putExtra("Theme??", "Dark");
       }
       startActivity(intent2);
     }

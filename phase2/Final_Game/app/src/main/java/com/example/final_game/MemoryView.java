@@ -1,7 +1,6 @@
 package com.example.final_game;
 
 import android.annotation.SuppressLint;
-import android.content.Intent;
 import android.os.Handler;
 import android.os.SystemClock;
 import android.view.View;
@@ -29,17 +28,18 @@ public class MemoryView extends View {
   int cardNum = 1;
   /** The back image of all the cards */
   int cardBackView;
-  AppCompatActivity cntxt;
+
+  Memory1Activity cntxt;
 
   /**
    * Constructor initializes a new player, a layout of playable, shuffled cards, sets off a timer,
    * and adds clickable functionality to the cards in the layout.
    */
-  MemoryView(AppCompatActivity context, String theme, MemorizePlayer plyr) {
+  MemoryView(Memory1Activity context, String theme, MemorizePlayer plyr) {
     super(context);
     cntxt = context;
     player = plyr;
-    this.initializeCardArray(context);
+    this.initializeCardArray(cntxt);
     if (theme.equals("L")) {
       initializeImages("L");
       cardBackView = R.drawable.bv_00;
@@ -259,7 +259,7 @@ public class MemoryView extends View {
     for (PlayingCard card : cardArray) {
       card.set_enable(true);
     }
-    endGame(checkEnd());
+    cntxt.endGame(cntxt.checkEnd());
   }
 
   /** Return whether or not all cards on screen are invisible. */
@@ -270,34 +270,5 @@ public class MemoryView extends View {
       }
     }
     return true;
-  }
-
-  /** Check if end-game conditions have been met. */
-  protected boolean checkEnd() {
-    return player.getMovesLeft() == 0 || checkVisibility();
-  }
-
-  /**
-   * End game if all end-game conditions have been met, track player stats, and navigate to
-   * game-over screen.
-   */
-  protected void endGame(boolean check) {
-    int playerMoves = player.getMovesLeft();
-    int playerPoints = player.getPlayerPoints();
-    boolean bool = checkVisibility();
-    if (check) {
-      CharSequence elapsedMillis = player.getChronometer().getText();
-      player.getChronometer().stop();
-      Intent intent = new Intent(getContext(), Game2OverActivity.class);
-      intent.putExtra("Moves Left", playerMoves);
-      intent.putExtra("time", elapsedMillis);
-      intent.putExtra("points", playerPoints);
-      if (bool) {
-        intent.putExtra("Cards Left To Match?", "NO");
-      } else {
-        intent.putExtra("Cards Left To Match?", "YES");
-      }
-      getContext().startActivity(intent);
-    }
   }
 }
