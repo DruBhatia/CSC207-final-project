@@ -1,11 +1,11 @@
 package com.example.final_game;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class MemoryBegin extends AppCompatActivity {
 
@@ -20,7 +20,7 @@ public class MemoryBegin extends AppCompatActivity {
         new View.OnClickListener() {
           @Override
           public void onClick(View v) {
-            Intent intent2 = new Intent(MemoryBegin.this, Main2Activity.class);
+            Intent intent2 = new Intent(MemoryBegin.this, Memory1Activity.class);
             intent2.putExtra("Theme?", "Light");
             startActivity(intent2);
           }
@@ -30,7 +30,7 @@ public class MemoryBegin extends AppCompatActivity {
         new View.OnClickListener() {
           @Override
           public void onClick(View v) {
-            Intent intent3 = new Intent(MemoryBegin.this, Main2Activity.class);
+            Intent intent3 = new Intent(MemoryBegin.this, Memory1Activity.class);
             intent3.putExtra("Theme?", "Dark");
             startActivity(intent3);
           }

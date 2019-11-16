@@ -1,5 +1,6 @@
 package com.example.final_game;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Window;
 import android.view.WindowManager;
@@ -9,7 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-public class Main2Activity extends AppCompatActivity {
+public class Memory1Activity extends AppCompatActivity {
   MemoryView game_view;
   MemorizePlayer memorizePlayer;
 
@@ -20,7 +21,8 @@ public class Main2Activity extends AppCompatActivity {
     getWindow()
         .setFlags(
             WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-    memorizePlayer = new MemorizePlayer(
+    memorizePlayer =
+        new MemorizePlayer(
             (TextView) findViewById(R.id.text_moves),
             (TextView) findViewById(R.id.text_points),
             (Chronometer) findViewById(R.id.stopWatch));
@@ -35,6 +37,28 @@ public class Main2Activity extends AppCompatActivity {
     }
   }
 
+  /**
+   * End game if all end-game conditions have been met, track player stats, and navigate to
+   * game-over screen.
+   */
+  protected void endGame(boolean check) {
+    int playerMoves = memorizePlayer.getMovesLeft();
+    int playerPoints = memorizePlayer.getPlayerPoints();
+    boolean bool = game_view.checkVisibility();
+    if (check) {
+      CharSequence elapsedMillis = memorizePlayer.getChronometer().getText();
+      memorizePlayer.getChronometer().stop();
+      Intent intent1 = new Intent(Memory1Activity.this, Game2OverActivity.class);
+      Intent intent2 = new Intent(Memory1Activity.this, Memory2Activity.class);
+      intent1.putExtra("points", playerPoints);
+      if (bool) {
+        intent1.putExtra("Cards Left To Match?", "NO");
+      } else {
+        intent1.putExtra("Cards Left To Match?", "YES");
+      }
+      startActivity(intent2);
+    }
+  }
 
   @Override
   protected void onResume() {

@@ -29,6 +29,7 @@ public class MemoryView extends View {
   int cardNum = 1;
   /** The back image of all the cards */
   int cardBackView;
+  AppCompatActivity cntxt;
 
   /**
    * Constructor initializes a new player, a layout of playable, shuffled cards, sets off a timer,
@@ -36,6 +37,7 @@ public class MemoryView extends View {
    */
   MemoryView(AppCompatActivity context, String theme, MemorizePlayer plyr) {
     super(context);
+    cntxt = context;
     player = plyr;
     this.initializeCardArray(context);
     if (theme.equals("L")) {
