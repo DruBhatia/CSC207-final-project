@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="10dp"
         android:fontFamily="@font/invasion2000"
         android:text="GAME OVER"
         android:textAlignment="center"
@@ -21,71 +21,213 @@
         android:textSize="59dp"
         android:textStyle="bold"
         />
-
     <TextView
-        android:id="@+id/status"
+        android:id="@+id/level1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="205dp"
+        android:layout_marginTop="70dp"
         android:fontFamily="@font/invasion2000"
-        android:text="YOU WON!!"
+        android:text="LEVEL 1"
         android:textAlignment="center"
+        android:textColor="#0E0D0D"
         android:textSize="45dp"
-        android:textColor="#00BCD4"
         android:textStyle="bold"
         />
 
     <TextView
-        android:id="@+id/moves_left"
+        android:id="@+id/time1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="280dp"
+        android:layout_marginTop="150dp"
+        android:fontFamily="@font/invasion2000"
+        android:text="TIME: "
+        android:textAlignment="center"
+        android:textColor="#039BE5"
+        android:textSize="30dp"
+        android:textStyle="bold"
+        />
+
+    <TextView
+        android:id="@+id/status1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="120dp"
+        android:fontFamily="@font/atari_extended"
+        android:text="YOU WON!!"
+        android:textAlignment="center"
+        android:textSize="30dp"
+        android:textColor="#1E88E5"
+        android:textStyle="bold"
+        />
+    <TextView
+        android:id="@+id/score1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="190dp"
+        android:fontFamily="@font/atari_extended"
+        android:text="SCORE: "
+        android:textAlignment="center"
+        android:textSize="30dp"
+        android:textColor="#039BE5"
+        android:textStyle="bold"
+        />
+
+    <TextView
+        android:id="@+id/level2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="210dp"
+        android:fontFamily="@font/invasion2000"
+        android:text="LEVEL 2"
+        android:textAlignment="center"
+        android:textColor="#110E0E"
+        android:textSize="45dp"
+        android:textStyle="bold"
+        />
+
+    <TextView
+        android:id="@+id/status2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="260dp"
+        android:fontFamily="@font/atari_extended"
+        android:text="YOU WON!!"
+        android:textAlignment="center"
+        android:textSize="30dp"
+        android:textColor="#D81B60"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/moves_left2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="290dp"
         android:fontFamily="@font/atari_extended"
         android:text="Moves Left:"
         android:textAlignment="center"
-        android:textSize="35sp"
+        android:textSize="30dp"
         android:textStyle="bold"
         android:textColor="#D81B60" />
 
     <TextView
-        android:id="@+id/time"
+        android:id="@+id/time2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="330dp"
+        android:layout_marginTop="319dp"
         android:fontFamily="@font/atari_extended"
         android:text="Time:"
-        android:textStyle="bold"
         android:textAlignment="center"
-        android:textSize="35sp"
-        android:textColor="#0C0C0C" />
-
+        android:textSize="30dp"
+        android:textStyle="bold"
+        android:textColor="#D81B60" />
     <TextView
-        android:id="@+id/total_score"
+        android:id="@+id/score2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="380dp"
+        android:layout_marginTop="350dp"
         android:fontFamily="@font/atari_extended"
-        android:text="Final Score:"
+        android:text="SCORE: "
+        android:textAlignment="center"
+        android:textSize="30dp"
+        android:textStyle="bold"
+        android:textColor="#D81B60" />
+    <TextView
+        android:id="@+id/level3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="370dp"
+        android:fontFamily="@font/invasion2000"
+        android:text="LEVEL 3"
+        android:textAlignment="center"
+        android:textColor="#181717"
+        android:textSize="45dp"
+        android:textStyle="bold"
+        />
+
+    <TextView
+        android:id="@+id/status3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="415dp"
+        android:fontFamily="@font/atari_extended"
+        android:text="YOU WON!!"
+        android:textAlignment="center"
+        android:textSize="30dp"
+        android:textColor="#175C27"
+        android:textStyle="bold"
+        />
+
+    <TextView
+        android:id="@+id/moves_left3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="440dp"
+        android:fontFamily="@font/atari_extended"
+        android:text="Moves Left:"
+        android:textAlignment="center"
+        android:textSize="30dp"
+        android:textStyle="bold"
+        android:textColor="#1A572B" />
+
+    <TextView
+        android:id="@+id/time3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="470dp"
+        android:fontFamily="@font/atari_extended"
+        android:text="Time Left:"
         android:textStyle="bold"
         android:textAlignment="center"
-        android:textSize="35sp"
-        android:textColor="#3949AB" />
+        android:textSize="30dp"
+        android:textColor="#1C502E" />
+
+    <TextView
+        android:id="@+id/score3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="495dp"
+        android:fontFamily="@font/atari_extended"
+        android:text="Score:"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:textSize="35dp"
+        android:textColor="#194B18" />
 
     <Button
         android:id="@+id/playAgain"
         android:layout_width="211dp"
         android:layout_height="62dp"
-        android:layout_below="@+id/total_score"
+        android:layout_below="@+id/score3"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="0dp"
         android:fontFamily="@font/atari_extended"
         android:textStyle="bold"
         android:text="Play Again" />
@@ -96,7 +238,7 @@
         android:layout_height="64dp"
         android:layout_below="@+id/playAgain"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="10dp"
         android:fontFamily="@font/atari_extended"
         android:textStyle="bold"
         android:text="Main menu" />

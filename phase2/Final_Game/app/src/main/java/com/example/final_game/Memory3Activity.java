@@ -7,7 +7,7 @@ import android.view.WindowManager;
 import android.widget.Chronometer;
 import android.widget.TextView;
 
-public class Memory3Activity extends Memory2Activity {
+public class Memory3Activity extends Memory1Activity {
 
   MemoryView game_view;
   MemorizePlayer memorizePlayer;
@@ -32,6 +32,11 @@ public class Memory3Activity extends Memory2Activity {
       setContentView(R.layout.activity_main2_dark);
       game_view = new MemoryView(this, "D", memorizePlayer);
     }
+  }
+
+  @Override
+  boolean checkEnd() {
+    return memorizePlayer.getMovesLeft() == 0 || game_view.checkVisibility();
   }
 
   @Override

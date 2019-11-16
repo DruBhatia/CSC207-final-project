@@ -2,7 +2,6 @@ package com.example.final_game;
 
 import android.annotation.SuppressLint;
 import android.os.Handler;
-import android.os.SystemClock;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -28,7 +27,6 @@ public class MemoryView extends View {
   int cardNum = 1;
   /** The back image of all the cards */
   int cardBackView;
-
   Memory1Activity cntxt;
 
   /**
@@ -48,8 +46,7 @@ public class MemoryView extends View {
       cardBackView = R.drawable.bv_01;
     }
     show();
-    player.getChronometer().setBase(SystemClock.elapsedRealtime());
-    player.getChronometer().start();
+    plyr.getChronometer().start();
     setOnClick();
   }
 

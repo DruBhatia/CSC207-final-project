@@ -79,13 +79,8 @@ class MemorizePlayer {
     this.playerMoves--;
   }
 
-  /** Set whether the card will be visible on screen or not */
-  void setVisibility(int num) {
-    if (num == 2) {
-    this.chronometer.setVisibility(View.INVISIBLE);
-    this.textPoints.setVisibility(View.INVISIBLE);
-    } else if (num == 1) {
-      this.textMoves.setVisibility(View.INVISIBLE);
-    }
-    }
+  /** Set whether the moves counter will be visible or not */
+  void setVisibility() {
+    this.textMoves.setVisibility(View.INVISIBLE);
+  }
 }

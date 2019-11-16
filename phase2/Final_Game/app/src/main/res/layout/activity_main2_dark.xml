@@ -5,8 +5,7 @@
     android:id="@+id/activity_memorygame_dark"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/game_backg8"
-    tools:context="com.example.final_game.Main2Activity">
+    android:background="@drawable/game_backg8">
 
     <include
         android:id="@+id/include2"
@@ -26,7 +25,7 @@
         android:id="@+id/text_moves"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="40dp"
         android:layout_marginStart="4dp"
         android:layout_marginBottom="67dp"
         android:fontFamily="@font/atari_extended"
@@ -41,7 +40,7 @@
         android:id="@+id/text_points"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="10dp"
         android:layout_marginStart="4dp"
         android:layout_marginBottom="67dp"
         android:fontFamily="@font/atari_extended"

@@ -27,7 +27,7 @@ public class Memory1Activity extends AppCompatActivity {
             (TextView) findViewById(R.id.text_moves),
             (TextView) findViewById(R.id.text_points),
             (Chronometer) findViewById(R.id.stopWatch));
-    memorizePlayer.setVisibility(2);
+    memorizePlayer.setVisibility();
     theme = getIntent().getExtras().get("Theme?").toString();
     if (theme.equals("Light")) {
       setContentView(R.layout.activity_memorygame);
@@ -51,10 +51,12 @@ public class Memory1Activity extends AppCompatActivity {
     int playerPoints = memorizePlayer.getPlayerPoints();
     boolean bool = game_view.checkVisibility();
     if (check) {
+      CharSequence elapsedMillis = memorizePlayer.getChronometer().getText();
       memorizePlayer.getChronometer().stop();
       Intent intent1 = new Intent(Memory1Activity.this, Game2OverActivity.class);
       Intent intent2 = new Intent(Memory1Activity.this, Memory2Activity.class);
       intent1.putExtra("points1", playerPoints);
+      intent1.putExtra("time1", elapsedMillis);
       if (bool) {
         intent1.putExtra("Cards Left1", "NO");
       } else {
