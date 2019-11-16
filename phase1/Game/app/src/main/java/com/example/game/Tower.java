@@ -82,7 +82,8 @@ class Tower {
       Paint s = new Paint();
       s.setColor(Color.TRANSPARENT);
       topTowerRect =
-          new Rect(cnX[i], cnY[i] - topTower.getHeight(), cnX[i] + topTower.getWidth(), cnY[i]);
+          new Rect(cnX[i], cnY[i] - topTower.getHeight(),
+                  cnX[i] + topTower.getWidth(), cnY[i]);
       bottomTowerRect =
           new Rect(
               cnX[i],
