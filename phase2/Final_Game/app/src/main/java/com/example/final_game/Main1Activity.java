@@ -10,6 +10,9 @@ import android.view.WindowManager;
 
 public class Main1Activity extends AppCompatActivity {
 
+  DataBaseHelper gameDb;
+  String username;
+
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -18,11 +21,12 @@ public class Main1Activity extends AppCompatActivity {
         .setFlags(
             WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
     setContentView(R.layout.activity_main);
+    username = getIntent().getStringExtra("Name");
+    gameDb = new DataBaseHelper(this);
   }
 
   public void game_Activities(View view) {
     Intent intent1 = new Intent(this, MemoryBegin.class);
-//    Intent intent2 = new Intent(this, AntBegin.class);
     Intent intent2 = new Intent(this, AntCrusherCustomize.class);
     Intent intent3 = new Intent(this, Main4Activity.class);
     Intent intent4 = new Intent(this, InformationActivity.class);
