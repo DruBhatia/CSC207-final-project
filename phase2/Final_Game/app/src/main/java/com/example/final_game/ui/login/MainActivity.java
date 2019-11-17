@@ -113,6 +113,7 @@ public class MainActivity extends AppCompatActivity {
                 loginViewModel.login(usernameEditText.getText().toString(),
                         passwordEditText.getText().toString());
                 Intent intent = new Intent(MainActivity.this, Main1Activity.class);
+                intent.putExtra("Name", usernameEditText.getText().toString());
                 startActivity(intent);
             }
         });
