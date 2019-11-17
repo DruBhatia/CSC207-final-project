@@ -79,9 +79,19 @@ public class MemoryView extends View {
     show();
     if (level == 3) {
       player.getChronometer().setCountDown(true);
-      long dayInMilli = 60 * 1000;
-      player.getChronometer().setBase(SystemClock.elapsedRealtime() + dayInMilli);
+      long timeInMilli = 60 * 1000;
+      player.getChronometer().setBase(SystemClock.elapsedRealtime() + timeInMilli);
       player.getChronometer().start();
+      // check every one second whether the timer hits 0 or not.
+      Handler handler = new Handler();
+      handler.postDelayed(
+          new Runnable() {
+            @Override
+            public void run() {
+              checkEnd3();
+            }
+          },
+          1000);
     } else {
       player.getChronometer().setBase(SystemClock.elapsedRealtime());
       player.getChronometer().start();
@@ -254,7 +264,7 @@ public class MemoryView extends View {
       }
       // https://developer.android.com/reference/android/os/Handler.html &
       // https://stackoverflow.com/questions/15136199/when-to-use-handler-post-when-to-new-thread
-      // After selecting the two cards delay the game by 100 milliseconds to check whether the two
+      // After selecting the two cards delay the game by 400 milliseconds to check whether the two
       // cards match or not and proceed ahead.
       Handler handler = new Handler();
       handler.postDelayed(
@@ -383,6 +393,19 @@ public class MemoryView extends View {
         intent2.putExtra("Theme???", "Dark");
       }
       getContext().startActivity(intent2);
+      //      if (bool1) {
+      //        Intent intent2 = new Intent(getContext(), Memory3Activity.class);
+      //        if (theme.equals("Light")) {
+      //          intent2.putExtra("Theme???", "Light");
+      //        } else {
+      //          intent2.putExtra("Theme???", "Dark");
+      //        }
+      //        getContext().startActivity(intent2);
+      //      }
+      //      else {
+      //        Intent intent1 = new Intent(getContext(), Game2OverActivity.class);
+      //        getContext().startActivity(intent1);
+      //      }
     }
   }
 

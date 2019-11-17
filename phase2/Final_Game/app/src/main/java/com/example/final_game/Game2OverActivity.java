@@ -28,10 +28,10 @@ public class Game2OverActivity extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_game2_over);
     SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
-    String showMoves2 = sharedPreferences.getString(MOVES_LEFT2, "0");
-    String showMoves3 = sharedPreferences.getString(MOVES_LEFT3, "0");
-    String cardsLeft2 = sharedPreferences.getString(CARDS_LEFT2, "NO");
-    String cardsLeft3 = sharedPreferences.getString(CARDS_LEFT3, "NO");
+    String showMoves2 = sharedPreferences.getString(MOVES_LEFT2, "15");
+    String showMoves3 = sharedPreferences.getString(MOVES_LEFT3, "15");
+    String cardsLeft2 = sharedPreferences.getString(CARDS_LEFT2, "YES");
+    String cardsLeft3 = sharedPreferences.getString(CARDS_LEFT3, "YES");
     String game_time1 = sharedPreferences.getString(TIME1, "00:00");
     String score1 = sharedPreferences.getString(POINTS1, "0");
     String game_time2 = sharedPreferences.getString(TIME2, "00:00");
@@ -70,12 +70,12 @@ public class Game2OverActivity extends AppCompatActivity {
         });
     if ((cardsLeft2.equals("NO"))) {
       gameStatus2.setText("YOU WON!!");
-    } else if (cardsLeft2.equals("YES") && showMoves2.equals("0")) {
+    } else {
       gameStatus2.setText("YOU LOST :(");
     }
     if ((cardsLeft3.equals("NO"))) {
       gameStatus3.setText("YOU WON!!");
-    } else if (cardsLeft3.equals("YES") && showMoves3.equals("0")) {
+    } else {
       gameStatus3.setText("YOU LOST :(");
     }
     gameTime1.setText("TIME:" + game_time1 + "s");
