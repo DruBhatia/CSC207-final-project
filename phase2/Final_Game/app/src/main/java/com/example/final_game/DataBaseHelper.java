@@ -2,6 +2,7 @@ package com.example.final_game;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -12,17 +13,20 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     public static final String TABLE2_NAME = "GAME2STATS";
     public static final String TABLE3_NAME = "GAME3STATS";
 
-    public static final String ID1 = "ID";
-    public static final String NAME = "NAME";
-
+    public static final String TABLE1_ID = "ID";
+    public static final String TABLE1_PLAYER_NAME = "NAME";
     public static final String TABLE1_STAT1 = "TABLE1_STAT1";
     public static final String TABLE1_STAT2 = "TABLE1_STAT2";
     public static final String TABLE1_STAT3 = "TABLE1_STAT3";
 
+    public static final String TABLE2_ID = "ID";
+    public static final String TABLE2_PLAYER_NAME = "NAME";
     public static final String TABLE2_STAT1 = "TABLE2_STAT1";
     public static final String TABLE2_STAT2 = "TABLE2_STAT2";
     public static final String TABLE2_STAT3 = "TABLE2_STAT3";
 
+    public static final String TABLE3_ID = "ID";
+    public static final String TABLE3_PLAYER_NAME = "NAME";
     public static final String TABLE3_STAT1 = "TABLE3_STAT1";
     public static final String TABLE3_STAT2 = "TABLE3_STAT2";
     public static final String TABLE3_STAT3 = "TABLE3_STAT3";
@@ -52,27 +56,45 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         onCreate(sqLiteDatabase);
     }
 
-    public boolean insertData(String table, String stat1, String stat2,String stat3){
+    public boolean insertData(String table, String name, String stat1, String stat2,String stat3){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         if (table.equals(TABLE1_NAME)) {
+            contentValues.put(TABLE1_PLAYER_NAME, name);
             contentValues.put(TABLE1_STAT1, stat1);
             contentValues.put(TABLE1_STAT2, stat2);
             contentValues.put(TABLE1_STAT3, stat3);
             long value = db.insert(TABLE1_NAME, null, contentValues);
             return value != - 1;
         } else if (table.equals(TABLE2_NAME)) {
+            contentValues.put(TABLE2_PLAYER_NAME, name);
             contentValues.put(TABLE2_STAT1, stat1);
             contentValues.put(TABLE2_STAT2, stat2);
             contentValues.put(TABLE2_STAT3, stat3);
             long value = db.insert(TABLE2_NAME, null, contentValues);
+            System.out.println("Value is : " + value + " DATA INSERTED TO DATABSE");
             return value != - 1;
         } else if (table.equals(TABLE3_NAME)) {
+            contentValues.put(TABLE3_PLAYER_NAME, name);
             contentValues.put(TABLE3_STAT1, stat1);
             contentValues.put(TABLE3_STAT2, stat2);
             contentValues.put(TABLE3_STAT3, stat3);
             long value = db.insert(TABLE3_NAME, null, contentValues);
             return value != - 1;
         } else return false;
+    }
+
+    public Cursor getAllData(String table) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        if (table.equals(TABLE1_NAME)) {
+            Cursor res = db.rawQuery("select * from " + TABLE1_NAME, null);
+            return res;
+        } else if(table.equals(TABLE2_NAME)) {
+            Cursor res = db.rawQuery("select * from " + TABLE2_NAME, null);
+            return res;
+        } else {
+            Cursor res = db.rawQuery("select * from " + TABLE3_NAME, null);
+            return res;
+        }
     }
 }
