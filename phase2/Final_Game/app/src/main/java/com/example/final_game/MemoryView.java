@@ -1,6 +1,7 @@
 package com.example.final_game;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Handler;
 import android.os.SystemClock;
 import android.view.View;
@@ -30,28 +31,26 @@ public class MemoryView extends View {
   int cardNum = 1;
   /** The back image of all the cards */
   int cardBackView;
-  Memory1Activity cntxt;
+  String theme;
+  int level;
 
   /**
    * Constructor initializes a new player, a layout of playable, shuffled cards, sets off a timer,
    * and adds clickable functionality to the cards in the layout.
    */
-  MemoryView(AppCompatActivity context, String theme, int level) {
+  MemoryView(AppCompatActivity context, String t, int l) {
     super(context);
-    if (level == 1) {
-      cntxt = (Memory1Activity) context;
-    }
-    else if (level == 2) {
-      cntxt = (Memory2Activity) context;
-    }
-    else {
-      cntxt = (Memory3Activity) context;
-    }
-    player = new MemorizePlayer(
-            (TextView) findViewById(R.id.text_moves),
-            (TextView) findViewById(R.id.text_points),
-            (Chronometer) findViewById(R.id.stopWatch));
+    level = l;
+    player =
+            new MemorizePlayer(
+                    (TextView) context.findViewById(R.id.text_moves),
+                    (TextView) context.findViewById(R.id.text_points),
+                    (Chronometer) context.findViewById(R.id.stopWatch));
     this.initializeCardArray(context);
+    if (level == 1) {
+      player.setMovesVisibility();
+    }
+    theme = t;
     if (theme.equals("L")) {
       initializeImages("L");
       cardBackView = R.drawable.bv_00;
@@ -60,8 +59,16 @@ public class MemoryView extends View {
       cardBackView = R.drawable.bv_01;
     }
     show();
+    if (level == 3) {
+      player.getChronometer().setCountDown(true);
+      long dayInMilli = 60*1000;
+      player.getChronometer().setBase(SystemClock.elapsedRealtime()+dayInMilli);
+      player.getChronometer().start();
+    }
+    else {
     player.getChronometer().setBase(SystemClock.elapsedRealtime());
     player.getChronometer().start();
+    }
     setOnClick();
   }
 
@@ -271,7 +278,13 @@ public class MemoryView extends View {
     for (PlayingCard card : cardArray) {
       card.set_enable(true);
     }
-    cntxt.endGame(cntxt.checkEnd());
+    if (level == 1) {
+      endGame1(checkVisibility());
+    } else if (level == 2) {
+      endGame2(checkEnd2());
+    } else {
+      endGame3(checkEnd3());
+    }
   }
 
   /** Return whether or not all cards on screen are invisible. */
@@ -282,5 +295,91 @@ public class MemoryView extends View {
       }
     }
     return true;
+  }
+
+  /** Check if end-game conditions have been met. */
+  protected boolean checkEnd2() {
+    return player.getMovesLeft() == 0 || checkVisibility();
+  }
+
+  /** Check if end-game conditions have been met. */
+  protected boolean checkEnd3() {
+    CharSequence elapsedMillis = player.getChronometer().getText();
+    String timer = elapsedMillis.toString();
+    return timer.equals("00:00") || player.getMovesLeft() == 0 || checkVisibility();
+  }
+
+  /**
+   * End game if all end-game conditions have been met, track player stats, and navigate to
+   * game-over screen.
+   */
+  protected void endGame1(boolean check) {
+    int playerPoints = player.getPlayerPoints();
+    boolean bool = checkVisibility();
+    if (check) {
+      CharSequence elapsedMillis = player.getChronometer().getText();
+      player.getChronometer().stop();
+      Intent intent1 = new Intent(getContext(), Game2OverActivity.class);
+      Intent intent2 = new Intent(getContext(), Memory2Activity.class);
+      intent1.putExtra("points1", playerPoints);
+      intent1.putExtra("time1", elapsedMillis);
+      if (bool) {
+        intent1.putExtra("Cards Left1", "NO");
+      } else {
+        intent1.putExtra("Cards Left1", "YES");
+      }
+      if (theme.equals("Light")) {
+        intent2.putExtra("Theme??", "Light");
+      } else if (theme.equals("Dark")) {
+        intent2.putExtra("Theme??", "Dark");
+      }
+      getContext().startActivity(intent2);
+    }
+  }
+
+  protected void endGame2(boolean check) {
+    int playerMoves = player.getMovesLeft();
+    int playerPoints = player.getPlayerPoints();
+    boolean bool = checkVisibility();
+    if (check) {
+      CharSequence elapsedMillis = player.getChronometer().getText();
+      player.getChronometer().stop();
+      Intent intent1 = new Intent(getContext(), Game2OverActivity.class);
+      Intent intent2 = new Intent(getContext(), Memory3Activity.class);
+      intent1.putExtra("points2", playerPoints);
+      intent1.putExtra("Moves Left2", playerMoves);
+      intent1.putExtra("time2", elapsedMillis);
+      if (bool) {
+        intent1.putExtra("Cards Left2", "NO");
+      } else {
+        intent1.putExtra("Cards Left2", "YES");
+      }
+      if (theme.equals("Light")) {
+        intent2.putExtra("Theme???", "Light");
+      } else if (theme.equals("Dark")) {
+        intent2.putExtra("Theme???", "Dark");
+      }
+      getContext().startActivity(intent2);
+    }
+  }
+
+  protected void endGame3(boolean check) {
+    int playerMoves = player.getMovesLeft();
+    int playerPoints = player.getPlayerPoints();
+    boolean bool = checkVisibility();
+    if (check) {
+      CharSequence elapsedMillis = player.getChronometer().getText();
+      player.getChronometer().stop();
+      Intent intent1 = new Intent(getContext(), Game2OverActivity.class);
+      intent1.putExtra("points3", playerPoints);
+      intent1.putExtra("Moves Left3", playerMoves);
+      intent1.putExtra("time3", elapsedMillis);
+      if (bool) {
+        intent1.putExtra("Cards Left3", "NO");
+      } else {
+        intent1.putExtra("Cards Left3", "YES");
+      }
+      getContext().startActivity(intent1);
+    }
   }
 }
