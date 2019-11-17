@@ -38,4 +38,14 @@
         android:text="Dark Background"
         />
 
+    <Button
+        android:id="@+id/database"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/light"
+        android:layout_marginTop="100dp"
+        android:layout_centerHorizontal="true"
+        android:text="HIGH SCORE"
+        />
+
 </RelativeLayout>

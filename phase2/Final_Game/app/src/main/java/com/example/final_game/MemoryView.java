@@ -1,7 +1,9 @@
 package com.example.final_game;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Handler;
 import android.os.SystemClock;
 import android.view.View;
@@ -33,7 +35,14 @@ public class MemoryView extends View {
   int cardBackView;
   String theme;
   int level;
-
+  public static final String SHARED_PREFS = "sharedPrefs";
+  public static final String POINTS1 = "points1";
+  public static final String TIME1 = "time1";
+  public static final String POINTS2 = "points2";
+  public static final String TIME2 = "time2";
+  public static final String MOVES_LEFT2 = "movesLeft2";
+  public static final String CARDS_LEFT2 = "cardsLeft2";
+  SharedPreferences sharedPreferences;
   /**
    * Constructor initializes a new player, a layout of playable, shuffled cards, sets off a timer,
    * and adds clickable functionality to the cards in the layout.
@@ -58,6 +67,7 @@ public class MemoryView extends View {
       initializeImages("D");
       cardBackView = R.drawable.bv_01;
     }
+    sharedPreferences = context.getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE);
     show();
     if (level == 3) {
       player.getChronometer().setCountDown(true);
@@ -315,22 +325,17 @@ public class MemoryView extends View {
    */
   protected void endGame1(boolean check) {
     int playerPoints = player.getPlayerPoints();
-    boolean bool = checkVisibility();
     if (check) {
       CharSequence elapsedMillis = player.getChronometer().getText();
       player.getChronometer().stop();
-      Intent intent1 = new Intent(getContext(), Game2OverActivity.class);
       Intent intent2 = new Intent(getContext(), Memory2Activity.class);
-      intent1.putExtra("points1", playerPoints);
-      intent1.putExtra("time1", elapsedMillis);
-      if (bool) {
-        intent1.putExtra("Cards Left1", "NO");
-      } else {
-        intent1.putExtra("Cards Left1", "YES");
-      }
+      SharedPreferences.Editor editor = sharedPreferences.edit();
+      editor.putString(POINTS1, String.valueOf(playerPoints));
+      editor.putString(TIME1, String.valueOf(elapsedMillis));
+      editor.apply();
       if (theme.equals("Light")) {
         intent2.putExtra("Theme??", "Light");
-      } else if (theme.equals("Dark")) {
+      } else {
         intent2.putExtra("Theme??", "Dark");
       }
       getContext().startActivity(intent2);
@@ -344,19 +349,20 @@ public class MemoryView extends View {
     if (check) {
       CharSequence elapsedMillis = player.getChronometer().getText();
       player.getChronometer().stop();
-      Intent intent1 = new Intent(getContext(), Game2OverActivity.class);
       Intent intent2 = new Intent(getContext(), Memory3Activity.class);
-      intent1.putExtra("points2", playerPoints);
-      intent1.putExtra("Moves Left2", playerMoves);
-      intent1.putExtra("time2", elapsedMillis);
+      SharedPreferences.Editor editor = sharedPreferences.edit();
+      editor.putString(POINTS2, String.valueOf(playerPoints));
+      editor.putString(TIME2, String.valueOf(elapsedMillis));
+      editor.putString(MOVES_LEFT2, String.valueOf(playerMoves));
       if (bool) {
-        intent1.putExtra("Cards Left2", "NO");
+        editor.putString(CARDS_LEFT2, "NO");
       } else {
-        intent1.putExtra("Cards Left2", "YES");
+        editor.putString(CARDS_LEFT2, "YES");
       }
+      editor.apply();
       if (theme.equals("Light")) {
         intent2.putExtra("Theme???", "Light");
-      } else if (theme.equals("Dark")) {
+      } else {
         intent2.putExtra("Theme???", "Dark");
       }
       getContext().startActivity(intent2);

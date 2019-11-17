@@ -22,7 +22,7 @@ public class Memory1Activity extends AppCompatActivity {
     if (theme.equals("Light")) {
       setContentView(R.layout.activity_memorygame);
       game_view = new MemoryView(this, "L", 1);
-    } else if (theme.equals("Dark")) {
+    } else {
       setContentView(R.layout.activity_main2_dark);
       game_view = new MemoryView(this, "D", 1);
     }
