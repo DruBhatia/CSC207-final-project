@@ -59,7 +59,9 @@ public class MemoryView extends View {
         new MemorizePlayer(
             (TextView) context.findViewById(R.id.text_moves),
             (TextView) context.findViewById(R.id.text_points),
+            (TextView) context.findViewById(R.id.level),
             (Chronometer) context.findViewById(R.id.stopWatch));
+    this.player.setLevel(level);
     this.initializeCardArray(context);
     if (level == 1) {
       player.setMovesVisibility();

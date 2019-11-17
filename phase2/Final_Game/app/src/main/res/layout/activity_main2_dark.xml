@@ -24,6 +24,21 @@
         tools:context=".Memory1Activity"/>
 
     <TextView
+        android:id="@+id/level"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="160dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="67dp"
+        android:fontFamily="@font/atari_extended"
+        android:text="Level-I"
+        android:textColor="#1E88E5"
+        android:textSize="30sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
         android:id="@+id/text_moves"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

@@ -1,5 +1,6 @@
 package com.example.final_game;
 
+import android.annotation.SuppressLint;
 import android.view.View;
 import android.widget.Chronometer;
 import android.widget.TextView;
@@ -16,13 +17,15 @@ class MemorizePlayer {
   private TextView textPoints;
   /** The stop watch which keeps track of the time spent by the player to complete the game */
   private Chronometer chronometer;
+  private TextView currLevel;
 
   /**
    * Construct a new player of the Memorize! game, allots the number of moves they are allowed to
    * make, sets their timer, and initializes how many points they start off with.
    */
-  MemorizePlayer(TextView tv1, TextView tv2, Chronometer meter) {
+  MemorizePlayer(TextView tv1, TextView tv2, TextView tv3, Chronometer meter) {
     playerMoves = 15;
+    this.currLevel = tv3;
     this.textMoves = tv1;
     this.chronometer = meter;
     this.playerPoints = 0;
@@ -83,4 +86,18 @@ class MemorizePlayer {
   void setMovesVisibility() {
     this.textMoves.setVisibility(View.INVISIBLE);
   }
+
+    /** Set the current level */
+    @SuppressLint("SetTextI18n")
+    void setLevel(int num) {
+        if (num == 1) {
+            currLevel.setText("LEVEL - I");
+        }
+        else if (num == 2) {
+            currLevel.setText("LEVEL - II");
+        }
+        else {
+            currLevel.setText("LEVEL - III");
+        }
+    }
 }
