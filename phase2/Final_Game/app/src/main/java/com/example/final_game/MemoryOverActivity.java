@@ -7,8 +7,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import static com.example.final_game.MemoryView.CARDS_LEFT2;
 import static com.example.final_game.MemoryView.CARDS_LEFT3;
 import static com.example.final_game.MemoryView.MOVES_LEFT2;
@@ -21,7 +19,7 @@ import static com.example.final_game.MemoryView.TIME1;
 import static com.example.final_game.MemoryView.TIME2;
 import static com.example.final_game.MemoryView.TIME3;
 
-public class MemoryOverActivity extends AppCompatActivity {
+public class MemoryOverActivity extends Main1Activity {
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
