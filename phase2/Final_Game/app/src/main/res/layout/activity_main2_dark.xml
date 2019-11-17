@@ -5,7 +5,8 @@
     android:id="@+id/activity_memorygame_dark"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/game_backg8">
+    android:background="@drawable/game_backg8"
+    >
 
     <include
         android:id="@+id/include2"
@@ -19,7 +20,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_points"
-        app:layout_constraintVertical_bias="0.636" />
+        app:layout_constraintVertical_bias="0.636"
+        tools:context=".Memory1Activity"/>
 
     <TextView
         android:id="@+id/text_moves"

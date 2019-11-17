@@ -80,7 +80,7 @@ class MemorizePlayer {
   }
 
   /** Set whether the moves counter will be visible or not */
-  void setVisibility() {
+  void setMovesVisibility() {
     this.textMoves.setVisibility(View.INVISIBLE);
   }
 }

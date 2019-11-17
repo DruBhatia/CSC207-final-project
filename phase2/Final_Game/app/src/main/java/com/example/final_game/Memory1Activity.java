@@ -4,15 +4,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.Chronometer;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class Memory1Activity extends AppCompatActivity {
   MemoryView game_view;
-  MemorizePlayer memorizePlayer;
   String theme;
 
   @Override
@@ -22,19 +19,13 @@ public class Memory1Activity extends AppCompatActivity {
     getWindow()
         .setFlags(
             WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-    memorizePlayer =
-        new MemorizePlayer(
-            (TextView) findViewById(R.id.text_moves),
-            (TextView) findViewById(R.id.text_points),
-            (Chronometer) findViewById(R.id.stopWatch));
-    memorizePlayer.setVisibility();
     theme = getIntent().getExtras().get("Theme?").toString();
     if (theme.equals("Light")) {
       setContentView(R.layout.activity_memorygame);
-      game_view = new MemoryView(this, "L", memorizePlayer);
+      game_view = new MemoryView(this, "L", 1);
     } else if (theme.equals("Dark")) {
       setContentView(R.layout.activity_main2_dark);
-      game_view = new MemoryView(this, "D", memorizePlayer);
+      game_view = new MemoryView(this, "D", 1);
     }
   }
 
@@ -48,11 +39,11 @@ public class Memory1Activity extends AppCompatActivity {
    * game-over screen.
    */
   void endGame(boolean check) {
-    int playerPoints = memorizePlayer.getPlayerPoints();
+    int playerPoints = game_view.player.getPlayerPoints();
     boolean bool = game_view.checkVisibility();
     if (check) {
-      CharSequence elapsedMillis = memorizePlayer.getChronometer().getText();
-      memorizePlayer.getChronometer().stop();
+      CharSequence elapsedMillis = game_view.player.getChronometer().getText();
+      game_view.player.getChronometer().stop();
       Intent intent1 = new Intent(Memory1Activity.this, Game2OverActivity.class);
       Intent intent2 = new Intent(Memory1Activity.this, Memory2Activity.class);
       intent1.putExtra("points1", playerPoints);
