@@ -33,6 +33,7 @@ public class MemoryView extends View {
   int cardNum = 1;
   /** The back image of all the cards */
   int cardBackView;
+
   String theme;
   int level;
   public static final String SHARED_PREFS = "sharedPrefs";
@@ -42,6 +43,10 @@ public class MemoryView extends View {
   public static final String TIME2 = "time2";
   public static final String MOVES_LEFT2 = "movesLeft2";
   public static final String CARDS_LEFT2 = "cardsLeft2";
+  public static final String POINTS3 = "points3";
+  public static final String TIME3 = "time3";
+  public static final String MOVES_LEFT3 = "movesLeft3";
+  public static final String CARDS_LEFT3 = "cardsLeft3";
   SharedPreferences sharedPreferences;
   /**
    * Constructor initializes a new player, a layout of playable, shuffled cards, sets off a timer,
@@ -51,10 +56,10 @@ public class MemoryView extends View {
     super(context);
     level = l;
     player =
-            new MemorizePlayer(
-                    (TextView) context.findViewById(R.id.text_moves),
-                    (TextView) context.findViewById(R.id.text_points),
-                    (Chronometer) context.findViewById(R.id.stopWatch));
+        new MemorizePlayer(
+            (TextView) context.findViewById(R.id.text_moves),
+            (TextView) context.findViewById(R.id.text_points),
+            (Chronometer) context.findViewById(R.id.stopWatch));
     this.initializeCardArray(context);
     if (level == 1) {
       player.setMovesVisibility();
@@ -71,13 +76,12 @@ public class MemoryView extends View {
     show();
     if (level == 3) {
       player.getChronometer().setCountDown(true);
-      long dayInMilli = 60*1000;
-      player.getChronometer().setBase(SystemClock.elapsedRealtime()+dayInMilli);
+      long dayInMilli = 60 * 1000;
+      player.getChronometer().setBase(SystemClock.elapsedRealtime() + dayInMilli);
       player.getChronometer().start();
-    }
-    else {
-    player.getChronometer().setBase(SystemClock.elapsedRealtime());
-    player.getChronometer().start();
+    } else {
+      player.getChronometer().setBase(SystemClock.elapsedRealtime());
+      player.getChronometer().start();
     }
     setOnClick();
   }
@@ -377,14 +381,16 @@ public class MemoryView extends View {
       CharSequence elapsedMillis = player.getChronometer().getText();
       player.getChronometer().stop();
       Intent intent1 = new Intent(getContext(), Game2OverActivity.class);
-      intent1.putExtra("points3", playerPoints);
-      intent1.putExtra("Moves Left3", playerMoves);
-      intent1.putExtra("time3", elapsedMillis);
+      SharedPreferences.Editor editor = sharedPreferences.edit();
+      editor.putString(POINTS3, String.valueOf(playerPoints));
+      editor.putString(TIME3, String.valueOf(elapsedMillis));
+      editor.putString(MOVES_LEFT3, String.valueOf(playerMoves));
       if (bool) {
-        intent1.putExtra("Cards Left3", "NO");
+        editor.putString(CARDS_LEFT3, "NO");
       } else {
-        intent1.putExtra("Cards Left3", "YES");
+        editor.putString(CARDS_LEFT3, "YES");
       }
+      editor.apply();
       getContext().startActivity(intent1);
     }
   }

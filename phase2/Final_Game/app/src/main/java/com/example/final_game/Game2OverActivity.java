@@ -10,13 +10,16 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import static com.example.final_game.MemoryView.CARDS_LEFT2;
+import static com.example.final_game.MemoryView.CARDS_LEFT3;
 import static com.example.final_game.MemoryView.MOVES_LEFT2;
+import static com.example.final_game.MemoryView.MOVES_LEFT3;
 import static com.example.final_game.MemoryView.POINTS1;
 import static com.example.final_game.MemoryView.POINTS2;
+import static com.example.final_game.MemoryView.POINTS3;
 import static com.example.final_game.MemoryView.SHARED_PREFS;
 import static com.example.final_game.MemoryView.TIME1;
 import static com.example.final_game.MemoryView.TIME2;
-
+import static com.example.final_game.MemoryView.TIME3;
 
 public class Game2OverActivity extends AppCompatActivity {
 
@@ -26,15 +29,15 @@ public class Game2OverActivity extends AppCompatActivity {
     setContentView(R.layout.activity_game2_over);
     SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
     String showMoves2 = sharedPreferences.getString(MOVES_LEFT2, "0");
-    String showMoves3 = getIntent().getExtras().get("Moves Left3").toString();
+    String showMoves3 = sharedPreferences.getString(MOVES_LEFT3, "0");
     String cardsLeft2 = sharedPreferences.getString(CARDS_LEFT2, "NO");
-    String cardsLeft3 = getIntent().getExtras().get("Cards Left3").toString();
+    String cardsLeft3 = sharedPreferences.getString(CARDS_LEFT3, "NO");
     String game_time1 = sharedPreferences.getString(TIME1, "00:00");
     String score1 = sharedPreferences.getString(POINTS1, "0");
     String game_time2 = sharedPreferences.getString(TIME2, "00:00");
     String score2 = sharedPreferences.getString(POINTS2, "0");
-    String game_time3 = getIntent().getExtras().get("time3").toString();
-    String score3 = getIntent().getExtras().get("points3").toString();
+    String game_time3 = sharedPreferences.getString(TIME3, "01:00");
+    String score3 = sharedPreferences.getString(POINTS3, "0");
 
     Button mainMenu = findViewById(R.id.main);
     Button restart = findViewById(R.id.playAgain);

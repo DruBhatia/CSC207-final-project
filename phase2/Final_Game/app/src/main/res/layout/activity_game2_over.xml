@@ -17,7 +17,7 @@
         android:fontFamily="@font/invasion2000"
         android:text="GAME OVER"
         android:textAlignment="center"
-        android:textColor="#FF9800"
+        android:textColor="#0C0B0C"
         android:textSize="59dp"
         android:textStyle="bold"
         />
@@ -31,7 +31,7 @@
         android:fontFamily="@font/invasion2000"
         android:text="LEVEL 1"
         android:textAlignment="center"
-        android:textColor="#0E0D0D"
+        android:textColor="#FFB300"
         android:textSize="45dp"
         android:textStyle="bold"
         />
@@ -43,10 +43,10 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginTop="150dp"
-        android:fontFamily="@font/invasion2000"
+        android:fontFamily="@font/atari_extended"
         android:text="TIME: "
         android:textAlignment="center"
-        android:textColor="#039BE5"
+        android:textColor="#1E88E5"
         android:textSize="30dp"
         android:textStyle="bold"
         />
@@ -90,7 +90,7 @@
         android:fontFamily="@font/invasion2000"
         android:text="LEVEL 2"
         android:textAlignment="center"
-        android:textColor="#110E0E"
+        android:textColor="#FFB300"
         android:textSize="45dp"
         android:textStyle="bold"
         />
@@ -106,7 +106,7 @@
         android:text="YOU WON!!"
         android:textAlignment="center"
         android:textSize="30dp"
-        android:textColor="#D81B60"
+        android:textColor="#4E0A24"
         android:textStyle="bold"/>
 
     <TextView
@@ -121,7 +121,7 @@
         android:textAlignment="center"
         android:textSize="30dp"
         android:textStyle="bold"
-        android:textColor="#D81B60" />
+        android:textColor="#530824" />
 
     <TextView
         android:id="@+id/time2"
@@ -135,7 +135,7 @@
         android:textAlignment="center"
         android:textSize="30dp"
         android:textStyle="bold"
-        android:textColor="#D81B60" />
+        android:textColor="#4E0922" />
     <TextView
         android:id="@+id/score2"
         android:layout_width="match_parent"
@@ -148,7 +148,7 @@
         android:textAlignment="center"
         android:textSize="30dp"
         android:textStyle="bold"
-        android:textColor="#D81B60" />
+        android:textColor="#5A0826" />
     <TextView
         android:id="@+id/level3"
         android:layout_width="match_parent"
@@ -159,7 +159,7 @@
         android:fontFamily="@font/invasion2000"
         android:text="LEVEL 3"
         android:textAlignment="center"
-        android:textColor="#181717"
+        android:textColor="#FFB300"
         android:textSize="45dp"
         android:textStyle="bold"
         />
@@ -175,7 +175,7 @@
         android:text="YOU WON!!"
         android:textAlignment="center"
         android:textSize="30dp"
-        android:textColor="#175C27"
+        android:textColor="#280179"
         android:textStyle="bold"
         />
 
@@ -191,7 +191,7 @@
         android:textAlignment="center"
         android:textSize="30dp"
         android:textStyle="bold"
-        android:textColor="#1A572B" />
+        android:textColor="#180068" />
 
     <TextView
         android:id="@+id/time3"
@@ -205,7 +205,7 @@
         android:textStyle="bold"
         android:textAlignment="center"
         android:textSize="30dp"
-        android:textColor="#1C502E" />
+        android:textColor="#2D0080" />
 
     <TextView
         android:id="@+id/score3"
@@ -219,7 +219,7 @@
         android:textStyle="bold"
         android:textAlignment="center"
         android:textSize="35dp"
-        android:textColor="#194B18" />
+        android:textColor="#260075" />
 
     <Button
         android:id="@+id/playAgain"
