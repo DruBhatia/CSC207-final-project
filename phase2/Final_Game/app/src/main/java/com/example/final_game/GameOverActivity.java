@@ -9,7 +9,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 /** Views the Game over Page, once game is completed. */
-public class GameOverActivity extends AppCompatActivity {
+public class GameOverActivity extends Main1Activity {
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -47,5 +47,6 @@ public class GameOverActivity extends AppCompatActivity {
 
     score.setText("Score: " + showScore);
     time.setText("Time taken: " + showTime + " s");
+    gameDb.insertData("GAME2STATS", username, showScore, showTime, "nothing");
   }
 }
