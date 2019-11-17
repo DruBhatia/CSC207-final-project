@@ -1,6 +1,7 @@
 package com.example.final_game.ui.login;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -110,6 +111,8 @@ public class MainActivity extends AppCompatActivity {
                 loadingProgressBar.setVisibility(View.VISIBLE);
                 loginViewModel.login(usernameEditText.getText().toString(),
                         passwordEditText.getText().toString());
+                Intent intent = new Intent(MainActivity.this, Main1Activity.class);
+                startActivity(intent);
             }
         });
     }
