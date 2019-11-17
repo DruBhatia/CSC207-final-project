@@ -84,5 +84,6 @@ public class MemoryOverActivity extends Main1Activity {
     movesLeft3.setText("MOVES LEFT:" + showMoves3);
     gameTime3.setText("TIME LEFT:" + game_time3 + "s");
     finalScore3.setText("FINAL SCORE:" + score3);
+    gameDb.insertData("GAME1STATS", username, score3, game_time3, showMoves3);
   }
 }
