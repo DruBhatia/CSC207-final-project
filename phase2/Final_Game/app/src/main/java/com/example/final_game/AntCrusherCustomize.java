@@ -10,73 +10,69 @@ import androidx.appcompat.app.AlertDialog;
 
 public class AntCrusherCustomize extends Main1Activity {
 
-    private Button backgroundLight;
+  @Override
+  protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_ant_crusher_customize2);
 
-    private Button backgroundDark;
+    Button backgroundLight = findViewById(R.id.light);
 
-    private Button getDatabase;
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ant_crusher_customize2);
+    Button backgroundDark = findViewById(R.id.dark);
 
-        backgroundLight = findViewById(R.id.light);
+    Button getDatabase = findViewById(R.id.database);
 
-        backgroundDark = findViewById(R.id.dark);
+    backgroundLight.setOnClickListener(
+        new View.OnClickListener() {
+          @Override
+          public void onClick(View v) {
+            int background = R.drawable.donut_background;
+            Intent intentNew = new Intent(AntCrusherCustomize.this, Main3Activity.class);
 
-        getDatabase = findViewById(R.id.database);
-
-        backgroundLight.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                int background = R.drawable.donut_background;
-                Intent intentNew = new Intent(AntCrusherCustomize.this, Main3Activity.class);
-
-                intentNew.putExtra("background", background);
-                startActivity(intentNew);
-            }
+            intentNew.putExtra("background", background);
+            startActivity(intentNew);
+          }
         });
 
-        backgroundDark.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                int background = R.drawable.background;
-                Intent intentNew = new Intent(AntCrusherCustomize.this, Main3Activity.class);
+    backgroundDark.setOnClickListener(
+        new View.OnClickListener() {
+          @Override
+          public void onClick(View v) {
+            int background = R.drawable.background;
+            Intent intentNew = new Intent(AntCrusherCustomize.this, Main3Activity.class);
 
-                intentNew.putExtra("background", background);
-                startActivity(intentNew);
-            }
+            intentNew.putExtra("background", background);
+            startActivity(intentNew);
+          }
         });
 
-        getDatabase.setOnClickListener(
-            new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Cursor cur = gameDb.getAllData("GAME2STATS");
-                if (cur.getCount() == 0) {
-                    System.out.println("Error no data found");
-                    showMessage("ERROR", "NOTHING FOUND IN DATABASE");
-                } else {
-                StringBuilder stringBuffer = new StringBuilder();
-                while (cur.moveToNext()) {
-                    stringBuffer.append("id: " + cur.getString(0) + "\n");
-                    stringBuffer.append("name: " + cur.getString(1) + "\n");
-                    stringBuffer.append("score: " + cur.getString(2) + "\n");
-                    stringBuffer.append("time: " + cur.getString(3) + "\n");
-                    stringBuffer.append("stat3: " + cur.getString(4) + "\n\n");
-
-                }
-                showMessage("DATA FOUND", stringBuffer.toString());
-                }
+    getDatabase.setOnClickListener(
+        new View.OnClickListener() {
+          @Override
+          public void onClick(View view) {
+            Cursor cur = gameDb.getAllData("GAME2STATS");
+            if (cur.getCount() == 0) {
+              System.out.println("Error no data found");
+              showMessage("ERROR", "NOTHING FOUND IN DATABASE");
+            } else {
+              StringBuilder stringBuffer = new StringBuilder();
+              while (cur.moveToNext()) {
+                stringBuffer.append("id: ").append(cur.getString(0)).append("\n");
+                stringBuffer.append("name: ").append(cur.getString(1)).append("\n");
+                stringBuffer.append("score: ").append(cur.getString(2)).append("\n");
+                stringBuffer.append("time: ").append(cur.getString(3)).append("\n");
+                stringBuffer.append("stat3: ").append(cur.getString(4)).append("\n\n");
+              }
+              showMessage("DATA FOUND", stringBuffer.toString());
             }
+          }
         });
-    }
+  }
 
-    public void showMessage(String message, String data){
-        AlertDialog.Builder alert = new AlertDialog.Builder(this);
-        alert.setCancelable(true);
-        alert.setTitle(message);
-        alert.setMessage(data);
-        alert.show();
-    }
+  public void showMessage(String message, String data) {
+    AlertDialog.Builder alert = new AlertDialog.Builder(this);
+    alert.setCancelable(true);
+    alert.setTitle(message);
+    alert.setMessage(data);
+    alert.show();
+  }
 }

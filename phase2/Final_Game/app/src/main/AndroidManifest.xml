@@ -19,7 +19,7 @@
         <activity android:name=".InformationActivity" />
         <activity android:name=".AntBegin" />
         <activity android:name=".MemoryBegin" />
-        <activity android:name=".Game2OverActivity" />
+        <activity android:name=".MemoryOverActivity" />
         <activity android:name=".GameOverActivity" />
         <activity android:name=".Main4Activity" />
         <activity android:name=".Main3Activity" />

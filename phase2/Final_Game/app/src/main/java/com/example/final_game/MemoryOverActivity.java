@@ -21,7 +21,7 @@ import static com.example.final_game.MemoryView.TIME1;
 import static com.example.final_game.MemoryView.TIME2;
 import static com.example.final_game.MemoryView.TIME3;
 
-public class Game2OverActivity extends AppCompatActivity {
+public class MemoryOverActivity extends AppCompatActivity {
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -55,7 +55,7 @@ public class Game2OverActivity extends AppCompatActivity {
         new View.OnClickListener() {
           @Override
           public void onClick(View v) {
-            Intent intent1 = new Intent(Game2OverActivity.this, MemoryBegin.class);
+            Intent intent1 = new Intent(MemoryOverActivity.this, MemoryBegin.class);
             startActivity(intent1);
           }
         });
@@ -64,7 +64,7 @@ public class Game2OverActivity extends AppCompatActivity {
         new View.OnClickListener() {
           @Override
           public void onClick(View v) {
-            Intent intent3 = new Intent(Game2OverActivity.this, Main1Activity.class);
+            Intent intent3 = new Intent(MemoryOverActivity.this, Main1Activity.class);
             startActivity(intent3);
           }
         });

@@ -33,9 +33,8 @@ public class MemoryView extends View {
   int cardNum = 1;
   /** The back image of all the cards */
   int cardBackView;
-
-  boolean bool = false;
   String theme;
+
   int level;
   public static final String SHARED_PREFS = "sharedPrefs";
   public static final String POINTS1 = "points1";
@@ -403,7 +402,7 @@ public class MemoryView extends View {
       //        getContext().startActivity(intent2);
       //      }
       //      else {
-      //        Intent intent1 = new Intent(getContext(), Game2OverActivity.class);
+      //        Intent intent1 = new Intent(getContext(), MemoryOverActivity.class);
       //        getContext().startActivity(intent1);
       //      }
     }
@@ -416,7 +415,7 @@ public class MemoryView extends View {
     if (check) {
       CharSequence elapsedMillis = player.getChronometer().getText();
       player.getChronometer().stop();
-      Intent intent1 = new Intent(getContext(), Game2OverActivity.class);
+      Intent intent1 = new Intent(getContext(), MemoryOverActivity.class);
       SharedPreferences.Editor editor = sharedPreferences.edit();
       editor.putString(POINTS3, String.valueOf(playerPoints));
       editor.putString(TIME3, String.valueOf(elapsedMillis));
