@@ -78,13 +78,13 @@ public class Game2OverActivity extends AppCompatActivity {
     } else if (cardsLeft3.equals("YES") && showMoves3.equals("0")) {
       gameStatus3.setText("YOU LOST :(");
     }
-    gameTime1.setText("TIME: " + game_time1 + "s");
-    finalScore1.setText("FINAL SCORE: " + score1);
-    movesLeft2.setText("MOVES LEFT: " + showMoves2);
-    gameTime2.setText("TIME: " + game_time2 + "s");
-    finalScore2.setText("FINAL SCORE: " + score2);
-    movesLeft3.setText("MOVES LEFT: " + showMoves3);
-    gameTime3.setText("TIME LEFT: " + game_time3 + "s");
-    finalScore3.setText("FINAL SCORE: " + score3);
+    gameTime1.setText("TIME:" + game_time1 + "s");
+    finalScore1.setText("FINAL SCORE:" + score1);
+    movesLeft2.setText("MOVES LEFT:" + showMoves2);
+    gameTime2.setText("TIME:" + game_time2 + "s");
+    finalScore2.setText("FINAL SCORE:" + score2);
+    movesLeft3.setText("MOVES LEFT:" + showMoves3);
+    gameTime3.setText("TIME LEFT:" + game_time3 + "s");
+    finalScore3.setText("FINAL SCORE:" + score3);
   }
 }

@@ -34,6 +34,7 @@ public class MemoryView extends View {
   /** The back image of all the cards */
   int cardBackView;
 
+  boolean bool = false;
   String theme;
   int level;
   public static final String SHARED_PREFS = "sharedPrefs";
@@ -299,7 +300,7 @@ public class MemoryView extends View {
     } else if (level == 2) {
       endGame2(checkEnd2());
     } else {
-      endGame3(checkEnd3());
+      checkEnd3();
     }
   }
 
@@ -319,10 +320,20 @@ public class MemoryView extends View {
   }
 
   /** Check if end-game conditions have been met. */
-  protected boolean checkEnd3() {
-    CharSequence elapsedMillis = player.getChronometer().getText();
-    String timer = elapsedMillis.toString();
-    return timer.equals("00:00") || player.getMovesLeft() == 0 || checkVisibility();
+  protected void checkEnd3() {
+    player
+        .getChronometer()
+        .setOnChronometerTickListener(
+            new Chronometer.OnChronometerTickListener() {
+              @Override
+              public void onChronometerTick(Chronometer chronometer) {
+                CharSequence elapsedMillis = chronometer.getText();
+                if ((elapsedMillis).equals("00:00")) {
+                  endGame3(true);
+                }
+              }
+            });
+    endGame3(checkEnd2());
   }
 
   /**
@@ -351,7 +362,7 @@ public class MemoryView extends View {
   protected void endGame2(boolean check) {
     int playerMoves = player.getMovesLeft();
     int playerPoints = player.getPlayerPoints();
-    boolean bool = checkVisibility();
+    boolean bool1 = checkVisibility();
     if (check) {
       CharSequence elapsedMillis = player.getChronometer().getText();
       player.getChronometer().stop();
@@ -360,7 +371,7 @@ public class MemoryView extends View {
       editor.putString(POINTS2, String.valueOf(playerPoints));
       editor.putString(TIME2, String.valueOf(elapsedMillis));
       editor.putString(MOVES_LEFT2, String.valueOf(playerMoves));
-      if (bool) {
+      if (bool1) {
         editor.putString(CARDS_LEFT2, "NO");
       } else {
         editor.putString(CARDS_LEFT2, "YES");
@@ -378,7 +389,7 @@ public class MemoryView extends View {
   protected void endGame3(boolean check) {
     int playerMoves = player.getMovesLeft();
     int playerPoints = player.getPlayerPoints();
-    boolean bool = checkVisibility();
+    boolean bool1 = checkVisibility();
     if (check) {
       CharSequence elapsedMillis = player.getChronometer().getText();
       player.getChronometer().stop();
@@ -387,7 +398,7 @@ public class MemoryView extends View {
       editor.putString(POINTS3, String.valueOf(playerPoints));
       editor.putString(TIME3, String.valueOf(elapsedMillis));
       editor.putString(MOVES_LEFT3, String.valueOf(playerMoves));
-      if (bool) {
+      if (bool1) {
         editor.putString(CARDS_LEFT3, "NO");
       } else {
         editor.putString(CARDS_LEFT3, "YES");

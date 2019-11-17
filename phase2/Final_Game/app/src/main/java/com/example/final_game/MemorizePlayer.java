@@ -17,6 +17,7 @@ class MemorizePlayer {
   private TextView textPoints;
   /** The stop watch which keeps track of the time spent by the player to complete the game */
   private Chronometer chronometer;
+
   private TextView currLevel;
 
   /**
@@ -46,7 +47,7 @@ class MemorizePlayer {
    * points the player has.
    */
   void setTextPoints() {
-    String new_text = "Score: " + this.getPlayerPoints();
+    String new_text = "Score:" + this.getPlayerPoints();
     this.textPoints.setText(new_text);
   }
 
@@ -87,17 +88,15 @@ class MemorizePlayer {
     this.textMoves.setVisibility(View.INVISIBLE);
   }
 
-    /** Set the current level */
-    @SuppressLint("SetTextI18n")
-    void setLevel(int num) {
-        if (num == 1) {
-            currLevel.setText("LEVEL - I");
-        }
-        else if (num == 2) {
-            currLevel.setText("LEVEL - II");
-        }
-        else {
-            currLevel.setText("LEVEL - III");
-        }
+  /** Set the current level */
+  @SuppressLint("SetTextI18n")
+  void setLevel(int num) {
+    if (num == 1) {
+      currLevel.setText("LEVEL-I");
+    } else if (num == 2) {
+      currLevel.setText("LEVEL-II");
+    } else {
+      currLevel.setText("LEVEL-III");
     }
+  }
 }

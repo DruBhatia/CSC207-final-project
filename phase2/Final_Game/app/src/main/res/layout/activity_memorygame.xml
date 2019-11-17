@@ -25,7 +25,7 @@
         android:id="@+id/level"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="160dp"
+        android:layout_marginStart="150dp"
         android:layout_marginTop="4dp"
         android:layout_marginBottom="67dp"
         android:fontFamily="@font/atari_extended"
