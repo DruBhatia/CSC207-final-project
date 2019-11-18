@@ -46,6 +46,8 @@ public class DonutView extends SurfaceView implements SurfaceHolder.Callback, Se
 
   int background;
 
+  int levelCount;
+
   /**
    * Construct the thread.
    *
@@ -65,6 +67,7 @@ public class DonutView extends SurfaceView implements SurfaceHolder.Callback, Se
     if (touch) {
       manager.ants.remove(removedAnt);
       if (manager.ants.size() < 2) {
+        levelCount += 1;
         antGenerationSpeed += 2;
         manager.createAnts(antBitmap1, this, antGenerationSpeed);
       }
@@ -85,6 +88,8 @@ public class DonutView extends SurfaceView implements SurfaceHolder.Callback, Se
       newGameintent.putExtra("Score", score);
 
       newGameintent.putExtra("Time", currTime);
+
+      newGameintent.putExtra("Level", levelCount);
 
       getContext().startActivity(newGameintent);
     }
@@ -110,6 +115,7 @@ public class DonutView extends SurfaceView implements SurfaceHolder.Callback, Se
     livesPaint.setColor(-65536);
     livesPaint.setTextSize(70);
     canvas.drawText("Lives Left : " + lives, 500, 60, livesPaint);
+    canvas.drawText("Level: "+ levelCount, 300, 60, livesPaint);
     donutNew.draw(canvas);
     manager.draw(canvas);
   }

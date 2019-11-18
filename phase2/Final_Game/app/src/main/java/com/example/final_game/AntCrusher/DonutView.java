@@ -1,6 +1,8 @@
 package com.example.final_game.AntCrusher;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -10,6 +12,7 @@ import android.graphics.Paint;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
+import android.widget.Toast;
 
 import com.example.final_game.R;
 
@@ -48,13 +51,21 @@ public class DonutView extends SurfaceView implements SurfaceHolder.Callback, Se
 
   int background;
 
+  int level;
+
+  Activity activity;
+
+
+
   /**
    * Construct the thread.
    *
    * @param context is the environment of this game.
    */
-  public DonutView(Context context, int background) {
+  public DonutView(Context context, int background, Activity activity) {
     super(context);
+    this.activity = activity;
+
     this.setFocusable(true);
     this.getHolder().addCallback(this);
     score = 0;
@@ -66,9 +77,19 @@ public class DonutView extends SurfaceView implements SurfaceHolder.Callback, Se
     Bitmap antBitmap1 = BitmapFactory.decodeResource(this.getResources(), R.drawable.ant);
     if (touch) {
       manager.ants.remove(removedAnt);
-      if (manager.ants.size() < 2) {
+
+      if (manager.ants.size() == 0) {
+        level += 1;
+        gameThread.setRunning(false);
+
+        Intent levelIntent = new Intent(getContext(), LevelActivity.class);
+        levelIntent.putExtra("Level", level);
+
         antGenerationSpeed += 2;
         manager.createAnts(antBitmap1, this, antGenerationSpeed);
+
+        getContext().startActivity(levelIntent);
+
       }
       System.out.println(manager.ants.size());
     } else {

@@ -32,7 +32,8 @@ public class GameOverActivity extends Main1Activity {
         new View.OnClickListener() {
           @Override
           public void onClick(View v) {
-            Intent intent2 = new Intent(GameOverActivity.this, Main3Activity.class);
+            Intent intent2 = new Intent(GameOverActivity.this, AntCrusherCustomize.class);
+            System.out.println("reached play again");
             startActivity(intent2);
           }
         });
