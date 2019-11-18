@@ -359,7 +359,7 @@ public class MemoryView extends View {
       editor.putString(POINTS1, String.valueOf(playerPoints));
       editor.putString(TIME1, String.valueOf(elapsedMillis));
       editor.apply();
-      if (theme.equals("Light")) {
+      if (theme.equals("L")) {
         intent2.putExtra("Theme??", "Light");
       } else {
         intent2.putExtra("Theme??", "Dark");
@@ -386,7 +386,7 @@ public class MemoryView extends View {
         editor.putString(CARDS_LEFT2, "YES");
       }
       editor.apply();
-      if (theme.equals("Light")) {
+      if (theme.equals("L")) {
         intent2.putExtra("Theme???", "Light");
       } else {
         intent2.putExtra("Theme???", "Dark");
