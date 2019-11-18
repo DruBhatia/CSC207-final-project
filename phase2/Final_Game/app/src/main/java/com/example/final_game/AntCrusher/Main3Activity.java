@@ -1,10 +1,12 @@
-package com.example.final_game;
+package com.example.final_game.AntCrusher;
 
 import android.os.Bundle;
 import android.view.Window;
 import android.view.WindowManager;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.final_game.TrueBlueAdventure.GameView;
 
 import java.io.File;
 import java.io.FileInputStream;

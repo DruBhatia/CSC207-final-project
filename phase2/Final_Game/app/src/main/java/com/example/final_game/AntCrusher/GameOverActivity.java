@@ -1,4 +1,4 @@
-package com.example.final_game;
+package com.example.final_game.AntCrusher;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,11 +6,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.final_game.Infrastructure.Main1Activity;
+import com.example.final_game.R;
+
 /** Views the Game over Page, once game is completed. */
 public class GameOverActivity extends Main1Activity {
 
   @Override
-  protected void onCreate(Bundle savedInstanceState) {
+  public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
 
     setContentView(R.layout.activity_game_over);

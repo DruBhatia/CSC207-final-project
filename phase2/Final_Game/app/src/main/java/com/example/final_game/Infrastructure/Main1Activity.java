@@ -1,4 +1,4 @@
-package com.example.final_game;
+package com.example.final_game.Infrastructure;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,13 +8,18 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
+import com.example.final_game.AntCrusher.AntCrusherCustomize;
+import com.example.final_game.Memorize.MemoryBegin;
+import com.example.final_game.R;
+import com.example.final_game.TrueBlueAdventure.Main4Activity;
+
 public class Main1Activity extends AppCompatActivity {
 
-  DataBaseHelper gameDb;
-  String username;
+  public DataBaseHelper gameDb;
+  public String username;
 
   @Override
-  protected void onCreate(Bundle savedInstanceState) {
+  public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     requestWindowFeature(Window.FEATURE_NO_TITLE);
     getWindow()

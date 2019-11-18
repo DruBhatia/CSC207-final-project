@@ -1,4 +1,4 @@
-package com.example.final_game;
+package com.example.final_game.Memorize;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -7,22 +7,25 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import static com.example.final_game.MemoryView.CARDS_LEFT2;
-import static com.example.final_game.MemoryView.CARDS_LEFT3;
-import static com.example.final_game.MemoryView.MOVES_LEFT2;
-import static com.example.final_game.MemoryView.MOVES_LEFT3;
-import static com.example.final_game.MemoryView.POINTS1;
-import static com.example.final_game.MemoryView.POINTS2;
-import static com.example.final_game.MemoryView.POINTS3;
-import static com.example.final_game.MemoryView.SHARED_PREFS;
-import static com.example.final_game.MemoryView.TIME1;
-import static com.example.final_game.MemoryView.TIME2;
-import static com.example.final_game.MemoryView.TIME3;
+import com.example.final_game.Infrastructure.Main1Activity;
+import com.example.final_game.R;
+
+import static com.example.final_game.Memorize.MemoryView.CARDS_LEFT2;
+import static com.example.final_game.Memorize.MemoryView.CARDS_LEFT3;
+import static com.example.final_game.Memorize.MemoryView.MOVES_LEFT2;
+import static com.example.final_game.Memorize.MemoryView.MOVES_LEFT3;
+import static com.example.final_game.Memorize.MemoryView.POINTS1;
+import static com.example.final_game.Memorize.MemoryView.POINTS2;
+import static com.example.final_game.Memorize.MemoryView.POINTS3;
+import static com.example.final_game.Memorize.MemoryView.SHARED_PREFS;
+import static com.example.final_game.Memorize.MemoryView.TIME1;
+import static com.example.final_game.Memorize.MemoryView.TIME2;
+import static com.example.final_game.Memorize.MemoryView.TIME3;
 
 public class MemoryOverActivity extends Main1Activity {
 
   @Override
-  protected void onCreate(Bundle savedInstanceState) {
+  public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_game2_over);
     SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);

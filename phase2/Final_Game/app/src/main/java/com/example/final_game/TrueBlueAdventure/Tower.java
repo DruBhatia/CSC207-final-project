@@ -1,4 +1,4 @@
-package com.example.final_game;
+package com.example.final_game.TrueBlueAdventure;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -6,6 +6,8 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
+
+import com.example.final_game.R;
 
 import java.util.Random;
 

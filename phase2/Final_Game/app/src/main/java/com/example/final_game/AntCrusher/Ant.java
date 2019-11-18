@@ -1,4 +1,4 @@
-package com.example.final_game;
+package com.example.final_game.AntCrusher;
 
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -11,7 +11,7 @@ class Ant extends GameCreature {
 
   private DonutView donutView;
 
-  static int numAntsOffReached = 0;
+  private static int numAntsOffReached = 0;
 
   /** Creates an Ant. */
   Ant(Bitmap image, int x, int y, DonutView donutView, int speed) {

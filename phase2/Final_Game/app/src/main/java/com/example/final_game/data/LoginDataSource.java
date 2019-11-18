@@ -23,7 +23,7 @@ public class LoginDataSource {
         }
     }
 
-    public void logout() {
+    void logout() {
         // TODO: revoke authentication
     }
 }

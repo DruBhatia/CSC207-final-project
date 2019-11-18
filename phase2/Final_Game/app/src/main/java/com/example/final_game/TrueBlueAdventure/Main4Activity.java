@@ -1,9 +1,11 @@
-package com.example.final_game;
+package com.example.final_game.TrueBlueAdventure;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+
+import com.example.final_game.R;
 
 public class Main4Activity extends Activity {
 

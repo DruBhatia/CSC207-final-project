@@ -1,4 +1,4 @@
-package com.example.final_game;
+package com.example.final_game.Memorize;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -12,6 +12,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.final_game.R;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -195,7 +197,7 @@ public class MemoryView extends View {
   // https://developer.android.com/reference/android/view/View.OnClickListener used to learn.
   void setOnClick() {
     for (final PlayingCard card : cardArray) {
-      card.getImageview()
+      card.getImageView()
           .setOnClickListener(
               new View.OnClickListener() {
                 @Override

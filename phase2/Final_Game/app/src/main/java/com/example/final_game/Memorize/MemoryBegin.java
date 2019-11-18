@@ -1,55 +1,52 @@
-package com.example.final_game;
+package com.example.final_game.Memorize;
 
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 import androidx.appcompat.app.AlertDialog;
 
-public class AntCrusherCustomize extends Main1Activity {
+import com.example.final_game.Infrastructure.Main1Activity;
+import com.example.final_game.R;
+
+public class MemoryBegin extends Main1Activity {
 
   @Override
-  protected void onCreate(Bundle savedInstanceState) {
+  public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_ant_crusher_customize2);
+    setContentView(R.layout.activity_memorybegin);
+    ImageButton playMemory = findViewById(R.id.imageButton);
+    ImageButton playMemoryDark = findViewById(R.id.imageButton2);
+    Button HighScore = findViewById(R.id.highScore);
 
-    Button backgroundLight = findViewById(R.id.light);
-
-    Button backgroundDark = findViewById(R.id.dark);
-
-    Button getDatabase = findViewById(R.id.database);
-
-    backgroundLight.setOnClickListener(
+    playMemory.setOnClickListener(
         new View.OnClickListener() {
           @Override
           public void onClick(View v) {
-            int background = R.drawable.donut_background;
-            Intent intentNew = new Intent(AntCrusherCustomize.this, Main3Activity.class);
-
-            intentNew.putExtra("background", background);
-            startActivity(intentNew);
+            Intent intent2 = new Intent(MemoryBegin.this, Memory1Activity.class);
+            intent2.putExtra("Theme?", "Light");
+            startActivity(intent2);
           }
         });
 
-    backgroundDark.setOnClickListener(
+    playMemoryDark.setOnClickListener(
         new View.OnClickListener() {
           @Override
           public void onClick(View v) {
-            int background = R.drawable.background;
-            Intent intentNew = new Intent(AntCrusherCustomize.this, Main3Activity.class);
-
-            intentNew.putExtra("background", background);
-            startActivity(intentNew);
+            Intent intent3 = new Intent(MemoryBegin.this, Memory1Activity.class);
+            intent3.putExtra("Theme?", "Dark");
+            startActivity(intent3);
           }
         });
 
-    getDatabase.setOnClickListener(
+    HighScore.setOnClickListener(
         new View.OnClickListener() {
           @Override
           public void onClick(View view) {
-            Cursor cur = gameDb.getAllData("GAME2STATS");
+            Cursor cur = gameDb.getAllData("GAME1STATS");
             if (cur.getCount() == 0) {
               System.out.println("Error no data found");
               showMessage("ERROR", "NOTHING FOUND IN DATABASE");
@@ -60,7 +57,7 @@ public class AntCrusherCustomize extends Main1Activity {
                 stringBuffer.append("name: ").append(cur.getString(1)).append("\n");
                 stringBuffer.append("score: ").append(cur.getString(2)).append("\n");
                 stringBuffer.append("time: ").append(cur.getString(3)).append("\n");
-                stringBuffer.append("stat3: ").append(cur.getString(4)).append("\n\n");
+                stringBuffer.append("Moves Left: ").append(cur.getString(4)).append("\n\n");
               }
               showMessage("DATA FOUND", stringBuffer.toString());
             }

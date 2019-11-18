@@ -1,4 +1,4 @@
-package com.example.final_game;
+package com.example.final_game.TrueBlueAdventure;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,6 +7,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
+import com.example.final_game.Infrastructure.Main1Activity;
+import com.example.final_game.R;
 
 public class Game3OverActivity extends AppCompatActivity {
 

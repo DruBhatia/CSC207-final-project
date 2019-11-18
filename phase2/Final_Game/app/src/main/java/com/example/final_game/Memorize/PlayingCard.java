@@ -1,4 +1,4 @@
-package com.example.final_game;
+package com.example.final_game.Memorize;
 
 // https://developer.android.com/reference/android/widget/ImageView and
 // https://developer.android.com/reference/android/view/View used to learn.
@@ -14,7 +14,7 @@ class PlayingCard {
     this.imageview = iv;
   }
   /** get the ImageView of the card */
-  ImageView getImageview() {
+  ImageView getImageView() {
     return this.imageview;
   }
 

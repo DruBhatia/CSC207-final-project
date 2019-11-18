@@ -1,4 +1,4 @@
-package com.example.final_game;
+package com.example.final_game.Memorize;
 
 import android.os.Bundle;
 import android.view.Window;
@@ -6,6 +6,9 @@ import android.view.WindowManager;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.final_game.Memorize.MemoryView;
+import com.example.final_game.R;
 
 public class Memory1Activity extends AppCompatActivity {
   MemoryView game_view;

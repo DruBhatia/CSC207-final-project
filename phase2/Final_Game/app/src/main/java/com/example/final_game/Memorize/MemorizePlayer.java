@@ -1,4 +1,4 @@
-package com.example.final_game;
+package com.example.final_game.Memorize;
 
 import android.annotation.SuppressLint;
 import android.view.View;

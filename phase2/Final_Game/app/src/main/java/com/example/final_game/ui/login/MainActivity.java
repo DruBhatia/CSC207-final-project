@@ -20,7 +20,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
-import com.example.final_game.Main1Activity;
+import com.example.final_game.Infrastructure.Main1Activity;
 import com.example.final_game.R;
 
 public class MainActivity extends AppCompatActivity {

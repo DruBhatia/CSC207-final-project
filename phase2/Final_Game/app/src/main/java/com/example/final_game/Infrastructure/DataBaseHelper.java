@@ -1,4 +1,4 @@
-package com.example.final_game;
+package com.example.final_game.Infrastructure;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -8,31 +8,31 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class DataBaseHelper extends SQLiteOpenHelper {
 
-    public static final String DATABASE_NAME = "GAME.db";
-    public static final String TABLE1_NAME = "GAME1STATS";
-    public static final String TABLE2_NAME = "GAME2STATS";
-    public static final String TABLE3_NAME = "GAME3STATS";
+    private static final String DATABASE_NAME = "GAME.db";
+    private static final String TABLE1_NAME = "GAME1STATS";
+    private static final String TABLE2_NAME = "GAME2STATS";
+    private static final String TABLE3_NAME = "GAME3STATS";
 
     public static final String TABLE1_ID = "ID";
-    public static final String TABLE1_PLAYER_NAME = "NAME";
-    public static final String TABLE1_STAT1 = "TABLE1_STAT1";
-    public static final String TABLE1_STAT2 = "TABLE1_STAT2";
-    public static final String TABLE1_STAT3 = "TABLE1_STAT3";
+    private static final String TABLE1_PLAYER_NAME = "NAME";
+    private static final String TABLE1_STAT1 = "TABLE1_STAT1";
+    private static final String TABLE1_STAT2 = "TABLE1_STAT2";
+    private static final String TABLE1_STAT3 = "TABLE1_STAT3";
 
     public static final String TABLE2_ID = "ID";
-    public static final String TABLE2_PLAYER_NAME = "NAME";
-    public static final String TABLE2_STAT1 = "TABLE2_STAT1";
-    public static final String TABLE2_STAT2 = "TABLE2_STAT2";
-    public static final String TABLE2_STAT3 = "TABLE2_STAT3";
+    private static final String TABLE2_PLAYER_NAME = "NAME";
+    private static final String TABLE2_STAT1 = "TABLE2_STAT1";
+    private static final String TABLE2_STAT2 = "TABLE2_STAT2";
+    private static final String TABLE2_STAT3 = "TABLE2_STAT3";
 
     public static final String TABLE3_ID = "ID";
-    public static final String TABLE3_PLAYER_NAME = "NAME";
-    public static final String TABLE3_STAT1 = "TABLE3_STAT1";
-    public static final String TABLE3_STAT2 = "TABLE3_STAT2";
-    public static final String TABLE3_STAT3 = "TABLE3_STAT3";
+    private static final String TABLE3_PLAYER_NAME = "NAME";
+    private static final String TABLE3_STAT1 = "TABLE3_STAT1";
+    private static final String TABLE3_STAT2 = "TABLE3_STAT2";
+    private static final String TABLE3_STAT3 = "TABLE3_STAT3";
 
 
-    public DataBaseHelper(Context context) {
+    DataBaseHelper(Context context) {
         super(context, DATABASE_NAME, null, 1);
     }
 
@@ -72,7 +72,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
             contentValues.put(TABLE2_STAT2, stat2);
             contentValues.put(TABLE2_STAT3, stat3);
             long value = db.insert(TABLE2_NAME, null, contentValues);
-            System.out.println("Value is : " + value + " DATA INSERTED TO DATABSE");
+            System.out.println("Value is : " + value + " DATA INSERTED TO DATABASE");
             return value != - 1;
         } else if (table.equals(TABLE3_NAME)) {
             contentValues.put(TABLE3_PLAYER_NAME, name);

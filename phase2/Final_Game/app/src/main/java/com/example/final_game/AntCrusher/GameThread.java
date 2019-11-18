@@ -1,4 +1,4 @@
-package com.example.final_game;
+package com.example.final_game.AntCrusher;
 
 import android.graphics.Canvas;
 import android.view.SurfaceHolder;
@@ -8,7 +8,7 @@ public class GameThread extends Thread {
 
   /** The canvas container. */
   private SurfaceHolder surfaceHolder;
-  /** Where the ants,dounut and the game surface is drawn. */
+  /** Where the ants,donut and the game surface is drawn. */
   private DonutView gameView;
   /** The canvas on which to draw the fish tank. */
   private static Canvas canvas;

@@ -1,8 +1,10 @@
-package com.example.final_game;
+package com.example.final_game.TrueBlueAdventure;
 
 import android.app.Activity;
 import android.os.Bundle;
 import androidx.annotation.Nullable;
+
+import com.example.final_game.TrueBlueAdventure.GameView;
 
 public class Begin extends Activity {
 

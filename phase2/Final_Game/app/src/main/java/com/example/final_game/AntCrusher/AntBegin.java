@@ -1,4 +1,4 @@
-package com.example.final_game;
+package com.example.final_game.AntCrusher;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
+
+import com.example.final_game.R;
 
 /** Displays a play button for the user to begin the game. */
 public class AntBegin extends AppCompatActivity {

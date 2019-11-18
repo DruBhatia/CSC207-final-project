@@ -1,10 +1,13 @@
-package com.example.final_game;
+package com.example.final_game.Memorize;
 
 import android.os.Bundle;
 import android.view.Window;
 import android.view.WindowManager;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.final_game.Memorize.MemoryView;
+import com.example.final_game.R;
 
 public class Memory3Activity extends AppCompatActivity {
   MemoryView game_view;

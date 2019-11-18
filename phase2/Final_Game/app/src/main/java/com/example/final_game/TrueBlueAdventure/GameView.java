@@ -1,4 +1,4 @@
-package com.example.final_game;
+package com.example.final_game.TrueBlueAdventure;
 
 import android.app.Activity;
 import android.content.Context;
@@ -13,6 +13,8 @@ import android.view.Display;
 import android.view.MotionEvent;
 import android.view.View;
 import android.os.Handler;
+
+import com.example.final_game.R;
 
 import java.util.Date;
 

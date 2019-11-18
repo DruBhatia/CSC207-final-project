@@ -1,4 +1,4 @@
-package com.example.final_game;
+package com.example.final_game.TrueBlueAdventure;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -7,6 +7,8 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.view.MotionEvent;
+
+import com.example.final_game.R;
 
 class TrueBlue {
   /**

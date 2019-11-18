@@ -1,4 +1,4 @@
-package com.example.final_game;
+package com.example.final_game.AntCrusher;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -10,6 +10,8 @@ import android.graphics.Paint;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
+
+import com.example.final_game.R;
 
 import java.io.Serializable;
 
