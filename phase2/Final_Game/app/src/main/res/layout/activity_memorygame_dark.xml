@@ -24,10 +24,25 @@
         tools:context=".Memorize.Memory1Activity"/>
 
     <TextView
+        android:id="@+id/text_threshold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="123dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="67dp"
+        android:fontFamily="@font/atari_extended"
+        android:text="/7"
+        android:textColor="#FB8C00"
+        android:textSize="30sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
         android:id="@+id/level"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="150dp"
+        android:layout_marginStart="170dp"
         android:layout_marginTop="4dp"
         android:layout_marginBottom="67dp"
         android:fontFamily="@font/atari_extended"
@@ -61,7 +76,7 @@
         android:layout_marginStart="4dp"
         android:layout_marginBottom="67dp"
         android:fontFamily="@font/atari_extended"
-        android:text="Score: 0"
+        android:text="Score:0"
         android:textColor="#FB8C00"
         android:textSize="30sp"
         app:layout_constraintStart_toStartOf="parent"

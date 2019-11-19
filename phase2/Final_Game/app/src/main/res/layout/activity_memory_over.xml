@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/game_backg12"
+    android:background="@drawable/game_backg6"
     tools:context=".Memorize.MemoryOverActivity">
 
     <TextView
@@ -16,10 +16,11 @@
         android:fontFamily="@font/invasion2000"
         android:text="GAME OVER"
         android:textAlignment="center"
-        android:textColor="#0C0B0C"
-        android:textSize="59dp"
+        android:textColor="#F4511E"
+        android:textSize="59sp"
         android:textStyle="bold"
         />
+
     <TextView
         android:id="@+id/level1"
         android:layout_width="match_parent"
@@ -31,7 +32,7 @@
         android:text="LEVEL 1"
         android:textAlignment="center"
         android:textColor="#FFB300"
-        android:textSize="45dp"
+        android:textSize="45sp"
         android:textStyle="bold"
         />
 
@@ -45,8 +46,8 @@
         android:fontFamily="@font/atari_extended"
         android:text="TIME: "
         android:textAlignment="center"
-        android:textColor="#1E88E5"
-        android:textSize="30dp"
+        android:textColor="#AF0200"
+        android:textSize="30sp"
         android:textStyle="bold"
         />
 
@@ -60,8 +61,8 @@
         android:fontFamily="@font/atari_extended"
         android:text="YOU WON!!"
         android:textAlignment="center"
-        android:textSize="30dp"
-        android:textColor="#1E88E5"
+        android:textSize="30sp"
+        android:textColor="#A50500"
         android:textStyle="bold"
         />
     <TextView
@@ -70,12 +71,12 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="190dp"
+        android:layout_marginTop="185dp"
         android:fontFamily="@font/atari_extended"
         android:text="SCORE: "
         android:textAlignment="center"
-        android:textSize="30dp"
-        android:textColor="#039BE5"
+        android:textSize="30sp"
+        android:textColor="#C00400"
         android:textStyle="bold"
         />
 
@@ -90,7 +91,7 @@
         android:text="LEVEL 2"
         android:textAlignment="center"
         android:textColor="#FFB300"
-        android:textSize="45dp"
+        android:textSize="45sp"
         android:textStyle="bold"
         />
 
@@ -104,7 +105,7 @@
         android:fontFamily="@font/atari_extended"
         android:text="YOU WON!!"
         android:textAlignment="center"
-        android:textSize="30dp"
+        android:textSize="30sp"
         android:textColor="#4E0A24"
         android:textStyle="bold"/>
 
@@ -116,9 +117,9 @@
         android:layout_alignParentTop="true"
         android:layout_marginTop="290dp"
         android:fontFamily="@font/atari_extended"
-        android:text="Moves Left:"
+        android:text="MOVES LEFT:"
         android:textAlignment="center"
-        android:textSize="30dp"
+        android:textSize="30sp"
         android:textStyle="bold"
         android:textColor="#530824" />
 
@@ -132,7 +133,7 @@
         android:fontFamily="@font/atari_extended"
         android:text="Time:"
         android:textAlignment="center"
-        android:textSize="30dp"
+        android:textSize="30sp"
         android:textStyle="bold"
         android:textColor="#4E0922" />
     <TextView
@@ -145,7 +146,7 @@
         android:fontFamily="@font/atari_extended"
         android:text="SCORE: "
         android:textAlignment="center"
-        android:textSize="30dp"
+        android:textSize="30sp"
         android:textStyle="bold"
         android:textColor="#5A0826" />
     <TextView
@@ -159,7 +160,7 @@
         android:text="LEVEL 3"
         android:textAlignment="center"
         android:textColor="#FFB300"
-        android:textSize="45dp"
+        android:textSize="45sp"
         android:textStyle="bold"
         />
 
@@ -173,7 +174,7 @@
         android:fontFamily="@font/atari_extended"
         android:text="YOU WON!!"
         android:textAlignment="center"
-        android:textSize="30dp"
+        android:textSize="30sp"
         android:textColor="#280179"
         android:textStyle="bold"
         />
@@ -188,7 +189,7 @@
         android:fontFamily="@font/atari_extended"
         android:text="Moves Left:"
         android:textAlignment="center"
-        android:textSize="30dp"
+        android:textSize="30sp"
         android:textStyle="bold"
         android:textColor="#180068" />
 
@@ -203,7 +204,7 @@
         android:text="Time Left:"
         android:textStyle="bold"
         android:textAlignment="center"
-        android:textSize="30dp"
+        android:textSize="30sp"
         android:textColor="#2D0080" />
 
     <TextView
@@ -217,7 +218,7 @@
         android:text="Score:"
         android:textStyle="bold"
         android:textAlignment="center"
-        android:textSize="35dp"
+        android:textSize="35sp"
         android:textColor="#260075" />
 
     <Button

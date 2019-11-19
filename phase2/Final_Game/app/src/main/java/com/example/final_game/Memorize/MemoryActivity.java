@@ -11,7 +11,6 @@ import com.example.final_game.R;
 
 public class MemoryActivity extends AppCompatActivity {
   MemoryView game_view;
-  String theme;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -20,13 +19,14 @@ public class MemoryActivity extends AppCompatActivity {
     getWindow()
         .setFlags(
             WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-    theme = getIntent().getExtras().get("Theme?").toString();
+    String theme = getIntent().getExtras().get("Theme?").toString();
+    int level = (int) getIntent().getExtras().get("Level?");
     if (theme.equals("Light")) {
       setContentView(R.layout.activity_memorygame);
-      game_view = new MemoryView(this, "L", 1);
+      game_view = new MemoryView(this, "L", level);
     } else {
       setContentView(R.layout.activity_memorygame_dark);
-      game_view = new MemoryView(this, "D", 1);
+      game_view = new MemoryView(this, "D", level);
     }
   }
 

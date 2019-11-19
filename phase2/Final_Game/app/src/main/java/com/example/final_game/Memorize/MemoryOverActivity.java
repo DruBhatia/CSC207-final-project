@@ -1,5 +1,6 @@
 package com.example.final_game.Memorize;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -24,6 +25,7 @@ import static com.example.final_game.Memorize.MemoryView.TIME3;
 
 public class MemoryOverActivity extends Main1Activity {
 
+  @SuppressLint("SetTextI18n")
   @Override
   public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -34,14 +36,15 @@ public class MemoryOverActivity extends Main1Activity {
     String cardsLeft2 = sharedPreferences.getString(CARDS_LEFT2, "YES");
     String cardsLeft3 = sharedPreferences.getString(CARDS_LEFT3, "YES");
     String game_time1 = sharedPreferences.getString(TIME1, "00:00");
-    String score1 = sharedPreferences.getString(POINTS1, "0");
+    int score1 = sharedPreferences.getInt(POINTS1, 0);
     String game_time2 = sharedPreferences.getString(TIME2, "00:00");
-    String score2 = sharedPreferences.getString(POINTS2, "0");
+    int score2 = sharedPreferences.getInt(POINTS2, 0);
     String game_time3 = sharedPreferences.getString(TIME3, "01:00");
-    String score3 = sharedPreferences.getString(POINTS3, "0");
+    int score3 = sharedPreferences.getInt(POINTS3, 0);
 
     Button mainMenu = findViewById(R.id.main);
     Button restart = findViewById(R.id.playAgain);
+    TextView gameStatus1 = findViewById(R.id.status1);
     TextView gameTime1 = findViewById(R.id.time1);
     TextView finalScore1 = findViewById(R.id.score1);
     TextView movesLeft2 = findViewById(R.id.moves_left2);
@@ -69,24 +72,38 @@ public class MemoryOverActivity extends Main1Activity {
             startActivity(intent3);
           }
         });
-    if ((cardsLeft2.equals("NO"))) {
-      gameStatus2.setText("YOU WON!!");
+
+    if (score1 >= 7) {
+      gameStatus1.setText("YOU WON!");
     } else {
-      gameStatus2.setText("YOU LOST :(");
+      gameStatus1.setText("YOU LOST:(");
     }
-    if ((cardsLeft3.equals("NO"))) {
-      gameStatus3.setText("YOU WON!!");
+    if (cardsLeft2.equals("NO")) {
+      if (score2 >= 9) {
+        gameStatus2.setText("YOU WON!");
+      } else {
+        gameStatus2.setText("YOU LOST:(");
+      }
     } else {
-      gameStatus3.setText("YOU LOST :(");
+      gameStatus2.setText("YOU LOST:(");
     }
-    gameTime1.setText("TIME:" + game_time1 + "s");
-    finalScore1.setText("FINAL SCORE:" + score1);
-    movesLeft2.setText("MOVES LEFT:" + showMoves2);
-    gameTime2.setText("TIME:" + game_time2 + "s");
-    finalScore2.setText("FINAL SCORE:" + score2);
-    movesLeft3.setText("MOVES LEFT:" + showMoves3);
-    gameTime3.setText("TIME LEFT:" + game_time3 + "s");
-    finalScore3.setText("FINAL SCORE:" + score3);
-    gameDb.insertData("GAME1STATS", username, score3, game_time3, showMoves3);
+    if (cardsLeft3.equals("NO")) {
+      if (score3 >= 11) {
+        gameStatus3.setText("YOU WON!");
+      } else {
+        gameStatus3.setText("YOU LOST:(");
+      }
+    } else {
+      gameStatus3.setText("YOU LOST:(");
+    }
+    gameTime1.setText("Time:" + game_time1 + "s");
+    finalScore1.setText("Final Score:" + score1);
+    movesLeft2.setText("Moves Left:" + showMoves2);
+    gameTime2.setText("Time:" + game_time2 + "s");
+    finalScore2.setText("Final Score:" + score2);
+    movesLeft3.setText("Moves Left:" + showMoves3);
+    gameTime3.setText("Time Left:" + game_time3 + "s");
+    finalScore3.setText("Final Score:" + score3);
+    gameDb.insertData("GAME1STATS", username, String.valueOf(score3), game_time3, showMoves3);
   }
 }

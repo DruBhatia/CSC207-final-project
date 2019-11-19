@@ -17,20 +17,21 @@ class MemorizePlayer {
   private TextView textPoints;
   /** The stop watch which keeps track of the time spent by the player to complete the game */
   private Chronometer chronometer;
-
+  private TextView threshold;
   private TextView currLevel;
 
   /**
    * Construct a new player of the Memorize! game, allots the number of moves they are allowed to
    * make, sets their timer, and initializes how many points they start off with.
    */
-  MemorizePlayer(TextView tv1, TextView tv2, TextView tv3, Chronometer meter) {
+  MemorizePlayer(TextView tv1, TextView tv2, TextView tv3, TextView tv4, Chronometer meter) {
     playerMoves = 15;
     this.currLevel = tv3;
     this.textMoves = tv1;
     this.chronometer = meter;
     this.playerPoints = 0;
     this.textPoints = tv2;
+    this.threshold = tv4;
   }
 
   /**
@@ -93,10 +94,13 @@ class MemorizePlayer {
   void setLevel(int num) {
     if (num == 1) {
       currLevel.setText("LEVEL-I");
+      threshold.setText("/7");
     } else if (num == 2) {
       currLevel.setText("LEVEL-II");
+      threshold.setText("/9");
     } else {
       currLevel.setText("LEVEL-III");
+      threshold.setText("/11");
     }
   }
 }

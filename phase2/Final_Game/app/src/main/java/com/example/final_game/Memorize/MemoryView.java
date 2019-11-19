@@ -35,6 +35,7 @@ public class MemoryView extends View {
   int cardNum = 1;
   /** The back image of all the cards */
   int cardBackView;
+
   String theme;
 
   int level;
@@ -62,6 +63,7 @@ public class MemoryView extends View {
             (TextView) context.findViewById(R.id.text_moves),
             (TextView) context.findViewById(R.id.text_points),
             (TextView) context.findViewById(R.id.level),
+            (TextView) context.findViewById(R.id.text_threshold),
             (Chronometer) context.findViewById(R.id.stopWatch));
     this.player.setLevel(level);
     this.initializeCardArray(context);
@@ -356,9 +358,9 @@ public class MemoryView extends View {
     if (check) {
       CharSequence elapsedMillis = player.getChronometer().getText();
       player.getChronometer().stop();
-      Intent intent = new Intent(getContext(), Memory1Activity.class);
+      Intent intent = new Intent(getContext(), MemoryActivity.class);
       SharedPreferences.Editor editor = sharedPreferences.edit();
-      editor.putString(POINTS1, String.valueOf(playerPoints));
+      editor.putInt(POINTS1, playerPoints);
       editor.putString(TIME1, String.valueOf(elapsedMillis));
       editor.apply();
       if (theme.equals("L")) {
@@ -366,6 +368,7 @@ public class MemoryView extends View {
       } else {
         intent.putExtra("Theme?", "Dark");
       }
+      intent.putExtra("Level?", 2);
       getContext().startActivity(intent);
     }
   }
@@ -377,9 +380,9 @@ public class MemoryView extends View {
     if (check) {
       CharSequence elapsedMillis = player.getChronometer().getText();
       player.getChronometer().stop();
-      Intent intent = new Intent(getContext(), Memory1Activity.class);
+      Intent intent = new Intent(getContext(), MemoryActivity.class);
       SharedPreferences.Editor editor = sharedPreferences.edit();
-      editor.putString(POINTS2, String.valueOf(playerPoints));
+      editor.putInt(POINTS2, playerPoints);
       editor.putString(TIME2, String.valueOf(elapsedMillis));
       editor.putString(MOVES_LEFT2, String.valueOf(playerMoves));
       if (bool1) {
@@ -393,6 +396,7 @@ public class MemoryView extends View {
       } else {
         intent.putExtra("Theme?", "Dark");
       }
+      intent.putExtra("Level?", 3);
       getContext().startActivity(intent);
       //      if (bool1) {
       //        Intent intent2 = new Intent(getContext(), Memory3Activity.class);
@@ -419,7 +423,7 @@ public class MemoryView extends View {
       player.getChronometer().stop();
       Intent intent = new Intent(getContext(), MemoryOverActivity.class);
       SharedPreferences.Editor editor = sharedPreferences.edit();
-      editor.putString(POINTS3, String.valueOf(playerPoints));
+      editor.putInt(POINTS3, playerPoints);
       editor.putString(TIME3, String.valueOf(elapsedMillis));
       editor.putString(MOVES_LEFT3, String.valueOf(playerMoves));
       if (bool1) {
