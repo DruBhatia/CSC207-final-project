@@ -1,12 +1,12 @@
-package com.example.final_game;
+package com.example.final_game.AntCrusher;
+
+import android.os.Bundle;
+import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
+import com.example.final_game.R;
 
 public class LevelActivity extends AppCompatActivity {
 

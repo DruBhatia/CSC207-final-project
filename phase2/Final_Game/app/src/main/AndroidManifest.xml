@@ -18,6 +18,7 @@
         <activity android:name=".TrueBlueAdventure.Game3OverActivity" />
         <activity android:name=".Infrastructure.InformationActivity" />
         <activity android:name=".AntCrusher.AntBegin" />
+        <activity android:name=".AntCrusher.LevelActivity" />
         <activity android:name=".Memorize.MemoryBegin" />
         <activity android:name=".Memorize.MemoryOverActivity" />
         <activity android:name=".AntCrusher.GameOverActivity" />

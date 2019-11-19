@@ -2,7 +2,6 @@ package com.example.final_game.AntCrusher;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -12,12 +11,10 @@ import android.graphics.Paint;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
-import android.widget.Toast;
 
 import com.example.final_game.R;
 
 import java.io.Serializable;
-
 import java.util.Date;
 
 /** DonutView class is the whole surface that is visible to the user while playing the game. */
