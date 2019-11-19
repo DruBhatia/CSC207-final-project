@@ -7,7 +7,6 @@ import android.view.WindowManager;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.final_game.Memorize.MemoryView;
 import com.example.final_game.R;
 
 public class Memory1Activity extends AppCompatActivity {
@@ -26,7 +25,7 @@ public class Memory1Activity extends AppCompatActivity {
       setContentView(R.layout.activity_memorygame);
       game_view = new MemoryView(this, "L", 1);
     } else {
-      setContentView(R.layout.activity_main2_dark);
+      setContentView(R.layout.activity_memorygame_dark);
       game_view = new MemoryView(this, "D", 1);
     }
   }

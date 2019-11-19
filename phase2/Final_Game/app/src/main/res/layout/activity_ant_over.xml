@@ -4,36 +4,32 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/game3_background"
-    tools:context=".TrueBlueAdventure.Game3OverActivity">
+    tools:context=".AntCrusher.AntOverActivity">
 
     <TextView
-        android:id="@+id/game3Over"
+        android:id="@+id/gameOver"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="90dp"
+        android:layout_marginTop="85dp"
         android:text="Game Over"
         android:textAlignment="center"
         android:textSize="70dp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        />
 
     <Button
-        android:id="@+id/play3_again"
-        android:layout_width="197dp"
+        android:id="@+id/play_again"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/game3Over"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/gameOver"
         android:layout_centerHorizontal="true"
-        android:layout_marginStart="96dp"
-        android:layout_marginTop="59dp"
-        android:layout_marginEnd="101dp"
-        android:text="Play Again" />
+        android:text="Play Again"
+        />
 
     <TextView
-        android:id="@+id/score3"
+        android:id="@+id/score_id"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
@@ -41,10 +37,11 @@
         android:layout_marginTop="450dp"
         android:text="Score"
         android:textAlignment="center"
-        android:textSize="30sp" />
+        android:textSize="30sp"
+        />
 
     <TextView
-        android:id="@+id/time3"
+        android:id="@+id/time_id"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
@@ -52,15 +49,18 @@
         android:layout_marginTop="500dp"
         android:text="Time"
         android:textAlignment="center"
-        android:textSize="30sp" />
+        android:textSize="30sp"
+        />
 
     <Button
-        android:id="@+id/menu3"
+        android:id="@+id/all_games"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/play3_again"
-        android:layout_centerHorizontal="true"
         android:layout_marginTop="50dp"
-        android:text="Main menu" />
+        android:layout_below="@+id/play_again"
+        android:layout_centerHorizontal="true"
+        android:text="Main menu"/>
+
+
 
 </RelativeLayout>

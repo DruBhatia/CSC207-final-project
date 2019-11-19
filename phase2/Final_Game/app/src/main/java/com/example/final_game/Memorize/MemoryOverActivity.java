@@ -27,7 +27,7 @@ public class MemoryOverActivity extends Main1Activity {
   @Override
   public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_game2_over);
+    setContentView(R.layout.activity_memory_over);
     SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
     String showMoves2 = sharedPreferences.getString(MOVES_LEFT2, "15");
     String showMoves3 = sharedPreferences.getString(MOVES_LEFT3, "15");

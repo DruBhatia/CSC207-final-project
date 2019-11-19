@@ -10,13 +10,13 @@ import com.example.final_game.Infrastructure.Main1Activity;
 import com.example.final_game.R;
 
 /** Views the Game over Page, once game is completed. */
-public class GameOverActivity extends Main1Activity {
+public class AntOverActivity extends Main1Activity {
 
   @Override
   public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
 
-    setContentView(R.layout.activity_game_over);
+    setContentView(R.layout.activity_ant_over);
 
     Button mainMenu = findViewById(R.id.all_games);
 
@@ -32,7 +32,7 @@ public class GameOverActivity extends Main1Activity {
         new View.OnClickListener() {
           @Override
           public void onClick(View v) {
-            Intent intent2 = new Intent(GameOverActivity.this, AntCrusherCustomize.class);
+            Intent intent2 = new Intent(AntOverActivity.this, AntCrusherCustomize.class);
             System.out.println("reached play again");
             startActivity(intent2);
           }
@@ -42,7 +42,7 @@ public class GameOverActivity extends Main1Activity {
         new View.OnClickListener() {
           @Override
           public void onClick(View v) {
-            Intent intent3 = new Intent(GameOverActivity.this, Main1Activity.class);
+            Intent intent3 = new Intent(AntOverActivity.this, Main1Activity.class);
             startActivity(intent3);
           }
         });

@@ -10,14 +10,13 @@ class AntManager {
   /** Arraylist of ants to be generated.*/
   ArrayList<Ant> ants;
 
-  private int numAnts = 5;
-
   AntManager() {
 
     ants = new ArrayList<>();
   }
   /** Creating the arraylist ants.*/
   void createAnts(Bitmap image, DonutView donut, int speed) {
+    int numAnts = 5;
     for (int i = 0; i < numAnts; i++) {
       double randomX = Math.random();
       int randomNumberX = (int) (randomX * 500);

@@ -79,7 +79,7 @@ public class DonutView extends SurfaceView implements SurfaceHolder.Callback, Se
         level += 1;
         gameThread.setRunning(false);
 
-        Intent levelIntent = new Intent(getContext(), LevelActivity.class);
+        Intent levelIntent = new Intent(getContext(), AntLevelActivity.class);
         levelIntent.putExtra("Level", level);
 
         antGenerationSpeed += 2;
@@ -98,7 +98,7 @@ public class DonutView extends SurfaceView implements SurfaceHolder.Callback, Se
       gameThread.setRunning(false);
       Date finalDate = new Date();
       float currTime = (finalDate.getTime() - start) / 1000F;
-      Intent newGameintent = new Intent(getContext(), GameOverActivity.class);
+      Intent newGameintent = new Intent(getContext(), AntOverActivity.class);
 
       newGameintent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
 

@@ -1,11 +1,11 @@
 package com.example.final_game.AntCrusher;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.final_game.R;
 
@@ -22,7 +22,7 @@ public class AntBegin extends AppCompatActivity {
         new View.OnClickListener() {
           @Override
           public void onClick(View v) {
-            Intent intent2 = new Intent(AntBegin.this, Main3Activity.class);
+            Intent intent2 = new Intent(AntBegin.this, AntActivity.class);
             startActivity(intent2);
           }
         });

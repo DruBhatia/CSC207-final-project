@@ -17,7 +17,7 @@ class TrueBlue {
    */
   private int tbFrame, velocity, gravity, tbX, tbY;
   /** The gameview tb is displayed in * */
-  private GameView gv;
+  private TrueBlueView gv;
   /** an array of the frames of tb * */
   private Bitmap[] tb;
   /** Whether tb is playing the game* */
@@ -25,7 +25,7 @@ class TrueBlue {
   /** the rec representation for tb * */
   private Rect tbRect;
 
-  TrueBlue(GameView gv) {
+  TrueBlue(TrueBlueView gv) {
     tbFrame = 0; // the current frame for true blue
     velocity = 0;
     gravity = 3;

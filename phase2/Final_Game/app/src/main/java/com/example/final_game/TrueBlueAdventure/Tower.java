@@ -31,14 +31,14 @@ class Tower {
 
   private Random random;
   /** the game view tower is created in * */
-  private GameView gv;
+  private TrueBlueView gv;
   /** The rectangle for the top tower * */
   private Rect topTowerRect;
   /** The rectangle for the bottom tower * */
   private Rect bottomTowerRect;
 
   /** Initializes the tower * */
-  Tower(GameView gv) {
+  Tower(TrueBlueView gv) {
     this.gv = gv;
     topTower = BitmapFactory.decodeResource(gv.getResources(), R.drawable.cn_tower_down);
     bottomTower = BitmapFactory.decodeResource(gv.getResources(), R.drawable.cn_tower_up);

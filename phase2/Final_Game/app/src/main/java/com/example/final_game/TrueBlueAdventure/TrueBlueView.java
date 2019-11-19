@@ -18,7 +18,7 @@ import com.example.final_game.R;
 
 import java.util.Date;
 
-public class GameView extends View {
+public class TrueBlueView extends View {
   // This will be the custom view class for Game3
   /** TB class * */
   TrueBlue tb;
@@ -45,7 +45,7 @@ public class GameView extends View {
   long start;
 
   /** Initializer for gameview* */
-  public GameView(Context context) {
+  public TrueBlueView(Context context) {
     super(context);
     handler = new Handler();
     runnable =
@@ -120,7 +120,7 @@ public class GameView extends View {
     tb.setState();
     Date finalDate = new Date();
     float currTime = (finalDate.getTime() - start) / 1000F;
-    Intent intent = new Intent(getContext(), Game3OverActivity.class);
+    Intent intent = new Intent(getContext(), TrueBlueOverActivity.class);
     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
 
     intent.putExtra("Score", score);

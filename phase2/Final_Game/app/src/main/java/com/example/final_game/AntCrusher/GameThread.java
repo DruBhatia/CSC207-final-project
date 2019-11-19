@@ -7,11 +7,9 @@ import android.view.SurfaceHolder;
 public class GameThread extends Thread {
 
   /** The canvas container. */
-  private SurfaceHolder surfaceHolder;
+  private final SurfaceHolder surfaceHolder;
   /** Where the ants,donut and the game surface is drawn. */
   private DonutView gameView;
-  /** The canvas on which to draw the fish tank. */
-  private static Canvas canvas;
   /** Whether the thread is running. */
   private boolean running;
 
@@ -35,7 +33,7 @@ public class GameThread extends Thread {
   @Override
   public void run() {
     while (running) {
-      canvas = null;
+      Canvas canvas = null;
       try {
         canvas = this.surfaceHolder.lockCanvas();
         synchronized (surfaceHolder) {

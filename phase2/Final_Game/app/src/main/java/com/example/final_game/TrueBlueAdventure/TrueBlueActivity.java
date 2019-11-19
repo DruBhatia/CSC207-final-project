@@ -7,12 +7,12 @@ import android.view.View;
 
 import com.example.final_game.R;
 
-public class Main4Activity extends Activity {
+public class TrueBlueActivity extends Activity {
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_main4);
+    setContentView(R.layout.activity_trueblue);
   }
 
   public void begin(View view) {

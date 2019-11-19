@@ -1,7 +1,6 @@
 package com.example.final_game.AntCrusher;
 
 import android.graphics.Bitmap;
-import android.graphics.Canvas;
 /** Super class for all creatures and items created.*/
 public class GameCreature {
 

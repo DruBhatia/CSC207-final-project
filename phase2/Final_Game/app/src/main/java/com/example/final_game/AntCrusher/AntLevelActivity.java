@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.final_game.R;
 
-public class LevelActivity extends AppCompatActivity {
+public class AntLevelActivity extends AppCompatActivity {
 
     Button proceed;
 

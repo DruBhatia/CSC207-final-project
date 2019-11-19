@@ -29,7 +29,7 @@ public class AntCrusherCustomize extends Main1Activity {
           @Override
           public void onClick(View v) {
             int background = R.drawable.donut_background;
-            Intent intentNew = new Intent(AntCrusherCustomize.this, Main3Activity.class);
+            Intent intentNew = new Intent(AntCrusherCustomize.this, AntActivity.class);
 
             intentNew.putExtra("background", background);
             startActivity(intentNew);
@@ -41,7 +41,7 @@ public class AntCrusherCustomize extends Main1Activity {
           @Override
           public void onClick(View v) {
             int background = R.drawable.background;
-            Intent intentNew = new Intent(AntCrusherCustomize.this, Main3Activity.class);
+            Intent intentNew = new Intent(AntCrusherCustomize.this, AntActivity.class);
 
             intentNew.putExtra("background", background);
             startActivity(intentNew);
