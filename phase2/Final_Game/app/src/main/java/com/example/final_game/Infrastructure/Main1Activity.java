@@ -1,17 +1,17 @@
 package com.example.final_game.Infrastructure;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.final_game.AntCrusher.AntCrusherCustomize;
 import com.example.final_game.Memorize.MemoryBegin;
 import com.example.final_game.R;
-import com.example.final_game.TrueBlueAdventure.Main4Activity;
+import com.example.final_game.TrueBlueAdventure.TrueBlueActivity;
 
 public class Main1Activity extends AppCompatActivity {
 
@@ -33,7 +33,7 @@ public class Main1Activity extends AppCompatActivity {
   public void game_Activities(View view) {
     Intent intent1 = new Intent(this, MemoryBegin.class);
     Intent intent2 = new Intent(this, AntCrusherCustomize.class);
-    Intent intent3 = new Intent(this, Main4Activity.class);
+    Intent intent3 = new Intent(this, TrueBlueActivity.class);
     Intent intent4 = new Intent(this, InformationActivity.class);
     if (R.id.button1 == view.getId()) startActivity(intent1);
     else if (R.id.button5 == view.getId()) startActivity(intent2);

@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.final_game.R;
 
-public class Memory1Activity extends AppCompatActivity {
+public class MemoryActivity extends AppCompatActivity {
   MemoryView game_view;
   String theme;
 

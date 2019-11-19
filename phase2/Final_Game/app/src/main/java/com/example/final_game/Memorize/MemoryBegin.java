@@ -26,7 +26,7 @@ public class MemoryBegin extends Main1Activity {
         new View.OnClickListener() {
           @Override
           public void onClick(View v) {
-            Intent intent2 = new Intent(MemoryBegin.this, Memory1Activity.class);
+            Intent intent2 = new Intent(MemoryBegin.this, MemoryActivity.class);
             intent2.putExtra("Theme?", "Light");
             startActivity(intent2);
           }
@@ -36,7 +36,7 @@ public class MemoryBegin extends Main1Activity {
         new View.OnClickListener() {
           @Override
           public void onClick(View v) {
-            Intent intent3 = new Intent(MemoryBegin.this, Memory1Activity.class);
+            Intent intent3 = new Intent(MemoryBegin.this, MemoryActivity.class);
             intent3.putExtra("Theme?", "Dark");
             startActivity(intent3);
           }

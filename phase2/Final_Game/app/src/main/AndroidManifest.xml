@@ -9,8 +9,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Memorize.Memory3Activity"></activity>
-        <activity android:name=".Memorize.Memory2Activity" />
         <activity android:name=".AntCrusher.AntCrusherCustomize" />
         <activity
             android:name=".Infrastructure.Main1Activity"
@@ -24,7 +22,7 @@
         <activity android:name=".AntCrusher.AntOverActivity" />
         <activity android:name=".TrueBlueAdventure.TrueBlueActivity" />
         <activity android:name=".AntCrusher.AntActivity" />
-        <activity android:name=".Memorize.Memory1Activity" />
+        <activity android:name=".Memorize.MemoryActivity" />
         <activity android:name=".TrueBlueAdventure.Begin" />
         <activity android:name=".ui.login.MainActivity">
             <intent-filter>

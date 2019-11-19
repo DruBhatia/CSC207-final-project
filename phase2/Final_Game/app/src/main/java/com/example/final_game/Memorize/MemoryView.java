@@ -356,17 +356,17 @@ public class MemoryView extends View {
     if (check) {
       CharSequence elapsedMillis = player.getChronometer().getText();
       player.getChronometer().stop();
-      Intent intent2 = new Intent(getContext(), Memory2Activity.class);
+      Intent intent = new Intent(getContext(), Memory1Activity.class);
       SharedPreferences.Editor editor = sharedPreferences.edit();
       editor.putString(POINTS1, String.valueOf(playerPoints));
       editor.putString(TIME1, String.valueOf(elapsedMillis));
       editor.apply();
       if (theme.equals("L")) {
-        intent2.putExtra("Theme??", "Light");
+        intent.putExtra("Theme?", "Light");
       } else {
-        intent2.putExtra("Theme??", "Dark");
+        intent.putExtra("Theme?", "Dark");
       }
-      getContext().startActivity(intent2);
+      getContext().startActivity(intent);
     }
   }
 
@@ -377,7 +377,7 @@ public class MemoryView extends View {
     if (check) {
       CharSequence elapsedMillis = player.getChronometer().getText();
       player.getChronometer().stop();
-      Intent intent2 = new Intent(getContext(), Memory3Activity.class);
+      Intent intent = new Intent(getContext(), Memory1Activity.class);
       SharedPreferences.Editor editor = sharedPreferences.edit();
       editor.putString(POINTS2, String.valueOf(playerPoints));
       editor.putString(TIME2, String.valueOf(elapsedMillis));
@@ -389,11 +389,11 @@ public class MemoryView extends View {
       }
       editor.apply();
       if (theme.equals("L")) {
-        intent2.putExtra("Theme???", "Light");
+        intent.putExtra("Theme?", "Light");
       } else {
-        intent2.putExtra("Theme???", "Dark");
+        intent.putExtra("Theme?", "Dark");
       }
-      getContext().startActivity(intent2);
+      getContext().startActivity(intent);
       //      if (bool1) {
       //        Intent intent2 = new Intent(getContext(), Memory3Activity.class);
       //        if (theme.equals("Light")) {
@@ -417,7 +417,7 @@ public class MemoryView extends View {
     if (check) {
       CharSequence elapsedMillis = player.getChronometer().getText();
       player.getChronometer().stop();
-      Intent intent1 = new Intent(getContext(), MemoryOverActivity.class);
+      Intent intent = new Intent(getContext(), MemoryOverActivity.class);
       SharedPreferences.Editor editor = sharedPreferences.edit();
       editor.putString(POINTS3, String.valueOf(playerPoints));
       editor.putString(TIME3, String.valueOf(elapsedMillis));
@@ -428,7 +428,7 @@ public class MemoryView extends View {
         editor.putString(CARDS_LEFT3, "YES");
       }
       editor.apply();
-      getContext().startActivity(intent1);
+      getContext().startActivity(intent);
     }
   }
 }
