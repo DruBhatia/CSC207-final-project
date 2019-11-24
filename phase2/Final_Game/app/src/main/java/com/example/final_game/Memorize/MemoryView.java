@@ -31,14 +31,16 @@ public class MemoryView extends View {
     R.drawable.fv_image107,
     R.drawable.fv_image108
   };
-  int[] dark_images= {R.drawable.fv_image1d1,
-          R.drawable.fv_image1d2,
-          R.drawable.fv_image1d3,
-          R.drawable.fv_image1d4,
-          R.drawable.fv_image1d5,
-          R.drawable.fv_image1d6,
-          R.drawable.fv_image1d7,
-          R.drawable.fv_image1d8};
+  int[] dark_images = {
+    R.drawable.fv_image1d1,
+    R.drawable.fv_image1d2,
+    R.drawable.fv_image1d3,
+    R.drawable.fv_image1d4,
+    R.drawable.fv_image1d5,
+    R.drawable.fv_image1d6,
+    R.drawable.fv_image1d7,
+    R.drawable.fv_image1d8
+  };
   /** Array List of all cards displayed on the screen */
   List<PlayingCard> cardArray;
   /** Array List of all card images displayed on the screen */
@@ -73,9 +75,9 @@ public class MemoryView extends View {
    * Constructor initializes a new player, a layout of playable, shuffled cards, sets off a timer,
    * and adds clickable functionality to the cards in the layout.
    */
-  MemoryView(AppCompatActivity context, String t, int l) {
+  MemoryView(AppCompatActivity context, String backg, int num) {
     super(context);
-    level = l;
+    level = num;
     player =
         new MemorizePlayer(
             (TextView) context.findViewById(R.id.text_moves),
@@ -88,7 +90,7 @@ public class MemoryView extends View {
     if (level == 1) {
       player.setMovesVisibility();
     }
-    theme = t;
+    theme = backg;
     if (theme.equals("L")) {
       initializeImages(light_images);
       cardBackView = R.drawable.bv_00;
@@ -144,11 +146,11 @@ public class MemoryView extends View {
   void initializeImages(int[] images) {
     imageArray = new ArrayList<>();
     for (int i = 1; i <= 8; i++) {
-      int[] arr =  new int[] {100 + i, images[i-1]};
+      int[] arr = new int[] {100 + i, images[i - 1]};
       imageArray.add(arr);
     }
     for (int i = 1; i <= 8; i++) {
-      int[] arr =  new int[] {200 + i, images[i-1]};
+      int[] arr = new int[] {200 + i, images[i - 1]};
       imageArray.add(arr);
     }
     Collections.shuffle(imageArray);
@@ -357,19 +359,6 @@ public class MemoryView extends View {
       }
       intent.putExtra("Level?", 3);
       getContext().startActivity(intent);
-      //      if (bool1) {
-      //        Intent intent2 = new Intent(getContext(), Memory3Activity.class);
-      //        if (theme.equals("Light")) {
-      //          intent2.putExtra("Theme???", "Light");
-      //        } else {
-      //          intent2.putExtra("Theme???", "Dark");
-      //        }
-      //        getContext().startActivity(intent2);
-      //      }
-      //      else {
-      //        Intent intent1 = new Intent(getContext(), MemoryOverActivity.class);
-      //        getContext().startActivity(intent1);
-      //      }
     }
   }
 
