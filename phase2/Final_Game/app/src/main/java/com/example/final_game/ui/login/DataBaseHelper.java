@@ -1,4 +1,4 @@
-package com.example.final_game.Infrastructure;
+package com.example.final_game.ui.login;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -12,6 +12,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     private static final String TABLE1_NAME = "GAME1STATS";
     private static final String TABLE2_NAME = "GAME2STATS";
     private static final String TABLE3_NAME = "GAME3STATS";
+    private static final String LOGIN_TABLE = "LOGIN";
 
     public static final String TABLE1_ID = "ID";
     private static final String TABLE1_PLAYER_NAME = "NAME";
@@ -31,6 +32,12 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     private static final String TABLE3_STAT2 = "TABLE3_STAT2";
     private static final String TABLE3_STAT3 = "TABLE3_STAT3";
 
+    public static final String LOGIN_TABLE_ID = "ID";
+    private static final String USERNAME = "USERNAME";
+    private static final String PASSWORD = "PASSWORD";
+
+
+
 
     DataBaseHelper(Context context) {
         super(context, DATABASE_NAME, null, 1);
@@ -45,7 +52,8 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 "NAME TEXT, TABLE2_STAT1 TEXT, TABLE2_STAT2 TEXT, TABLE2_STAT3 TEXT)");
         sqLiteDatabase.execSQL("CREATE TABLE " + TABLE3_NAME + "(ID INTEGER PRIMARY KEY AUTOINCREMENT," +
                 "NAME TEXT, TABLE3_STAT1 TEXT, TABLE3_STAT2 TEXT, TABLE3_STAT3 TEXT)");
-
+        sqLiteDatabase.execSQL("CREATE TABLE " + LOGIN_TABLE + "(ID INTEGER PRIMARY KEY AUTOINCREMENT," +
+                "USERNAME TEXT, PASSWORD TEXT)");
     }
 
     @Override
@@ -53,6 +61,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL("DROP TABLE  IF EXISTS "+ TABLE1_NAME);
         sqLiteDatabase.execSQL("DROP TABLE  IF EXISTS "+ TABLE2_NAME);
         sqLiteDatabase.execSQL("DROP TABLE  IF EXISTS "+ TABLE3_NAME);
+        sqLiteDatabase.execSQL("DROP TABLE  IF EXISTS "+ LOGIN_TABLE);
         onCreate(sqLiteDatabase);
     }
 
@@ -96,5 +105,29 @@ public class DataBaseHelper extends SQLiteOpenHelper {
             Cursor res = db.rawQuery("select * from " + TABLE3_NAME, null);
             return res;
         }
+    }
+
+    public boolean createUser(String username, String password) {
+        SQLiteDatabase db = getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(USERNAME, username);
+        contentValues.put(PASSWORD, password);
+        long value = db.insert(LOGIN_TABLE, null, contentValues);
+        return value != -1;
+    }
+
+    public boolean checkUser(String username, String password) {
+        SQLiteDatabase db = getReadableDatabase();
+        String selection = USERNAME + "=?" + " and " + PASSWORD + "=?";
+        String[] selectionArgs = {username, password};
+        String[] columns = {LOGIN_TABLE_ID};
+        Cursor cursor = db.query(LOGIN_TABLE, columns, selection, selectionArgs, null, null, null);
+        int count = cursor.getCount();
+        db.close();
+        return count > 0;
+    }
+
+    public static String getUSERNAME() {
+        return USERNAME;
     }
 }
