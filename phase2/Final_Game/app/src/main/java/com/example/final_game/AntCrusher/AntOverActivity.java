@@ -6,11 +6,15 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.final_game.Infrastructure.Main1Activity;
 import com.example.final_game.R;
+import com.example.final_game.ui.login.DataBaseHelper;
+import com.example.final_game.ui.login.MainActivity;
 
 /** Views the Game over Page, once game is completed. */
-public class AntOverActivity extends Main1Activity {
+public class AntOverActivity extends AppCompatActivity {
 
   @Override
   public void onCreate(Bundle savedInstanceState) {
@@ -49,6 +53,7 @@ public class AntOverActivity extends Main1Activity {
 
     score.setText("Score: " + showScore);
     time.setText("Time taken: " + showTime + " s");
-    gameDb.insertData("GAME2STATS", username, showScore, showTime, "nothing");
+      DataBaseHelper db = MainActivity.getGameDb();
+    db.insertData("GAME2STATS", db.getUSERNAME(), showScore, showTime, "nothing");
   }
 }
