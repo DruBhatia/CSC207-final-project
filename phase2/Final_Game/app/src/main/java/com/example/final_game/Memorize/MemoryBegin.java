@@ -6,13 +6,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
-
 import androidx.appcompat.app.AlertDialog;
-
-import com.example.final_game.Infrastructure.Main1Activity;
+import androidx.appcompat.app.AppCompatActivity;
 import com.example.final_game.R;
+import com.example.final_game.ui.login.MainActivity;
 
-public class MemoryBegin extends Main1Activity {
+public class MemoryBegin extends AppCompatActivity {
 
   @Override
   public void onCreate(Bundle savedInstanceState) {
@@ -48,7 +47,7 @@ public class MemoryBegin extends Main1Activity {
         new View.OnClickListener() {
           @Override
           public void onClick(View view) {
-            Cursor cur = gameDb.getAllData("GAME1STATS");
+            Cursor cur = MainActivity.getGameDb().getAllData("GAME1STATS");
             if (cur.getCount() == 0) {
               System.out.println("Error no data found");
               showMessage("ERROR", "NOTHING FOUND IN DATABASE");
