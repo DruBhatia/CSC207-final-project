@@ -19,13 +19,13 @@ import androidx.annotation.StringRes;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
-
 import com.example.final_game.Infrastructure.Main1Activity;
 import com.example.final_game.R;
 
 public class MainActivity extends AppCompatActivity {
 
     private LoginViewModel loginViewModel;
+    static DataBaseHelper gameDb;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -33,11 +33,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         loginViewModel = ViewModelProviders.of(this, new LoginViewModelFactory())
                 .get(LoginViewModel.class);
+        gameDb = new DataBaseHelper(this);
 
         final EditText usernameEditText = findViewById(R.id.username);
         final EditText passwordEditText = findViewById(R.id.password);
         final Button loginButton = findViewById(R.id.login);
         final ProgressBar loadingProgressBar = findViewById(R.id.loading);
+        final Button register = findViewById(R.id.register);
 
         loginViewModel.getLoginFormState().observe(this, new Observer<LoginFormState>() {
             @Override
@@ -70,8 +72,6 @@ public class MainActivity extends AppCompatActivity {
                 }
                 setResult(Activity.RESULT_OK);
 
-                //Complete and destroy login activity once successful
-                finish();
             }
         });
 
@@ -112,11 +112,31 @@ public class MainActivity extends AppCompatActivity {
                 loadingProgressBar.setVisibility(View.VISIBLE);
                 loginViewModel.login(usernameEditText.getText().toString(),
                         passwordEditText.getText().toString());
-                Intent intent = new Intent(MainActivity.this, Main1Activity.class);
-                intent.putExtra("Name", usernameEditText.getText().toString());
-                startActivity(intent);
+                String usr = usernameEditText.getText().toString();
+                String pass = passwordEditText.getText().toString();
+                boolean res = gameDb.checkUser(usr,pass);
+                if (res) {
+                    Intent intent = new Intent(MainActivity.this, Main1Activity.class);
+                    Toast.makeText(getApplicationContext(), "LOGIN SUCCESSFUL", Toast.LENGTH_LONG).show();
+                    startActivity(intent);
+                } else {
+                    Toast.makeText(getApplicationContext(), "LOGIN FAILED. PLEASE REGISTER FIRST", Toast.LENGTH_LONG).show();
+
+                }
+
             }
         });
+
+        register.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String usr = usernameEditText.getText().toString();
+                String pass = passwordEditText.getText().toString();
+                gameDb.createUser(usr, pass);
+                Toast.makeText(getApplicationContext(), "USER CREATED PLS LOGIN.", Toast.LENGTH_LONG).show();
+            }
+        });
+
     }
 
     private void updateUiWithUser(LoggedInUserView model) {
@@ -127,5 +147,9 @@ public class MainActivity extends AppCompatActivity {
 
     private void showLoginFailed(@StringRes Integer errorString) {
         Toast.makeText(getApplicationContext(), errorString, Toast.LENGTH_SHORT).show();
+    }
+
+    public static DataBaseHelper getGameDb() {
+        return gameDb;
     }
 }
