@@ -21,6 +21,24 @@ import java.util.List;
 
 @SuppressLint("ViewConstructor")
 public class MemoryView extends View {
+  int[] light_images = {
+    R.drawable.fv_image101,
+    R.drawable.fv_image102,
+    R.drawable.fv_image103,
+    R.drawable.fv_image104,
+    R.drawable.fv_image105,
+    R.drawable.fv_image106,
+    R.drawable.fv_image107,
+    R.drawable.fv_image108
+  };
+  int[] dark_images= {R.drawable.fv_image1d1,
+          R.drawable.fv_image1d2,
+          R.drawable.fv_image1d3,
+          R.drawable.fv_image1d4,
+          R.drawable.fv_image1d5,
+          R.drawable.fv_image1d6,
+          R.drawable.fv_image1d7,
+          R.drawable.fv_image1d8};
   /** Array List of all cards displayed on the screen */
   List<PlayingCard> cardArray;
   /** Array List of all card images displayed on the screen */
@@ -72,10 +90,10 @@ public class MemoryView extends View {
     }
     theme = t;
     if (theme.equals("L")) {
-      initializeImages("L");
+      initializeImages(light_images);
       cardBackView = R.drawable.bv_00;
     } else if (theme.equals("D")) {
-      initializeImages("D");
+      initializeImages(dark_images);
       cardBackView = R.drawable.bv_01;
     }
     sharedPreferences = context.getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE);
@@ -123,74 +141,15 @@ public class MemoryView extends View {
   }
 
   /** Initialize + shuffle an array of card placeholders corresponding to respective card images. */
-  void initializeImages(String theme) {
+  void initializeImages(int[] images) {
     imageArray = new ArrayList<>();
-    if (theme.equals("L")) {
-      int[] arr1 = new int[] {101, R.drawable.fv_image101};
-      imageArray.add(arr1);
-      int[] arr2 = new int[] {102, R.drawable.fv_image102};
-      imageArray.add(arr2);
-      int[] arr3 = new int[] {103, R.drawable.fv_image103};
-      imageArray.add(arr3);
-      int[] arr4 = new int[] {104, R.drawable.fv_image104};
-      imageArray.add(arr4);
-      int[] arr5 = new int[] {105, R.drawable.fv_image105};
-      imageArray.add(arr5);
-      int[] arr6 = new int[] {106, R.drawable.fv_image106};
-      imageArray.add(arr6);
-      int[] arr7 = new int[] {107, R.drawable.fv_image107};
-      imageArray.add(arr7);
-      int[] arr8 = new int[] {108, R.drawable.fv_image108};
-      imageArray.add(arr8);
-      int[] arr9 = new int[] {201, R.drawable.fv_image101};
-      imageArray.add(arr9);
-      int[] arr10 = new int[] {202, R.drawable.fv_image102};
-      imageArray.add(arr10);
-      int[] arr11 = new int[] {203, R.drawable.fv_image103};
-      imageArray.add(arr11);
-      int[] arr12 = new int[] {204, R.drawable.fv_image104};
-      imageArray.add(arr12);
-      int[] arr13 = new int[] {205, R.drawable.fv_image105};
-      imageArray.add(arr13);
-      int[] arr14 = new int[] {206, R.drawable.fv_image106};
-      imageArray.add(arr14);
-      int[] arr15 = new int[] {207, R.drawable.fv_image107};
-      imageArray.add(arr15);
-      int[] arr16 = new int[] {208, R.drawable.fv_image108};
-      imageArray.add(arr16);
-    } else {
-      int[] arr1 = new int[] {101, R.drawable.fv_image1d1};
-      imageArray.add(arr1);
-      int[] arr2 = new int[] {102, R.drawable.fv_image1d2};
-      imageArray.add(arr2);
-      int[] arr3 = new int[] {103, R.drawable.fv_image1d3};
-      imageArray.add(arr3);
-      int[] arr4 = new int[] {104, R.drawable.fv_image1d4};
-      imageArray.add(arr4);
-      int[] arr5 = new int[] {105, R.drawable.fv_image1d5};
-      imageArray.add(arr5);
-      int[] arr6 = new int[] {106, R.drawable.fv_image1d6};
-      imageArray.add(arr6);
-      int[] arr7 = new int[] {107, R.drawable.fv_image1d7};
-      imageArray.add(arr7);
-      int[] arr8 = new int[] {108, R.drawable.fv_image1d8};
-      imageArray.add(arr8);
-      int[] arr9 = new int[] {201, R.drawable.fv_image1d1};
-      imageArray.add(arr9);
-      int[] arr10 = new int[] {202, R.drawable.fv_image1d2};
-      imageArray.add(arr10);
-      int[] arr11 = new int[] {203, R.drawable.fv_image1d3};
-      imageArray.add(arr11);
-      int[] arr12 = new int[] {204, R.drawable.fv_image1d4};
-      imageArray.add(arr12);
-      int[] arr13 = new int[] {205, R.drawable.fv_image1d5};
-      imageArray.add(arr13);
-      int[] arr14 = new int[] {206, R.drawable.fv_image1d6};
-      imageArray.add(arr14);
-      int[] arr15 = new int[] {207, R.drawable.fv_image1d7};
-      imageArray.add(arr15);
-      int[] arr16 = new int[] {208, R.drawable.fv_image1d8};
-      imageArray.add(arr16);
+    for (int i = 1; i <= 8; i++) {
+      int[] arr =  new int[] {100 + i, images[i-1]};
+      imageArray.add(arr);
+    }
+    for (int i = 1; i <= 8; i++) {
+      int[] arr =  new int[] {200 + i, images[i-1]};
+      imageArray.add(arr);
     }
     Collections.shuffle(imageArray);
   }
