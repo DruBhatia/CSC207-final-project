@@ -7,11 +7,13 @@ import android.view.View;
 import android.widget.Button;
 
 import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.final_game.Infrastructure.Main1Activity;
 import com.example.final_game.R;
+import com.example.final_game.ui.login.MainActivity;
 
-public class AntCrusherCustomize extends Main1Activity {
+public class AntCrusherCustomize extends AppCompatActivity {
 
   @Override
   public void onCreate(Bundle savedInstanceState) {
@@ -52,7 +54,7 @@ public class AntCrusherCustomize extends Main1Activity {
         new View.OnClickListener() {
           @Override
           public void onClick(View view) {
-            Cursor cur = gameDb.getAllData("GAME2STATS");
+            Cursor cur = MainActivity.getGameDb().getAllData("GAME2STATS");
             if (cur.getCount() == 0) {
               System.out.println("Error no data found");
               showMessage("ERROR", "NOTHING FOUND IN DATABASE");
