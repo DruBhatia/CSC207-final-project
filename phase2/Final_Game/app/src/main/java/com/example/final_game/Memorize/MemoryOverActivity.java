@@ -10,6 +10,8 @@ import android.widget.TextView;
 
 import com.example.final_game.Infrastructure.Main1Activity;
 import com.example.final_game.R;
+import com.example.final_game.ui.login.DataBaseHelper;
+import com.example.final_game.ui.login.MainActivity;
 
 import static com.example.final_game.Memorize.MemoryView.CARDS_LEFT2;
 import static com.example.final_game.Memorize.MemoryView.CARDS_LEFT3;
@@ -104,6 +106,7 @@ public class MemoryOverActivity extends Main1Activity {
     movesLeft3.setText("Moves Left:" + showMoves3);
     gameTime3.setText("Time Left:" + game_time3 + "s");
     finalScore3.setText("Final Score:" + score3);
-    gameDb.insertData("GAME1STATS", username, String.valueOf(score3), game_time3, showMoves3);
+    DataBaseHelper db = MainActivity.getGameDb();
+    db.insertData("GAME1STATS", db.getUSERNAME(), String.valueOf(score3), game_time3, showMoves3);
   }
 }
