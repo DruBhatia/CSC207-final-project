@@ -15,9 +15,6 @@ import com.example.final_game.TrueBlueAdventure.TrueBlueActivity;
 
 public class Main1Activity extends AppCompatActivity {
 
-  public DataBaseHelper gameDb;
-  public String username;
-
   @Override
   public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -26,8 +23,6 @@ public class Main1Activity extends AppCompatActivity {
         .setFlags(
             WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
     setContentView(R.layout.activity_main);
-    username = getIntent().getStringExtra("Name");
-    gameDb = new DataBaseHelper(this);
   }
 
   public void game_Activities(View view) {
