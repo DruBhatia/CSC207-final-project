@@ -8,7 +8,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.final_game.Infrastructure.Main1Activity;
+import com.example.final_game.Infrastructure.GameActivity;
 import com.example.final_game.R;
 import com.example.final_game.ui.login.DataBaseHelper;
 import com.example.final_game.ui.login.MainActivity;
@@ -46,7 +46,7 @@ public class AntOverActivity extends AppCompatActivity {
         new View.OnClickListener() {
           @Override
           public void onClick(View v) {
-            Intent intent3 = new Intent(AntOverActivity.this, Main1Activity.class);
+            Intent intent3 = new Intent(AntOverActivity.this, GameActivity.class);
             startActivity(intent3);
           }
         });

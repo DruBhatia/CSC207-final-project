@@ -11,7 +11,7 @@
         android:theme="@style/AppTheme">
         <activity android:name=".AntCrusher.AntCrusherCustomize" />
         <activity
-            android:name=".Infrastructure.Main1Activity"
+            android:name=".Infrastructure.GameActivity"
             android:label="@string/title_activity_login" />
         <activity android:name=".TrueBlueAdventure.TrueBlueOverActivity" />
         <activity android:name=".AntCrusher.AntBegin" />

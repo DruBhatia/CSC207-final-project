@@ -19,7 +19,7 @@ import androidx.annotation.StringRes;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
-import com.example.final_game.Infrastructure.Main1Activity;
+import com.example.final_game.Infrastructure.GameActivity;
 import com.example.final_game.R;
 
 public class MainActivity extends AppCompatActivity {
@@ -133,7 +133,7 @@ public class MainActivity extends AppCompatActivity {
             String pass = passwordEditText.getText().toString();
             boolean res = gameDb.checkUser(usr, pass);
             if (res) {
-              Intent intent = new Intent(MainActivity.this, Main1Activity.class);
+              Intent intent = new Intent(MainActivity.this, GameActivity.class);
               Toast.makeText(
                       getApplicationContext(),
                       "WELCOME " + usr.substring(0, usr.indexOf("@")) + "!",

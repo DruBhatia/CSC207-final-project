@@ -14,7 +14,7 @@ import com.example.final_game.R;
 import com.example.final_game.TrueBlueAdventure.TrueBlueActivity;
 import com.example.final_game.ui.login.MainActivity;
 
-public class Main1Activity extends AppCompatActivity {
+public class GameActivity extends AppCompatActivity {
 
   @Override
   public void onCreate(Bundle savedInstanceState) {
