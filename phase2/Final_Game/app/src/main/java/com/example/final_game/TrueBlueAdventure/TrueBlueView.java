@@ -150,6 +150,8 @@ public class TrueBlueView extends View {
     intent.putExtra("Score", score);
 
     intent.putExtra("Time", currTime);
+
+    intent.putExtra("Level", level);
     getContext().startActivity(intent);
   }
 

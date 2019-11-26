@@ -21,8 +21,10 @@ public class TrueBlueOverActivity extends AppCompatActivity {
     Button rePlayGame = findViewById(R.id.play3_again);
     String showScore = getIntent().getExtras().get("Score").toString();
     String showTime = getIntent().getExtras().get("Time").toString();
+    String showLevel = getIntent().getExtras().get("Level").toString();
     TextView score = findViewById(R.id.score3);
     TextView time = findViewById(R.id.time3);
+    TextView level = findViewById(R.id.level3);
     rePlayGame.setOnClickListener(
         new View.OnClickListener() {
           @Override
@@ -42,5 +44,7 @@ public class TrueBlueOverActivity extends AppCompatActivity {
         });
       score.setText("Score: " + showScore);
       time.setText("Time taken: " + showTime + " s");
+      level.setText("Levels Completed: " + showLevel);
+
   }
 }
