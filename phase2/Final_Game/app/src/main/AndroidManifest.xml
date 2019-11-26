@@ -24,7 +24,6 @@
         <activity android:name=".AntCrusher.AntActivity" />
         <activity android:name=".Memorize.MemoryActivity" />
         <activity android:name=".TrueBlueAdventure.Begin" />
-        <activity android:name=".AntCrusher.SoundManager" />
         <activity android:name=".ui.login.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
