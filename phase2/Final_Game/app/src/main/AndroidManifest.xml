@@ -14,7 +14,6 @@
             android:name=".Infrastructure.Main1Activity"
             android:label="@string/title_activity_login" />
         <activity android:name=".TrueBlueAdventure.TrueBlueOverActivity" />
-        <activity android:name=".Infrastructure.InformationActivity" />
         <activity android:name=".AntCrusher.AntBegin" />
         <activity android:name=".AntCrusher.AntLevelActivity" />
         <activity android:name=".Memorize.MemoryBegin" />

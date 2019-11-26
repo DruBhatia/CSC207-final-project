@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
 
   private LoginViewModel loginViewModel;
   static DataBaseHelper gameDb;
+  static int count = 0;
 
   @Override
   public void onCreate(Bundle savedInstanceState) {
@@ -40,7 +41,13 @@ public class MainActivity extends AppCompatActivity {
     final Button loginButton = findViewById(R.id.login);
     final ProgressBar loadingProgressBar = findViewById(R.id.loading);
     final Button register = findViewById(R.id.register);
-
+    if (count == 0) {
+      count++;
+    }
+    else {
+        Toast.makeText(getApplicationContext(), "LOGOUT SUCCESSFUL", Toast.LENGTH_LONG).show();
+        count++;
+    }
     loginViewModel
         .getLoginFormState()
         .observe(
@@ -127,7 +134,11 @@ public class MainActivity extends AppCompatActivity {
             boolean res = gameDb.checkUser(usr, pass);
             if (res) {
               Intent intent = new Intent(MainActivity.this, Main1Activity.class);
-              Toast.makeText(getApplicationContext(), "LOGIN SUCCESSFUL", Toast.LENGTH_LONG).show();
+              Toast.makeText(
+                      getApplicationContext(),
+                      "WELCOME " + usr.substring(0, usr.indexOf("@")) + "!",
+                      Toast.LENGTH_LONG)
+                  .show();
               startActivity(intent);
             } else {
               Toast.makeText(
@@ -146,7 +157,7 @@ public class MainActivity extends AppCompatActivity {
             String usr = usernameEditText.getText().toString();
             String pass = passwordEditText.getText().toString();
             gameDb.createUser(usr, pass);
-            Toast.makeText(getApplicationContext(), "USER CREATED PLS LOGIN.", Toast.LENGTH_LONG)
+            Toast.makeText(getApplicationContext(), "USER CREATED PLEASE LOGIN.", Toast.LENGTH_LONG)
                 .show();
           }
         });

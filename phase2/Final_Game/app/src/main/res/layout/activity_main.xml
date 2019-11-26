@@ -47,7 +47,7 @@
         android:layout_height="70dp"
         android:onClick="game_Activities"
         android:fontFamily="@font/atari_extended"
-        android:text="Information"
+        android:text="LOGOUT"
         android:textSize="26sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
