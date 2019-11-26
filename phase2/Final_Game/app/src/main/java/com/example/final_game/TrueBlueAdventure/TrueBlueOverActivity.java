@@ -8,7 +8,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.final_game.Infrastructure.Main1Activity;
+import com.example.final_game.Infrastructure.GameActivity;
 import com.example.final_game.R;
 
 public class TrueBlueOverActivity extends AppCompatActivity {
@@ -36,7 +36,7 @@ public class TrueBlueOverActivity extends AppCompatActivity {
         new View.OnClickListener() {
           @Override
           public void onClick(View v) {
-            Intent intent3 = new Intent(TrueBlueOverActivity.this, Main1Activity.class);
+            Intent intent3 = new Intent(TrueBlueOverActivity.this, GameActivity.class);
             startActivity(intent3);
           }
         });

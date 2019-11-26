@@ -3,6 +3,7 @@ package com.example.final_game.Memorize;
 import android.os.Bundle;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,6 +22,7 @@ public class MemoryActivity extends AppCompatActivity {
             WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
     String theme = getIntent().getExtras().get("Theme?").toString();
     int level = (int) getIntent().getExtras().get("Level?");
+    Toast.makeText(getApplicationContext(), "LEVEL " + level, Toast.LENGTH_LONG).show();
     if (theme.equals("Light")) {
       setContentView(R.layout.activity_memorygame);
       game_view = new MemoryView(this, "L", level);

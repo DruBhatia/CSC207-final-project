@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.example.final_game.Infrastructure.Main1Activity;
+import com.example.final_game.Infrastructure.GameActivity;
 import com.example.final_game.R;
 import com.example.final_game.ui.login.DataBaseHelper;
 import com.example.final_game.ui.login.MainActivity;
@@ -25,7 +25,7 @@ import static com.example.final_game.Memorize.MemoryView.TIME1;
 import static com.example.final_game.Memorize.MemoryView.TIME2;
 import static com.example.final_game.Memorize.MemoryView.TIME3;
 
-public class MemoryOverActivity extends Main1Activity {
+public class MemoryOverActivity extends GameActivity {
 
   @SuppressLint("SetTextI18n")
   @Override
@@ -70,7 +70,7 @@ public class MemoryOverActivity extends Main1Activity {
         new View.OnClickListener() {
           @Override
           public void onClick(View v) {
-            Intent intent3 = new Intent(MemoryOverActivity.this, Main1Activity.class);
+            Intent intent3 = new Intent(MemoryOverActivity.this, GameActivity.class);
             startActivity(intent3);
           }
         });
