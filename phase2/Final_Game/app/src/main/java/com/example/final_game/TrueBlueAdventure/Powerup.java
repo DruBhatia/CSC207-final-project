@@ -23,6 +23,6 @@ public class Powerup {
         powerupBM = BitmapFactory.decodeResource(gv.getResources(), R.drawable.powerup);
         pX = gv.getScreenWidth() / 2 - powerupBM.getWidth() / 2;
         pY = gv.getScreenHeight() / 2 - powerupBM.getHeight() / 2;
-        pRect = new Rect(pX, pY, pX + 5, pY + powerupBM.getHeight());
+        pRect = new Rect(pX, pY, pX + 5, pY + 5);
     }
 }
