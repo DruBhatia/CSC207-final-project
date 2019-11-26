@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Point;
 import android.graphics.Rect;
@@ -39,8 +40,14 @@ public class TrueBlueView extends View {
   Rect rect;
   /** The score paint to display the score. */
   private Paint scorePaint = new Paint();
+
+  /** The fuel paint to display the fuel. */
+  private Paint fuelPaint = new Paint();
+
   /** The score variable that keeps track of current score */
   private int score = 0;
+  private int fuel = 100;
+  private int fuelConsumption = 10;
 
   /** The level paint to display the level. */
   private Paint levelPaint = new Paint();
@@ -85,6 +92,11 @@ public class TrueBlueView extends View {
     scorePaint.setTextSize(80);
     scorePaint.setUnderlineText(true);
     canvas.drawText("Score : " + score, 20, 60, scorePaint);
+
+    // Creates the fuel
+    fuelPaint.setColor(Color.RED);
+    fuelPaint.setTextSize(80);
+    canvas.drawText("Fuel : " + fuel + "%", 20, 1700, fuelPaint);
     // Creates the level
     levelPaint.setColor(-16776961);
     levelPaint.setTextSize(80);
@@ -144,6 +156,7 @@ public class TrueBlueView extends View {
   /** increases the score * */
   public void increaseScore() {
     score++;
+    fuel -= fuelConsumption;
   }
 
   public void increaseLevel() {
