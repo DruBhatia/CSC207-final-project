@@ -14,6 +14,7 @@ import android.view.Display;
 import android.view.MotionEvent;
 import android.view.View;
 import android.os.Handler;
+import java.util.Random;
 
 import com.example.final_game.R;
 
@@ -31,7 +32,7 @@ public class TrueBlueView extends View {
   final int delayNum = 30;
   /** Background img * */
   Bitmap background;
-
+  private Random random;
   Display display;
   Point point;
   /** height and width of the screen* */
@@ -43,7 +44,9 @@ public class TrueBlueView extends View {
 
   /** The fuel paint to display the fuel. */
   private Paint fuelPaint = new Paint();
-
+  private int randomX;
+  private int randomY;
+  private Random rand = new Random();
   /** The score variable that keeps track of current score */
   private int score = 0;
   private int fuel = 100;
@@ -51,6 +54,7 @@ public class TrueBlueView extends View {
 
   /** The level paint to display the level. */
   private Paint levelPaint = new Paint();
+  private Paint levelUpPaint = new Paint();
   /** The level variable that keeps track of current level */
   private int level = 1;
 
@@ -73,6 +77,8 @@ public class TrueBlueView extends View {
     display.getSize(point);
     screenWidth = point.x;
     screenHeight = point.y;
+    randomX = rand.nextInt(500);
+    randomY = rand.nextInt(1500);
     rect = new Rect(0, 0, screenWidth, screenHeight);
     cn = new Tower(this); // created CN Tower
     cn.moveTower(); // moves CN Tower
@@ -88,9 +94,8 @@ public class TrueBlueView extends View {
     // This is where we will draw our view for Game3.
     canvas.drawBitmap(background, null, rect, null);
     // Creates the score
-    scorePaint.setColor(-16776961);
+    scorePaint.setColor(Color.BLUE);
     scorePaint.setTextSize(80);
-    scorePaint.setUnderlineText(true);
     canvas.drawText("Score : " + score, 20, 60, scorePaint);
 
     // Creates the fuel
@@ -98,12 +103,13 @@ public class TrueBlueView extends View {
     fuelPaint.setTextSize(80);
     canvas.drawText("Fuel : " + fuel + "%", 20, 1700, fuelPaint);
     // Creates the level
-    levelPaint.setColor(-16776961);
+    levelPaint.setColor(Color.MAGENTA);
     levelPaint.setTextSize(80);
-    levelPaint.setUnderlineText(true);
     canvas.drawText("Level : " + level, 770, 60, levelPaint);
     if (score > 0 && score % 5 == 0) {
-      canvas.drawText("LEVEL UP!", 350, 1700, levelPaint);
+      levelUpPaint.setColor(Color.BLACK);
+      levelUpPaint.setTextSize(80);
+      canvas.drawText("LEVEL UP!", randomX, randomY, levelUpPaint);
     }
     // true blue falls
     if (tb.getState()) {
@@ -159,6 +165,8 @@ public class TrueBlueView extends View {
   public void increaseScore() {
     score++;
     fuel -= fuelConsumption;
+    randomX = rand.nextInt(500);
+    randomY = rand.nextInt(1500);
   }
 
   public void increaseLevel() {
