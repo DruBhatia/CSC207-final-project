@@ -42,6 +42,11 @@ public class TrueBlueView extends View {
   /** The score variable that keeps track of current score */
   private int score = 0;
 
+  /** The level paint to display the level. */
+  private Paint levelPaint = new Paint();
+  /** The level variable that keeps track of current level */
+  private int level = 1;
+
   long start;
 
   /** Initializer for gameview* */
@@ -80,7 +85,11 @@ public class TrueBlueView extends View {
     scorePaint.setTextSize(80);
     scorePaint.setUnderlineText(true);
     canvas.drawText("Score : " + score, 20, 60, scorePaint);
-
+    // Creates the level
+    levelPaint.setColor(-16776961);
+    levelPaint.setTextSize(80);
+    levelPaint.setUnderlineText(true);
+    canvas.drawText("Level : " + level, 770, 60, levelPaint);
     // true blue falls
     if (tb.getState()) {
       tb.drawTBRect(canvas);
@@ -132,5 +141,12 @@ public class TrueBlueView extends View {
   /** increases the score * */
   public void increaseScore() {
     score++;
+  }
+
+  public void increaseLevel() {
+    levelPaint.setColor(-16776961);
+    levelPaint.setTextSize(80);
+    levelPaint.setUnderlineText(true);
+    level++;
   }
 }

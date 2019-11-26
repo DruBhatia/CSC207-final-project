@@ -15,4 +15,14 @@ public class Begin extends Activity {
     gameView = new TrueBlueView(this);
     setContentView(gameView);
   }
+
+  @Override
+  protected void onPause() {
+    super.onPause();
+  }
+
+  @Override
+  protected void onResume() {
+    super.onResume();
+  }
 }
