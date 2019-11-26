@@ -10,6 +10,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.final_game.Infrastructure.GameActivity;
 import com.example.final_game.R;
+import com.example.final_game.ui.login.DataBaseHelper;
+import com.example.final_game.ui.login.MainActivity;
 
 public class TrueBlueOverActivity extends AppCompatActivity {
 
@@ -45,6 +47,9 @@ public class TrueBlueOverActivity extends AppCompatActivity {
       score.setText("Score: " + showScore);
       time.setText("Time taken: " + showTime + " s");
       level.setText("Levels Completed: " + showLevel);
+
+      DataBaseHelper db = MainActivity.getGameDb();
+      db.insertData("GAME3STATS", db.getUSERNAME(), showTime, showScore, showLevel);
 
   }
 }

@@ -11,10 +11,27 @@
         android:id="@+id/imageButton"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:layout_centerInParent="true"
+        android:layout_above="@+id/tb_high_score"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="131dp"
+        android:layout_marginEnd="130dp"
+        android:layout_marginBottom="59dp"
         android:background="#00FFFFFF"
         android:contentDescription="@string/imagebutton"
         android:onClick="begin"
         android:scaleType="centerInside"
         android:src="@drawable/play_button" />
+
+    <ImageButton
+        android:id="@+id/tb_high_score"
+        android:layout_width="match_parent"
+        android:layout_height="146dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="0dp"
+        android:layout_marginBottom="176dp"
+        android:background="#00FFFFFF"
+        android:contentDescription="@String/TBHighScore"
+        android:src="@drawable/high_score" />
 </RelativeLayout>
