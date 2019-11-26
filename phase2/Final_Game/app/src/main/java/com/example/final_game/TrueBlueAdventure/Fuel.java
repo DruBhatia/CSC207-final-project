@@ -29,16 +29,5 @@ class Fuel {
         fRect = new Rect(fX, fY, fX + fuelBM.getWidth(), fY + fuelBM.getHeight());
     }
 
-    /** draw's fuel * */
-    void drawFuel(Canvas canvas) {
-        canvas.drawBitmap(fuelBM, null, fRect, null);
-    }
-
-    /** draws fuels's invisible rectangle* */
-    void drawFuel(Canvas canvas) {
-        Paint p = new Paint();
-        p.setColor(Color.TRANSPARENT);
-        canvas.drawRect(fRect, p);
-    }
 
 }
