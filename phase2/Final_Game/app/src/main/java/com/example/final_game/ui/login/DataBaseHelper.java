@@ -35,6 +35,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
   public static final String LOGIN_TABLE_ID = "ID";
   private static final String USERNAME = "USERNAME";
   private static final String PASSWORD = "PASSWORD";
+  private static String userName;
 
   DataBaseHelper(Context context) {
     super(context, DATABASE_NAME, null, 1);
@@ -119,6 +120,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
   public boolean createUser(String username, String password) {
     SQLiteDatabase db = getWritableDatabase();
     ContentValues contentValues = new ContentValues();
+    userName = username;
     contentValues.put(USERNAME, username);
     contentValues.put(PASSWORD, password);
     long value = db.insert(LOGIN_TABLE, null, contentValues);
@@ -127,6 +129,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
   public boolean checkUser(String username, String password) {
     SQLiteDatabase db = getReadableDatabase();
+    userName = username;
     String selection = USERNAME + "=?" + " and " + PASSWORD + "=?";
     String[] selectionArgs = {username, password};
     String[] columns = {LOGIN_TABLE_ID};
@@ -137,6 +140,6 @@ public class DataBaseHelper extends SQLiteOpenHelper {
   }
 
   public static String getUSERNAME() {
-    return USERNAME;
+    return userName;
   }
 }
