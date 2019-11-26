@@ -90,6 +90,9 @@ public class TrueBlueView extends View {
     levelPaint.setTextSize(80);
     levelPaint.setUnderlineText(true);
     canvas.drawText("Level : " + level, 770, 60, levelPaint);
+    if (score > 0 && score % 5 == 0) {
+      canvas.drawText("LEVEL UP!", 350, 1700, levelPaint);
+    }
     // true blue falls
     if (tb.getState()) {
       tb.drawTBRect(canvas);
@@ -144,9 +147,6 @@ public class TrueBlueView extends View {
   }
 
   public void increaseLevel() {
-    levelPaint.setColor(-16776961);
-    levelPaint.setTextSize(80);
-    levelPaint.setUnderlineText(true);
     level++;
   }
 }
