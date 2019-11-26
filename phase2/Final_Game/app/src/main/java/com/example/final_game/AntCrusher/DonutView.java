@@ -50,7 +50,7 @@ public class DonutView extends SurfaceView implements SurfaceHolder.Callback, Se
 
   int level;
 
-  Activity activity;
+  playable activity;
 
 
 
@@ -59,7 +59,7 @@ public class DonutView extends SurfaceView implements SurfaceHolder.Callback, Se
    *
    * @param context is the environment of this game.
    */
-  public DonutView(Context context, int background, Activity activity) {
+  public DonutView(Context context, int background, playable activity) {
     super(context);
     this.activity = activity;
 
@@ -182,6 +182,7 @@ public class DonutView extends SurfaceView implements SurfaceHolder.Callback, Se
             && manager.ants.get(i).getY() < buttonY
             && buttonY < manager.ants.get(i).getY() + manager.ants.get(i).getHeight()) {
           touch = true;
+          activity.play();
           removedAnt = manager.ants.get(i);
           score += 10;
           return true;
