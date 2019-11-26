@@ -14,33 +14,34 @@ import java.util.Random;
 // A class to create CN Tower in game3.
 
 class Tower {
-  /** Images of the top and bottom tower **/
+  /** Images of the top and bottom tower * */
   private Bitmap topTower, bottomTower;
-  /** Distance between top and bottom tower **/
+  /** Distance between top and bottom tower * */
   private int distance = 700;
-  /** the maximum and minimum heights of the towers **/
+  /** the maximum and minimum heights of the towers * */
   private int minTower, maxTower;
-  /** the number of towers **/
+  /** the number of towers * */
   private int numOfTowers = 4;
-  /** the level counter **/
+  /** the level counter * */
   private int levelCounter = 0;
-  /** distance between towers **/
+  /** distance between towers * */
   private int distBetweenTowers;
-  /** all the x coordinates for the towers **/
+  /** all the x coordinates for the towers * */
   private int[] cnX = new int[numOfTowers];
-  /** all the y coordinates for the towers **/
+  /** all the y coordinates for the towers * */
   private int[] cnY = new int[numOfTowers];
-  /** the tower velocity **/
+  /** the tower velocity * */
   private int towerVelocity = 10;
+
   private Random random;
-  /** the game view tower is created in **/
+  /** the game view tower is created in * */
   private TrueBlueView gv;
-  /** The rectangle for the top tower **/
+  /** The rectangle for the top tower * */
   private Rect topTowerRect;
-  /** The rectangle for the bottom tower **/
+  /** The rectangle for the bottom tower * */
   private Rect bottomTowerRect;
 
-  /** Initializes the tower **/
+  /** Initializes the tower * */
   Tower(TrueBlueView gv) {
     this.gv = gv;
     topTower = BitmapFactory.decodeResource(gv.getResources(), R.drawable.cn_tower_down);
@@ -75,7 +76,6 @@ class Tower {
   void drawTower(Canvas canvas) {
     // used the numOfTowers and creates endless number of CN towers occurring at random.
 
-
     for (int i = 0; i < numOfTowers; i++) {
       cnX[i] -= towerVelocity;
       if (cnX[i] < -topTower.getWidth()) {
@@ -87,8 +87,7 @@ class Tower {
       Paint s = new Paint();
       s.setColor(Color.TRANSPARENT);
       topTowerRect =
-          new Rect(cnX[i], cnY[i] - topTower.getHeight(),
-                  cnX[i] + topTower.getWidth(), cnY[i]);
+          new Rect(cnX[i], cnY[i] - topTower.getHeight(), cnX[i] + topTower.getWidth(), cnY[i]);
       bottomTowerRect =
           new Rect(
               cnX[i],
@@ -151,7 +150,8 @@ class Tower {
 
   /** Check whether TrueBlue passes between the two towers */
   private boolean inBetweenTowers() {
-    if (topTowerRect.right - gv.tb.getTbX() >= 0 && topTowerRect.right - gv.tb.getTbX() < 10) {
+    if (topTowerRect.right - gv.tb.getTbX() >= 0
+        && topTowerRect.right - gv.tb.getTbX() < towerVelocity) {
       return topTowerRect.bottom < gv.tb.getTbY() && bottomTowerRect.top > gv.tb.getTbY();
     }
     return false;

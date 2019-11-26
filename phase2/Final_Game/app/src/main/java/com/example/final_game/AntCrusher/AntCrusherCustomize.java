@@ -9,7 +9,6 @@ import android.widget.Button;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.final_game.Infrastructure.Main1Activity;
 import com.example.final_game.R;
 import com.example.final_game.ui.login.MainActivity;
 
