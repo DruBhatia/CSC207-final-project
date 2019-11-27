@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Infrastructure.Main1Activity">
+    tools:context=".Infrastructure.GameActivity">
 
     <Button
         android:id="@+id/button1"
@@ -43,11 +43,26 @@
 
     <Button
         android:id="@+id/button7"
-        android:layout_width="match_parent"
+        android:layout_width="190dp"
         android:layout_height="70dp"
         android:onClick="game_Activities"
         android:fontFamily="@font/atari_extended"
         android:text="LOGOUT"
+        android:textSize="26sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/button6" />
+
+    <Button
+        android:id="@+id/button8"
+        android:layout_width="220dp"
+        android:layout_height="70dp"
+        android:layout_marginLeft="190dp"
+        android:onClick="game_Activities"
+        android:fontFamily="@font/atari_extended"
+        android:text="LEADERBOARD"
         android:textSize="26sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
