@@ -23,7 +23,7 @@ public class AntLevelActivity extends AppCompatActivity {
 
         TextView text = findViewById(R.id.newLevel);
 
-        text.setText("level " + level + " completed");
+        text.setText("LEVEL UP");
 
 //        proceed.setOnClickListener(new View.OnClickListener() {
 //            @Override

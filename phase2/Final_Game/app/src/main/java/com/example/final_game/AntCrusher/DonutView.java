@@ -48,7 +48,7 @@ public class DonutView extends SurfaceView implements SurfaceHolder.Callback, Se
 
   int background;
 
-  int level;
+  private int level = 1;
 
   playable activity;
 
@@ -105,6 +105,7 @@ public class DonutView extends SurfaceView implements SurfaceHolder.Callback, Se
       newGameintent.putExtra("Score", score);
 
       newGameintent.putExtra("Time", currTime);
+      newGameintent.putExtra("Level", level);
 
       getContext().startActivity(newGameintent);
     }
@@ -130,6 +131,7 @@ public class DonutView extends SurfaceView implements SurfaceHolder.Callback, Se
     livesPaint.setColor(-65536);
     livesPaint.setTextSize(70);
     canvas.drawText("Lives Left : " + lives, 500, 60, livesPaint);
+    canvas.drawText("Level: " + level, 650, 2000, scorePaint);
     donutNew.draw(canvas);
     manager.draw(canvas);
   }
