@@ -257,6 +257,9 @@ public class MemoryView extends View {
       // Increase the points by 2 for correct match
       player.increasePlayerPoints();
       player.setTextPoints();
+      final MediaPlayer mediaPlayer = MediaPlayer.create(getContext(), R.raw.cardmatchsound);
+      mediaPlayer.start();
+
     } else {
       // Decrease the points by 1 for incorrect match
       player.decreasePlayerPoints();
@@ -265,6 +268,8 @@ public class MemoryView extends View {
       for (PlayingCard card : cardArray) {
         card.setImage(cardBackView);
       }
+      final MediaPlayer mediaPlayer = MediaPlayer.create(getContext(), R.raw.cardfailsound);
+      mediaPlayer.start();
     }
     player.decreasePlayerMoves();
     player.setTextMoves();
