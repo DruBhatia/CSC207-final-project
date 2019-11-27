@@ -31,9 +31,11 @@ public class GameActivity extends AppCompatActivity {
     Intent intent2 = new Intent(this, AntCrusherCustomize.class);
     Intent intent3 = new Intent(this, TrueBlueActivity.class);
     Intent intent4 = new Intent(this, MainActivity.class);
+    Intent intent5 = new Intent(this, LeaderboardActivity.class);
     if (R.id.button1 == view.getId()) startActivity(intent1);
     else if (R.id.button5 == view.getId()) startActivity(intent2);
     else if (R.id.button6 == view.getId()) startActivity(intent3);
     else if (R.id.button7 == view.getId()) startActivity(intent4);
+    else if (R.id.button8 == view.getId()) startActivity(intent5);
   }
 }
