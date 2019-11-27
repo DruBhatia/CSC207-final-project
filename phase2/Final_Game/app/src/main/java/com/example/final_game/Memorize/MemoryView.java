@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Chronometer;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.media.MediaPlayer;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -159,6 +160,7 @@ public class MemoryView extends View {
   /** Set an on click listener on the image view of all the cards in cardArray */
   // https://developer.android.com/reference/android/view/View.OnClickListener used to learn.
   void setOnClick() {
+    final MediaPlayer mediaPlayer = MediaPlayer.create(getContext(), R.raw.cardflipsound);
     for (final PlayingCard card : cardArray) {
       card.getImageView()
           .setOnClickListener(
@@ -166,6 +168,7 @@ public class MemoryView extends View {
                 @Override
                 public void onClick(View view) {
                   setSelection(card);
+                  mediaPlayer.start();
                 }
               });
     }
