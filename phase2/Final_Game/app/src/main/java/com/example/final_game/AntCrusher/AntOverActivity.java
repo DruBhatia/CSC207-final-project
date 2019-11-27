@@ -26,11 +26,13 @@ public class AntOverActivity extends AppCompatActivity {
 
     String showScore = getIntent().getExtras().get("Score").toString();
     String showTime = getIntent().getExtras().get("Time").toString();
+    String showLevel = getIntent().getExtras().get("Level").toString();
 
     Button rePlayGame = findViewById(R.id.play_again);
 
     TextView score = findViewById(R.id.score_id);
     TextView time = findViewById(R.id.time_id);
+    TextView level = findViewById(R.id.level_id);
 
     rePlayGame.setOnClickListener(
         new View.OnClickListener() {
@@ -53,6 +55,7 @@ public class AntOverActivity extends AppCompatActivity {
 
     score.setText("Score: " + showScore);
     time.setText("Time taken: " + showTime + " s");
+    level.setText("Level: "+ showLevel);
       DataBaseHelper db = MainActivity.getGameDb();
     db.insertData("GAME2STATS", db.getUSERNAME(), showScore, showTime, "nothing");
   }

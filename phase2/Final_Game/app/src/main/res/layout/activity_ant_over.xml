@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/game_backg8"
     tools:context=".AntCrusher.AntOverActivity">
 
     <TextView
@@ -16,6 +17,7 @@
         android:text="Game Over"
         android:textAlignment="center"
         android:textSize="70dp"
+        android:textColor="@color/colorPrimary"
         android:textStyle="bold"
         />
 
@@ -36,6 +38,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginTop="450dp"
         android:text="Score"
+        android:textColor="@color/colorPrimary"
         android:textAlignment="center"
         android:textSize="30sp"
         />
@@ -48,6 +51,19 @@
         android:layout_alignParentTop="true"
         android:layout_marginTop="500dp"
         android:text="Time"
+        android:textColor="@color/colorPrimary"
+        android:textAlignment="center"
+        android:textSize="30sp"
+        />
+    <TextView
+        android:id="@+id/level_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="550dp"
+        android:text="Level"
+        android:textColor="@color/colorPrimary"
         android:textAlignment="center"
         android:textSize="30sp"
         />
