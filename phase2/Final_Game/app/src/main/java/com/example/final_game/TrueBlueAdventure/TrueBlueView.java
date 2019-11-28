@@ -165,11 +165,19 @@ public class TrueBlueView extends View {
   public void increaseScore() {
     score++;
     fuel -= fuelConsumption;
+    checkFuel();
     randomX = rand.nextInt(500);
     randomY = rand.nextInt(1500);
+
   }
 
   public void increaseLevel() {
     level++;
+  }
+
+  public void checkFuel(){
+    if (fuel <= 0){
+      gameOver();
+    }
   }
 }
