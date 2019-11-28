@@ -111,6 +111,8 @@ class Tower {
       }
       if (inBetweenTowers()) {
         gv.increaseScore();
+        gv.decreaseFuel();
+        gv.checkFuel();
         levelCounter++;
         if (levelCounter % 5 == 0) {
           towerVelocity += 5;

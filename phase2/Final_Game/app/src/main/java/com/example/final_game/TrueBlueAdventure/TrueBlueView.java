@@ -27,6 +27,7 @@ public class TrueBlueView extends View {
   /** Tower class * */
   Tower cn; // Tower class
   PowerUp powerup; // PowerUp class
+  FuelUp fuelup; //FuelUp class
   Handler handler;
   Runnable runnable;
   final int delayNum = 30;
@@ -84,6 +85,7 @@ public class TrueBlueView extends View {
     cn.moveTower(); // moves CN Tower
     tb = new TrueBlue(this); // creates TrueBlue
     powerup = new PowerUp(this);
+    fuelup = new FuelUp(this);
     Date startDate = new Date();
     start = startDate.getTime();
   }
@@ -127,6 +129,10 @@ public class TrueBlueView extends View {
         powerup.drawPickup(canvas);
     }
     powerup.move();
+    if (!fuelup.getCollected()) {
+      fuelup.drawPickup(canvas);
+    }
+    fuelup.move();
     handler.postDelayed(runnable, delayNum);
   }
 
@@ -167,15 +173,26 @@ public class TrueBlueView extends View {
   /** increases the score * */
   public void increaseScore() {
     score++;
-    fuel -= fuelConsumption;
-    checkFuel();
     randomX = rand.nextInt(500);
     randomY = rand.nextInt(1500);
 
   }
 
+  public void increaseFuel(){
+    if (fuel < 51) {
+      fuel += 50;
+    } else {
+      fuel = 100;
+    }
+  }
+
+  public void decreaseFuel(){
+    fuel -= fuelConsumption;
+  }
+
   public void increaseLevel() {
     level++;
+    fuelConsumption += 5;
   }
 
   public void checkFuel(){
