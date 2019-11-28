@@ -11,7 +11,6 @@ import com.example.final_game.R;
 
 import java.util.List;
 
-
 @SuppressLint("ViewConstructor")
 public class MemoryView extends View {
   int[] light_images = {

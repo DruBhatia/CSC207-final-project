@@ -51,9 +51,10 @@ class MemoryPresenter {
   static final String MOVES_LEFT3 = "movesLeft3";
   static final String CARDS_LEFT3 = "cardsLeft3";
   private SharedPreferences sharedPreferences;
-  private AppCompatActivity context;
+  private MemoryActivity context;
 
-  MemoryPresenter(AppCompatActivity cntxt, String background, int num) {
+  MemoryPresenter(MemoryActivity activity, String background, int levelNum) {
+    context = activity;
     player =
         new MemorizePlayer(
             (TextView) context.findViewById(R.id.text_moves),
@@ -61,9 +62,9 @@ class MemoryPresenter {
             (TextView) context.findViewById(R.id.level),
             (TextView) context.findViewById(R.id.text_threshold),
             (Chronometer) context.findViewById(R.id.stopWatch));
-    context = cntxt;
+
     theme = background;
-    level = num;
+    level = levelNum;
     this.player.setLevel(level);
     if (level == 1) {
       player.setMovesVisibility();
@@ -162,28 +163,28 @@ class MemoryPresenter {
    * Temporarily stores selected cards and makes them unresponsive until all selections have been
    * made so a comparison can be performed.
    */
-  void setSelection(PlayingCard c) {
+  void setSelection(PlayingCard card) {
     // Set the image of card to the image view
-    int image = imageArray.get(cardArray.indexOf(c))[1];
-    c.setImage(image);
+    int image = imageArray.get(cardArray.indexOf(card))[1];
+    card.setImage(image);
     // check the selection of two cards and store them temporarily
     if (cardNum == 1) {
-      firstCard = imageArray.get(cardArray.indexOf(c))[0];
+      firstCard = imageArray.get(cardArray.indexOf(card))[0];
       if (firstCard > 200) {
         firstCard = firstCard - 100;
       }
       cardNum = 2;
-      firstSelect = this.cardArray.indexOf(c);
+      firstSelect = this.cardArray.indexOf(card);
       // Make this card unresponsive
-      c.set_enable(false);
+      card.set_enable(false);
 
     } else {
-      secondCard = imageArray.get(cardArray.indexOf(c))[0];
+      secondCard = imageArray.get(cardArray.indexOf(card))[0];
       if (secondCard > 200) {
         secondCard = secondCard - 100;
       }
       cardNum = 1;
-      secondSelect = this.cardArray.indexOf(c);
+      secondSelect = this.cardArray.indexOf(card);
       // Make all cards unresponsive
       for (PlayingCard playCard : cardArray) {
         playCard.set_enable(false);
