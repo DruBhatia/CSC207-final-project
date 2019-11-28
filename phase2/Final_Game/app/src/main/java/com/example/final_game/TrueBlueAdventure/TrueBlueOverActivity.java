@@ -49,7 +49,7 @@ public class TrueBlueOverActivity extends AppCompatActivity {
       level.setText("Levels Completed: " + showLevel);
 
       DataBaseHelper db = MainActivity.getGameDb();
-      db.insertData("GAME3STATS", db.getUSERNAME(), showTime, showScore, showLevel);
+      db.insertData("GAME3STATS", db.getUSERNAME(), showScore, showTime, showLevel);
 
   }
 }
