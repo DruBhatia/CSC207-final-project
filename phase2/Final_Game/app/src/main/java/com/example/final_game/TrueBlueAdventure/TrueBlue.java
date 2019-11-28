@@ -53,7 +53,6 @@ class TrueBlue {
 
   /** draw's tb * */
   void drawTB(Canvas canvas) {
-
     canvas.drawBitmap(tb[tbFrame], null, tbRect, null);
   }
 

@@ -26,7 +26,7 @@ public class TrueBlueView extends View {
   TrueBlue tb;
   /** Tower class * */
   Tower cn; // Tower class
-
+  Powerup powerup; // Powerup class
   Handler handler;
   Runnable runnable;
   final int delayNum = 30;
@@ -83,6 +83,7 @@ public class TrueBlueView extends View {
     cn = new Tower(this); // created CN Tower
     cn.moveTower(); // moves CN Tower
     tb = new TrueBlue(this); // creates TrueBlue
+    powerup = new Powerup(this);
     Date startDate = new Date();
     start = startDate.getTime();
   }
@@ -97,7 +98,6 @@ public class TrueBlueView extends View {
     scorePaint.setColor(Color.BLUE);
     scorePaint.setTextSize(80);
     canvas.drawText("Score : " + score, 20, 60, scorePaint);
-
     // Creates the fuel
     fuelPaint.setColor(Color.RED);
     fuelPaint.setTextSize(80);
@@ -123,11 +123,14 @@ public class TrueBlueView extends View {
     }
     // displays true blue in the center
     tb.drawTB(canvas);
-
+    if (!powerup.getCollected()) {
+        powerup.drawPowerup(canvas);
+    }
+    powerup.move();
     handler.postDelayed(runnable, delayNum);
   }
 
-  /** when you tap the screen * */
+  /** when you tap the screen **/
   @Override
   public boolean onTouchEvent(MotionEvent event) {
     int action = event.getAction();
@@ -135,17 +138,17 @@ public class TrueBlueView extends View {
     return true;
   }
 
-  /** returns the screenwidth * */
+  /** returns the screenwidth **/
   public int getScreenWidth() {
     return screenWidth;
   }
 
-  /** returns screen height * */
+  /** returns screen height **/
   public int getScreenHeight() {
     return screenHeight;
   }
 
-  /** what to do when the game ends * */
+  /** what to do when the game ends **/
   public void gameOver() {
     tb.setState();
     Date finalDate = new Date();
