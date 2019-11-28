@@ -10,7 +10,7 @@ import com.example.final_game.R;
 
 class PowerUp extends Pickup{
     public PowerUp(TrueBlueView gv){
-        super(gv,R.drawable.powerup);
+        super(gv,R.drawable.powerup,1400,-400);
     }
 
     @Override

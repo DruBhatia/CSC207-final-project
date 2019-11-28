@@ -24,10 +24,15 @@ public abstract class Pickup {
     /** status if pickup has been collected **/
     private boolean collected;
 
-    Pickup(TrueBlueView gv, int pickupBM) {
+    private int startPixel;
+    private int endPixel;
+
+    Pickup(TrueBlueView gv, int pickupBM, int startPixel, int endPixel) {
+        this.startPixel = startPixel;
+        this.endPixel = endPixel;
         this.gv = gv;
         this.pickupBM = BitmapFactory.decodeResource(gv.getResources(), pickupBM);
-        pX = 1400;
+        pX = this.startPixel;
         pY = gv.getScreenHeight() / 2 - this.pickupBM.getHeight() / 2 + getRandomNumberInRange(-300, 300);;
         pRect = new Rect(pX, pY, pX + 70, pY + 70);
         collected = false;
@@ -55,8 +60,8 @@ public abstract class Pickup {
 
     /** move method for powerup. **/
     void move() {
-        if (pX < (-400)) {
-            pX = 1400;
+        if (pX < (endPixel)) {
+            pX = startPixel;
             pY = gv.getScreenHeight() / 2 - pickupBM.getHeight() / 2 + getRandomNumberInRange(-300, 300);
             collected = false;
         }
