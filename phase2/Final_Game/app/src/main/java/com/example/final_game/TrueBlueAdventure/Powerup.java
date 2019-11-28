@@ -57,7 +57,7 @@ public class Powerup {
             collected = false;
         }
         pX -= 10;
-        pY += getRandomNumberInRange(-100,100);
+        pY += getRandomNumberInRange(-70,70);
         pRect = new Rect(pX, pY, pX + 70, pY + 70);
     }
 
