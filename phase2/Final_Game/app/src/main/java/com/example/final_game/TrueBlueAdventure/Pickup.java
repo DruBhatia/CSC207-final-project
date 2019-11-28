@@ -42,6 +42,7 @@ public abstract class Pickup {
         }
     }
 
+    /** Returns a random integer x such that (min <= x <= max) **/
     private static int getRandomNumberInRange(int min, int max) {
 
         if (min >= max) {
@@ -52,6 +53,7 @@ public abstract class Pickup {
         return r.nextInt((max - min) + 1) + min;
     }
 
+    /** move method for powerup. **/
     void move() {
         if (pX < (-400)) {
             pX = 1400;
@@ -59,10 +61,11 @@ public abstract class Pickup {
             collected = false;
         }
         pX -= 10;
-        pY += getRandomNumberInRange(-100,100);
+        pY += getRandomNumberInRange(-70,70);
         pRect = new Rect(pX, pY, pX + 70, pY + 70);
     }
 
+    /** return true if TrueBlue intersects with the powerup and false otherwise **/
     public boolean getIntersectTb(Rect pRect, Rect tbRect) {
         return tbRect.intersect(pRect);
     }
