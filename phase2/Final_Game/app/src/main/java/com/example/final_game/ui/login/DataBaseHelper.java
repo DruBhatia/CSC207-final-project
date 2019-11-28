@@ -19,18 +19,41 @@ public class DataBaseHelper extends SQLiteOpenHelper {
   private static final String TABLE1_STAT1 = "TABLE1_STAT1";
   private static final String TABLE1_STAT2 = "TABLE1_STAT2";
   private static final String TABLE1_STAT3 = "TABLE1_STAT3";
+  private final String[] columns1 = new String[] {
+          TABLE1_ID,
+          TABLE1_PLAYER_NAME,
+          TABLE1_STAT1,
+          TABLE1_STAT2,
+          TABLE1_STAT3
+  };
 
   public static final String TABLE2_ID = "ID";
   private static final String TABLE2_PLAYER_NAME = "NAME";
   private static final String TABLE2_STAT1 = "TABLE2_STAT1";
   private static final String TABLE2_STAT2 = "TABLE2_STAT2";
   private static final String TABLE2_STAT3 = "TABLE2_STAT3";
+  private final String[] columns2 = new String[] {
+          TABLE2_ID,
+          TABLE2_PLAYER_NAME,
+          TABLE2_STAT1,
+          TABLE2_STAT2,
+          TABLE2_STAT3
+  };
+
 
   public static final String TABLE3_ID = "ID";
   private static final String TABLE3_PLAYER_NAME = "NAME";
   private static final String TABLE3_STAT1 = "TABLE3_STAT1";
   private static final String TABLE3_STAT2 = "TABLE3_STAT2";
   private static final String TABLE3_STAT3 = "TABLE3_STAT3";
+  private final String[] columns3 = new String[] {
+          TABLE3_ID,
+          TABLE3_PLAYER_NAME,
+          TABLE3_STAT1,
+          TABLE3_STAT2,
+          TABLE3_STAT3
+  };
+
 
   public static final String LOGIN_TABLE_ID = "ID";
   private static final String USERNAME = "USERNAME";
@@ -114,6 +137,28 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     } else {
       Cursor res = db.rawQuery("select * from " + TABLE3_NAME, null);
       return res;
+    }
+  }
+
+  public Cursor getDataByName(String table){
+    SQLiteDatabase db = this.getWritableDatabase();
+    if (table.equals(TABLE1_NAME)) {
+      return db.rawQuery("select * from " + TABLE1_NAME + " ORDER BY " + TABLE1_PLAYER_NAME + " DESC", null);
+     } else if (table.equals(TABLE2_NAME)) {
+      return db.rawQuery("select * from " + TABLE2_NAME + " ORDER BY " + TABLE2_PLAYER_NAME + " DESC", null);
+    } else {
+      return db.rawQuery("select * from " + TABLE3_NAME + " ORDER BY " + TABLE3_PLAYER_NAME + " DESC", null);
+    }
+  }
+
+  public Cursor getDataByScore(String table){
+    SQLiteDatabase db = this.getWritableDatabase();
+    if (table.equals(TABLE1_NAME)) {
+      return db.rawQuery("select * from " + TABLE1_NAME + " ORDER BY " + TABLE1_STAT1 + " DESC", null);
+    } else if (table.equals(TABLE2_NAME)) {
+      return db.rawQuery("select * from " + TABLE2_NAME + " ORDER BY " + TABLE2_STAT1 + " DESC", null);
+    } else {
+      return db.rawQuery("select * from " + TABLE3_NAME + " ORDER BY " + TABLE3_STAT1 + " DESC", null);
     }
   }
 
