@@ -58,7 +58,7 @@ public abstract class Pickup {
         return r.nextInt((max - min) + 1) + min;
     }
 
-    /** move method for powerup. **/
+    /** move method for pickup. **/
     void move() {
         if (pX < (endPixel)) {
             pX = startPixel;
@@ -70,7 +70,7 @@ public abstract class Pickup {
         pRect = new Rect(pX, pY, pX + 70, pY + 70);
     }
 
-    /** return true if TrueBlue intersects with the powerup and false otherwise **/
+    /** return true if TrueBlue intersects with the pickup and false otherwise **/
     public boolean getIntersectTb(Rect pRect, Rect tbRect) {
         return tbRect.intersect(pRect);
     }
