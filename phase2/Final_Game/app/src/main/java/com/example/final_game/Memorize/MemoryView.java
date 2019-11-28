@@ -34,14 +34,14 @@ public class MemoryView extends View {
     R.drawable.fv_image1d7,
     R.drawable.fv_image1d8
   };
-  MemoryPresenter presenter;
+  MemoryPresenter memoryPresenter;
   /**
    * Constructor initializes a new player, a layout of playable, shuffled cards, sets off a timer,
    * and adds clickable functionality to the cards in the layout.
    */
-  MemoryView(AppCompatActivity context, String theme, int num) {
+  MemoryView(AppCompatActivity context, MemoryPresenter presenter, String theme) {
     super(context);
-    presenter = new MemoryPresenter(context, theme, num);
+    memoryPresenter = presenter;
     if (theme.equals("L")) {
       presenter.initializeImages(light_images, R.drawable.bv_00);
     } else if (theme.equals("D")) {
@@ -56,7 +56,7 @@ public class MemoryView extends View {
   // https://developer.android.com/reference/android/view/View.OnClickListener used to learn.
   void setOnClick() {
     final MediaPlayer mediaPlayer = MediaPlayer.create(getContext(), R.raw.cardflipsound);
-    List<PlayingCard> cardArray = presenter.getCardArray();
+    List<PlayingCard> cardArray = memoryPresenter.getCardArray();
     for (final PlayingCard card : cardArray) {
       card.getImageView()
           .setOnClickListener(
@@ -64,7 +64,7 @@ public class MemoryView extends View {
                 @Override
                 public void onClick(View view) {
                   mediaPlayer.start();
-                  presenter.setSelection(card);
+                  memoryPresenter.setSelection(card);
                 }
               });
     }
