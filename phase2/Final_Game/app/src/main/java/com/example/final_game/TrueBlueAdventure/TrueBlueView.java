@@ -10,15 +10,15 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Point;
 import android.graphics.Rect;
+import android.os.Handler;
 import android.view.Display;
 import android.view.MotionEvent;
 import android.view.View;
-import android.os.Handler;
-import java.util.Random;
 
 import com.example.final_game.R;
 
 import java.util.Date;
+import java.util.Random;
 
 public class TrueBlueView extends View {
   // This will be the custom view class for Game3

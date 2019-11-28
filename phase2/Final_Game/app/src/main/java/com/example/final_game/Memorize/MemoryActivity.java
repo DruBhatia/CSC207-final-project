@@ -25,10 +25,12 @@ public class MemoryActivity extends AppCompatActivity {
     Toast.makeText(getApplicationContext(), "LEVEL " + level, Toast.LENGTH_LONG).show();
     if (theme.equals("Light")) {
       setContentView(R.layout.activity_memorygame);
-      game_view = new MemoryView(this, "L", level);
+        MemoryPresenter presenter = new MemoryPresenter(this, theme, level);
+        game_view = new MemoryView(this, presenter, "L");
     } else {
       setContentView(R.layout.activity_memorygame_dark);
-      game_view = new MemoryView(this, "D", level);
+        MemoryPresenter presenter = new MemoryPresenter(this, theme, level);
+        game_view = new MemoryView(this, presenter,"D");
     }
   }
 

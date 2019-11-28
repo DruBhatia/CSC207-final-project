@@ -32,11 +32,11 @@ public class TrueBlueActivity extends Activity {
                 } else {
                   StringBuilder stringBuffer = new StringBuilder();
                   while (cur.moveToNext()) {
-                    stringBuffer.append("id: ").append(cur.getString(0)).append("\n");
-                    stringBuffer.append("name: ").append(cur.getString(1)).append("\n");
-                    stringBuffer.append("score: ").append(cur.getString(2)).append("\n");
-                    stringBuffer.append("time: ").append(cur.getString(3)).append("\n");
-                    stringBuffer.append("level: ").append(cur.getString(4)).append("\n\n");
+                    stringBuffer.append("ID: ").append(cur.getString(0)).append("\n");
+                    stringBuffer.append("Name: ").append(cur.getString(1)).append("\n");
+                    stringBuffer.append("Score: ").append(cur.getString(2)).append("\n");
+                    stringBuffer.append("Time: ").append(cur.getString(3)).append("\n");
+                    stringBuffer.append("Level: ").append(cur.getString(4)).append("\n\n");
                   }
                   showMessage("DATA FOUND", stringBuffer.toString());
                 }
