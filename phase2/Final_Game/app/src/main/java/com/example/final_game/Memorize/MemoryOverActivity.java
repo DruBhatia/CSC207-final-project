@@ -13,17 +13,17 @@ import com.example.final_game.R;
 import com.example.final_game.ui.login.DataBaseHelper;
 import com.example.final_game.ui.login.MainActivity;
 
-import static com.example.final_game.Memorize.MemoryView.CARDS_LEFT2;
-import static com.example.final_game.Memorize.MemoryView.CARDS_LEFT3;
-import static com.example.final_game.Memorize.MemoryView.MOVES_LEFT2;
-import static com.example.final_game.Memorize.MemoryView.MOVES_LEFT3;
-import static com.example.final_game.Memorize.MemoryView.POINTS1;
-import static com.example.final_game.Memorize.MemoryView.POINTS2;
-import static com.example.final_game.Memorize.MemoryView.POINTS3;
-import static com.example.final_game.Memorize.MemoryView.SHARED_PREFS;
-import static com.example.final_game.Memorize.MemoryView.TIME1;
-import static com.example.final_game.Memorize.MemoryView.TIME2;
-import static com.example.final_game.Memorize.MemoryView.TIME3;
+import static com.example.final_game.Memorize.MemoryPresenter.CARDS_LEFT2;
+import static com.example.final_game.Memorize.MemoryPresenter.CARDS_LEFT3;
+import static com.example.final_game.Memorize.MemoryPresenter.MOVES_LEFT2;
+import static com.example.final_game.Memorize.MemoryPresenter.MOVES_LEFT3;
+import static com.example.final_game.Memorize.MemoryPresenter.POINTS1;
+import static com.example.final_game.Memorize.MemoryPresenter.POINTS2;
+import static com.example.final_game.Memorize.MemoryPresenter.POINTS3;
+import static com.example.final_game.Memorize.MemoryPresenter.SHARED_PREFS;
+import static com.example.final_game.Memorize.MemoryPresenter.TIME1;
+import static com.example.final_game.Memorize.MemoryPresenter.TIME2;
+import static com.example.final_game.Memorize.MemoryPresenter.TIME3;
 
 public class MemoryOverActivity extends GameActivity {
 
@@ -107,6 +107,6 @@ public class MemoryOverActivity extends GameActivity {
     gameTime3.setText("Time Left:" + game_time3 + "s");
     finalScore3.setText("Final Score:" + score3);
     DataBaseHelper db = MainActivity.getGameDb();
-    db.insertData("GAME1STATS", db.getUSERNAME(), String.valueOf(score3), game_time3, showMoves3);
+    db.insertData("GAME1STATS", DataBaseHelper.getUSERNAME(), String.valueOf(score3), game_time3, showMoves3);
   }
 }
