@@ -4,38 +4,40 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Rect;
-import java.util.Random;
+import android.graphics.drawable.Drawable;
 
 import com.example.final_game.R;
 
-public class Powerup {
+import java.util.Random;
+
+public abstract class Pickup {
     /**
-     *fX: fuel's x coordinate fY: fuel's y coordinate
+     *pX: pickups's x coordinate pY: pickups's y coordinate
      */
     private int pX, pY;
-    /** The gameview fuel is displayed in **/
+    /** The gameview pickup is displayed in **/
     private TrueBlueView gv;
-    /** a Btmap of fuel **/
-    private Bitmap powerupBM;
+    /** a Btmap of pickup **/
+    private Bitmap pickupBM;
     /** the rect representation for fuel **/
     private Rect pRect;
-    /** status if powerup has been collected **/
+    /** status if pickup has been collected **/
     private boolean collected;
 
-    Powerup(TrueBlueView gv) {
+    Pickup(TrueBlueView gv, int pickupBM) {
         this.gv = gv;
-        powerupBM = BitmapFactory.decodeResource(gv.getResources(), R.drawable.powerup);
+        this.pickupBM = BitmapFactory.decodeResource(gv.getResources(), pickupBM);
         pX = 1400;
-        pY = gv.getScreenHeight() / 2 - powerupBM.getHeight() / 2 + getRandomNumberInRange(-300, 300);;
+        pY = gv.getScreenHeight() / 2 - this.pickupBM.getHeight() / 2 + getRandomNumberInRange(-300, 300);;
         pRect = new Rect(pX, pY, pX + 70, pY + 70);
         collected = false;
     }
 
-    void drawPowerup(Canvas canvas) {
+    void drawPickup(Canvas canvas) {
         Rect tb = gv.tb.getTbRect();
-        canvas.drawBitmap(powerupBM, null, pRect, null);
+        canvas.drawBitmap(pickupBM, null, pRect, null);
         if (getIntersectTb(pRect, tb)) {
-            gv.increaseScore();
+            pickupAction();
             collected = true;
         }
     }
@@ -53,7 +55,7 @@ public class Powerup {
     void move() {
         if (pX < (-400)) {
             pX = 1400;
-            pY = gv.getScreenHeight() / 2 - powerupBM.getHeight() / 2 + getRandomNumberInRange(-300, 300);
+            pY = gv.getScreenHeight() / 2 - pickupBM.getHeight() / 2 + getRandomNumberInRange(-300, 300);
             collected = false;
         }
         pX -= 10;
@@ -67,5 +69,11 @@ public class Powerup {
 
     public boolean getCollected() {
         return collected;
+    }
+
+    public abstract void pickupAction();
+
+    public TrueBlueView getGv(){
+        return gv;
     }
 }

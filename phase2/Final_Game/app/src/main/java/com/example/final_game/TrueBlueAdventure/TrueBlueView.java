@@ -26,7 +26,7 @@ public class TrueBlueView extends View {
   TrueBlue tb;
   /** Tower class * */
   Tower cn; // Tower class
-  Powerup powerup; // Powerup class
+  PowerUp powerup; // PowerUp class
   Handler handler;
   Runnable runnable;
   final int delayNum = 30;
@@ -83,7 +83,7 @@ public class TrueBlueView extends View {
     cn = new Tower(this); // created CN Tower
     cn.moveTower(); // moves CN Tower
     tb = new TrueBlue(this); // creates TrueBlue
-    powerup = new Powerup(this);
+    powerup = new PowerUp(this);
     Date startDate = new Date();
     start = startDate.getTime();
   }
@@ -124,7 +124,7 @@ public class TrueBlueView extends View {
     // displays true blue in the center
     tb.drawTB(canvas);
     if (!powerup.getCollected()) {
-        powerup.drawPowerup(canvas);
+        powerup.drawPickup(canvas);
     }
     powerup.move();
     handler.postDelayed(runnable, delayNum);
@@ -183,4 +183,5 @@ public class TrueBlueView extends View {
       gameOver();
     }
   }
+
 }
