@@ -23,7 +23,11 @@ class AntManager implements AntGameInterface{
       double randomY = Math.random();
       int randomNumberY = (int) (randomY * 500);
       System.out.println("x: " + randomNumberX + " y: " + randomNumberY);
-      Ant tempAnt = new Ant(image, 200 + randomNumberX, 2500 + randomNumberY,speed);
+      Ant tempAnt = new Ant(image, 200 + randomNumberX, 2800 + randomNumberY,speed);
+      if (i % 3 == 0) {
+          RandomAnt randomAnt = new RandomAnt(image, 200 + randomNumberX, 2400 + randomNumberY, speed);
+          ants.add(randomAnt);
+      }
       ants.add(tempAnt);
     }
   }
