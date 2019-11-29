@@ -30,7 +30,7 @@ public class DonutView extends SurfaceView implements SurfaceHolder.Callback, Se
   /** Boolean to detect a touch on the screen */
   private boolean touch = false;
   /** The ant that has to be removed as it has been touched. */
-  private Ant removedAnt;
+  private GameCreature removedAnt;
   /** The speed of the initial generation of ants */
   private int antGenerationSpeed = 10;
   /** The score paint to display the score. */
@@ -52,14 +52,19 @@ public class DonutView extends SurfaceView implements SurfaceHolder.Callback, Se
 
   playable activity;
 
+  private AntManagerFactory antManagerFactory = new AntManagerFactory();
 
+  private String creature;
+
+  Date startDate;
+  long initialTime;
 
   /**
    * Construct the thread.
    *
    * @param context is the environment of this game.
    */
-  public DonutView(Context context, int background, playable activity) {
+  public DonutView(Context context, int background, playable activity, String creature) {
     super(context);
     this.activity = activity;
 
@@ -67,15 +72,17 @@ public class DonutView extends SurfaceView implements SurfaceHolder.Callback, Se
     this.getHolder().addCallback(this);
     score = 0;
     this.background = background;
+    this.creature = creature;
   }
 
   /** Updates the canvas that is viewed on screen. */
   public void update() {
     Bitmap antBitmap1 = BitmapFactory.decodeResource(this.getResources(), R.drawable.ant);
     if (touch) {
-      manager.ants.remove(removedAnt);
+      antManagerFactory.removeCreature(removedAnt);
+//      manager.ants.remove(removedAnt);
 
-      if (manager.ants.size() == 0) {
+      if (antManagerFactory.size() == 0) {
         level += 1;
         gameThread.setRunning(false);
 
@@ -83,21 +90,24 @@ public class DonutView extends SurfaceView implements SurfaceHolder.Callback, Se
         levelIntent.putExtra("Level", level);
 
         antGenerationSpeed += 2;
-        manager.createAnts(antBitmap1, this, antGenerationSpeed);
+//        antManagerFactory = new AntManagerFactory();
+        antManagerFactory.createCreature("Ant", antBitmap1, this, antGenerationSpeed);
+//        manager.createAnts(antBitmap1, this, antGenerationSpeed);
 
         getContext().startActivity(levelIntent);
 
       }
-      System.out.println(manager.ants.size());
+//      System.out.println(manager.ants.size());
     } else {
-      manager.update();
+      antManagerFactory.update();
+//      manager.update();
     }
 
     if (lives == 0) {
 
       gameThread.setRunning(false);
       Date finalDate = new Date();
-      float currTime = (finalDate.getTime() - start) / 1000F;
+      float currTime = (finalDate.getTime() - initialTime) / 1000F;
       Intent newGameintent = new Intent(getContext(), AntOverActivity.class);
 
       newGameintent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
@@ -133,7 +143,8 @@ public class DonutView extends SurfaceView implements SurfaceHolder.Callback, Se
     canvas.drawText("Lives Left : " + lives, 500, 60, livesPaint);
     canvas.drawText("Level: " + level, 650, 2000, scorePaint);
     donutNew.draw(canvas);
-    manager.draw(canvas);
+//    manager.draw(canvas);
+    antManagerFactory.draw(canvas);
   }
 
   @Override
@@ -145,12 +156,17 @@ public class DonutView extends SurfaceView implements SurfaceHolder.Callback, Se
 
     //    backgroundPicture = BitmapFactory.decodeResource(getResources(), R.drawable.background);
     backgroundPicture = BitmapFactory.decodeResource(getResources(), this.background);
-    manager = new AntManager();
-    manager.createAnts(antBitmap1, this, antGenerationSpeed);
+    antManagerFactory.createCreature(creature, antBitmap1, this, antGenerationSpeed);
+//    manager = new AntManager();
+//    manager.createAnts(antBitmap1, this, antGenerationSpeed);
     gameThread = new GameThread(this.getHolder(), this);
     gameThread.setRunning(true);
     gameThread.start();
-    Date startDate = new Date();
+
+    startDate = new Date();
+    if(level == 1){
+      initialTime = startDate.getTime();
+    }
     start = startDate.getTime();
   }
 
@@ -178,14 +194,15 @@ public class DonutView extends SurfaceView implements SurfaceHolder.Callback, Se
       double buttonX = event.getX();
       double buttonY = event.getY();
 
-      for (int i = 0; i < manager.ants.size(); i++) {
-        if (manager.ants.get(i).getX() < buttonX
-            && buttonX < manager.ants.get(i).getX() + manager.ants.get(i).getWidth()
-            && manager.ants.get(i).getY() < buttonY
-            && buttonY < manager.ants.get(i).getY() + manager.ants.get(i).getHeight()) {
+      for (int i = 0; i < antManagerFactory.size(); i++) {
+        if (antManagerFactory.getCreatures().get(i).getX() < buttonX
+            && buttonX < antManagerFactory.getCreatures().get(i).getX() + antManagerFactory.getCreatures().get(i).getWidth()
+            && antManagerFactory.getCreatures().get(i).getY() < buttonY
+            && buttonY < antManagerFactory.getCreatures().get(i).getY() + antManagerFactory.getCreatures().get(i).getHeight()) {
           touch = true;
           activity.play();
-          removedAnt = manager.ants.get(i);
+          removedAnt = antManagerFactory.getCreatures().get(i);
+          this.update();
           score += 10;
           return true;
         }

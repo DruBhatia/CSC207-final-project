@@ -1,6 +1,8 @@
 package com.example.final_game.AntCrusher;
 
 import android.graphics.Bitmap;
+import android.graphics.Canvas;
+
 /** Super class for all creatures and items created.*/
 public class GameCreature {
 
@@ -40,5 +42,12 @@ public class GameCreature {
   /** Getter for Y coordinate of creature.*/
   int getY() {
     return y;
+  }
+
+  public void draw(Canvas canvas) {
+
+  }
+
+  public void update() {
   }
 }

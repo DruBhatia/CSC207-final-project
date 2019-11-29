@@ -36,7 +36,7 @@ public class AntActivity extends AppCompatActivity implements playable{
         boolean loaded = true;
       }
     });
-    gameView = new DonutView(this, receive_intent, this);
+    gameView = new DonutView(this, receive_intent, this, "Ant");
     setContentView(gameView);
   }
 

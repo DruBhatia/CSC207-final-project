@@ -21,12 +21,12 @@ class Ant extends GameCreature {
   }
 
   /** Draws the ant on the canvas.*/
-  void draw(Canvas canvas) {
+  public void draw(Canvas canvas) {
     canvas.drawBitmap(image, this.getX(), this.getY(), null);
   }
 
   /** Updates the position of the ant. */
-  void update() {
+  public void update() {
     // for now it just moves the ant in one direction will change to random later.
     int randomSpeed = (int) (Math.random() * speed * 2);
     this.setY(this.getY() - randomSpeed);

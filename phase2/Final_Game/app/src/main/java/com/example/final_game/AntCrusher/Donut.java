@@ -9,7 +9,7 @@ class Donut extends GameCreature {
     super(image, x, y);
   }
   /** Draws the donut on the canvas.*/
-  void draw(Canvas canvas) {
+  public void draw(Canvas canvas) {
     canvas.drawBitmap(image, this.getX(), this.getY(), null);
   }
 }
