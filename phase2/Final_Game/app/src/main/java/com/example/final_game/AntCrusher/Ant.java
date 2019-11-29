@@ -4,7 +4,7 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 
 
-class Ant extends GameCreature {
+class Ant extends GameCreature implements AntMove{
 
   /** speed of the ant.*/
   private int speed;
@@ -22,9 +22,9 @@ class Ant extends GameCreature {
 
   /** Updates the position of the ant. */
   public void update() {
-    int randomSpeed = (int) (Math.random() * speed * 2);
-    this.setY(this.getY() - randomSpeed);
-    }
+        int randomSpeed = (int) (Math.random() * speed * 2);
+        this.setY(this.getY() - randomSpeed);
+  }
 
   public int getSpeed() {
     return speed;
