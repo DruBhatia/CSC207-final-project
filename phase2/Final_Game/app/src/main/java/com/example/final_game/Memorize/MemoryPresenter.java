@@ -9,8 +9,6 @@ import android.os.SystemClock;
 import android.view.View;
 import android.widget.Chronometer;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import com.example.final_game.R;
 
 import java.util.ArrayList;
@@ -61,11 +59,11 @@ class MemoryPresenter {
     if (level == 1) {
       player.setVisibility();
     }
-    initializeCardArray(context);
+    initializeCardArray();
     sharedPreferences = context.getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE);
   }
 
-  private void initializeCardArray(AppCompatActivity context) {
+  private void initializeCardArray() {
     cardArray = new ArrayList<>();
     cardArray.add((PlayingCard) factory.getMemoryObjects("Card", R.id.iv_11));
     cardArray.add((PlayingCard) factory.getMemoryObjects("Card", R.id.iv_12));
@@ -141,7 +139,7 @@ class MemoryPresenter {
           new Runnable() {
             @Override
             public void run() {
-              checkEnd3();
+              checkLevel3End();
             }
           },
           1000);
@@ -232,9 +230,9 @@ class MemoryPresenter {
     if (level == 1) {
       endLevel1(checkVisibility());
     } else if (level == 2) {
-      endLevel2(checkEnd2());
+      endLevel2(checkLevel2End());
     } else {
-      checkEnd3();
+      checkLevel3End();
     }
   }
 
@@ -249,12 +247,12 @@ class MemoryPresenter {
   }
 
   /** Check if end-game conditions have been met. */
-  private boolean checkEnd2() {
+  private boolean checkLevel2End() {
     return player.getMovesLeft() == 0 || checkVisibility();
   }
 
   /** Check if end-game conditions have been met. */
-  private void checkEnd3() {
+  private void checkLevel3End() {
     player
         .getChronometer()
         .setOnChronometerTickListener(
@@ -267,7 +265,7 @@ class MemoryPresenter {
                 }
               }
             });
-    endLevel3(checkEnd2());
+    endLevel3(checkLevel2End());
   }
 
   /**

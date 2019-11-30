@@ -7,39 +7,38 @@ import java.util.ArrayList;
 
 public class AntManagerFactory {
   private AntGameInterface antManager;
-//  private ArrayList<GameCreature> dataGame;
+  //  private ArrayList<GameCreature> dataGame;
 
   void createCreature(String creature, Bitmap image, DonutView donut, int speed) {
     if (creature.equals("Ant")) {
-        antManager = new AntManager();
-        antManager.createAnts(image, donut, speed);
-//        dataGame = antGameInterface.getCreatures();
-      }
+      antManager = new AntManager();
+      antManager.createAnts(image, donut, speed);
+      //        dataGame = antGameInterface.getCreatures();
     }
-    void update() {
+  }
 
-//        for (int i = 0; i < dataGame.size(); i++) {
-//            dataGame.get(i).update();
-//        }
-        antManager.update();
-    }
+  void update() {
 
-    void removeCreature(GameCreature creature){
-//      dataGame.remove(creature);
-        antManager.remove(creature);
-    }
+    //        for (int i = 0; i < dataGame.size(); i++) {
+    //            dataGame.get(i).update();
+    //        }
+    antManager.update();
+  }
 
-    int size(){
-      return antManager.size();
-    }
+  void removeCreature(GameCreature creature) {
+    //      dataGame.remove(creature);
+    antManager.remove(creature);
+  }
 
-    ArrayList<GameCreature> getCreatures(){
-      return antManager.getCreatures();
-    }
+  int size() {
+    return antManager.size();
+  }
 
-    public void draw(Canvas canvas) {
-        antManager.draw(canvas);
-    }
+  ArrayList<GameCreature> getCreatures() {
+    return antManager.getCreatures();
+  }
 
-
+  public void draw(Canvas canvas) {
+    antManager.draw(canvas);
+  }
 }

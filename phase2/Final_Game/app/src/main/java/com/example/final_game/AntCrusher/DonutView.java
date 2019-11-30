@@ -1,7 +1,6 @@
 package com.example.final_game.AntCrusher;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -49,7 +48,6 @@ public class DonutView extends SurfaceView implements SurfaceHolder.Callback, Se
 
   private String creature;
 
-  private Date startDate;
   long initialTime;
 
   private AntPresenter antPresenter;
@@ -112,8 +110,8 @@ public class DonutView extends SurfaceView implements SurfaceHolder.Callback, Se
     gameThread.setRunning(true);
     gameThread.start();
 
-    startDate = new Date();
-    if(level == 1){
+    Date startDate = new Date();
+    if (level == 1) {
       initialTime = startDate.getTime();
     }
     start = startDate.getTime();

@@ -8,8 +8,7 @@ import android.view.WindowManager;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.final_game.R;
 
-
-public class AntActivity extends AppCompatActivity implements playable{
+public class AntActivity extends AppCompatActivity implements playable {
   DonutView gameView;
   int receive_intent;
   int soundId;
@@ -24,18 +23,20 @@ public class AntActivity extends AppCompatActivity implements playable{
             WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
     receive_intent = (int) getIntent().getExtras().get("background");
-    AudioAttributes audioAttributes = new AudioAttributes.Builder()
+    AudioAttributes audioAttributes =
+        new AudioAttributes.Builder()
             .setUsage(AudioAttributes.USAGE_ASSISTANCE_SONIFICATION)
             .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
             .build();
     soundPool = new SoundPool.Builder().setAudioAttributes(audioAttributes).build();
     soundId = soundPool.load(this, R.raw.antsound, 1);
 
-    soundPool.setOnLoadCompleteListener(new SoundPool.OnLoadCompleteListener() {
-      public void onLoadComplete(SoundPool soundPool, int sampleId,int status) {
-        boolean loaded = true;
-      }
-    });
+    soundPool.setOnLoadCompleteListener(
+        new SoundPool.OnLoadCompleteListener() {
+          public void onLoadComplete(SoundPool soundPool, int sampleId, int status) {
+            boolean loaded = true;
+          }
+        });
     gameView = new DonutView(this, receive_intent, this, "Ant");
     setContentView(gameView);
   }
@@ -62,6 +63,6 @@ public class AntActivity extends AppCompatActivity implements playable{
 
   @Override
   public void play() {
-        soundPool.play(soundId, 1, 1, 1, 0, 1f);
+    soundPool.play(soundId, 1, 1, 1, 0, 1f);
   }
 }

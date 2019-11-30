@@ -5,16 +5,16 @@ import android.graphics.Canvas;
 
 import java.util.ArrayList;
 /** Creates the ants . */
-class AntManager implements AntGameInterface{
+class AntManager implements AntGameInterface {
 
-  /** Arraylist of ants to be generated.*/
+  /** Arraylist of ants to be generated. */
   private ArrayList<GameCreature> ants;
 
-  AntManager()  {
+  AntManager() {
 
     ants = new ArrayList<>();
   }
-  /** Creating the arraylist ants.*/
+  /** Creating the arraylist ants. */
   public void createAnts(Bitmap image, DonutView donut, int speed) {
     int numAnts = 5;
     for (int i = 0; i < numAnts; i++) {
@@ -23,15 +23,16 @@ class AntManager implements AntGameInterface{
       double randomY = Math.random();
       int randomNumberY = (int) (randomY * 500);
       System.out.println("x: " + randomNumberX + " y: " + randomNumberY);
-      Ant tempAnt = new Ant(image, 200 + randomNumberX, 2800 + randomNumberY,speed);
+      Ant tempAnt = new Ant(image, 200 + randomNumberX, 2800 + randomNumberY, speed);
       if (i % 3 == 0) {
-          RandomAnt randomAnt = new RandomAnt(image, 200 + randomNumberX, 2400 + randomNumberY, speed);
-          ants.add(randomAnt);
+        RandomAnt randomAnt =
+            new RandomAnt(image, 200 + randomNumberX, 2400 + randomNumberY, speed);
+        ants.add(randomAnt);
       }
       ants.add(tempAnt);
     }
   }
-  /** Drawing the ants on the canvas.*/
+  /** Drawing the ants on the canvas. */
   public void draw(Canvas canvas) {
 
     for (int i = 0; i < ants.size(); i++) {
@@ -47,16 +48,15 @@ class AntManager implements AntGameInterface{
     }
   }
 
-  public int size(){
+  public int size() {
     return ants.size();
   }
 
-  public ArrayList<GameCreature> getCreatures(){
+  public ArrayList<GameCreature> getCreatures() {
     return ants;
   }
 
-  public void remove(GameCreature creature){
-        ants.remove(creature);
+  public void remove(GameCreature creature) {
+    ants.remove(creature);
   }
-
 }

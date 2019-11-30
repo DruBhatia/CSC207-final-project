@@ -44,12 +44,11 @@ public class TrueBlueOverActivity extends AppCompatActivity {
             startActivity(intent3);
           }
         });
-      score.setText("Score: " + showScore);
-      time.setText("Time taken: " + showTime + " s");
-      level.setText("Levels Completed: " + showLevel);
+    score.setText("Score: " + showScore);
+    time.setText("Time taken: " + showTime + " s");
+    level.setText("Levels Completed: " + showLevel);
 
-      DataBaseHelper db = MainActivity.getGameDb();
-      db.insertData("GAME3STATS", db.getUSERNAME(), showScore, showTime, showLevel);
-
+    DataBaseHelper db = MainActivity.getGameDb();
+    db.insertData("GAME3STATS", DataBaseHelper.getUSERNAME(), showScore, showTime, showLevel);
   }
 }

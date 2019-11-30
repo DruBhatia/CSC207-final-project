@@ -1,7 +1,6 @@
 package com.example.final_game.AntCrusher;
 
 import android.os.Bundle;
-import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,54 +8,37 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.final_game.R;
 
 public class AntLevelActivity extends AppCompatActivity {
+  int level;
 
-    Button proceed;
+  @Override
+  protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_level);
 
-    int level;
+    level = (int) getIntent().getExtras().get("Level");
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_level);
+    TextView text = findViewById(R.id.newLevel);
 
-        level = (int) getIntent().getExtras().get("Level");
+    text.setText("LEVEL UP");
 
-        TextView text = findViewById(R.id.newLevel);
-
-        text.setText("LEVEL UP");
-
-//        proceed.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent newIntent = new Intent(LevelActivity.this, Main3Activity.class);
-//                startActivity(newIntent);
-//            }
-//        });
-
-        Thread thread = new Thread(){
-            @Override
-            public void run() {
-                try{
-                    sleep(2000);
-                    finish();
-                }
-                catch (Exception e){
-                    e.printStackTrace();
-
-                }
-
+    Thread thread =
+        new Thread() {
+          @Override
+          public void run() {
+            try {
+              sleep(2000);
+              finish();
+            } catch (Exception e) {
+              e.printStackTrace();
             }
-
+          }
         };
-        thread.start();
-    }
+    thread.start();
+  }
 
-
-
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        finish();
-    }
+  @Override
+  protected void onPause() {
+    super.onPause();
+    finish();
+  }
 }

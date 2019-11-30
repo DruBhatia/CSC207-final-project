@@ -6,7 +6,7 @@ import android.view.View;
 import android.widget.ImageView;
 
 /** Playing card that needs to be matched with the other card. */
-class PlayingCard implements MemoryInterface{
+class PlayingCard implements MemoryInterface {
   /** The Image of the PlayingCard view on the screen */
   private ImageView imageview;
 

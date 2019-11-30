@@ -8,18 +8,14 @@ class Donut extends GameCreature {
   Donut(Bitmap image, int x, int y) {
     super(image, x, y);
   }
-  /** Draws the donut on the canvas.*/
+  /** Draws the donut on the canvas. */
   public void draw(Canvas canvas) {
     canvas.drawBitmap(image, this.getX(), this.getY(), null);
   }
 
   @Override
-  public void setSpeedPos(int speed, int pos) {
-
-  }
+  public void setSpeedPos(int speed, int pos) {}
 
   @Override
-  public void update() {
-
-  }
+  public void update() {}
 }

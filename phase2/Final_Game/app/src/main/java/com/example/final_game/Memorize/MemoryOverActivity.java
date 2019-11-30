@@ -107,6 +107,7 @@ public class MemoryOverActivity extends GameActivity {
     gameTime3.setText("Time Left:" + game_time3 + "s");
     finalScore3.setText("Final Score:" + score3);
     DataBaseHelper db = MainActivity.getGameDb();
-    db.insertData("GAME1STATS", DataBaseHelper.getUSERNAME(), String.valueOf(score3), game_time3, showMoves3);
+    db.insertData(
+        "GAME1STATS", DataBaseHelper.getUSERNAME(), String.valueOf(score3), game_time3, showMoves3);
   }
 }

@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 
 import androidx.appcompat.app.AlertDialog;
@@ -22,26 +21,26 @@ public class TrueBlueActivity extends Activity {
     ImageButton highScore = findViewById(R.id.tb_high_score);
 
     highScore.setOnClickListener(
-            new View.OnClickListener() {
-              @Override
-              public void onClick(View view) {
-                Cursor cur = MainActivity.getGameDb().getAllData("GAME3STATS");
-                if (cur.getCount() == 0) {
-                  System.out.println("Error no data found");
-                  showMessage("ERROR", "NOTHING FOUND IN DATABASE");
-                } else {
-                  StringBuilder stringBuffer = new StringBuilder();
-                  while (cur.moveToNext()) {
-                    stringBuffer.append("ID: ").append(cur.getString(0)).append("\n");
-                    stringBuffer.append("Name: ").append(cur.getString(1)).append("\n");
-                    stringBuffer.append("Score: ").append(cur.getString(2)).append("\n");
-                    stringBuffer.append("Time: ").append(cur.getString(3)).append("\n");
-                    stringBuffer.append("Level: ").append(cur.getString(4)).append("\n\n");
-                  }
-                  showMessage("DATA FOUND", stringBuffer.toString());
-                }
+        new View.OnClickListener() {
+          @Override
+          public void onClick(View view) {
+            Cursor cur = MainActivity.getGameDb().getAllData("GAME3STATS");
+            if (cur.getCount() == 0) {
+              System.out.println("Error no data found");
+              showMessage("ERROR", "NOTHING FOUND IN DATABASE");
+            } else {
+              StringBuilder stringBuffer = new StringBuilder();
+              while (cur.moveToNext()) {
+                stringBuffer.append("ID: ").append(cur.getString(0)).append("\n");
+                stringBuffer.append("Name: ").append(cur.getString(1)).append("\n");
+                stringBuffer.append("Score: ").append(cur.getString(2)).append("\n");
+                stringBuffer.append("Time: ").append(cur.getString(3)).append("\n");
+                stringBuffer.append("Level: ").append(cur.getString(4)).append("\n\n");
               }
-            });
+              showMessage("DATA FOUND", stringBuffer.toString());
+            }
+          }
+        });
   }
 
   public void begin(View view) {
@@ -57,6 +56,4 @@ public class TrueBlueActivity extends Activity {
     alert.setMessage(data);
     alert.show();
   }
-
 }
-

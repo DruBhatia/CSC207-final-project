@@ -6,7 +6,7 @@ import android.widget.Chronometer;
 import android.widget.TextView;
 
 /** A Player of Memorize Game */
-class MemorizePlayer implements MemoryInterface{
+class MemorizePlayer implements MemoryInterface {
   /** Total moves available to the Player */
   private int playerMoves;
   /** Points earned by the Player */
@@ -17,6 +17,7 @@ class MemorizePlayer implements MemoryInterface{
   private TextView textPoints;
   /** The stop watch which keeps track of the time spent by the player to complete the game */
   private Chronometer chronometer;
+
   private TextView threshold;
   private TextView currLevel;
 

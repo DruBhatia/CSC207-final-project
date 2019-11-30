@@ -38,7 +38,7 @@ public class MemoryBegin extends AppCompatActivity {
           public void onClick(View v) {
             Intent intent2 = new Intent(MemoryBegin.this, MemoryActivity.class);
             intent2.putExtra("Theme?", "Dark");
-              intent2.putExtra("Level?", 1);
+            intent2.putExtra("Level?", 1);
             startActivity(intent2);
           }
         });

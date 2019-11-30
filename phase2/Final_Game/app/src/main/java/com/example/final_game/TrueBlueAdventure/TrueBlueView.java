@@ -26,13 +26,15 @@ public class TrueBlueView extends View {
   TrueBlue tb;
   /** Tower class * */
   Tower cn; // Tower class
+
   PowerUp powerup; // PowerUp class
-  FuelUp fuelup; //FuelUp class
+  FuelUp fuelup; // FuelUp class
   Handler handler;
   Runnable runnable;
   final int delayNum = 30;
   /** Background img * */
   Bitmap background;
+
   private Random random;
   Display display;
   Point point;
@@ -45,16 +47,19 @@ public class TrueBlueView extends View {
 
   /** The fuel paint to display the fuel. */
   private Paint fuelPaint = new Paint();
+
   private int randomX;
   private int randomY;
   private Random rand = new Random();
   /** The score variable that keeps track of current score */
   private int score = 0;
+
   private int fuel = 100;
   private int fuelConsumption = 10;
 
   /** The level paint to display the level. */
   private Paint levelPaint = new Paint();
+
   private Paint levelUpPaint = new Paint();
   /** The level variable that keeps track of current level */
   private int level = 1;
@@ -125,18 +130,18 @@ public class TrueBlueView extends View {
     }
     // displays true blue in the center
     tb.drawTB(canvas);
-    if (!powerup.getCollected()) {
-        powerup.drawPickup(canvas);
+    if (powerup.getCollected()) {
+      powerup.drawPickup(canvas);
     }
     powerup.move();
-    if (!fuelup.getCollected()) {
+    if (fuelup.getCollected()) {
       fuelup.drawPickup(canvas);
     }
     fuelup.move();
     handler.postDelayed(runnable, delayNum);
   }
 
-  /** when you tap the screen **/
+  /** when you tap the screen * */
   @Override
   public boolean onTouchEvent(MotionEvent event) {
     int action = event.getAction();
@@ -144,17 +149,17 @@ public class TrueBlueView extends View {
     return true;
   }
 
-  /** returns the screenwidth **/
+  /** returns the screenwidth * */
   public int getScreenWidth() {
     return screenWidth;
   }
 
-  /** returns screen height **/
+  /** returns screen height * */
   public int getScreenHeight() {
     return screenHeight;
   }
 
-  /** what to do when the game ends **/
+  /** what to do when the game ends * */
   public void gameOver() {
     tb.setState();
     Date finalDate = new Date();
@@ -175,10 +180,9 @@ public class TrueBlueView extends View {
     score++;
     randomX = rand.nextInt(500);
     randomY = rand.nextInt(1500);
-
   }
 
-  public void increaseFuel(){
+  public void increaseFuel() {
     if (fuel < 51) {
       fuel += 50;
     } else {
@@ -186,7 +190,7 @@ public class TrueBlueView extends View {
     }
   }
 
-  public void decreaseFuel(){
+  public void decreaseFuel() {
     fuel -= fuelConsumption;
   }
 
@@ -195,10 +199,9 @@ public class TrueBlueView extends View {
     fuelConsumption += 5;
   }
 
-  public void checkFuel(){
-    if (fuel <= 0){
+  public void checkFuel() {
+    if (fuel <= 0) {
       gameOver();
     }
   }
-
 }

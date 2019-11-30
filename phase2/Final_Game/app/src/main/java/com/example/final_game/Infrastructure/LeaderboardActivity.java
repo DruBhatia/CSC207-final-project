@@ -93,114 +93,114 @@ public class LeaderboardActivity extends AppCompatActivity {
         });
 
     sortByScore1.setOnClickListener(
-            new View.OnClickListener() {
-              @Override
-              public void onClick(View view) {
-                Cursor cur = MainActivity.getGameDb().getDataByStat1("GAME1STATS");
-                if (cur.getCount() == 0) {
-                  System.out.println("Error no data found");
-                  showMessage("ERROR", "NOTHING FOUND IN DATABASE");
-                } else {
-                  StringBuilder stringBuffer = new StringBuilder();
-                  while (cur.moveToNext()) {
-                    stringBuffer.append("id: ").append(cur.getString(0)).append("\n");
-                    stringBuffer.append("name: ").append(cur.getString(1)).append("\n");
-                    stringBuffer.append("score: ").append(cur.getString(2)).append("\n");
-                    stringBuffer.append("time: ").append(cur.getString(3)).append("\n");
-                    stringBuffer.append("stat3: ").append(cur.getString(4)).append("\n\n");
-                  }
-                  showMessage("DATA FOUND", stringBuffer.toString());
-                }
+        new View.OnClickListener() {
+          @Override
+          public void onClick(View view) {
+            Cursor cur = MainActivity.getGameDb().getDataByStat1("GAME1STATS");
+            if (cur.getCount() == 0) {
+              System.out.println("Error no data found");
+              showMessage("ERROR", "NOTHING FOUND IN DATABASE");
+            } else {
+              StringBuilder stringBuffer = new StringBuilder();
+              while (cur.moveToNext()) {
+                stringBuffer.append("id: ").append(cur.getString(0)).append("\n");
+                stringBuffer.append("name: ").append(cur.getString(1)).append("\n");
+                stringBuffer.append("score: ").append(cur.getString(2)).append("\n");
+                stringBuffer.append("time: ").append(cur.getString(3)).append("\n");
+                stringBuffer.append("stat3: ").append(cur.getString(4)).append("\n\n");
               }
-            });
+              showMessage("DATA FOUND", stringBuffer.toString());
+            }
+          }
+        });
 
     sortByScore2.setOnClickListener(
-            new View.OnClickListener() {
-              @Override
-              public void onClick(View view) {
-                Cursor cur = MainActivity.getGameDb().getDataByStat1("GAME2STATS");
-                if (cur.getCount() == 0) {
-                  System.out.println("Error no data found");
-                  showMessage("ERROR", "NOTHING FOUND IN DATABASE");
-                } else {
-                  StringBuilder stringBuffer = new StringBuilder();
-                  while (cur.moveToNext()) {
-                    stringBuffer.append("id: ").append(cur.getString(0)).append("\n");
-                    stringBuffer.append("name: ").append(cur.getString(1)).append("\n");
-                    stringBuffer.append("score: ").append(cur.getString(2)).append("\n");
-                    stringBuffer.append("time: ").append(cur.getString(3)).append("\n");
-                    stringBuffer.append("stat3: ").append(cur.getString(4)).append("\n\n");
-                  }
-                  showMessage("DATA FOUND", stringBuffer.toString());
-                }
+        new View.OnClickListener() {
+          @Override
+          public void onClick(View view) {
+            Cursor cur = MainActivity.getGameDb().getDataByStat1("GAME2STATS");
+            if (cur.getCount() == 0) {
+              System.out.println("Error no data found");
+              showMessage("ERROR", "NOTHING FOUND IN DATABASE");
+            } else {
+              StringBuilder stringBuffer = new StringBuilder();
+              while (cur.moveToNext()) {
+                stringBuffer.append("id: ").append(cur.getString(0)).append("\n");
+                stringBuffer.append("name: ").append(cur.getString(1)).append("\n");
+                stringBuffer.append("score: ").append(cur.getString(2)).append("\n");
+                stringBuffer.append("time: ").append(cur.getString(3)).append("\n");
+                stringBuffer.append("stat3: ").append(cur.getString(4)).append("\n\n");
               }
-            });
+              showMessage("DATA FOUND", stringBuffer.toString());
+            }
+          }
+        });
 
     sortByScore3.setOnClickListener(
-            new View.OnClickListener() {
-              @Override
-              public void onClick(View view) {
-                Cursor cur = MainActivity.getGameDb().getDataByStat1("GAME3STATS");
-                if (cur.getCount() == 0) {
-                  System.out.println("Error no data found");
-                  showMessage("ERROR", "NOTHING FOUND IN DATABASE");
-                } else {
-                  StringBuilder stringBuffer = new StringBuilder();
-                  while (cur.moveToNext()) {
-                    stringBuffer.append("id: ").append(cur.getString(0)).append("\n");
-                    stringBuffer.append("name: ").append(cur.getString(1)).append("\n");
-                    stringBuffer.append("score: ").append(cur.getString(2)).append("\n");
-                    stringBuffer.append("time: ").append(cur.getString(3)).append("\n");
-                    stringBuffer.append("stat3: ").append(cur.getString(4)).append("\n\n");
-                  }
-                  showMessage("DATA FOUND", stringBuffer.toString());
-                }
+        new View.OnClickListener() {
+          @Override
+          public void onClick(View view) {
+            Cursor cur = MainActivity.getGameDb().getDataByStat1("GAME3STATS");
+            if (cur.getCount() == 0) {
+              System.out.println("Error no data found");
+              showMessage("ERROR", "NOTHING FOUND IN DATABASE");
+            } else {
+              StringBuilder stringBuffer = new StringBuilder();
+              while (cur.moveToNext()) {
+                stringBuffer.append("id: ").append(cur.getString(0)).append("\n");
+                stringBuffer.append("name: ").append(cur.getString(1)).append("\n");
+                stringBuffer.append("score: ").append(cur.getString(2)).append("\n");
+                stringBuffer.append("time: ").append(cur.getString(3)).append("\n");
+                stringBuffer.append("stat3: ").append(cur.getString(4)).append("\n\n");
               }
-            });
+              showMessage("DATA FOUND", stringBuffer.toString());
+            }
+          }
+        });
 
     sortByMoves1.setOnClickListener(
-            new View.OnClickListener() {
-              @Override
-              public void onClick(View view) {
-                Cursor cur = MainActivity.getGameDb().getDataByStat3("GAME1STATS");
-                if (cur.getCount() == 0) {
-                  System.out.println("Error no data found");
-                  showMessage("ERROR", "NOTHING FOUND IN DATABASE");
-                } else {
-                  StringBuilder stringBuffer = new StringBuilder();
-                  while (cur.moveToNext()) {
-                    stringBuffer.append("id: ").append(cur.getString(0)).append("\n");
-                    stringBuffer.append("name: ").append(cur.getString(1)).append("\n");
-                    stringBuffer.append("score: ").append(cur.getString(2)).append("\n");
-                    stringBuffer.append("time: ").append(cur.getString(3)).append("\n");
-                    stringBuffer.append("stat3: ").append(cur.getString(4)).append("\n\n");
-                  }
-                  showMessage("DATA FOUND", stringBuffer.toString());
-                }
+        new View.OnClickListener() {
+          @Override
+          public void onClick(View view) {
+            Cursor cur = MainActivity.getGameDb().getDataByStat3("GAME1STATS");
+            if (cur.getCount() == 0) {
+              System.out.println("Error no data found");
+              showMessage("ERROR", "NOTHING FOUND IN DATABASE");
+            } else {
+              StringBuilder stringBuffer = new StringBuilder();
+              while (cur.moveToNext()) {
+                stringBuffer.append("id: ").append(cur.getString(0)).append("\n");
+                stringBuffer.append("name: ").append(cur.getString(1)).append("\n");
+                stringBuffer.append("score: ").append(cur.getString(2)).append("\n");
+                stringBuffer.append("time: ").append(cur.getString(3)).append("\n");
+                stringBuffer.append("stat3: ").append(cur.getString(4)).append("\n\n");
               }
-            });
+              showMessage("DATA FOUND", stringBuffer.toString());
+            }
+          }
+        });
 
     sortByLevel1.setOnClickListener(
-            new View.OnClickListener() {
-              @Override
-              public void onClick(View view) {
-                Cursor cur = MainActivity.getGameDb().getDataByStat3("GAME3STATS");
-                if (cur.getCount() == 0) {
-                  System.out.println("Error no data found");
-                  showMessage("ERROR", "NOTHING FOUND IN DATABASE");
-                } else {
-                  StringBuilder stringBuffer = new StringBuilder();
-                  while (cur.moveToNext()) {
-                    stringBuffer.append("id: ").append(cur.getString(0)).append("\n");
-                    stringBuffer.append("name: ").append(cur.getString(1)).append("\n");
-                    stringBuffer.append("score: ").append(cur.getString(2)).append("\n");
-                    stringBuffer.append("time: ").append(cur.getString(3)).append("\n");
-                    stringBuffer.append("stat3: ").append(cur.getString(4)).append("\n\n");
-                  }
-                  showMessage("DATA FOUND", stringBuffer.toString());
-                }
+        new View.OnClickListener() {
+          @Override
+          public void onClick(View view) {
+            Cursor cur = MainActivity.getGameDb().getDataByStat3("GAME3STATS");
+            if (cur.getCount() == 0) {
+              System.out.println("Error no data found");
+              showMessage("ERROR", "NOTHING FOUND IN DATABASE");
+            } else {
+              StringBuilder stringBuffer = new StringBuilder();
+              while (cur.moveToNext()) {
+                stringBuffer.append("id: ").append(cur.getString(0)).append("\n");
+                stringBuffer.append("name: ").append(cur.getString(1)).append("\n");
+                stringBuffer.append("score: ").append(cur.getString(2)).append("\n");
+                stringBuffer.append("time: ").append(cur.getString(3)).append("\n");
+                stringBuffer.append("stat3: ").append(cur.getString(4)).append("\n\n");
               }
-            });
+              showMessage("DATA FOUND", stringBuffer.toString());
+            }
+          }
+        });
   }
 
   public void showMessage(String message, String data) {

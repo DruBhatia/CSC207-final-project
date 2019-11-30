@@ -43,10 +43,9 @@ public class MainActivity extends AppCompatActivity {
     final Button register = findViewById(R.id.register);
     if (count == 0) {
       count++;
-    }
-    else {
-        Toast.makeText(getApplicationContext(), "LOGOUT SUCCESSFUL", Toast.LENGTH_LONG).show();
-        count++;
+    } else {
+      Toast.makeText(getApplicationContext(), "LOGOUT SUCCESSFUL", Toast.LENGTH_LONG).show();
+      count++;
     }
     loginViewModel
         .getLoginFormState()
