@@ -6,7 +6,7 @@ import android.widget.Chronometer;
 import android.widget.TextView;
 
 /** A Player of Memorize Game */
-class MemorizePlayer {
+class MemorizePlayer implements MemoryInterface{
   /** Total moves available to the Player */
   private int playerMoves;
   /** Points earned by the Player */
@@ -85,7 +85,7 @@ class MemorizePlayer {
   }
 
   /** Set whether the moves counter will be visible or not */
-  void setMovesVisibility() {
+  public void setVisibility() {
     this.textMoves.setVisibility(View.INVISIBLE);
   }
 

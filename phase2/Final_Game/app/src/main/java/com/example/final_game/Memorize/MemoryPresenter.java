@@ -67,7 +67,7 @@ class MemoryPresenter {
     level = levelNum;
     this.player.setLevel(level);
     if (level == 1) {
-      player.setMovesVisibility();
+      player.setVisibility();
     }
     initializeCardArray(context);
     sharedPreferences = context.getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE);
