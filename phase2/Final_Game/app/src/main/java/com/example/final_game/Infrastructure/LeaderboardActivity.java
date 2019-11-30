@@ -1,5 +1,6 @@
 package com.example.final_game.Infrastructure;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
@@ -25,6 +26,7 @@ public class LeaderboardActivity extends AppCompatActivity {
     Button sortByName3 = findViewById(R.id.button7);
     Button sortByMoves1 = findViewById(R.id.button3);
     Button sortByLevel1 = findViewById(R.id.button8);
+    final Button gameActivity = findViewById(R.id.button9);
 
     sortByName1.setOnClickListener(
         new View.OnClickListener() {
@@ -199,6 +201,14 @@ public class LeaderboardActivity extends AppCompatActivity {
               }
               showMessage("DATA FOUND", stringBuffer.toString());
             }
+          }
+        });
+    gameActivity.setOnClickListener(
+        new View.OnClickListener() {
+          @Override
+          public void onClick(View view) {
+            Intent intent = new Intent(LeaderboardActivity.this, GameActivity.class);
+            startActivity(intent);
           }
         });
   }
