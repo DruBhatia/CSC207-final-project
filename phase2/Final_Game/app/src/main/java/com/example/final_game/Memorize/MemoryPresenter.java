@@ -8,8 +8,6 @@ import android.os.Handler;
 import android.os.SystemClock;
 import android.view.View;
 import android.widget.Chronometer;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -36,8 +34,8 @@ class MemoryPresenter {
   private int cardBackView;
 
   private String theme;
-
   private int level;
+  private MemoryFactory factory;
 
   static final String SHARED_PREFS = "sharedPrefs";
   static final String POINTS1 = "points1";
@@ -55,14 +53,8 @@ class MemoryPresenter {
 
   MemoryPresenter(MemoryActivity activity, String background, int levelNum) {
     context = activity;
-    player =
-        new MemorizePlayer(
-            (TextView) context.findViewById(R.id.text_moves),
-            (TextView) context.findViewById(R.id.text_points),
-            (TextView) context.findViewById(R.id.level),
-            (TextView) context.findViewById(R.id.text_threshold),
-            (Chronometer) context.findViewById(R.id.stopWatch));
-
+    factory = new MemoryFactory(context);
+    player = (MemorizePlayer) factory.getMemoryObjects("Player", 1);
     theme = background;
     level = levelNum;
     this.player.setLevel(level);
@@ -75,22 +67,22 @@ class MemoryPresenter {
 
   private void initializeCardArray(AppCompatActivity context) {
     cardArray = new ArrayList<>();
-    cardArray.add(new PlayingCard((ImageView) context.findViewById(R.id.iv_11)));
-    cardArray.add(new PlayingCard((ImageView) context.findViewById(R.id.iv_12)));
-    cardArray.add(new PlayingCard((ImageView) context.findViewById(R.id.iv_13)));
-    cardArray.add(new PlayingCard((ImageView) context.findViewById(R.id.iv_14)));
-    cardArray.add(new PlayingCard((ImageView) context.findViewById(R.id.iv_21)));
-    cardArray.add(new PlayingCard((ImageView) context.findViewById(R.id.iv_22)));
-    cardArray.add(new PlayingCard((ImageView) context.findViewById(R.id.iv_23)));
-    cardArray.add(new PlayingCard((ImageView) context.findViewById(R.id.iv_24)));
-    cardArray.add(new PlayingCard((ImageView) context.findViewById(R.id.iv_31)));
-    cardArray.add(new PlayingCard((ImageView) context.findViewById(R.id.iv_32)));
-    cardArray.add(new PlayingCard((ImageView) context.findViewById(R.id.iv_33)));
-    cardArray.add(new PlayingCard((ImageView) context.findViewById(R.id.iv_34)));
-    cardArray.add(new PlayingCard((ImageView) context.findViewById(R.id.iv_41)));
-    cardArray.add(new PlayingCard((ImageView) context.findViewById(R.id.iv_42)));
-    cardArray.add(new PlayingCard((ImageView) context.findViewById(R.id.iv_43)));
-    cardArray.add(new PlayingCard((ImageView) context.findViewById(R.id.iv_44)));
+    cardArray.add((PlayingCard) factory.getMemoryObjects("Card", R.id.iv_11));
+    cardArray.add((PlayingCard) factory.getMemoryObjects("Card", R.id.iv_12));
+    cardArray.add((PlayingCard) factory.getMemoryObjects("Card", R.id.iv_13));
+    cardArray.add((PlayingCard) factory.getMemoryObjects("Card", R.id.iv_14));
+    cardArray.add((PlayingCard) factory.getMemoryObjects("Card", R.id.iv_21));
+    cardArray.add((PlayingCard) factory.getMemoryObjects("Card", R.id.iv_22));
+    cardArray.add((PlayingCard) factory.getMemoryObjects("Card", R.id.iv_23));
+    cardArray.add((PlayingCard) factory.getMemoryObjects("Card", R.id.iv_24));
+    cardArray.add((PlayingCard) factory.getMemoryObjects("Card", R.id.iv_31));
+    cardArray.add((PlayingCard) factory.getMemoryObjects("Card", R.id.iv_32));
+    cardArray.add((PlayingCard) factory.getMemoryObjects("Card", R.id.iv_33));
+    cardArray.add((PlayingCard) factory.getMemoryObjects("Card", R.id.iv_34));
+    cardArray.add((PlayingCard) factory.getMemoryObjects("Card", R.id.iv_41));
+    cardArray.add((PlayingCard) factory.getMemoryObjects("Card", R.id.iv_42));
+    cardArray.add((PlayingCard) factory.getMemoryObjects("Card", R.id.iv_43));
+    cardArray.add((PlayingCard) factory.getMemoryObjects("Card", R.id.iv_44));
   }
 
   /** Initialize + shuffle an array of card placeholders corresponding to respective card images. */
@@ -238,9 +230,9 @@ class MemoryPresenter {
       card.set_enable(true);
     }
     if (level == 1) {
-      endGame1(checkVisibility());
+      endLevel1(checkVisibility());
     } else if (level == 2) {
-      endGame2(checkEnd2());
+      endLevel2(checkEnd2());
     } else {
       checkEnd3();
     }
@@ -271,18 +263,18 @@ class MemoryPresenter {
               public void onChronometerTick(Chronometer chronometer) {
                 CharSequence elapsedMillis = chronometer.getText();
                 if ((elapsedMillis).equals("00:00")) {
-                  endGame3(true);
+                  endLevel3(true);
                 }
               }
             });
-    endGame3(checkEnd2());
+    endLevel3(checkEnd2());
   }
 
   /**
    * End game if all end-game conditions have been met, track player stats, and navigate to
    * game-over screen.
    */
-  private void endGame1(boolean check) {
+  private void endLevel1(boolean check) {
     int playerPoints = player.getPlayerPoints();
     if (check) {
       CharSequence elapsedMillis = player.getChronometer().getText();
@@ -302,7 +294,7 @@ class MemoryPresenter {
     }
   }
 
-  private void endGame2(boolean check) {
+  private void endLevel2(boolean check) {
     int playerMoves = player.getMovesLeft();
     int playerPoints = player.getPlayerPoints();
     boolean bool1 = checkVisibility();
@@ -330,7 +322,7 @@ class MemoryPresenter {
     }
   }
 
-  private void endGame3(boolean check) {
+  private void endLevel3(boolean check) {
     int playerMoves = player.getMovesLeft();
     int playerPoints = player.getPlayerPoints();
     boolean bool1 = checkVisibility();
