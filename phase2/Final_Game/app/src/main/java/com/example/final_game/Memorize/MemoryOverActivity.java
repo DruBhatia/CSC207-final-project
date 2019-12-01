@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -12,6 +13,8 @@ import com.example.final_game.Infrastructure.GameActivity;
 import com.example.final_game.R;
 import com.example.final_game.ui.login.DataBaseHelper;
 import com.example.final_game.ui.login.MainActivity;
+
+import java.sql.DatabaseMetaData;
 
 import static com.example.final_game.Memorize.MemoryPresenter.CARDS_LEFT2;
 import static com.example.final_game.Memorize.MemoryPresenter.CARDS_LEFT3;
@@ -107,7 +110,8 @@ public class MemoryOverActivity extends GameActivity {
     gameTime3.setText("Time Left:" + game_time3 + "s");
     finalScore3.setText("Final Score:" + score3);
     DataBaseHelper db = MainActivity.getGameDb();
+    String username = DataBaseHelper.getUSERNAME();
     db.insertData(
-        "GAME1STATS", DataBaseHelper.getUSERNAME(), String.valueOf(score3), game_time3, showMoves3);
+        "GAME1STATS", username.substring(0, username.indexOf('@')), String.valueOf(score3), game_time3, showMoves3);
   }
 }
