@@ -57,6 +57,7 @@ public class AntOverActivity extends AppCompatActivity {
     time.setText("Time taken: " + showTime + " s");
     level.setText("Level: " + showLevel);
     DataBaseHelper db = MainActivity.getGameDb();
-    db.insertData("GAME2STATS", db.getUSERNAME(), showScore, showTime, "nothing");
+    String user = db.getUSERNAME();
+    db.insertData("GAME2STATS", user.substring(0, user.indexOf('@')), showScore, showTime, showLevel);
   }
 }
