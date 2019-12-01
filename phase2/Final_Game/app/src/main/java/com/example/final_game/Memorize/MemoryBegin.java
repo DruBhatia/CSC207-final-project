@@ -65,7 +65,7 @@ public class MemoryBegin extends AppCompatActivity {
           }
         });
   }
-
+  /** Creates an displays the score of the level the player earned in the previous games */
   public void showMessage(String message, String data) {
     AlertDialog.Builder alert = new AlertDialog.Builder(this);
     alert.setCancelable(true);
