@@ -126,16 +126,17 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
   public Cursor getDataByName(String table) {
     SQLiteDatabase db = this.getWritableDatabase();
-    String name = this.getNAME();
+    String name = getUSERNAME().substring(0, getUSERNAME().indexOf('@'));
     if (table.equals(TABLE1_NAME)) {
       return db.rawQuery(
-          "select * from " + TABLE1_NAME + " WHERE " + TABLE1_PLAYER_NAME + " = " + name, null);
+              "select * from " + TABLE1_NAME + " WHERE " + TABLE1_PLAYER_NAME + "='" + name +"'", null);
     } else if (table.equals(TABLE2_NAME)) {
-      return db.rawQuery(
-          "select * from " + TABLE2_NAME + " WHERE " + TABLE1_PLAYER_NAME + " = " + name, null);
+      Cursor res = db.rawQuery(
+              "select * from " + TABLE2_NAME + " WHERE " + TABLE2_PLAYER_NAME + "='" + name +"'", null);
+      return res;
     } else {
       return db.rawQuery(
-          "select * from " + TABLE3_NAME + " WHERE " + TABLE1_PLAYER_NAME + " = " + name, null);
+              "select * from " + TABLE3_NAME + " WHERE " + TABLE3_PLAYER_NAME + "='" + name +"'", null);
     }
   }
 
@@ -233,10 +234,8 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     SQLiteDatabase db = getWritableDatabase();
     ContentValues contentValues = new ContentValues();
     userName = username;
-    String name = username.substring(0, username.indexOf("@"));
     contentValues.put(USERNAME, username);
     contentValues.put(PASSWORD, password);
-    contentValues.put(NAME, name);
     long value = db.insert(LOGIN_TABLE, null, contentValues);
     return value != -1;
   }
@@ -260,4 +259,5 @@ public class DataBaseHelper extends SQLiteOpenHelper {
   public static String getNAME(){
     return userName.substring(0, userName.indexOf("@"));
   }
+
 }
