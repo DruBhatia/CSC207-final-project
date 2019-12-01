@@ -8,6 +8,8 @@ import com.example.final_game.AntCrusher.AntView.DonutView;
 
 import java.util.ArrayList;
 
+/** Interface that must be implemented by any type of manager. It describes the basic functionality
+ of a manager.*/
 public interface AntGameInterface { // imlpemented by ant manager.
   void createAnts(Bitmap image, DonutView donut, int speed);
 

@@ -41,22 +41,26 @@ public abstract class GameCreature {
     return x;
   }
 
-  public void setSpeed(int speed) {
-    this.speed = speed;
-  }
-
-  public int getSpeed() {
-    return speed;
-  }
-
   /** Getter for Y coordinate of creature. */
   public int getY() {
     return y;
   }
 
+  /** Setter for speed  of creature. */
+  public void setSpeed(int speed) {
+    this.speed = speed;
+  }
+  /** Getter for speed  of creature. */
+  public int getSpeed() {
+    return speed;
+  }
+
+  /** update must be implemented by all creatures that want to change their state.*/
   public abstract void update();
 
+  /** Draw is a method the creatures use to display themselves on the gameSurface Canvas.*/
   public abstract void draw(Canvas canvas);
 
+  /** Setter for the speed and position of the object that implements move behaviour.*/
   public abstract void setSpeedPos(int speed, int pos);
 }

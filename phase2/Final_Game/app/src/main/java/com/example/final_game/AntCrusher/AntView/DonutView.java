@@ -41,7 +41,7 @@ public class DonutView extends SurfaceView implements SurfaceHolder.Callback, Se
   /** The background picture for our gameView. */
   private Bitmap backgroundPicture;
 
-
+  /** Int value of background.*/
   private int background;
 
   private int level = 1;
@@ -77,6 +77,7 @@ public class DonutView extends SurfaceView implements SurfaceHolder.Callback, Se
     antPresenter.update();
   }
 
+  /** Decreases lives left by 1*/
   public void decreaseLife() {
     if (lives - 1 >= 0) {
       lives--;
@@ -142,12 +143,13 @@ public class DonutView extends SurfaceView implements SurfaceHolder.Callback, Se
   @Override
   public void surfaceChanged(SurfaceHolder surfaceHolder, int i, int i1, int i2) {}
 
-  /** Removes the ant when clicked on it from the arraylist and increases score by 10. */
   @Override
   public boolean onTouchEvent(MotionEvent event) {
     return antPresenter.onTouchEvent(event);
   }
 
+  /** These are all the Setter and Getter that are required in order to communicate to the Presenter
+   * and update the state of the view of the game.*/
   public void setScore(int score) {
     this.score = score;
   }

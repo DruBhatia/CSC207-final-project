@@ -31,7 +31,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".Infrastructure.LeaderboardActivity" />
-        <activity android:name=".AntCrusher.SoundManager" />
     </application>
 
 </manifest>

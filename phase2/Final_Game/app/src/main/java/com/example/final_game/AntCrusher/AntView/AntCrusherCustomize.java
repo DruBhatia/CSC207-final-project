@@ -12,6 +12,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.final_game.R;
 import com.example.final_game.ui.login.MainActivity;
 
+/** The customise Activity in the AntGame that lets user select the background and his game
+ * statistics from the database.*/
 public class AntCrusherCustomize extends AppCompatActivity {
 
   @Override
@@ -49,6 +51,7 @@ public class AntCrusherCustomize extends AppCompatActivity {
           }
         });
 
+    // Extract the Statistics of the user from the Game Database.
     getDatabase.setOnClickListener(
         new View.OnClickListener() {
           @Override
@@ -72,6 +75,7 @@ public class AntCrusherCustomize extends AppCompatActivity {
         });
   }
 
+  /** Show the Alertdialog box of the data extracted form the database.*/
   public void showMessage(String message, String data) {
     AlertDialog.Builder alert = new AlertDialog.Builder(this);
     alert.setCancelable(true);

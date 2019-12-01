@@ -13,6 +13,8 @@ import com.example.final_game.R;
 
 import java.util.Date;
 
+/** AntPresenter is the mediator between the model creatures and the GameSurfaceView class
+ DonutView. It is responsible for the logic layer separation between model and view.*/
 public class AntPresenter {
 
   private AntManagerFactory antManagerFactory;
@@ -29,23 +31,20 @@ public class AntPresenter {
     this.donutView = donutView;
   }
 
+  /** Listens to user click(UI) and passes the information to the view and model so that
+   both can be updated accordingly.*/
   public boolean onTouchEvent(MotionEvent event) {
     if (event.getAction() == MotionEvent.ACTION_DOWN) {
       double buttonX = event.getX();
       double buttonY = event.getY();
 
       for (int i = 0; i < antManagerFactory.size(); i++) {
-        if (antManagerFactory.getCreatures().get(i).getX() < buttonX
-            && buttonX
-                < antManagerFactory.getCreatures().get(i).getX()
-                    + antManagerFactory.getCreatures().get(i).getWidth()
-            && antManagerFactory.getCreatures().get(i).getY() < buttonY
-            && buttonY
-                < antManagerFactory.getCreatures().get(i).getY()
-                    + antManagerFactory.getCreatures().get(i).getHeight()) {
+        GameCreature creature = antManagerFactory.getCreatures().get(i);
+        if (creature.getX() < buttonX && buttonX < creature.getX() + creature.getWidth()
+                && creature.getY() < buttonY && buttonY < creature.getY() + creature.getHeight()) {
           touch = true;
           donutView.play();
-          removedAnt = antManagerFactory.getCreatures().get(i);
+          removedAnt = creature;
           this.update();
           score += 10;
           donutView.setScore(score);
@@ -59,7 +58,9 @@ public class AntPresenter {
       return false;
     }
   }
-
+  /** Update contains all the concrete logic implementation of the features and statistics in the
+   game. It passes any change in the state of the game to both model and view so both can update
+   themselves.*/
   public void update() {
     Bitmap antBitmap1 = BitmapFactory.decodeResource(donutView.getResources(), R.drawable.ant);
     if (touch) {
