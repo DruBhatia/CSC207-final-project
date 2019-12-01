@@ -130,11 +130,11 @@ public class TrueBlueView extends View {
     }
     // displays true blue in the center
     tb.drawTB(canvas);
-    if (powerup.getCollected()) {
+    if (!powerup.getCollected()) {
       powerup.drawPickup(canvas);
     }
     powerup.move();
-    if (fuelup.getCollected()) {
+    if (!fuelup.getCollected()) {
       fuelup.drawPickup(canvas);
     }
     fuelup.move();
