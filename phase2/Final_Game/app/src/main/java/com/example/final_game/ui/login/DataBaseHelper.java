@@ -41,6 +41,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
   public static final String LOGIN_TABLE_ID = "ID";
   private static final String USERNAME = "USERNAME";
   private static final String PASSWORD = "PASSWORD";
+  private static final String NAME = "NAME";
   private static String userName;
 
   DataBaseHelper(Context context) {
@@ -125,15 +126,16 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
   public Cursor getDataByName(String table) {
     SQLiteDatabase db = this.getWritableDatabase();
+    String name = this.getNAME();
     if (table.equals(TABLE1_NAME)) {
       return db.rawQuery(
-          "select * from " + TABLE1_NAME + " ORDER BY " + TABLE1_PLAYER_NAME + " DESC", null);
+          "select * from " + TABLE1_NAME + " WHERE " + TABLE1_PLAYER_NAME + " = " + name, null);
     } else if (table.equals(TABLE2_NAME)) {
       return db.rawQuery(
-          "select * from " + TABLE2_NAME + " ORDER BY " + TABLE2_PLAYER_NAME + " DESC", null);
+          "select * from " + TABLE2_NAME + " WHERE " + TABLE1_PLAYER_NAME + " = " + name, null);
     } else {
       return db.rawQuery(
-          "select * from " + TABLE3_NAME + " ORDER BY " + TABLE3_PLAYER_NAME + " DESC", null);
+          "select * from " + TABLE3_NAME + " WHERE " + TABLE1_PLAYER_NAME + " = " + name, null);
     }
   }
 
@@ -231,8 +233,10 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     SQLiteDatabase db = getWritableDatabase();
     ContentValues contentValues = new ContentValues();
     userName = username;
+    String name = username.substring(0, username.indexOf("@"));
     contentValues.put(USERNAME, username);
     contentValues.put(PASSWORD, password);
+    contentValues.put(NAME, name);
     long value = db.insert(LOGIN_TABLE, null, contentValues);
     return value != -1;
   }
@@ -251,5 +255,9 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
   public static String getUSERNAME() {
     return userName;
+  }
+
+  public static String getNAME(){
+    return userName.substring(0, userName.indexOf("@"));
   }
 }
