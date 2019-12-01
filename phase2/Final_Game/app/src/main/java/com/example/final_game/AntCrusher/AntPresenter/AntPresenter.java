@@ -1,9 +1,14 @@
-package com.example.final_game.AntCrusher;
+package com.example.final_game.AntCrusher.AntPresenter;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.view.MotionEvent;
+
+import com.example.final_game.AntCrusher.AntView.AntLevelActivity;
+import com.example.final_game.AntCrusher.AntModel.GameCreature;
+import com.example.final_game.AntCrusher.AntView.AntOverActivity;
+import com.example.final_game.AntCrusher.AntView.DonutView;
 import com.example.final_game.R;
 
 import java.util.Date;
@@ -19,12 +24,12 @@ public class AntPresenter {
   private int lives = 10;
   private int antGenerationSpeed = 10;
 
-  AntPresenter(AntManagerFactory antManagerFactory, DonutView donutView) {
+  public AntPresenter(AntManagerFactory antManagerFactory, DonutView donutView) {
     this.antManagerFactory = antManagerFactory;
     this.donutView = donutView;
   }
 
-  boolean onTouchEvent(MotionEvent event) {
+  public boolean onTouchEvent(MotionEvent event) {
     if (event.getAction() == MotionEvent.ACTION_DOWN) {
       double buttonX = event.getX();
       double buttonY = event.getY();
@@ -80,7 +85,7 @@ public class AntPresenter {
 
       donutView.getGameThread().setRunning(false);
       Date finalDate = new Date();
-      float currTime = (finalDate.getTime() - donutView.initialTime) / 1000F;
+      float currTime = (finalDate.getTime() - donutView.returnStartTime()) / 1000F;
       Intent newGameIntent = new Intent(donutView.getContext(), AntOverActivity.class);
 
       newGameIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
@@ -93,9 +98,11 @@ public class AntPresenter {
 
     for (int i = 0; i < antManagerFactory.size(); i++) {
       GameCreature ant = antManagerFactory.getCreatures().get(i);
+      System.out.println("NUMBER OF ANTS "+ antManagerFactory.size());
       if (ant.getY() < 500) {
         ant.setSpeedPos(ant.getSpeed() + 1, 3000);
         lives -= 1;
+        System.out.println("LIVES  ARE "+ lives);
         donutView.decreaseLife();
       }
     }

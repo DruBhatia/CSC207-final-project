@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/game_backg7"
 
-    tools:context=".AntCrusher.AntLevelActivity">
+    tools:context=".AntCrusher.AntView.AntLevelActivity">
 
     <TextView
         android:id="@+id/newLevel"

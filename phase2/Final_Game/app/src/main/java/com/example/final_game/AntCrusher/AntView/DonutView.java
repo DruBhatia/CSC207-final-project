@@ -1,4 +1,4 @@
-package com.example.final_game.AntCrusher;
+package com.example.final_game.AntCrusher.AntView;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -11,6 +11,11 @@ import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
+import com.example.final_game.AntCrusher.AntModel.Donut;
+import com.example.final_game.AntCrusher.AntModel.GameThread;
+import com.example.final_game.AntCrusher.AntPresenter.AntManagerFactory;
+import com.example.final_game.AntCrusher.AntPresenter.AntPresenter;
+import com.example.final_game.AntCrusher.playable;
 import com.example.final_game.R;
 
 import java.io.Serializable;
@@ -36,7 +41,6 @@ public class DonutView extends SurfaceView implements SurfaceHolder.Callback, Se
   /** The background picture for our gameView. */
   private Bitmap backgroundPicture;
 
-  long start;
 
   private int background;
 
@@ -48,7 +52,7 @@ public class DonutView extends SurfaceView implements SurfaceHolder.Callback, Se
 
   private String creature;
 
-  long initialTime;
+  private long initialTime;
 
   private AntPresenter antPresenter;
 
@@ -114,7 +118,7 @@ public class DonutView extends SurfaceView implements SurfaceHolder.Callback, Se
     if (level == 1) {
       initialTime = startDate.getTime();
     }
-    start = startDate.getTime();
+
   }
 
   @Override
@@ -129,6 +133,10 @@ public class DonutView extends SurfaceView implements SurfaceHolder.Callback, Se
       }
       retry = false;
     }
+  }
+
+  public long returnStartTime(){
+    return initialTime;
   }
 
   @Override

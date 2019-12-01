@@ -1,11 +1,14 @@
-package com.example.final_game.AntCrusher;
+package com.example.final_game.AntCrusher.AntPresenter;
 
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 
+import com.example.final_game.AntCrusher.AntModel.GameCreature;
+import com.example.final_game.AntCrusher.AntView.DonutView;
+
 import java.util.ArrayList;
 
-interface AntGameInterface { // imlpemented by ant manager.
+public interface AntGameInterface { // imlpemented by ant manager.
   void createAnts(Bitmap image, DonutView donut, int speed);
 
   void draw(Canvas canvas);

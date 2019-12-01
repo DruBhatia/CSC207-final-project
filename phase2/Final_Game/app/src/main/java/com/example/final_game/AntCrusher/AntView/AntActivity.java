@@ -1,4 +1,4 @@
-package com.example.final_game.AntCrusher;
+package com.example.final_game.AntCrusher.AntView;
 
 import android.media.AudioAttributes;
 import android.media.SoundPool;
@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.Window;
 import android.view.WindowManager;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.final_game.AntCrusher.playable;
 import com.example.final_game.R;
 
 public class AntActivity extends AppCompatActivity implements playable {

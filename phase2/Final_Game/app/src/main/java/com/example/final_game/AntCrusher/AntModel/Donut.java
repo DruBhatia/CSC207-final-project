@@ -1,11 +1,12 @@
-package com.example.final_game.AntCrusher;
+package com.example.final_game.AntCrusher.AntModel;
 
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
-/** Creates the Donut. */
-class Donut extends GameCreature {
 
-  Donut(Bitmap image, int x, int y) {
+/** Creates the Donut. */
+public class Donut extends GameCreature {
+
+  public Donut(Bitmap image, int x, int y) {
     super(image, x, y);
   }
   /** Draws the donut on the canvas. */

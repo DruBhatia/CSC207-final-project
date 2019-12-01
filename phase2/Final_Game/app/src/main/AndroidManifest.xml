@@ -9,18 +9,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".AntCrusher.AntCrusherCustomize" />
+        <activity android:name=".AntCrusher.AntView.AntCrusherCustomize" />
         <activity
             android:name=".Infrastructure.GameActivity"
             android:label="@string/title_activity_login" />
         <activity android:name=".TrueBlueAdventure.TrueBlueOverActivity" />
-        <activity android:name=".AntCrusher.AntBegin" />
-        <activity android:name=".AntCrusher.AntLevelActivity" />
+        <activity android:name=".AntCrusher.AntView.AntBegin" />
+        <activity android:name=".AntCrusher.AntView.AntLevelActivity" />
         <activity android:name=".Memorize.MemoryBegin" />
         <activity android:name=".Memorize.MemoryOverActivity" />
-        <activity android:name=".AntCrusher.AntOverActivity" />
+        <activity android:name=".AntCrusher.AntView.AntOverActivity" />
         <activity android:name=".TrueBlueAdventure.TrueBlueActivity" />
-        <activity android:name=".AntCrusher.AntActivity" />
+        <activity android:name=".AntCrusher.AntView.AntActivity" />
         <activity android:name=".Memorize.MemoryActivity" />
         <activity android:name=".TrueBlueAdventure.Begin" />
         <activity android:name=".ui.login.MainActivity">

@@ -1,15 +1,15 @@
-package com.example.final_game.AntCrusher;
+package com.example.final_game.AntCrusher.AntModel;
 
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 
-class Ant extends GameCreature implements AntMove {
+public class Ant extends GameCreature implements AntMove {
 
   /** speed of the ant. */
   private int speed;
 
   /** Creates an Ant. */
-  Ant(Bitmap image, int x, int y, int speed) {
+  public Ant(Bitmap image, int x, int y, int speed) {
     super(image, x, y);
     this.speed = speed;
   }
@@ -24,11 +24,11 @@ class Ant extends GameCreature implements AntMove {
     int randomSpeed = (int) (Math.random() * speed * 2);
     this.setY(this.getY() - randomSpeed);
   }
-
+  /** Returns the speed of the ant. */
   public int getSpeed() {
     return speed;
   }
-
+  /** Sets the speed of the ant. */
   public void setSpeedPos(int speed, int y) {
     this.setSpeed(speed);
     this.setY(y);

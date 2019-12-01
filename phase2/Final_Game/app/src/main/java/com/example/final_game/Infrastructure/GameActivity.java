@@ -8,7 +8,7 @@ import android.view.WindowManager;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.final_game.AntCrusher.AntCrusherCustomize;
+import com.example.final_game.AntCrusher.AntView.AntCrusherCustomize;
 import com.example.final_game.Memorize.MemoryBegin;
 import com.example.final_game.R;
 import com.example.final_game.TrueBlueAdventure.TrueBlueActivity;

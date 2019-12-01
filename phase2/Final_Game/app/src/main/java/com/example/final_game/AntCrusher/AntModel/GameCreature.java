@@ -1,4 +1,4 @@
-package com.example.final_game.AntCrusher;
+package com.example.final_game.AntCrusher.AntModel;
 
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -21,27 +21,27 @@ public abstract class GameCreature {
     this.height = image.getHeight();
   }
   /** Getter for width of creature. */
-  int getWidth() {
+  public int getWidth() {
     return width;
   }
   /** Getter for height of creature. */
-  int getHeight() {
+  public int getHeight() {
     return height;
   }
   /** Setter for X coordinate of creature. */
-  void setX(int x) {
+  public void setX(int x) {
     this.x = x;
   }
   /** Setter for Y coordinate of creature. */
-  void setY(int y) {
+  public void setY(int y) {
     this.y = y;
   }
   /** Getter for X coordinate of creature. */
-  int getX() {
+  public int getX() {
     return x;
   }
 
-  void setSpeed(int speed) {
+  public void setSpeed(int speed) {
     this.speed = speed;
   }
 
@@ -50,7 +50,7 @@ public abstract class GameCreature {
   }
 
   /** Getter for Y coordinate of creature. */
-  int getY() {
+  public int getY() {
     return y;
   }
 

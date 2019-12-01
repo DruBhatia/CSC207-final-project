@@ -1,14 +1,15 @@
-package com.example.final_game.AntCrusher;
+package com.example.final_game.AntCrusher.AntModel;
 
 import android.graphics.Bitmap;
 
 public class RandomAnt extends Ant implements AntMove {
 
   /** Creates an RandomAnt a ant that moves in a zig-zag pattern. */
-  RandomAnt(Bitmap image, int x, int y, int speed) {
+  public RandomAnt(Bitmap image, int x, int y, int speed) {
     super(image, x, y, speed);
   }
 
+  /** Updates the position of the random ant. */
   public void update() {
     int randomSpeed = (int) (Math.random() * getSpeed() * 2);
     this.setY(this.getY() - randomSpeed);

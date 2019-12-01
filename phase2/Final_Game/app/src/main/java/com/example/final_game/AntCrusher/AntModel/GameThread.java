@@ -1,7 +1,9 @@
-package com.example.final_game.AntCrusher;
+package com.example.final_game.AntCrusher.AntModel;
 
 import android.graphics.Canvas;
 import android.view.SurfaceHolder;
+
+import com.example.final_game.AntCrusher.AntView.DonutView;
 
 /** GameThread class which manages threading, updating and calling draw. */
 public class GameThread extends Thread {
@@ -19,7 +21,7 @@ public class GameThread extends Thread {
    * @param surfaceHolder the canvas container.
    * @param gameView where the ants, donut, score etc are drawn.
    */
-  GameThread(SurfaceHolder surfaceHolder, DonutView gameView) {
+  public GameThread(SurfaceHolder surfaceHolder, DonutView gameView) {
     super();
     this.surfaceHolder = surfaceHolder;
     this.gameView = gameView;
@@ -55,7 +57,7 @@ public class GameThread extends Thread {
     }
   }
 
-  void setRunning(boolean running) {
+  public void setRunning(boolean running) {
     this.running = running;
   }
 }

@@ -1,7 +1,13 @@
-package com.example.final_game.AntCrusher;
+package com.example.final_game.AntCrusher.AntPresenter;
 
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
+
+//import com.example.final_game.AntCrusher.AntPresenter.AntGameInterface;
+import com.example.final_game.AntCrusher.AntModel.Ant;
+import com.example.final_game.AntCrusher.AntModel.GameCreature;
+import com.example.final_game.AntCrusher.AntModel.RandomAnt;
+import com.example.final_game.AntCrusher.AntView.DonutView;
 
 import java.util.ArrayList;
 /** Creates the ants . */
@@ -47,15 +53,15 @@ class AntManager implements AntGameInterface {
       ants.get(i).update();
     }
   }
-
+  /** Returns the number of ants dispalyed on screen. */
   public int size() {
     return ants.size();
   }
-
+  /** Returns the ants. */
   public ArrayList<GameCreature> getCreatures() {
     return ants;
   }
-
+  /** Removes an ant . */
   public void remove(GameCreature creature) {
     ants.remove(creature);
   }

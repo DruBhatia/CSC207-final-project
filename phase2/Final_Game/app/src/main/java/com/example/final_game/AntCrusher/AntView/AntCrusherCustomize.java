@@ -1,4 +1,4 @@
-package com.example.final_game.AntCrusher;
+package com.example.final_game.AntCrusher.AntView;
 
 import android.content.Intent;
 import android.database.Cursor;
