@@ -20,10 +20,6 @@ public class AntManagerFactory {
       antManager.createAnts(image, donut, speed);
       //        dataGame = antGameInterface.getCreatures();
     }
-    else if(creature.equals("Bee")){
-      antManager = new BeeManager();
-      antManager.createAnts(image, donut, speed);
-    }
   }
   /** Updating the position of the creatures. */
   void update() {
