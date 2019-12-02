@@ -6,42 +6,40 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+/** DataBaseHelper class creataed and manages a SQLlite databsase*/
+
 public class DataBaseHelper extends SQLiteOpenHelper {
 
+  /**The next 4 static Strings are variable representing the name of the databse and the
+   names of the tables.*/
   private static final String DATABASE_NAME = "GAME.db";
   private static final String TABLE1_NAME = "GAME1STATS";
   private static final String TABLE2_NAME = "GAME2STATS";
   private static final String TABLE3_NAME = "GAME3STATS";
   private static final String LOGIN_TABLE = "LOGIN";
 
-  public static final String TABLE1_ID = "ID";
+  /** This is Card game table and its columns names.*/
   private static final String TABLE1_PLAYER_NAME = "NAME";
   private static final String TABLE1_STAT1 = "TABLE1_STAT1";
   private static final String TABLE1_STAT2 = "TABLE1_STAT2";
   private static final String TABLE1_STAT3 = "TABLE1_STAT3";
-  private final String[] columns1 =
-      new String[] {TABLE1_ID, TABLE1_PLAYER_NAME, TABLE1_STAT1, TABLE1_STAT2, TABLE1_STAT3};
 
-  public static final String TABLE2_ID = "ID";
+  /** This is Ant game table and its columns names.*/
   private static final String TABLE2_PLAYER_NAME = "NAME";
   private static final String TABLE2_STAT1 = "TABLE2_STAT1";
   private static final String TABLE2_STAT2 = "TABLE2_STAT2";
   private static final String TABLE2_STAT3 = "TABLE2_STAT3";
-  private final String[] columns2 =
-      new String[] {TABLE2_ID, TABLE2_PLAYER_NAME, TABLE2_STAT1, TABLE2_STAT2, TABLE2_STAT3};
 
-  public static final String TABLE3_ID = "ID";
+  /** This is TrueBLue game table and its columns names.*/
   private static final String TABLE3_PLAYER_NAME = "NAME";
   private static final String TABLE3_STAT1 = "TABLE3_STAT1";
   private static final String TABLE3_STAT2 = "TABLE3_STAT2";
   private static final String TABLE3_STAT3 = "TABLE3_STAT3";
-  private final String[] columns3 =
-      new String[] {TABLE3_ID, TABLE3_PLAYER_NAME, TABLE3_STAT1, TABLE3_STAT2, TABLE3_STAT3};
 
-  public static final String LOGIN_TABLE_ID = "ID";
+  /** This is the Login Table and its columns names.*/
+  private static final String LOGIN_TABLE_ID = "ID";
   private static final String USERNAME = "USERNAME";
   private static final String PASSWORD = "PASSWORD";
-  private static final String NAME = "NAME";
   private static String userName;
 
   DataBaseHelper(Context context) {
@@ -54,7 +52,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     sqLiteDatabase.execSQL(
         "CREATE TABLE "
             + TABLE1_NAME
-            + " (ID1 INTEGER PRIMARY KEY AUTOINCREMENT,"
+            + " (ID INTEGER PRIMARY KEY AUTOINCREMENT,"
             + "NAME TEXT, TABLE1_STAT1 TEXT, TABLE1_STAT2 TEXT, TABLE1_STAT3 TEXT)");
     sqLiteDatabase.execSQL(
         "CREATE TABLE "
@@ -82,7 +80,8 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     onCreate(sqLiteDatabase);
   }
 
-  public boolean insertData(String table, String name, String stat1, String stat2, String stat3) {
+  /** Inserts the data into the specific table in the database depending on the parameter table.*/
+  public void insertData(String table, String name, String stat1, String stat2, String stat3) {
     SQLiteDatabase db = this.getWritableDatabase();
     ContentValues contentValues = new ContentValues();
     if (table.equals(TABLE1_NAME)) {
@@ -90,40 +89,37 @@ public class DataBaseHelper extends SQLiteOpenHelper {
       contentValues.put(TABLE1_STAT1, stat1);
       contentValues.put(TABLE1_STAT2, stat2);
       contentValues.put(TABLE1_STAT3, stat3);
-      long value = db.insert(TABLE1_NAME, null, contentValues);
-      return value != -1;
+      db.insert(TABLE1_NAME, null, contentValues);
     } else if (table.equals(TABLE2_NAME)) {
       contentValues.put(TABLE2_PLAYER_NAME, name);
       contentValues.put(TABLE2_STAT1, stat1);
       contentValues.put(TABLE2_STAT2, stat2);
       contentValues.put(TABLE2_STAT3, stat3);
-      long value = db.insert(TABLE2_NAME, null, contentValues);
-      System.out.println("Value is : " + value + " DATA INSERTED TO DATABASE");
-      return value != -1;
+      db.insert(TABLE2_NAME, null, contentValues);
     } else if (table.equals(TABLE3_NAME)) {
       contentValues.put(TABLE3_PLAYER_NAME, name);
       contentValues.put(TABLE3_STAT1, stat1);
       contentValues.put(TABLE3_STAT2, stat2);
       contentValues.put(TABLE3_STAT3, stat3);
-      long value = db.insert(TABLE3_NAME, null, contentValues);
-      return value != -1;
-    } else return false;
-  }
-
-  public Cursor getAllData(String table) {
-    SQLiteDatabase db = this.getWritableDatabase();
-    if (table.equals(TABLE1_NAME)) {
-      Cursor res = db.rawQuery("select * from " + TABLE1_NAME, null);
-      return res;
-    } else if (table.equals(TABLE2_NAME)) {
-      Cursor res = db.rawQuery("select * from " + TABLE2_NAME, null);
-      return res;
-    } else {
-      Cursor res = db.rawQuery("select * from " + TABLE3_NAME, null);
-      return res;
+      db.insert(TABLE3_NAME, null, contentValues);
     }
   }
 
+  /** Return all the data in the given table passed as parameter.*/
+  public Cursor getAllData(String table) {
+    SQLiteDatabase db = this.getWritableDatabase();
+    if (table.equals(TABLE1_NAME)) {
+      return db.rawQuery("select * from " + TABLE1_NAME, null);
+    } else if (table.equals(TABLE2_NAME)) {
+      return  db.rawQuery("select * from " + TABLE2_NAME, null);
+
+    } else {
+      return  db.rawQuery("select * from " + TABLE3_NAME, null);
+
+    }
+  }
+
+  /** Return all the data of a specific game of the current user playing the game.*/
   public Cursor getDataByName(String table) {
     SQLiteDatabase db = this.getWritableDatabase();
     String name = getUSERNAME().substring(0, getUSERNAME().indexOf('@'));
@@ -132,11 +128,10 @@ public class DataBaseHelper extends SQLiteOpenHelper {
           "select * from " + TABLE1_NAME + " WHERE " + TABLE1_PLAYER_NAME + "='" + name + "'",
           null);
     } else if (table.equals(TABLE2_NAME)) {
-      Cursor res =
+      return
           db.rawQuery(
               "select * from " + TABLE2_NAME + " WHERE " + TABLE2_PLAYER_NAME + "='" + name + "'",
               null);
-      return res;
     } else {
       return db.rawQuery(
           "select * from " + TABLE3_NAME + " WHERE " + TABLE3_PLAYER_NAME + "='" + name + "'",
@@ -144,6 +139,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     }
   }
 
+  /** Return all the data of a specific game sorted by highest to lowest score.*/
   public Cursor getDataByStat1(String table) {
     SQLiteDatabase db = this.getWritableDatabase();
     if (table.equals(TABLE1_NAME)) {
@@ -182,6 +178,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     }
   }
 
+  /** Return all the data of a specific game sorted by highest to lowest time.*/
   public Cursor getDataByStat2(String table) {
     SQLiteDatabase db = this.getWritableDatabase();
     if (table.equals(TABLE1_NAME)) {
@@ -220,6 +217,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     }
   }
 
+  /** Return all the data of a specific game sorted by highest to lowest level.*/
   public Cursor getDataByStat3(String table) {
     SQLiteDatabase db = this.getWritableDatabase();
     if (table.equals(TABLE1_NAME)) {
@@ -234,17 +232,18 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     }
   }
 
-  public boolean createUser(String username, String password) {
+  /** Creates a new user in the database.*/
+  void createUser(String username, String password) {
     SQLiteDatabase db = getWritableDatabase();
     ContentValues contentValues = new ContentValues();
     userName = username;
     contentValues.put(USERNAME, username);
     contentValues.put(PASSWORD, password);
-    long value = db.insert(LOGIN_TABLE, null, contentValues);
-    return value != -1;
+    db.insert(LOGIN_TABLE, null, contentValues);
   }
 
-  public boolean checkUser(String username, String password) {
+  /** Validates the user credentials when a user logs in again using his registered credentials.*/
+  boolean checkUser(String username, String password) {
     SQLiteDatabase db = getReadableDatabase();
     userName = username;
     String selection = USERNAME + "=?" + " and " + PASSWORD + "=?";
@@ -252,15 +251,12 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     String[] columns = {LOGIN_TABLE_ID};
     Cursor cursor = db.query(LOGIN_TABLE, columns, selection, selectionArgs, null, null, null);
     int count = cursor.getCount();
-    db.close();
+    cursor.close();
     return count > 0;
   }
 
+  /** Return the current username of the user.*/
   public static String getUSERNAME() {
     return userName;
-  }
-
-  public static String getNAME() {
-    return userName.substring(0, userName.indexOf("@"));
   }
 }
