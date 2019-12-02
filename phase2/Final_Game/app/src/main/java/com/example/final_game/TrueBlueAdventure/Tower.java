@@ -122,34 +122,6 @@ class Tower {
     }
   }
 
-  //  int getNumOfTowers() {
-  //    return numOfTowers;
-  //  }
-  //
-  //  int getcnX(int i) {
-  //    return cnX[i];
-  //  }
-  //
-  //  int getcnY(int i) {
-  //    return cnY[i];
-  //  }
-  //
-  //  int getWidth() {
-  //    return topTower.getWidth();
-  //  }
-  //
-  //  int getHeight() {
-  //    return topTower.getHeight();
-  //  }
-  //
-  //  public Rect getTopTowerRect() {
-  //    return topTowerRect;
-  //  }
-  //
-  //  public Rect getBottomTowerRect() {
-  //    return bottomTowerRect;
-  //  }
-
   /** Check whether TrueBlue passes between the two towers */
   private boolean inBetweenTowers() {
     if (topTowerRect.right - gv.tb.getTbX() >= 0
