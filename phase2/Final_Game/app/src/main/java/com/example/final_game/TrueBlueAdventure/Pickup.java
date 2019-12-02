@@ -7,6 +7,7 @@ import android.graphics.Rect;
 
 import java.util.Random;
 
+/** The collectible items that TrueBlue can  pick up. **/
 abstract class Pickup {
   /** pX: pickups's x coordinate pY: pickups's y coordinate */
   private int pX, pY;

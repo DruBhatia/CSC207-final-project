@@ -20,6 +20,7 @@ import com.example.final_game.R;
 import java.util.Date;
 import java.util.Random;
 
+/** The GameView for game3 **/
 public class TrueBlueView extends View {
   // This will be the custom view class for Game3
   /** TB class * */

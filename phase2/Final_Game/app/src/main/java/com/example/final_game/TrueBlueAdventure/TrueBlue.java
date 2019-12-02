@@ -9,6 +9,7 @@ import android.graphics.Rect;
 import android.view.MotionEvent;
 
 import com.example.final_game.R;
+
 /**The TrueBlue Character**/
 class TrueBlue {
   /**

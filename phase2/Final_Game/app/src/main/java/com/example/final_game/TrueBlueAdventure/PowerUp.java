@@ -1,6 +1,7 @@
 package com.example.final_game.TrueBlueAdventure;
 
 import com.example.final_game.R;
+
 /**A powerup pickup item**/
 class PowerUp extends Pickup {
   public PowerUp(TrueBlueView gv) {
