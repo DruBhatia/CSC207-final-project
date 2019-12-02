@@ -17,8 +17,9 @@ class MemorizePlayer implements MemoryInterface {
   private TextView textPoints;
   /** The stop watch which keeps track of the time spent by the player to complete the game */
   private Chronometer chronometer;
-
+  /** The Text on the screen which keeps displays the points player should earn by the end to win */
   private TextView threshold;
+  /** The Text on the screen which keeps track of the current level the player is on. */
   private TextView currLevel;
 
   /**

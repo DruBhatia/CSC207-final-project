@@ -196,7 +196,8 @@ public class TrueBlueView extends View {
 
   public void increaseLevel() {
     level++;
-    fuelConsumption += 5;
+    fuel += 5;
+    fuelConsumption += 1;
   }
 
   public void checkFuel() {

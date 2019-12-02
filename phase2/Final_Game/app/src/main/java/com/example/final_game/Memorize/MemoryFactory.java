@@ -9,12 +9,18 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.final_game.R;
 
 class MemoryFactory {
+  /** The Context which stores the AppCompatActivity which is using this class */
   private AppCompatActivity context;
 
+  /**
+   * Construct a new MemoryFactory the Memorize! game, which creates and returns MemoryInterface
+   * Object used by the game.
+   */
   MemoryFactory(AppCompatActivity activity) {
     context = activity;
   }
 
+  /** Creates and returns MemoryInterface * Object used by the game. */
   MemoryInterface getMemoryObjects(String type, int slot) {
     if (type.equals("Player")) {
       return new MemorizePlayer(

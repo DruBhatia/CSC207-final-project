@@ -13,6 +13,7 @@ import java.util.List;
 
 @SuppressLint("ViewConstructor")
 public class MemoryView extends View {
+  /** The Array which stores the references to all the card images of light theme */
   int[] light_images = {
     R.drawable.fv_image101,
     R.drawable.fv_image102,
@@ -23,6 +24,7 @@ public class MemoryView extends View {
     R.drawable.fv_image107,
     R.drawable.fv_image108
   };
+  /** The Array which stores the references to all the card images of dark theme */
   int[] dark_images = {
     R.drawable.fv_image1d1,
     R.drawable.fv_image1d2,
@@ -33,6 +35,7 @@ public class MemoryView extends View {
     R.drawable.fv_image1d7,
     R.drawable.fv_image1d8
   };
+
   MemoryPresenter memoryPresenter;
   /**
    * Constructor initializes a new player, a layout of playable, shuffled cards, sets off a timer,

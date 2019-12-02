@@ -30,23 +30,41 @@ class MemoryPresenter {
   private int cardNum = 1;
   /** The back image of all the cards */
   private int cardBackView;
-
+  /** The String storing the theme of the level */
   private String theme;
+  /** The Integer storing the level the player is on */
   private int level;
+  /** The MemoryFactory Object which stores the instance of that object */
   private MemoryFactory factory;
 
+  /**
+   * The String which stores the reference to the Shared Preference object where all the stats are
+   * stored.
+   */
   static final String SHARED_PREFS = "sharedPrefs";
+  /** The String which stores level 1 points in Shared Preferences. */
   static final String POINTS1 = "points1";
+  /** The String which stores level 1 time in Shared Preferences. */
   static final String TIME1 = "time1";
+  /** The String which stores level 2 points in Shared Preferences. */
   static final String POINTS2 = "points2";
+  /** The String which stores level 2 time in Shared Preferences. */
   static final String TIME2 = "time2";
+  /** The String which stores level 2 moves left in Shared Preferences. */
   static final String MOVES_LEFT2 = "movesLeft2";
+  /** The String which stores level 2 cards left to match in Shared Preferences. */
   static final String CARDS_LEFT2 = "cardsLeft2";
+  /** The String which stores level 3 points in Shared Preferences. */
   static final String POINTS3 = "points3";
+  /** The String which stores level 3 time in Shared Preferences. */
   static final String TIME3 = "time3";
+  /** The String which stores level 3 moves left in Shared Preferences. */
   static final String MOVES_LEFT3 = "movesLeft3";
+  /** The String which stores level 3 cards left to match in Shared Preferences. */
   static final String CARDS_LEFT3 = "cardsLeft3";
+  /** The Shared Preferences object. */
   private SharedPreferences sharedPreferences;
+  /** The MemoryActivity object. */
   private MemoryActivity context;
 
   MemoryPresenter(MemoryActivity activity, String background, int levelNum) {
@@ -63,6 +81,10 @@ class MemoryPresenter {
     sharedPreferences = context.getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE);
   }
 
+  /**
+   * Initializes the Card Array instance variable and create and stores instances of Playing Card in
+   * it.
+   */
   private void initializeCardArray() {
     cardArray = new ArrayList<>();
     cardArray.add((PlayingCard) factory.getMemoryObjects("Card", R.id.iv_11));
@@ -127,6 +149,7 @@ class MemoryPresenter {
         2500);
   }
 
+  /** Sets the Timer in the game based on the level the player is currently on */
   void setTimer() {
     if (level == 3) {
       player.getChronometer().setCountDown(true);
@@ -269,8 +292,8 @@ class MemoryPresenter {
   }
 
   /**
-   * End game if all end-game conditions have been met, track player stats, and navigate to
-   * game-over screen.
+   * End level 1 if all end-game conditions have been met, track player stats, and navigate to level
+   * 2 screen.
    */
   private void endLevel1(boolean check) {
     int playerPoints = player.getPlayerPoints();
@@ -291,7 +314,10 @@ class MemoryPresenter {
       context.startActivity(intent);
     }
   }
-
+  /**
+   * End level 2 if all end-game conditions have been met, track player stats, and navigate to level
+   * 3 screen.
+   */
   private void endLevel2(boolean check) {
     int playerMoves = player.getMovesLeft();
     int playerPoints = player.getPlayerPoints();
@@ -320,6 +346,10 @@ class MemoryPresenter {
     }
   }
 
+  /**
+   * End game if all end-game conditions have been met, track player stats, and navigate to
+   * game-over screen.
+   */
   private void endLevel3(boolean check) {
     int playerMoves = player.getMovesLeft();
     int playerPoints = player.getPlayerPoints();

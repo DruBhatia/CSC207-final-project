@@ -12,26 +12,19 @@ import java.util.ArrayList;
 /** Factory for the creation of game creatures. */
 public class AntManagerFactory {
   private AntGameInterface antManager;
-  //  private ArrayList<GameCreature> dataGame;
   /** Creating the creatures.*/
   public void createCreature(String creature, Bitmap image, DonutView donut, int speed) {
     if (creature.equals("Ant")) {
       antManager = new AntManager();
       antManager.createAnts(image, donut, speed);
-      //        dataGame = antGameInterface.getCreatures();
     }
   }
   /** Updating the position of the creatures. */
   void update() {
-
-    //        for (int i = 0; i < dataGame.size(); i++) {
-    //            dataGame.get(i).update();
-    //        }
     antManager.update();
   }
   /** Removes the creature. */
   void removeCreature(GameCreature creature) {
-    //      dataGame.remove(creature);
     antManager.remove(creature);
   }
   /** Returns number of creatures displayed on screen. */

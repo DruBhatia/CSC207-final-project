@@ -5,7 +5,6 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.view.MotionEvent;
 
-import com.example.final_game.AntCrusher.AntView.AntLevelActivity;
 import com.example.final_game.AntCrusher.AntModel.GameCreature;
 import com.example.final_game.AntCrusher.AntView.AntOverActivity;
 import com.example.final_game.AntCrusher.AntView.DonutView;
@@ -13,6 +12,8 @@ import com.example.final_game.R;
 
 import java.util.Date;
 
+/** AntPresenter is the mediator between the model creatures and the GameSurfaceView class
+ DonutView. It is responsible for the logic layer separation between model and view.*/
 public class AntPresenter {
 
   private AntManagerFactory antManagerFactory;
@@ -29,23 +30,20 @@ public class AntPresenter {
     this.donutView = donutView;
   }
 
+  /** Listens to user click(UI) and passes the information to the view and model so that
+   both can be updated accordingly.*/
   public boolean onTouchEvent(MotionEvent event) {
     if (event.getAction() == MotionEvent.ACTION_DOWN) {
       double buttonX = event.getX();
       double buttonY = event.getY();
 
       for (int i = 0; i < antManagerFactory.size(); i++) {
-        if (antManagerFactory.getCreatures().get(i).getX() < buttonX
-            && buttonX
-                < antManagerFactory.getCreatures().get(i).getX()
-                    + antManagerFactory.getCreatures().get(i).getWidth()
-            && antManagerFactory.getCreatures().get(i).getY() < buttonY
-            && buttonY
-                < antManagerFactory.getCreatures().get(i).getY()
-                    + antManagerFactory.getCreatures().get(i).getHeight()) {
+        GameCreature creature = antManagerFactory.getCreatures().get(i);
+        if (creature.getX() < buttonX && buttonX < creature.getX() + creature.getWidth()
+                && creature.getY() < buttonY && buttonY < creature.getY() + creature.getHeight()) {
           touch = true;
           donutView.play();
-          removedAnt = antManagerFactory.getCreatures().get(i);
+          removedAnt = creature;
           this.update();
           score += 10;
           donutView.setScore(score);
@@ -59,7 +57,9 @@ public class AntPresenter {
       return false;
     }
   }
-
+  /** Update contains all the concrete logic implementation of the features and statistics in the
+   game. It passes any change in the state of the game to both model and view so both can update
+   themselves.*/
   public void update() {
     Bitmap antBitmap1 = BitmapFactory.decodeResource(donutView.getResources(), R.drawable.ant);
     if (touch) {
@@ -67,15 +67,9 @@ public class AntPresenter {
       if (antManagerFactory.size() == 0) {
         level += 1;
         donutView.setLevel(level);
-        donutView.getGameThread().setRunning(false);
-
-        Intent levelIntent = new Intent(donutView.getContext(), AntLevelActivity.class);
-        levelIntent.putExtra("Level", level);
-
         antGenerationSpeed += 2;
         donutView.setSpeed(antGenerationSpeed);
         antManagerFactory.createCreature("Ant", antBitmap1, donutView, antGenerationSpeed);
-        donutView.startNewActivity(levelIntent);
       }
     } else {
       antManagerFactory.update();
@@ -98,7 +92,6 @@ public class AntPresenter {
 
     for (int i = 0; i < antManagerFactory.size(); i++) {
       GameCreature ant = antManagerFactory.getCreatures().get(i);
-      System.out.println("NUMBER OF ANTS "+ antManagerFactory.size());
       if (ant.getY() < 500) {
         ant.setSpeedPos(ant.getSpeed() + 1, 3000);
         lives -= 1;

@@ -15,7 +15,6 @@
             android:label="@string/title_activity_login" />
         <activity android:name=".TrueBlueAdventure.TrueBlueOverActivity" />
         <activity android:name=".AntCrusher.AntView.AntBegin" />
-        <activity android:name=".AntCrusher.AntView.AntLevelActivity" />
         <activity android:name=".Memorize.MemoryBegin" />
         <activity android:name=".Memorize.MemoryOverActivity" />
         <activity android:name=".AntCrusher.AntView.AntOverActivity" />
@@ -31,7 +30,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".Infrastructure.LeaderboardActivity" />
-        <activity android:name=".AntCrusher.SoundManager" />
     </application>
 
 </manifest>

@@ -41,7 +41,6 @@ public class GameThread extends Thread {
         synchronized (surfaceHolder) {
           this.gameView.update();
           this.gameView.draw(canvas);
-          System.out.print("thread running");
         }
       } catch (Exception e) {
         e.printStackTrace();
