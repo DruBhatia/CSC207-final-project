@@ -21,3 +21,9 @@ Game 3 True Blue's Adventure:
     Increase in level increases the speed of the towers
     You only use fuel when you pass through a tower
     If you run out of fuel or crash into a tower the game ends
+
+Database/LeaderBoard Access Instructions:
+    Play the games before trying to access any of the statistics/high score from the Leaderboard.
+    Also the highScore Button in any of the games shows all the scores of everyone who has played
+    the game till now.
+    The sorted version of the statistics is available in options in the LeaderBoard.
