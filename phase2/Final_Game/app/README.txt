@@ -16,6 +16,7 @@ Game 2 Ant Crusher:
 Game 3 True Blue's Adventure:
     Press the screen to Make True Blue go Up
     Avoid hitting the towers
+    Increase in game level gives fuel
     Pickup Stars to get extra points
     Pickup Fuel to refill your tank
     Increase in level increases the speed of the towers
