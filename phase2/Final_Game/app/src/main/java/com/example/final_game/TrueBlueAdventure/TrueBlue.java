@@ -95,11 +95,11 @@ class TrueBlue {
       gv.gameOver();
     }
   }
-
+  /** get tb's rectangle's x coordinate * */
   int getTbX() {
     return tbX;
   }
-
+  /** get tb's rectangle's y coordinate* */
   int getTbY() {
     return tbY;
   }

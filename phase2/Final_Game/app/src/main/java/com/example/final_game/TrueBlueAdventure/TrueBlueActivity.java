@@ -42,13 +42,13 @@ public class TrueBlueActivity extends Activity {
           }
         });
   }
-
+  /** Start and switch to the Begin Activity */
   public void begin(View view) {
     Intent intent = new Intent(this, Begin.class);
     startActivity(intent);
     finish();
   }
-
+  /** Show the Alertdialog box of the data extracted form the database. */
   public void showMessage(String message, String data) {
     AlertDialog.Builder alert = new AlertDialog.Builder(this);
     alert.setCancelable(true);

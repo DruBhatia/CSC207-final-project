@@ -7,7 +7,7 @@ import android.graphics.Rect;
 
 import java.util.Random;
 
-public abstract class Pickup {
+abstract class Pickup {
   /** pX: pickups's x coordinate pY: pickups's y coordinate */
   private int pX, pY;
   /** The gameview pickup is displayed in * */
@@ -18,8 +18,9 @@ public abstract class Pickup {
   private Rect pRect;
   /** status if pickup has been collected * */
   private boolean collected;
-
+  /** Store the start pixel number */
   private int startPixel;
+  /** Store the end pixel number */
   private int endPixel;
 
   Pickup(TrueBlueView gv, int pickupBM, int startPixel, int endPixel) {
@@ -35,7 +36,7 @@ public abstract class Pickup {
     pRect = new Rect(pX, pY, pX + 70, pY + 70);
     collected = false;
   }
-
+  /** Draw the Pickup Object on the Canvas */
   void drawPickup(Canvas canvas) {
     Rect tb = gv.tb.getTbRect();
     canvas.drawBitmap(pickupBM, null, pRect, null);
@@ -73,12 +74,14 @@ public abstract class Pickup {
     return tbRect.intersect(pRect);
   }
 
+  /** return whether this pick up was collected or not */
   boolean getCollected() {
-    return collected;
+    return !collected;
   }
 
-  public abstract void pickupAction();
+  abstract void pickupAction();
 
+  /** Return the View Object */
   TrueBlueView getGv() {
     return gv;
   }

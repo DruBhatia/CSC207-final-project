@@ -50,6 +50,7 @@ public class TrueBlueOverActivity extends AppCompatActivity {
 
     DataBaseHelper db = MainActivity.getGameDb();
     String username = DataBaseHelper.getUSERNAME();
-    db.insertData("GAME3STATS", username.substring(0, username.indexOf('@')), showScore, showTime, showLevel);
+    db.insertData(
+        "GAME3STATS", username.substring(0, username.indexOf('@')), showScore, showTime, showLevel);
   }
 }
