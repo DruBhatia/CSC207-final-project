@@ -27,8 +27,8 @@ public class TrueBlueView extends View {
   /** Tower class * */
   Tower cn; // Tower class
 
-  PowerUp powerup; // PowerUp class
-  FuelUp fuelup; // FuelUp class
+  PickupFactory powerup; // PowerUp class
+  PickupFactory fuelup; // FuelUp class
   Handler handler;
   Runnable runnable;
   final int delayNum = 30;
@@ -89,8 +89,8 @@ public class TrueBlueView extends View {
     cn = new Tower(this); // created CN Tower
     cn.moveTower(); // moves CN Tower
     tb = new TrueBlue(this); // creates TrueBlue
-    powerup = new PowerUp(this);
-    fuelup = new FuelUp(this);
+    powerup = new PickupFactory("powerup",this);
+    fuelup = new PickupFactory("fuel",this);
     Date startDate = new Date();
     start = startDate.getTime();
   }
@@ -196,7 +196,7 @@ public class TrueBlueView extends View {
 
   public void increaseLevel() {
     level++;
-    fuel += 5;
+    fuel += 20;
     fuelConsumption += 1;
   }
 

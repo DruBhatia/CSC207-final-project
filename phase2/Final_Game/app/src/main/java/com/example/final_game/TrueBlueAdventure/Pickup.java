@@ -36,6 +36,7 @@ abstract class Pickup {
     pRect = new Rect(pX, pY, pX + 70, pY + 70);
     collected = false;
   }
+
   /** Draw the Pickup Object on the Canvas */
   void drawPickup(Canvas canvas) {
     Rect tb = gv.tb.getTbRect();
