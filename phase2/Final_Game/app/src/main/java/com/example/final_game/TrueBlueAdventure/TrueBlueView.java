@@ -54,17 +54,16 @@ public class TrueBlueView extends View {
   private Random rand = new Random();
   /** The score variable that keeps track of current score */
   private int score = 0;
-
+  /** The fuel variable**/
   private int fuel = 100;
+  /** The fuelConsumption variable**/
   private int fuelConsumption = 10;
-
   /** The level paint to display the level. */
   private Paint levelPaint = new Paint();
-
+  /** The levelUp paint to display the level. **/
   private Paint levelUpPaint = new Paint();
   /** The level variable that keeps track of current level */
   private int level = 1;
-
   long start;
 
   /** Initializer for gameview* */
