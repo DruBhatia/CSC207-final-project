@@ -182,6 +182,7 @@ public class TrueBlueView extends View {
     randomY = rand.nextInt(1500);
   }
 
+  /**increases the fuel **/
   public void increaseFuel() {
     if (fuel < 51) {
       fuel += 50;
@@ -189,17 +190,18 @@ public class TrueBlueView extends View {
       fuel = 100;
     }
   }
-
+  /**Decreases the fuel**/
   public void decreaseFuel() {
     fuel -= fuelConsumption;
   }
 
+  /**Increases the level**/
   public void increaseLevel() {
     level++;
     fuel += 20;
     fuelConsumption += 1;
   }
-
+  /**Checks the value of fuel and ends game if it is zero**/
   public void checkFuel() {
     if (fuel <= 0) {
       gameOver();

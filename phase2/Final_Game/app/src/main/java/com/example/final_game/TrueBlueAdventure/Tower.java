@@ -11,7 +11,7 @@ import com.example.final_game.R;
 
 import java.util.Random;
 
-// A class to create CN Tower in game3.
+/**A class to create towers in game3**/
 
 class Tower {
   /** Images of the top and bottom tower * */

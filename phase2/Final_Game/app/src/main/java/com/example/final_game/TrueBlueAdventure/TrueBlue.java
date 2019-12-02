@@ -9,7 +9,7 @@ import android.graphics.Rect;
 import android.view.MotionEvent;
 
 import com.example.final_game.R;
-
+/**The TrueBlue Character**/
 class TrueBlue {
   /**
    * tbframe: the current frame of tb velocity: the speed at which true blue accelerates downward
