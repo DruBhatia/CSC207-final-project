@@ -23,7 +23,7 @@
         android:inputType="textEmailAddress"
         android:selectAllOnFocus="true"
         android:textColor="@android:color/black"
-        android:textColorHint="#F6F6F6"
+        android:textColorHint="#3F3636"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -41,6 +41,7 @@
         android:imeOptions="actionDone"
         android:inputType="textPassword"
         android:selectAllOnFocus="true"
+        android:textColorHint="#3F3636"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:passwordToggleEnabled="true"
