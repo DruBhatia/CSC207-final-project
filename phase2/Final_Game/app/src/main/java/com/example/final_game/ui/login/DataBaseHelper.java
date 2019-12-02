@@ -178,45 +178,6 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     }
   }
 
-  /** Return all the data of a specific game sorted by highest to lowest time.*/
-  public Cursor getDataByStat2(String table) {
-    SQLiteDatabase db = this.getWritableDatabase();
-    if (table.equals(TABLE1_NAME)) {
-      return db.rawQuery(
-          "select * from "
-              + TABLE1_NAME
-              + " ORDER BY "
-              + "CAST("
-              + TABLE1_STAT2
-              + " AS "
-              + "INTEGER)"
-              + " DESC",
-          null);
-    } else if (table.equals(TABLE2_NAME)) {
-      return db.rawQuery(
-          "select * from "
-              + TABLE2_NAME
-              + " ORDER BY "
-              + "CAST("
-              + TABLE2_STAT2
-              + " AS "
-              + "INTEGER)"
-              + " DESC",
-          null);
-    } else {
-      return db.rawQuery(
-          "select * from "
-              + TABLE3_NAME
-              + " ORDER BY "
-              + "CAST("
-              + TABLE3_STAT2
-              + " AS "
-              + "INTEGER)"
-              + " DESC",
-          null);
-    }
-  }
-
   /** Return all the data of a specific game sorted by highest to lowest level.*/
   public Cursor getDataByStat3(String table) {
     SQLiteDatabase db = this.getWritableDatabase();
