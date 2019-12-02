@@ -35,7 +35,7 @@ public class TrueBlueActivity extends Activity {
                 stringBuffer.append("Name: ").append(cur.getString(1)).append("\n");
                 stringBuffer.append("Score: ").append(cur.getString(2)).append("\n");
                 stringBuffer.append("Time: ").append(cur.getString(3)).append("\n");
-                stringBuffer.append("Level: ").append(cur.getString(4)).append("\n\n");
+                stringBuffer.append("Level Reached: ").append(cur.getString(4)).append("\n\n");
               }
               showMessage("DATA FOUND", stringBuffer.toString());
             }

@@ -30,97 +30,97 @@ public class LeaderboardActivity extends AppCompatActivity {
     final Button gameActivity = findViewById(R.id.menu);
 
     sortByName1.setOnClickListener(
-            new View.OnClickListener() {
-              @Override
-              public void onClick(View view) {
-                Cursor cur = MainActivity.getGameDb().getDataByName("GAME1STATS");
-                formatData(cur);
-              }
-            });
+        new View.OnClickListener() {
+          @Override
+          public void onClick(View view) {
+            Cursor cur = MainActivity.getGameDb().getDataByName("GAME1STATS");
+            formatData(cur, 1);
+          }
+        });
 
     sortByName2.setOnClickListener(
-            new View.OnClickListener() {
-              @Override
-              public void onClick(View view) {
-                Cursor cur = MainActivity.getGameDb().getDataByName("GAME2STATS");
-                formatData(cur);
-              }
-            });
+        new View.OnClickListener() {
+          @Override
+          public void onClick(View view) {
+            Cursor cur = MainActivity.getGameDb().getDataByName("GAME2STATS");
+            formatData(cur, 2);
+          }
+        });
 
     sortByName3.setOnClickListener(
-            new View.OnClickListener() {
-              @Override
-              public void onClick(View view) {
-                Cursor cur = MainActivity.getGameDb().getDataByName("GAME3STATS");
-                formatData(cur);
-              }
-            });
+        new View.OnClickListener() {
+          @Override
+          public void onClick(View view) {
+            Cursor cur = MainActivity.getGameDb().getDataByName("GAME3STATS");
+            formatData(cur, 2);
+          }
+        });
 
     sortByScore1.setOnClickListener(
-            new View.OnClickListener() {
-              @Override
-              public void onClick(View view) {
-                Cursor cur = MainActivity.getGameDb().getDataByStat1("GAME1STATS");
-                formatData(cur);
-              }
-            });
+        new View.OnClickListener() {
+          @Override
+          public void onClick(View view) {
+            Cursor cur = MainActivity.getGameDb().getDataByStat1("GAME1STATS");
+            formatData(cur, 1);
+          }
+        });
 
     sortByScore2.setOnClickListener(
-            new View.OnClickListener() {
-              @Override
-              public void onClick(View view) {
-                Cursor cur = MainActivity.getGameDb().getDataByStat1("GAME2STATS");
-                formatData(cur);
-              }
-            });
+        new View.OnClickListener() {
+          @Override
+          public void onClick(View view) {
+            Cursor cur = MainActivity.getGameDb().getDataByStat1("GAME2STATS");
+            formatData(cur, 2);
+          }
+        });
 
     sortByScore3.setOnClickListener(
-            new View.OnClickListener() {
-              @Override
-              public void onClick(View view) {
-                Cursor cur = MainActivity.getGameDb().getDataByStat1("GAME3STATS");
-                formatData(cur);
-              }
-            });
+        new View.OnClickListener() {
+          @Override
+          public void onClick(View view) {
+            Cursor cur = MainActivity.getGameDb().getDataByStat1("GAME3STATS");
+            formatData(cur, 3);
+          }
+        });
 
     sortByMoves1.setOnClickListener(
-            new View.OnClickListener() {
-              @Override
-              public void onClick(View view) {
-                Cursor cur = MainActivity.getGameDb().getDataByStat3("GAME1STATS");
-                formatData(cur);
-              }
-            });
+        new View.OnClickListener() {
+          @Override
+          public void onClick(View view) {
+            Cursor cur = MainActivity.getGameDb().getDataByStat3("GAME1STATS");
+            formatData(cur, 1);
+          }
+        });
 
     sortByLevel1.setOnClickListener(
-            new View.OnClickListener() {
-              @Override
-              public void onClick(View view) {
-                Cursor cur = MainActivity.getGameDb().getDataByStat3("GAME2STATS");
-                formatData(cur);
-              }
-            });
+        new View.OnClickListener() {
+          @Override
+          public void onClick(View view) {
+            Cursor cur = MainActivity.getGameDb().getDataByStat3("GAME2STATS");
+            formatData(cur, 2);
+          }
+        });
 
     sortByLevel2.setOnClickListener(
-            new View.OnClickListener() {
-              @Override
-              public void onClick(View view) {
-                Cursor cur = MainActivity.getGameDb().getDataByStat3("GAME3STATS");
-                formatData(cur);
-              }
-            });
+        new View.OnClickListener() {
+          @Override
+          public void onClick(View view) {
+            Cursor cur = MainActivity.getGameDb().getDataByStat3("GAME3STATS");
+            formatData(cur, 3);
+          }
+        });
 
     gameActivity.setOnClickListener(
-            new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(LeaderboardActivity.this, GameActivity.class);
-                    startActivity(intent);
-                }
-            });
+        new View.OnClickListener() {
+          @Override
+          public void onClick(View view) {
+            Intent intent = new Intent(LeaderboardActivity.this, GameActivity.class);
+            startActivity(intent);
+          }
+        });
   }
 
-  public void formatData(Cursor cur){
+  public void formatData(Cursor cur, int num) {
     if (cur.getCount() == 0) {
       System.out.println("Error no data found");
       showMessage("ERROR", "NOTHING FOUND IN DATABASE");
@@ -131,7 +131,11 @@ public class LeaderboardActivity extends AppCompatActivity {
         stringBuffer.append("name: ").append(cur.getString(1)).append("\n");
         stringBuffer.append("score: ").append(cur.getString(2)).append("\n");
         stringBuffer.append("time: ").append(cur.getString(3)).append("\n");
-        stringBuffer.append("stat3: ").append(cur.getString(4)).append("\n\n");
+        if (num == 1) {
+          stringBuffer.append("Moves Left: ").append(cur.getString(4)).append("\n\n");
+        } else {
+          stringBuffer.append("Level Reached: ").append(cur.getString(4)).append("\n\n");
+        }
       }
       showMessage("DATA FOUND", stringBuffer.toString());
     }

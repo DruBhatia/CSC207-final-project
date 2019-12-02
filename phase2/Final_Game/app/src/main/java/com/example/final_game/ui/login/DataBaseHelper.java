@@ -129,14 +129,18 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     String name = getUSERNAME().substring(0, getUSERNAME().indexOf('@'));
     if (table.equals(TABLE1_NAME)) {
       return db.rawQuery(
-              "select * from " + TABLE1_NAME + " WHERE " + TABLE1_PLAYER_NAME + "='" + name +"'", null);
+          "select * from " + TABLE1_NAME + " WHERE " + TABLE1_PLAYER_NAME + "='" + name + "'",
+          null);
     } else if (table.equals(TABLE2_NAME)) {
-      Cursor res = db.rawQuery(
-              "select * from " + TABLE2_NAME + " WHERE " + TABLE2_PLAYER_NAME + "='" + name +"'", null);
+      Cursor res =
+          db.rawQuery(
+              "select * from " + TABLE2_NAME + " WHERE " + TABLE2_PLAYER_NAME + "='" + name + "'",
+              null);
       return res;
     } else {
       return db.rawQuery(
-              "select * from " + TABLE3_NAME + " WHERE " + TABLE3_PLAYER_NAME + "='" + name +"'", null);
+          "select * from " + TABLE3_NAME + " WHERE " + TABLE3_PLAYER_NAME + "='" + name + "'",
+          null);
     }
   }
 
@@ -256,8 +260,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     return userName;
   }
 
-  public static String getNAME(){
+  public static String getNAME() {
     return userName.substring(0, userName.indexOf("@"));
   }
-
 }
