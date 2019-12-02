@@ -5,7 +5,6 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.view.MotionEvent;
 
-import com.example.final_game.AntCrusher.AntView.AntLevelActivity;
 import com.example.final_game.AntCrusher.AntModel.GameCreature;
 import com.example.final_game.AntCrusher.AntView.AntOverActivity;
 import com.example.final_game.AntCrusher.AntView.DonutView;
@@ -68,15 +67,9 @@ public class AntPresenter {
       if (antManagerFactory.size() == 0) {
         level += 1;
         donutView.setLevel(level);
-        donutView.getGameThread().setRunning(false);
-
-        Intent levelIntent = new Intent(donutView.getContext(), AntLevelActivity.class);
-        levelIntent.putExtra("Level", level);
-
         antGenerationSpeed += 2;
         donutView.setSpeed(antGenerationSpeed);
         antManagerFactory.createCreature("Ant", antBitmap1, donutView, antGenerationSpeed);
-        donutView.startNewActivity(levelIntent);
       }
     } else {
       antManagerFactory.update();
@@ -99,7 +92,6 @@ public class AntPresenter {
 
     for (int i = 0; i < antManagerFactory.size(); i++) {
       GameCreature ant = antManagerFactory.getCreatures().get(i);
-      System.out.println("NUMBER OF ANTS "+ antManagerFactory.size());
       if (ant.getY() < 500) {
         ant.setSpeedPos(ant.getSpeed() + 1, 3000);
         lives -= 1;
