@@ -1,0 +1,26 @@
+Dear group_0599
+
+This semester, we talked about MVP, the Model-View-Presenter architecture. It has many advantages, particularly when working with Android. As you can see from your project, your activity classes have methods that are specific to Android. If you encapsulate the rest of your code sufficiently, it is possible to port it to another platform simply by creating a new UI (for example, a website).
+
+Encapsulation can take on many forms. You can package your View classes together. You can ensure that your dependencies go one-way, towards the inner more abstract layers. You can incorporate SOLID principles as much as possible and design patterns where they make sense.
+Here is feedback that is specific to your project:
+
+You made good use of inheritance and abstract classes like PickUp which implements the shared logic and has an abstract method implemented in subclasses FuelUp and PowerUp. Input validation on login/sign up was also a good idea. Additionally, methods were kept to a reasonable length in most classes, with a good use of helper methods.
+
+The user sees a well designed user interface, with a few customizations such as light mode/dark mode. They game play is pretty straightforward and looks pretty smooth, except in the TruBlu game where it is a bit glitchy. The user can view a leaderboard for each game and there are sound effects. There is a bit of extra complexity in each game as you level up, such as a threshold for scores and a number-of-moves-left counter.
+
+A good next step would be to gain a better understanding of the structure and implementation of various design patterns. At times, the factory design and mvp patterns are used incorrectly. You can improve the implementation of your MVP architecture and cleaning up the coupling between different components. For example MemoryView and MemoryPresenter shouldn’t both have an instance of each other. In addition, you can encapsulate persistence management and not have access to DataBaseHelper from within the views that shouldn’t access all of persistence methods. 
+
+Encapsulation was implemented in many places in your code, but some critical classes, such as TrueBlue, have all public instance variables. You should make these variables private with getters and setters so that the critical information in TrueBlue (and other classes like this) is hidden from your other classes.
+
+Some of your methods are quite long, such as your onCreate methods in your Activity classes. This was not widespread or too detrimental, but using helper methods to shorten these to an appropriate length would have been a good professional decision.
+
+Your Javadoc is consistent and clear.in most places, but making sure this is the case everywhere will bring your code up to the professional level. Also some comments are unnecessary and only make the code more convoluted - remember that in-line comments should only be added where it’s not obvious at a glance what the code does.
+
+Some naming conventions were not followed, you have some packages that start with a lowercase and others that start with an uppercase. Additionally, some variable naming is not indicative of the behaviour of your variables, such as your ‘count’ variable. This was a poor choice of data type (boolean would do), and by calling it count it implies that something will be counted - but its used as a true/false flag. Additionally, variable naming can also be improved by assigning appropriate names to different buttons instead of the generic button1, button2, etc.
+
+We hope that you enjoyed working on this project and found it a useful learning experience.
+
+Cheers,
+The CSC207 Instructional Team
+
